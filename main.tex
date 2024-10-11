@@ -1,0 +1,49 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{csquotes} 
+\usepackage{graphicx}
+
+% Load biblatex with Spanish options
+\usepackage[
+    style=apa,
+    backend=biber,
+    language=spanish,
+    sorting=ynt
+]{biblatex}
+
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\DefineBibliographyStrings{spanish}{
+  andothers = {{et al\adddot}},
+}
+
+% Add your bibliography file
+\addbibresource{references.bib}
+
+\begin{document}
+
+\input{caratula}
+
+\input{disclaimer}
+
+\input{abstract}
+
+% Índice
+\tableofcontents
+
+% Capítulos
+\input{introduccion}
+\input{teorico}
+\input{metodologia}
+\input{desarrollo}
+\input{resultados}
+\input{conclusiones}
+
+% Anexos
+\input{anexo}
+
+% Bibliografía
+\printbibliography
+\end{document}

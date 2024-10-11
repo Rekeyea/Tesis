@@ -1,0 +1,53 @@
+\subsection{Conceptos clave en el procesamiento de streaming}
+
+El procesamiento de streaming se refiere al análisis y manipulación de datos en tiempo real a medida que se generan o reciben. Según Carbone et al. \parencite{carbone2015apache}, los conceptos fundamentales incluyen:
+
+\begin{itemize}
+    \item \textbf{Flujo de datos}: Una secuencia potencialmente infinita de registros que llegan continuamente \parencite{akidau2015dataflow}.
+    \item \textbf{Latencia}: El tiempo entre la llegada de un dato y su procesamiento, crucial para aplicaciones en tiempo real \parencite{akidau2015dataflow}.
+    \item \textbf{Ventanas}: Mecanismos para agrupar datos en intervalos finitos para su procesamiento \parencite{akidau2015dataflow}.
+    \item \textbf{Estado}: Información que se mantiene entre eventos para cálculos incrementales \parencite{carbone2015apache}.
+    \item \textbf{Watermarks}: Indicadores de progreso del tiempo en el flujo de datos \parencite{akidau2015dataflow}.
+\end{itemize}
+
+\subsection{Comparación entre procesamiento por lotes y en tiempo real}
+
+La elección entre procesamiento por lotes y en tiempo real depende de los requisitos específicos de la aplicación:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Característica} & \textbf{Procesamiento por lotes} & \textbf{Procesamiento en tiempo real} \\
+\hline
+Latencia & Alta (minutos a horas) & Baja (milisegundos a segundos) \\
+\hline
+Throughput & Alto & Moderado a alto \\
+\hline
+Complejidad & Menor & Mayor \\
+\hline
+Consistencia & Fuerte & Eventual \\
+\hline
+Uso típico & Análisis histórico, reportes & Monitoreo, alertas, decisiones inmediatas \\
+\hline
+\end{tabular}
+\caption{Comparación de procesamiento por lotes y en tiempo real}
+\label{tab:batch_vs_streaming}
+\end{table}
+
+Como sugiere Stonebraker et al. \parencite{stonebraker2005one}, el procesamiento en tiempo real es esencial para aplicaciones
+que requieren decisiones inmediatas, mientras que el procesamiento por lotes es más 
+adecuado para análisis profundos de grandes volúmenes de datos históricos.
+
+\subsection{Evolución de las arquitecturas de procesamiento de datos}
+
+La evolución de las arquitecturas de procesamiento de datos ha sido impulsada por la necesidad de manejar volúmenes cada vez mayores de datos en tiempo real:
+
+\begin{enumerate}
+    \item \textbf{Arquitecturas por lotes}: Sistemas tradicionales como Hadoop MapReduce, diseñados para procesar grandes volúmenes de datos estáticos \parencite{dean2008mapreduce}.
+    \item \textbf{Arquitecturas de streaming puro}: Como Apache Storm, enfocadas en el procesamiento en tiempo real pero con limitaciones en la consistencia y exactitud \parencite{toshniwal2014storm}.
+    \item \textbf{Arquitectura Lambda}: Propuesta por Marz \parencite{marz2011cap}, combina procesamiento por lotes y en tiempo real para balancear latencia, throughput y tolerancia a fallos.
+    \item \textbf{Arquitectura Kappa}: Introducida por Kreps \parencite{kreps2014questioning}, simplifica la Lambda tratando todos los datos como streams.
+    \item \textbf{Arquitectura Delta}: Desarrollada por Databricks, combina las ventajas de las arquitecturas Lambda y Kappa, optimizando el procesamiento de datos tanto en batch como en streaming \parencite{deltalake} \parencite{delta}.
+\end{enumerate}
+\newpage

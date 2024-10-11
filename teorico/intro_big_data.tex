@@ -1,0 +1,79 @@
+\section{Introducción al Big Data y Streaming de Datos}
+\subsection{Definición y características del Big Data}
+
+Big Data es un término paraguas que se usa en la industria de IT para denominar a un conjunto de tecnologías que manejan grandes volúmenes de datos.
+La pregunta que se presenta entonces es: ¿qué tan grandes deberían ser estos volúmenes para ser considerados Big Data?
+O incluso, ¿existen otras características que definan lo que es Big Data?
+Una definición generalmente aceptada es la siguiente:
+
+\begin{quote}
+Las tecnologías de Big Data (Datos Intensivos) están orientadas a
+procesar datos (conjuntos/activos) de alto volumen, alta velocidad y alta variedad
+para extraer el valor de datos previsto y asegurar una alta
+veracidad de los datos originales y la información obtenida, lo que demanda
+formas de procesamiento de datos e información (análisis) rentables e innovadoras
+para mejorar el conocimiento, la toma de decisiones y el control de procesos;
+todo esto exige (debe ser apoyado por) nuevos modelos de datos
+(que soporten todos los estados y etapas de los datos durante todo su ciclo de vida)
+y nuevos servicios y herramientas de infraestructura que permitan obtener (y procesar)
+datos de una variedad de fuentes (incluidas las redes de sensores) y
+entregar datos en una variedad de formas a diferentes consumidores y dispositivos
+de datos e información. \parencite{demchenko2014addressing}
+\end{quote}
+
+\newpage
+Por lo que podríamos considerar que es Big Data todo aquello que esté orientado a datos
+cuyo volumen, velocidad y variedad no puedan ser tratados por un modelo de procesamiento
+de datos tradicional (como podrían ser las bases de datos relacionales). Con el objetivo
+de generar valor, asegurando la veracidad de los datos originales y la información obtenida.
+
+\subsection{Streaming de datos}
+
+El streaming de datos, también conocido como procesamiento de flujo, es un paradigma 
+de procesamiento de datos en el que los datos se tratan como un flujo continuo e 
+ilimitado de eventos discretos. En el contexto de Big Data, el streaming permite procesar 
+y analizar grandes volúmenes de datos en tiempo real o casi real, a medida que se generan 
+o llegan al sistema. \parencite{flink}
+
+
+\subsection{Desafíos en el manejo de datos de streaming}
+
+\begin{enumerate}
+    \item \textbf{Procesamiento en tiempo real y baja latencia}
+    
+    El procesamiento de datos debe ocurrir con un retraso mínimo para proporcionar resultados en tiempo real.
+    
+    Un desafío clave en el procesamiento de streams es lograr equilibrar la latencia, el costo y la correctitud simultáneamente \parencite{akidau2015dataflow}.
+
+    \item \textbf{Manejo de datos fuera de orden}
+    
+    Los datos pueden llegar en un orden diferente al que fueron generados, lo que complica el procesamiento.
+    
+    El procesamiento de eventos fuera de orden es un desafío fundamental en los sistemas de procesamiento de streams \parencite[p.~87]{flink}.
+
+    \item \textbf{Escalabilidad}
+    
+    Los sistemas deben poder manejar volúmenes crecientes de datos sin degradación del rendimiento.
+    
+    La escalabilidad en sistemas de streaming implica la capacidad de aumentar el rendimiento añadiendo recursos computacionales \parencite{samurai}.
+
+    \newpage
+    \item \textbf{Tolerancia a fallos y consistencia}
+    
+    El sistema debe poder recuperarse de fallos sin pérdida de datos y mantener la consistencia de los resultados.
+    
+    Garantizar la semántica de "exactamente una vez" en presencia de fallos es un desafío significativo en el procesamiento de streams \parencite{carbone2015apache}.
+
+    \item \textbf{Procesamiento de ventanas temporales}
+    
+    Definir y procesar eficientemente ventanas de tiempo sobre streams de datos continuos.
+    
+    El procesamiento de ventanas temporales es fundamental en aplicaciones de streaming y requiere consideraciones cuidadosas en cuanto a la semántica del tiempo y la completitud de los datos \parencite{akidau2015dataflow}.
+
+    \item \textbf{Integración con sistemas batch}
+    
+    Combinar eficazmente el procesamiento de streams con sistemas batch existentes.
+    
+    La integración de paradigmas batch y streaming, a menudo referida como 'procesamiento híbrido', presenta desafíos únicos en términos de consistencia de datos y modelos de programación \parencite{carbone2015apache}.
+\end{enumerate}
+\newpage
