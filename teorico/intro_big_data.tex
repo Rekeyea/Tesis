@@ -1,4 +1,31 @@
-\section{Introducción al Big Data y Streaming de Datos}
+\section{Introducción a Big Data y Streaming de Datos}
+
+\subsection{Sistemas Distribuidos}
+Un sistema distribuido es una colección de elementos computacionales autonomos que para su usuario 
+parecen un sistema único y coherente. \parencite{tanenbaum}
+
+Los sistemas distribuidos tienen dos caracteristicas que pueden regularse para escalar: Procesamiento y Almacenamiento.
+
+En el último tiempo, ha habido una tendencia a preferir que la escala de ambas propiedades sea individual. 
+Es decir, que se pueda escalar por un lado la potencia de procesamiento y por otro la capacidad de almacenamiento.
+
+\subsubsection{Consistencia}
+La Consistencia es la propiedad que tiene un sistema distribuido en la que todos los nodos ven los mismos datos al mismo tiempo.
+Esto significa que cualquier lectura en cualquier momento deberá devolver el valor más reciente escrito para ese dato.
+Si un sistema es consistente, una vez que se realiza una escritura, todas las lecturas subsiguientes deben reflejar esa escritura;
+sin importar desde que nodo se hagan. 
+Esta propiedad garantiza que los clientes de los sistemas nunca vean datos desactualizados o inconsistentes.
+\subsubsection{Disponibilidad}
+La Disponibilidad es la propiedad que tiene un sistema distribuido para responder a todas las peticiones, ya sean de lectura o escritura, sin fallos.
+Un sistema disponible garantiza que cada solicitud reciba una respuesta sin importar el estado individual de cada nodo que lo compone.
+Esto significa que incluso si algunos nodos estan caidos, el sistema en su conjunto debe poder seguir dando servicio a las peticiones que recibe.
+\subsubsection{Tolerancia a Particiones}
+La Tolerancia a Particiones es la propiedad que tiene un sistema distribuido en la que continua funcionando a pesar de la perdida de 
+conectividad entre nodos. Una partición ocurre cuando hay una ruptura en la comunicación dentro de la red, 
+lo que resulta en que dos o más segmentos de la red no puedan comunicarse entre sí.
+Un sistema tolerante a particiones puede seguir operando incluso cuando estas particiones ocurren, 
+lo que significa que puede manejar retrasos o pérdidas de mensajes entre nodos sin fallar por completo. 
+
 \subsection{Definición y características del Big Data}
 
 Big Data es un término paraguas que se usa en la industria de IT para denominar a un conjunto de tecnologías que manejan grandes volúmenes de datos.
@@ -7,7 +34,7 @@ O incluso, ¿existen otras características que definan lo que es Big Data?
 Una definición generalmente aceptada es la siguiente:
 
 \begin{quote}
-Las tecnologías de Big Data (Datos Intensivos) están orientadas a
+Las tecnologías de Big Data están orientadas a
 procesar datos (conjuntos/activos) de alto volumen, alta velocidad y alta variedad
 para extraer el valor de datos previsto y asegurar una alta
 veracidad de los datos originales y la información obtenida, lo que demanda
@@ -35,6 +62,30 @@ ilimitado de eventos discretos. En el contexto de Big Data, el streaming permite
 y analizar grandes volúmenes de datos en tiempo real o casi real, a medida que se generan 
 o llegan al sistema. \parencite{flink}
 
+\subsection{Teorema CAP}
+El Teorema CAP es un concepto fundamental en el diseño de sistemas distribuidos. 
+Este establece que es imposible garantizar al mismo tiempo, tanto la Consistencia (Consistency), 
+Disponibilidad (Availability) y la Tolerancia a las Particiones (Partition Tolerance).
+
+Según esto, un sistema distribuido sólo es capaz de garantizar dos de estas propiedades al mismo tiempo. 
+En general, para los sistemas de Big Data de Streaming, la disponibilidad es una propiedad obligatoria, ya que cualquier inactividad puede 
+resultar en la pérdida de datos valiosos o en la imposibilidad de realizar acciones.
+
+Por otro lado, la Tolerancia a Particiones es también indispensable para estos sistemas, que por su naturaleza requieren que su capacidad de 
+procesamiento este distribuida a través de múltiples nodos dispersos en una red no confiable; por lo que son suceptibles 
+a que se genere una partición. Por lo tanto, si no tuviera esta propiedad el servicio podría dejar de ser disponible. 
+
+Entonces, como corolario, un sistema de Big Data de Streaming debe tambien ser tolerante a las particiones para poder ser disponible.
+Esto nos deja con una única opción: relajar el "grado de consistencia" hasta un punto razonable que permita que el sistema siga siendo eficáz.\parencite{capteo}
+\subsubsection{Consistencia Eventual}
+La consistencia eventual es un modelo de consistencia en sistemas distribuidos que garantiza que, 
+si no se realizan nuevas actualizaciones a un objeto, en algun momento (eventualmente) todos los accesos a ese objeto 
+devolverán el último valor actualizado.  
+La consistencia eventual se alinea con las compensaciones descritas por el teorema CAP, 
+permitiendo que estos sistemas prioricen la disponibilidad y la tolerancia a particiones. 
+Además, facilita la escalabilidad horizontal, crucial para manejar el crecimiento continuo de datos y clientes de los sistemas.
+Por último, es importante diseñar cuidadosamente el sistema para manejar las posibles inconsistencias temporales 
+y asegurar que la aplicación pueda tolerar y resolver estas situaciones de manera apropiada \parencite{capteo}
 
 \subsection{Desafíos en el manejo de datos de streaming}
 
@@ -60,7 +111,7 @@ o llegan al sistema. \parencite{flink}
     \newpage
     \item \textbf{Tolerancia a fallos y consistencia}
     
-    El sistema debe poder recuperarse de fallos sin pérdida de datos y mantener la consistencia de los resultados.
+    El sistema debe poder recuperarse de fallos sin pérdida de datos y mantener la consistencia eventual de los resultados.
     
     Garantizar la semántica de "exactamente una vez" en presencia de fallos es un desafío significativo en el procesamiento de streams \parencite{carbone2015apache}.
 
@@ -77,3 +128,7 @@ o llegan al sistema. \parencite{flink}
     La integración de paradigmas batch y streaming, a menudo referida como 'procesamiento híbrido', presenta desafíos únicos en términos de consistencia de datos y modelos de programación \parencite{carbone2015apache}.
 \end{enumerate}
 \newpage
+
+
+
+\subsection{Regluaciones en el Uso de Datos: GDPR}

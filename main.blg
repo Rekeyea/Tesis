@@ -1,0 +1,20 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'main.blg'
+[60] biber:340> INFO - === sáb oct 19, 2024, 21:36:51
+[73] Biber.pm:419> INFO - Reading 'main.bcf'
+[130] Biber.pm:979> INFO - Found 16 citekeys in bib section 0
+[147] Biber.pm:4419> INFO - Processing section 0
+[154] Biber.pm:4610> INFO - Looking for bibtex file 'references.bib' for section 0
+[155] bibtex.pm:1713> INFO - LaTeX decoding ...
+[166] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[330] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[331] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[331] Biber.pm:4239> INFO - Sorting list 'ynt/apasortcite//global/global' of type 'entry' with template 'ynt' and locale 'es-ES'
+[360] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[360] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[360] Biber.pm:4239> INFO - Sorting list 'ynt/global//global/global' of type 'entry' with template 'ynt' and locale 'es-ES'
+[378] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[393] bbl.pm:763> INFO - Output to main.bbl
+[393] Biber.pm:131> WARN - ISBN '9781543057386; 9789081540629' in entry 'tanenbaum' is invalid - run biber with '--validate_datamodel' for details.
+[393] Biber.pm:131> WARN - ISBN '9781491974292; 9781491974261' in entry 'flink' is invalid - run biber with '--validate_datamodel' for details.
+[393] Biber.pm:133> INFO - WARNINGS: 2

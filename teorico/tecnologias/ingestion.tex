@@ -1,0 +1,133 @@
+\subsection{Ingestión de Datos}
+Las tecnologías de ingestión de datos en tiempo real cumplen el crucial rol de actuar como intermediarios entre las fuentes de datos 
+y los sistemas que efectivamente procesan estos datos. \parencite{kleppmann} 
+
+Deben funcionar como un conducto de alta capacidad de almacenamiento y baja latencia, capturando y canalizando los flujos de información
+desde sus múltiples orígenes y hacia sus diversos destinos en tiempo real. \parencite{bigdata}
+
+Su papel es fundamentalmente el de un sistema nervioso central, coordinando y distribuyendo datos a través de complejas arquitecturas distribuidas. 
+Actúan como amortiguadores, absorbiendo picos en el flujo de datos y garantizando un procesamiento constante y eficiente. 
+Además, estas tecnologías sirven como una capa de abstracción, desacoplando los productores de datos de los consumidores, 
+lo que permite una mayor flexibilidad y escalabilidad en el diseño del sistema. 
+
+\subsubsection{Apache Kafka}
+Apache Kafka es el estandar de facto de este tipo de sistemas. Utiliza un modelo de publicación-subscripcion (pub/sub) basado en logs, 
+donde los datos se envían a "topics" y se almacenan en particiones distribuidas. Las particiones tienen una garantía de orden de los mensajes
+y permiten la retención de datos a largo plazo.
+
+Además, proporciona conectores para integración con diversos sistemas y un amplio ecosistema. A nivel de seguridad ofrece encriptación
+en tránsito mediante TLS y permite ser configurado para soportar encriptación en reposo (aunque esto debe hacerse a nivel de sistema de archivos).
+
+Por último, su arquitectura distribuida y replicada permite una alta disponibilidad y tolerancia a fallos.
+\subsubsection{Apache Pulsar}
+Apache Pulsar es también una plataforma de mensajería y streaming distribuida, al igual que Apache Kafka, pero que se distingue por tener una 
+arquitectura basada en capas, separando la capa de almacenamiento de la capa de procesamiento; lo que permite escalar cada uno independientemente.
+
+Apache Pulsar soporta modelos de entrega como colas, publicación y suscripción y puede ofrecer garantías de entregar un mensaje 
+exactamente una vez ("exactly-once"). Ofrece encriptación a nivel de mensaje, lo que permite una granularidad fina en cuanto a que encriptar. 
+También soporta TLS para la encriptación en tránsito y permite la configuración de encriptación en reposo.
+
+Por último, también soporta almacenamiento de mensajes a largo plazo y soporte nativo para esquemas:
+Esto es, permite definir la estructura y el tipo de datos de los mensajes, lo que a su vez permite una validación automática de los datos 
+y una serialización/deserialización más eficiente. Esto trae consigo además, la capacidad de evolucionar estos esquemas de mensajes,
+de forma que productores y consumidores evolucionen independientemente.
+
+\subsubsection{Amazon Kinesis}
+Amazon Kinesis es un servicio de streaming de datos administrado en la nube de AWS. 
+Está diseñado para recopilar, procesar y analizar datos de streaming en tiempo real a gran escala.
+Kinesis, en realidad, se compone de varios servicios:
+\begin{enumerate}
+    \item Kinesis Data Streams para ingestión de datos en tiempo real
+    \item Kinesis Data Firehose para cargar datos en los servicios de almacenamiento disponibles de AWS
+    \item Kinesis Data Analytics para procesar datos con SQL o Java
+    \item Kinesis Video Streams para streaming de video  
+\end{enumerate}
+Adicionalmente ofrece capacidades de auto-escalado, replicación entre zonas de disponibilidad para alta durabilidad, encriptación en reposo 
+(y puede habilitarsele la encriptación en tránsito) y permite la retención de datos hasta 365 días.
+
+Como se puede ver, al ser tan completo permitiría implementar, al menos en principio, una gran parte de un sistema de Big Data en tiempo real.
+
+\subsubsection{Azure Event Hubs}
+Azure Event Hubs es un servicio de ingestión de datos en tiempo real administrado en la plataforma Microsoft Azure.
+Se supone que está diseñado para soportar millones de eventos por segundo con baja latencia. Al igual que Kinesis,
+ofrece una muy buena con otros servicios de Microsoft Azure, lo que permite por ejemplo capturar directamente los eventos
+en los servicios de almacenamiento disponibles en este proveedor de nube.
+
+Event Hubs es compatible con el protocolo Kafka, lo que permite a las aplicaciones existentes de Kafka conectarse sin cambios de código.
+Ofrece una retención de mensajes por defecto de 1 dia que puede aumentado hasta 7. En caso de necesitar una retención más a largo plazo
+se recomienda guardar los eventos en Azure Blob Storage o Azure Data Lake para su posterior procesamiento. 
+Cuenta tambien con encriptación en transito con TLS y en reposo.
+
+Proporciona además, características como el procesamiento batch para optimizar el rendimiento, 
+control de acceso basado en roles, y encriptación en reposo y en tránsito. 
+
+\subsubsection{Comparación}
+
+\paragraph{Escalabilidad}
+\begin{itemize}
+    \item \textbf{Apache Kafka:} Alta escalabilidad horizontal, millones de mensajes/segundo.
+    \item \textbf{Apache Pulsar:} Muy alta escalabilidad horizontal, millones de mensajes/segundo con separación de almacenamiento y cómputo.
+    \item \textbf{Amazon Kinesis:} Buena escalabilidad, con 1.000 mensajes por segundo con la configuración por defecto aunque con configuración adicional puede llegar al millon por segundo hipotético.
+    \item \textbf{Azure Event Hubs:} Buena escalabilidad, con 1.000 mensajes por segundo. También puede escalar con configuración adicional a los 20.000 mensajes. Existe la posibilidad de tener una instancia dedicada que permite escalar a millones de eventos por segundo de forma hipotética.
+\end{itemize}
+
+\paragraph{Retención de datos}
+\begin{itemize}
+    \item \textbf{Apache Kafka:} Configurable, potencialmente indefinida.
+    \item \textbf{Apache Pulsar:} Ilimitada por diseño.
+    \item \textbf{Amazon Kinesis:} Hasta 365 días, configurable.
+    \item \textbf{Azure Event Hubs:} Hasta 7 días, opción de Capture para largo plazo.
+\end{itemize}
+
+\paragraph{Garantías de entrega}
+\begin{itemize}
+    \item \textbf{Apache Kafka:} At-least-once por defecto, exactly-once configurable.
+    \item \textbf{Apache Pulsar:} Exactly-once nativo.
+    \item \textbf{Amazon Kinesis:} At-least-once.
+    \item \textbf{Azure Event Hubs:} At-least-once.
+\end{itemize}
+
+\paragraph{Encriptación}
+\begin{itemize}
+    \item \textbf{En reposo:}
+    \begin{itemize}
+        \item \textbf{Apache Kafka:} Configurable.
+        \item \textbf{Apache Pulsar:} Nativo.
+        \item \textbf{Amazon Kinesis:} Por defecto (AWS KMS).
+        \item \textbf{Azure Event Hubs:} Por defecto.
+    \end{itemize}
+    \item \textbf{En tránsito:} Todos soportan TLS/SSL.
+\end{itemize}
+
+\paragraph{Observaciones clave}
+\begin{itemize}
+    \item Pulsar destaca en escalabilidad y retención ilimitada.
+    \item Kafka ofrece mayor flexibilidad en configuración.
+    \item Servicios gestionados (Kinesis, Event Hubs) tienen encriptación en reposo por defecto, pero retención limitada.
+    \item Pulsar ofrece exactly-once nativo, Kafka lo requiere configurable.
+\end{itemize}
+
+\clearpage
+
+\begin{table}
+\caption{Comparación de Sistemas de Mensajería}
+\resizebox{1\textwidth}{!}{% <------ Don't forget this %
+  \begin{tabular}{|l|c|c|c|c|}
+    \hline
+    \textbf{Característica} & \textbf{Apache Kafka} & \textbf{Apache Pulsar} & \textbf{Amazon Kinesis} & \textbf{Azure Event Hubs} \\
+    \hline
+        Escalabilidad & Alta & Muy alta & Alta & Alta \\
+    \hline
+    Retención & Configurable & Ilimitada & 365 días máx. & 7 días máx. \\
+    \hline
+    Garantía entrega & At-least-once, Exactly-once* & Exactly-once & At-least-once & At-least-once \\
+    \hline
+    Encript. reposo & Configurable & Sí & Sí (AWS KMS) & Sí \\
+    \hline
+    Encript. tránsito & Sí & Sí & Sí & Sí \\
+    \hline
+    Throughput & {Muy alto (configurable)} & {Muy alto (configurable)} & {1MB/s por shard} & {1MB/s por unidad} \\
+    \hline
+  \end{tabular}% <------ Don't forget this %
+}
+\end{table}
