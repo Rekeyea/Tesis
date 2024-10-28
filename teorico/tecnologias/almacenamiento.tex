@@ -1,0 +1,113 @@
+\subsection{Almacenamiento de Datos}
+
+\subsubsection {Formatos de Almacenamiento}
+
+Los formatos de datos son un componente fundamental en cualquier arquitectura de sistemas de información moderna, 
+ya que determinan no solo cómo se almacena la información, sino también cómo se procesa, transmite y analiza. 
+La elección adecuada del formato de datos puede tener un impacto significativo en el rendimiento, 
+la escalabilidad y la eficiencia del sistema en su conjunto. Para un sistema de Big Data, 
+donde se manejan grandes volúmenes de información, la importancia de estos formatos se magnifica, 
+ya que pueden significar la diferencia entre un sistema eficiente y uno que consume recursos excesivos. 
+Además, los formatos de datos actúan como un lenguaje común entre diferentes componentes, 
+facilitando la interoperabilidad y la integración de tecnologías.
+
+\subsubsection{Formatos Orientados a Filas}
+Los formatos orientados a filas representan la forma tradicional de almacenamiento de datos, 
+donde cada registro se almacena de manera secuencial. Este enfoque ha sido la base de los sistemas 
+de gestión de bases de datos durante décadas y sigue siendo crucial en muchos escenarios.
+
+\begin{itemize}
+    \item Los registros completos se almacenan de manera contigua en disco
+    \item Cada fila contiene todos los campos de un registro
+    \item Optimizado para acceder a registros completos
+    \item Los nuevos registros se añaden secuencialmente de forma eficiente
+    \item Óptimo cuando las consultan necesitan todos los campos
+    \item Fácil modificación de registros individuales
+    \item Debe leer datos innecesarios cuando solo se necesitan algunas columnas
+    \item Los datos heterogéneos juntos reducen la efectividad de los métodos de compresión
+    \item Menos eficiente para análisis de columnas específicas
+\end{itemize}
+
+\subsubsection{Formatos Orientados a Columnas}
+
+Los formatos de almacenamiento columnar representan un paradigma fundamental en el manejo de datos masivos, 
+especialmente en entornos analíticos. A diferencia del almacenamiento tradicional orientado a filas, 
+donde los registros se almacenan secuencialmente, el almacenamiento columnar organiza los datos por columnas, 
+lo que ofrece ventajas significativas en ciertos escenarios.
+
+\begin{itemize}
+    \item En lugar de almacenar registros completos de manera contigua, los datos se organizan por columnas
+    \item Cada columna se almacena en bloques separados de memoria o disco
+    \item Los valores similares se almacenan juntos, mejorando la compresión
+    \item Los datos similares almacenados juntos permiten mayores tasas de compresión
+    \item Solo se leen las columnas necesarias para una consulta
+    \item Facilita operaciones como SUM, AVG, COUNT sobre columnas específicas
+    \item Permite procesamiento eficiente de datos en hardware
+\end{itemize}
+
+\subsubsection{Comparativa con Almacenamiento por Filas:}
+
+Consideremos una tabla simple de usuarios:
+
+\textbf{Formato por Filas:}
+\begin{verbatim}
+[ID1, "Juan", 25] -> [ID2, "Ana", 30] -> [ID3, "Pedro", 28]
+\end{verbatim}
+
+\textbf{Formato Columnar:}
+\begin{verbatim}
+IDs:    [ID1 -> ID2 -> ID3]
+Nombres: ["Juan" -> "Ana" -> "Pedro"]
+Edades:  [25 -> 30 -> 28]
+\end{verbatim}
+
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Aspecto} & \textbf{Formato Columnar} & \textbf{Formato por Filas} \\
+\hline
+Lectura parcial & Muy eficiente & Menos eficiente \\
+Inserción de registros & Más lenta & Más rápida \\
+Compresión & Alta & Moderada \\
+Consultas analíticas & Excelente & Regular \\
+Consultas transaccionales & Regular & Excelente \\
+\hline
+\end{tabular}
+
+\subsubsection{Formatos Específicos}
+
+\textbf{JSON (JavaScript Object Notation)} se ha convertido en el estándar de facto para el intercambio 
+de datos en aplicaciones modernas, especialmente en entornos Web y APIs. Su popularidad se debe a su 
+simplicidad, legibilidad humana y amplia compatibilidad con prácticamente todos los lenguajes de 
+programación. A pesar de no ser el más eficiente en términos de espacio y rendimiento (ya que es un formato basado en filas), 
+su flexibilidad para representar datos estructurados y semiestructurados lo hace invaluable en sistemas donde la 
+interoperabilidad y la facilidad de desarrollo son prioritarias. Es particularmente útil en aplicaciones
+donde las transacciones individuales y la flexibilidad del esquema son más importantes que la 
+eficiencia en el procesamiento de grandes volúmenes de datos.
+
+\textbf{Apache AVRO} destaca como un formato de serialización de datos binario que combina la 
+eficiencia del almacenamiento binario con la flexibilidad de esquemas evolutivos. Su característica 
+más distintiva es su capacidad para manejar cambios en el esquema de datos a lo largo del tiempo sin 
+requerir cambios en el código o reescritura de datos existentes. Para esto, AVRO almacena el esquema junto con 
+los datos, lo que permite una deserialización precisa y eficiente. Es especialmente valioso en 
+sistemas de mensajería y streaming de datos, donde la evolución del esquema y la 
+eficiencia en la transmisión son cruciales. Su formato binario compacto y su capacidad de compresión 
+lo hacen ideal para sistemas distribuidos donde el ancho de banda y el almacenamiento son 
+consideraciones importantes.
+
+\textbf{Apache Parquet} se ha establecido como el formato columnar dominante en el ecosistema de 
+Big Data, especialmente para cargas de trabajo analíticas. Su diseño columnar permite una compresión 
+altamente eficiente y un muy buen rendimiento en consultas que involucran solo un subconjunto de 
+columnas. Parquet destaca particularmente en escenarios de análisis de datos, 
+donde su capacidad para manejar esquemas complejos anidados y su integración con 
+casi todas las herramientas lo hacen indispensable. La adopción generalizada de Parquet en la 
+industria, lo ha convertido en el estándar de facto para almacenamiento de datos analíticos.
+
+\textbf{Optimized Row Columnar (ORC)} fue inicialmente desarrollado para optimizar Hive, 
+y aunque ofrece excelentes capacidades de compresión y rendimiento en consultas, su relevancia 
+ha disminuido significativamente en los últimos años frente a Parquet. Aunque ORC sigue siendo 
+relevante en sistemas legacy y específicos de Hive, la tendencia de la industria se ha movido 
+claramente hacia Parquet como el formato columnar preferido para análisis de datos a gran escala.
+
+\subsubsection{Sistemas de Archivos Distribuidos}
+\subsubsection{Hadoop}
+\subsubsection{Almacenamiento de Objetos en la Nube}

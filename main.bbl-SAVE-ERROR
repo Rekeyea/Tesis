@@ -1,0 +1,1875 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ynt/apasortcite//global/global}
+    \entry{stonebraker2005one}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=9a603143e19a2dddd58e683838417ea3}{%
+           family={Stonebraker},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d8ba47be6c33537f21a676cff609a4a}{%
+           family={Çetintemel},
+           familyi={Ç\bibinitperiod},
+           given={Uğur},
+           giveni={U\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f9c63eb422f85aa16854694fe288be82}{%
+           family={Zdonik},
+           familyi={Z\bibinitperiod},
+           given={Stan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {ACM New York, NY, USA}%
+      }
+      \strng{namehash}{b450100a596baed6e70153cc325cf953}
+      \strng{fullhash}{e14fac801d4d94b3e1534561aae206f9}
+      \strng{bibnamehash}{e14fac801d4d94b3e1534561aae206f9}
+      \strng{authorbibnamehash}{e14fac801d4d94b3e1534561aae206f9}
+      \strng{authornamehash}{b450100a596baed6e70153cc325cf953}
+      \strng{authorfullhash}{e14fac801d4d94b3e1534561aae206f9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM SIGMOD Record}
+      \field{number}{4}
+      \field{title}{The 8 requirements of real-time stream processing}
+      \field{volume}{34}
+      \field{year}{2005}
+      \field{pages}{42\bibrangedash 47}
+      \range{pages}{6}
+    \endentry
+    \entry{dean2008mapreduce}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4aecfb0cc2e1e3b7899129fa2a94e2b8}{%
+           family={Dean},
+           familyi={D\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=193bcec5240237591ad8fb697869f013}{%
+           family={Ghemawat},
+           familyi={G\bibinitperiod},
+           given={Sanjay},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{fullhash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{bibnamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authorbibnamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authornamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authorfullhash}{59b423e9fed33260f87a089f738c1beb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{MapReduce is a programming model and an associated implementation for processing and generating large datasets that is amenable to a broad variety of real-world tasks. Users specify the computation in terms of a map and a reduce function, and the underlying runtime system automatically parallelizes the computation across large-scale clusters of machines, handles machine failures, and schedules inter-machine communication to make efficient use of the network and disks. Programmers find the system easy to use: more than ten thousand distinct MapReduce programs have been implemented internally at Google over the past four years, and an average of one hundred thousand MapReduce jobs are executed on Google's clusters every day, processing a total of more than twenty petabytes of data per day. [ABSTRACT FROM AUTHOR]}
+      \field{issn}{0001-0782}
+      \field{journaltitle}{Communications of the ACM}
+      \field{number}{1}
+      \field{title}{MAPREDUCE: SIMPLIFIED DATA PROCESSING ON LARGE CLUSTERS.}
+      \field{volume}{51}
+      \field{year}{2008}
+      \field{pages}{107\bibrangedash 113}
+      \range{pages}{7}
+      \verb{urlraw}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=1a5fefb3-a714-300d-bc4c-94603fe83a6f
+      \endverb
+      \verb{url}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=1a5fefb3-a714-300d-bc4c-94603fe83a6f
+      \endverb
+      \keyw{Google Inc.; Parallel processing; Data; Electronic data processing; Parallel algorithms; Computer programmers}
+    \endentry
+    \entry{marz2011cap}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1d6e00223d047c2bca7a3210abbc5419}{%
+           family={Marz},
+           familyi={M\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Nathan Marz's Blog}%
+      }
+      \strng{namehash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{fullhash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{bibnamehash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{authorbibnamehash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{authornamehash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{authorfullhash}{1d6e00223d047c2bca7a3210abbc5419}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2024-10-08}
+      \field{title}{How to beat the CAP theorem}
+      \field{urlday}{8}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2011}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html
+      \endverb
+      \verb{url}
+      \verb http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html
+      \endverb
+    \endentry
+    \entry{demchenko2014addressing}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6b6fb5f7446ff867f10b401fcbd1e4e3}{%
+           family={Demchenko},
+           familyi={D\bibinitperiod},
+           given={Yuri},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=05fbaa5c7bfdb3631e3f826fa6346ce9}{%
+           family={Laat},
+           familyi={L\bibinitperiod},
+           given={Cees\bibnamedelima De},
+           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8a740ee4de1554a3e2fd243354295899}{%
+           family={Membrey},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spanish}%
+      }
+      \list{location}{1}{%
+        {Minneapolis, MN, USA, USA}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{6fe4cf195b671cd52d1d1b06694ff2b0}
+      \strng{fullhash}{bb8661807f245ca140a56f6f056cdc4e}
+      \strng{bibnamehash}{bb8661807f245ca140a56f6f056cdc4e}
+      \strng{authorbibnamehash}{bb8661807f245ca140a56f6f056cdc4e}
+      \strng{authornamehash}{6fe4cf195b671cd52d1d1b06694ff2b0}
+      \strng{authorfullhash}{bb8661807f245ca140a56f6f056cdc4e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{2014 International Conference on Collaboration Technologies and Systems (CTS)}
+      \field{month}{5}
+      \field{number}{2}
+      \field{series}{2014 International Conference on Collaboration Technologies and Systems (CTS)}
+      \field{title}{Defining architecture components of the Big Data Ecosystem}
+      \field{volume}{1}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{pages}{104\bibrangedash 112}
+      \range{pages}{9}
+    \endentry
+    \entry{kreps2014questioning}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1eb7552c6ea712a30e5b05e6f943e688}{%
+           family={Kreps},
+           familyi={K\bibinitperiod},
+           given={Jay},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{fullhash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{bibnamehash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{authorbibnamehash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{authornamehash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{authorfullhash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Questioning the Lambda Architecture}
+      \field{urlday}{7}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.oreilly.com/radar/questioning-the-lambda-architecture/
+      \endverb
+      \verb{url}
+      \verb https://www.oreilly.com/radar/questioning-the-lambda-architecture/
+      \endverb
+    \endentry
+    \entry{toshniwal2014storm}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=b2383764c1e972a0bcd451ad207dbd38}{%
+           family={Toshniwal},
+           familyi={T\bibinitperiod},
+           given={Ankit},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4c2449c895df42abef15695d1ca940ba}{%
+           family={Taneja},
+           familyi={T\bibinitperiod},
+           given={Siddarth},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=34abb53ef1fe1e895b1843485b44cea9}{%
+           family={Shukla},
+           familyi={S\bibinitperiod},
+           given={Amit},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5c040cae7838a714d155b12f0e7aca7d}{%
+           family={Ramasamy},
+           familyi={R\bibinitperiod},
+           given={Karthik},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b4a263d489a8641204e9ca0b1b45e428}{%
+           family={Patel},
+           familyi={P\bibinitperiod},
+           given={Jignesh\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4c13b2d12705990cfa226f3dd222e9d8}{%
+           family={Kulkarni},
+           familyi={K\bibinitperiod},
+           given={Sanjeev},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b43a511f7068e16432acb7a99365cf9e}{%
+           family={Jackson},
+           familyi={J\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c14f8fbc9cb6e5e779a99f61e8f72cd6}{%
+           family={Gade},
+           familyi={G\bibinitperiod},
+           given={Krishna},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ab92d45334272394ee8ee831109bcc5a}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={Maosong},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b3660ee043f7f31285223b7bc45496c9}{%
+           family={Donham},
+           familyi={D\bibinitperiod},
+           given={Jake},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{85a71311d28b976001fedfeadaf5289c}
+      \strng{fullhash}{222dbb2aa724d0acdb3bacf23b8a5c37}
+      \strng{bibnamehash}{222dbb2aa724d0acdb3bacf23b8a5c37}
+      \strng{authorbibnamehash}{222dbb2aa724d0acdb3bacf23b8a5c37}
+      \strng{authornamehash}{85a71311d28b976001fedfeadaf5289c}
+      \strng{authorfullhash}{222dbb2aa724d0acdb3bacf23b8a5c37}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the 2014 ACM SIGMOD international conference on Management of data}
+      \field{title}{Storm@ twitter}
+      \field{year}{2014}
+      \field{pages}{147\bibrangedash 156}
+      \range{pages}{10}
+    \endentry
+    \entry{akidau2015dataflow}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=560867238a2b3dda80d4de568248774f}{%
+           family={Akidau},
+           familyi={A\bibinitperiod},
+           given={Tyler},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9af25671edb49e0c4b5c9da99fc536a3}{%
+           family={Bradshaw},
+           familyi={B\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=00b692b9ba70787b3d0ee3229fad1eb6}{%
+           family={Chambers},
+           familyi={C\bibinitperiod},
+           given={Craig},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=319a1b212976c1767f9eea83f07ba9ea}{%
+           family={Chernyak},
+           familyi={C\bibinitperiod},
+           given={Slava},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=430f0b5641be0cbf3cbcedd244c613c0}{%
+           family={Fernández-Moctezuma},
+           familyi={F\bibinithyphendelim M\bibinitperiod},
+           given={Rafael\bibnamedelima J},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0834ecbd081c4ab0456956310502ec3b}{%
+           family={Lax},
+           familyi={L\bibinitperiod},
+           given={Reuven},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c6e45a19b0ed75487c1a7c5e95ee09bd}{%
+           family={McVeety},
+           familyi={M\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=368dd2d4292b6444b88f71d2436265c1}{%
+           family={Mills},
+           familyi={M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b0c6f4b66d31229e6a2ab374402b601f}{%
+           family={Perry},
+           familyi={P\bibinitperiod},
+           given={Frances},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=64710d1904f6296478168783c5af196d}{%
+           family={Schmidt},
+           familyi={S\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spanish}%
+      }
+      \list{organization}{1}{%
+        {VLDB Endowment}%
+      }
+      \strng{namehash}{c23077986aad19e0af90e93190add2a9}
+      \strng{fullhash}{bfed40c61a32a1bc9f92e0cdc42447f1}
+      \strng{bibnamehash}{bfed40c61a32a1bc9f92e0cdc42447f1}
+      \strng{authorbibnamehash}{bfed40c61a32a1bc9f92e0cdc42447f1}
+      \strng{authornamehash}{c23077986aad19e0af90e93190add2a9}
+      \strng{authorfullhash}{bfed40c61a32a1bc9f92e0cdc42447f1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the VLDB Endowment}
+      \field{number}{12}
+      \field{title}{The dataflow model: a practical approach to balancing correctness, latency, and cost in massive-scale, unbounded, out-of-order data processing}
+      \field{volume}{8}
+      \field{year}{2015}
+      \field{pages}{1792\bibrangedash 1803}
+      \range{pages}{12}
+    \endentry
+    \entry{carbone2015apache}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=28a8a6d503e9d10ad67e2c76af9cf3e3}{%
+           family={Carbone},
+           familyi={C\bibinitperiod},
+           given={Paris},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=51ab9f7ff83aaea65e72449dcab8b87f}{%
+           family={Katsifodimos},
+           familyi={K\bibinitperiod},
+           given={Asterios},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=22bfd606df905144a9359e9ed45ae585}{%
+           family={Ewen},
+           familyi={E\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=21e42605859bb8c5a24c47387feadc9d}{%
+           family={Markl},
+           familyi={M\bibinitperiod},
+           given={Volker},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=94acb315b07d7d7375b98fadffda80ab}{%
+           family={Haridi},
+           familyi={H\bibinitperiod},
+           given={Seif},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=16c7c24d45719b06ba7b81d2e293e362}{%
+           family={Tzoumas},
+           familyi={T\bibinitperiod},
+           given={Kostas},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spanish}%
+      }
+      \strng{namehash}{a26974ff8de985170797cd97d9fb6cee}
+      \strng{fullhash}{1b4cde7fbda77603286830c5641a49ce}
+      \strng{bibnamehash}{1b4cde7fbda77603286830c5641a49ce}
+      \strng{authorbibnamehash}{1b4cde7fbda77603286830c5641a49ce}
+      \strng{authornamehash}{a26974ff8de985170797cd97d9fb6cee}
+      \strng{authorfullhash}{1b4cde7fbda77603286830c5641a49ce}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bulletin of the IEEE Computer Society Technical Committee on Data Engineering}
+      \field{number}{4}
+      \field{title}{Apache flink: Stream and batch processing in a single engine}
+      \field{volume}{36}
+      \field{year}{2015}
+    \endentry
+    \entry{bigdata}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=1d6e00223d047c2bca7a3210abbc5419}{%
+           family={Marz},
+           familyi={M\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=08b198ab026405fa552b7aa69891e181}{%
+           family={Warren},
+           familyi={W\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \list{publisher}{1}{%
+        {Manning Publications Co.}%
+      }
+      \strng{namehash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{fullhash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{bibnamehash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{authorbibnamehash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{authornamehash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{authorfullhash}{5bd03bd0dae9745ee5007270616c9edd}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1st}
+      \field{isbn}{1617290343}
+      \field{title}{Big Data: Principles and best practices of scalable realtime data systems}
+      \field{year}{2015}
+    \endentry
+    \entry{samurai}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=3714463eb7c496eed75d3e4dc5c17ac0}{%
+           family={Preuveneers},
+           familyi={P\bibinitperiod},
+           given={Davy},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7be7a96d3635ce851b329b900ca785b5}{%
+           family={Berbers},
+           familyi={B\bibinitperiod},
+           given={Yolande},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ebb6bf71def119ef341be1fc1974891e}{%
+           family={Joosen},
+           familyi={J\bibinitperiod},
+           given={Wouter},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a77cf88e511979f565775406de61d1dd}
+      \strng{fullhash}{4f123c3ebc02a0f1506411fb98c5c3b5}
+      \strng{bibnamehash}{4f123c3ebc02a0f1506411fb98c5c3b5}
+      \strng{authorbibnamehash}{4f123c3ebc02a0f1506411fb98c5c3b5}
+      \strng{authornamehash}{a77cf88e511979f565775406de61d1dd}
+      \strng{authorfullhash}{4f123c3ebc02a0f1506411fb98c5c3b5}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1876-1364}
+      \field{journaltitle}{Journal of Ambient Intelligence, Smart Environments}
+      \field{number}{1}
+      \field{title}{SAMURAI: A batch and streaming context architecture for large-scale intelligent applications and environments.}
+      \field{volume}{8}
+      \field{year}{2016}
+      \field{pages}{63\bibrangedash 78}
+      \range{pages}{16}
+      \verb{urlraw}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=afac9a51-b38e-3302-b299-be23cea08349
+      \endverb
+      \verb{url}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=afac9a51-b38e-3302-b299-be23cea08349
+      \endverb
+      \keyw{Embedded computer systems; Context sensitive languages (Computer science); Streaming technology; Batch processing in electronic data processing; Scalability}
+    \endentry
+    \entry{kleppmann}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=34b8d5b1d29d175527a6642f3ec8a76d}{%
+           family={Kleppmann},
+           familyi={K\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media Inc.}%
+      }
+      \strng{namehash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{fullhash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{bibnamehash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{authorbibnamehash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{authornamehash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{authorfullhash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{978-1-4493-7332-0}
+      \field{title}{Designing {Data}-{Intensive} {Applications}}
+      \field{volume}{1}
+      \field{year}{2018}
+    \endentry
+    \entry{flink}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f62284c3f049e9c575a88c0b6b1a27af}{%
+           family={Hueske},
+           familyi={H\bibinitperiod},
+           given={Fabian},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=30c27001dd1b6fc0d82c589a5f6e5117}{%
+           family={Kalavri},
+           familyi={K\bibinitperiod},
+           given={Vasiliki},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spanish}%
+      }
+      \list{location}{1}{%
+        {Sebastopol, CA}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media}%
+      }
+      \strng{namehash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{fullhash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{bibnamehash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{authorbibnamehash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{authornamehash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{authorfullhash}{46f7ee35239cb2f3ea6dce481b723543}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{First edition}
+      \field{isbn}{9781491974292; 9781491974261}
+      \field{title}{Stream Processing with Apache Flink : Fundamentals, Implementation, and Operation of Streaming Applications}
+      \field{year}{2019}
+      \keyw{COMPUTERS / Data Science / General; COMPUTERS / Data Transmission Systems / General; COMPUTERS / Data Transmission Systems / Electronic Data Interchange; COMPUTERS / Database Administration &amp; Management; COMPUTERS / Databases / Servers; Streaming technology (Telecommunications)--Software; Big data}
+    \endentry
+    \entry{capteo}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=7a3048971d194589863d638ee1868ac3}{%
+           family={Muñoz-Escoí},
+           familyi={M\bibinithyphendelim E\bibinitperiod},
+           given={Francesc\bibnamedelima D},
+           giveni={F\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e71491afb62b35dc05be0be5480682ac}{%
+           family={Juan-Marín},
+           familyi={J\bibinithyphendelim M\bibinitperiod},
+           given={Rubén\bibnamedelima de},
+           giveni={R\bibinitperiod\bibinitdelim d\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e1256fb569ed8325c9e7b952788380d3}{%
+           family={García-Escrivá},
+           familyi={G\bibinithyphendelim E\bibinitperiod},
+           given={José-Ramón},
+           giveni={J\bibinithyphendelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=71129d5cbef1278666b626ed82aca116}{%
+           family={Mendívil},
+           familyi={M\bibinitperiod},
+           given={J\bibnamedelima R\bibnamedelimb González\bibnamedelima de},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim d\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=374da47da29065b24ee979974edae1f4}{%
+           family={Bernabéu-Aubán},
+           familyi={B\bibinithyphendelim A\bibinitperiod},
+           given={José\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f53edb6c095e6ecbe571ccfe6e00b5d3}
+      \strng{fullhash}{95111c0c108c9bcf8dd1b761baf311a9}
+      \strng{bibnamehash}{95111c0c108c9bcf8dd1b761baf311a9}
+      \strng{authorbibnamehash}{95111c0c108c9bcf8dd1b761baf311a9}
+      \strng{authornamehash}{f53edb6c095e6ecbe571ccfe6e00b5d3}
+      \strng{authorfullhash}{95111c0c108c9bcf8dd1b761baf311a9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0010-4620}
+      \field{journaltitle}{Computer Journal}
+      \field{number}{6}
+      \field{title}{CAP Theorem: Revision of Its Related Consistency Models.}
+      \field{volume}{62}
+      \field{year}{2019}
+      \field{pages}{943\bibrangedash 960}
+      \range{pages}{18}
+      \verb{urlraw}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=3508200f-f883-34a0-a32c-3dea6a6209e0
+      \endverb
+      \verb{url}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=3508200f-f883-34a0-a32c-3dea6a6209e0
+      \endverb
+      \keyw{CAP theorem (Distributed computer systems); CONSISTENCY models (Computers); CLOUD computing; TECHNOLOGY convergence; COMPUTER simulation; Data Processing,Hosting,and Related Services}
+    \endentry
+    \entry{deltalake}{article}{}
+      \name{author}{21}{}{%
+        {{un=0,uniquepart=base,hash=8eafad8289b06f72c2e8b7caf80a413a}{%
+           family={Armbrust},
+           familyi={A\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f8b27ed8b503bc3e7b32fc53bace3697}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Tathagata},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dc9fd91a0310465321c96012342339f4}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Liwen},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a3eacc6b98753794152fd446090f75e4}{%
+           family={Yavuz},
+           familyi={Y\bibinitperiod},
+           given={Burak},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5facba1e6f0a702439eb1d0538ec8486}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Shixiong},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=90a5cc961b86bfb20e97409cabff0d3e}{%
+           family={Murthy},
+           familyi={M\bibinitperiod},
+           given={Mukul},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=61e07ecaa02a7072790d9158e9c35be5}{%
+           family={Torres},
+           familyi={T\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7f9bc2bcffad729ecb4f39302c6a7a6e}{%
+           family={Hovell},
+           familyi={H\bibinitperiod},
+           given={Herman},
+           giveni={H\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e584549e61e6a361a2d1183a1e0723cf}{%
+           family={Ionescu},
+           familyi={I\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=eb2280a2f77d870c7ac0aebc499fe898}{%
+           family={Łuszczak},
+           familyi={Ł\bibinitperiod},
+           given={Alicja},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f6c37836598b17f4d47c6d3e2be4ce3b}{%
+           family={undefinedwitakowski},
+           familyi={u\bibinitperiod},
+           given={Michał},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=705ea8a9d709444763b2f5e8aaff1b1a}{%
+           family={Szafrański},
+           familyi={S\bibinitperiod},
+           given={Michał},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9974d6382df9a9870c97dad6837bcf62}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Xiao},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=07a4b34fb3cfa0220a032db185bfc329}{%
+           family={Ueshin},
+           familyi={U\bibinitperiod},
+           given={Takuya},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c5ca28a81c904ddb06691f4273aa75e1}{%
+           family={Mokhtar},
+           familyi={M\bibinitperiod},
+           given={Mostafa},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9a9b1ccfbe3e81e38a1c1136ca101f64}{%
+           family={Boncz},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dfd14c69d2338ce9cf556c819a32d286}{%
+           family={Ghodsi},
+           familyi={G\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad8274eecf295463d2f856252e6aeac2}{%
+           family={Paranjpye},
+           familyi={P\bibinitperiod},
+           given={Sameer},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=852d893a0809c291433a7d11b793b8e3}{%
+           family={Senster},
+           familyi={S\bibinitperiod},
+           given={Pieter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=125f074bf46e8a83339101fd94d088e2}{%
+           family={Xin},
+           familyi={X\bibinitperiod},
+           given={Reynold},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=00dc518b94dfa6349c86e70661a1a5ef}{%
+           family={Zaharia},
+           familyi={Z\bibinitperiod},
+           given={Matei},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {VLDB Endowment}%
+      }
+      \strng{namehash}{1bae7c2a3fe6ea29ffc01edd0ac606b5}
+      \strng{fullhash}{33d49b31a57b958d54a0f082243bd222}
+      \strng{bibnamehash}{ecdf89a5e9f628dc09302057d1d09a66}
+      \strng{authorbibnamehash}{ecdf89a5e9f628dc09302057d1d09a66}
+      \strng{authornamehash}{1bae7c2a3fe6ea29ffc01edd0ac606b5}
+      \strng{authorfullhash}{33d49b31a57b958d54a0f082243bd222}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2150-8097}
+      \field{journaltitle}{Proc. VLDB Endow.}
+      \field{month}{8}
+      \field{number}{12}
+      \field{title}{Delta lake: high-performance ACID table storage over cloud object stores}
+      \field{volume}{13}
+      \field{year}{2020}
+      \field{pages}{3411\bibrangedash 3424}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.14778/3415478.3415560
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.14778/3415478.3415560
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.14778/3415478.3415560
+      \endverb
+    \endentry
+    \entry{delta}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0d5930e8f9deb4a5e7a2c682be2bf83b}{%
+           family={Leano},
+           familyi={L\bibinitperiod},
+           given={Hector},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Databricks}%
+      }
+      \strng{namehash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{fullhash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{bibnamehash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{authorbibnamehash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{authornamehash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{authorfullhash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{11}
+      \field{title}{Delta vs. Lambda: Why Simplicity Trumps Complexity for Data Pipelines}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.databricks.com/blog/2020/11/20/delta-vs-lambda-why-simplicity-trumps-complexity-for-data-pipelines.html
+      \endverb
+      \verb{url}
+      \verb https://www.databricks.com/blog/2020/11/20/delta-vs-lambda-why-simplicity-trumps-complexity-for-data-pipelines.html
+      \endverb
+    \endentry
+    \entry{tanenbaum}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=2414455c999bc471f803cd14fdea939d}{%
+           family={Tanenbaum},
+           familyi={T\bibinitperiod},
+           given={Andrew\bibnamedelima S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7ef720d0b57800861b86b5ce45425837}{%
+           family={Steen},
+           familyi={S\bibinitperiod},
+           given={Maarten},
+           giveni={M\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson Education, Inc}%
+      }
+      \strng{namehash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{fullhash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{bibnamehash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{authorbibnamehash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{authornamehash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{authorfullhash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Third edition}
+      \field{isbn}{9781543057386; 9789081540629}
+      \field{title}{Distributed Systems: Principles and Paradigms}
+      \field{year}{2020}
+    \endentry
+  \enddatalist
+  \datalist[entry]{ynt/global//global/global}
+    \entry{stonebraker2005one}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=9a603143e19a2dddd58e683838417ea3}{%
+           family={Stonebraker},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1d8ba47be6c33537f21a676cff609a4a}{%
+           family={Çetintemel},
+           familyi={Ç\bibinitperiod},
+           given={Uğur},
+           giveni={U\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f9c63eb422f85aa16854694fe288be82}{%
+           family={Zdonik},
+           familyi={Z\bibinitperiod},
+           given={Stan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {ACM New York, NY, USA}%
+      }
+      \strng{namehash}{b450100a596baed6e70153cc325cf953}
+      \strng{fullhash}{e14fac801d4d94b3e1534561aae206f9}
+      \strng{bibnamehash}{e14fac801d4d94b3e1534561aae206f9}
+      \strng{authorbibnamehash}{e14fac801d4d94b3e1534561aae206f9}
+      \strng{authornamehash}{b450100a596baed6e70153cc325cf953}
+      \strng{authorfullhash}{e14fac801d4d94b3e1534561aae206f9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM SIGMOD Record}
+      \field{number}{4}
+      \field{title}{The 8 requirements of real-time stream processing}
+      \field{volume}{34}
+      \field{year}{2005}
+      \field{pages}{42\bibrangedash 47}
+      \range{pages}{6}
+    \endentry
+    \entry{dean2008mapreduce}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4aecfb0cc2e1e3b7899129fa2a94e2b8}{%
+           family={Dean},
+           familyi={D\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=193bcec5240237591ad8fb697869f013}{%
+           family={Ghemawat},
+           familyi={G\bibinitperiod},
+           given={Sanjay},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{fullhash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{bibnamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authorbibnamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authornamehash}{59b423e9fed33260f87a089f738c1beb}
+      \strng{authorfullhash}{59b423e9fed33260f87a089f738c1beb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{MapReduce is a programming model and an associated implementation for processing and generating large datasets that is amenable to a broad variety of real-world tasks. Users specify the computation in terms of a map and a reduce function, and the underlying runtime system automatically parallelizes the computation across large-scale clusters of machines, handles machine failures, and schedules inter-machine communication to make efficient use of the network and disks. Programmers find the system easy to use: more than ten thousand distinct MapReduce programs have been implemented internally at Google over the past four years, and an average of one hundred thousand MapReduce jobs are executed on Google's clusters every day, processing a total of more than twenty petabytes of data per day. [ABSTRACT FROM AUTHOR]}
+      \field{issn}{0001-0782}
+      \field{journaltitle}{Communications of the ACM}
+      \field{number}{1}
+      \field{title}{MAPREDUCE: SIMPLIFIED DATA PROCESSING ON LARGE CLUSTERS.}
+      \field{volume}{51}
+      \field{year}{2008}
+      \field{pages}{107\bibrangedash 113}
+      \range{pages}{7}
+      \verb{urlraw}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=1a5fefb3-a714-300d-bc4c-94603fe83a6f
+      \endverb
+      \verb{url}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=1a5fefb3-a714-300d-bc4c-94603fe83a6f
+      \endverb
+      \keyw{Google Inc.; Parallel processing; Data; Electronic data processing; Parallel algorithms; Computer programmers}
+    \endentry
+    \entry{marz2011cap}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1d6e00223d047c2bca7a3210abbc5419}{%
+           family={Marz},
+           familyi={M\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Nathan Marz's Blog}%
+      }
+      \strng{namehash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{fullhash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{bibnamehash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{authorbibnamehash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{authornamehash}{1d6e00223d047c2bca7a3210abbc5419}
+      \strng{authorfullhash}{1d6e00223d047c2bca7a3210abbc5419}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 2024-10-08}
+      \field{title}{How to beat the CAP theorem}
+      \field{urlday}{8}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2011}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html
+      \endverb
+      \verb{url}
+      \verb http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html
+      \endverb
+    \endentry
+    \entry{demchenko2014addressing}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6b6fb5f7446ff867f10b401fcbd1e4e3}{%
+           family={Demchenko},
+           familyi={D\bibinitperiod},
+           given={Yuri},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=05fbaa5c7bfdb3631e3f826fa6346ce9}{%
+           family={Laat},
+           familyi={L\bibinitperiod},
+           given={Cees\bibnamedelima De},
+           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8a740ee4de1554a3e2fd243354295899}{%
+           family={Membrey},
+           familyi={M\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spanish}%
+      }
+      \list{location}{1}{%
+        {Minneapolis, MN, USA, USA}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{6fe4cf195b671cd52d1d1b06694ff2b0}
+      \strng{fullhash}{bb8661807f245ca140a56f6f056cdc4e}
+      \strng{bibnamehash}{bb8661807f245ca140a56f6f056cdc4e}
+      \strng{authorbibnamehash}{bb8661807f245ca140a56f6f056cdc4e}
+      \strng{authornamehash}{6fe4cf195b671cd52d1d1b06694ff2b0}
+      \strng{authorfullhash}{bb8661807f245ca140a56f6f056cdc4e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{2014 International Conference on Collaboration Technologies and Systems (CTS)}
+      \field{month}{5}
+      \field{number}{2}
+      \field{series}{2014 International Conference on Collaboration Technologies and Systems (CTS)}
+      \field{title}{Defining architecture components of the Big Data Ecosystem}
+      \field{volume}{1}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{pages}{104\bibrangedash 112}
+      \range{pages}{9}
+    \endentry
+    \entry{kreps2014questioning}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1eb7552c6ea712a30e5b05e6f943e688}{%
+           family={Kreps},
+           familyi={K\bibinitperiod},
+           given={Jay},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{fullhash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{bibnamehash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{authorbibnamehash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{authornamehash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \strng{authorfullhash}{1eb7552c6ea712a30e5b05e6f943e688}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Questioning the Lambda Architecture}
+      \field{urlday}{7}
+      \field{urlmonth}{10}
+      \field{urlyear}{2024}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.oreilly.com/radar/questioning-the-lambda-architecture/
+      \endverb
+      \verb{url}
+      \verb https://www.oreilly.com/radar/questioning-the-lambda-architecture/
+      \endverb
+    \endentry
+    \entry{toshniwal2014storm}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=b2383764c1e972a0bcd451ad207dbd38}{%
+           family={Toshniwal},
+           familyi={T\bibinitperiod},
+           given={Ankit},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4c2449c895df42abef15695d1ca940ba}{%
+           family={Taneja},
+           familyi={T\bibinitperiod},
+           given={Siddarth},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=34abb53ef1fe1e895b1843485b44cea9}{%
+           family={Shukla},
+           familyi={S\bibinitperiod},
+           given={Amit},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5c040cae7838a714d155b12f0e7aca7d}{%
+           family={Ramasamy},
+           familyi={R\bibinitperiod},
+           given={Karthik},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b4a263d489a8641204e9ca0b1b45e428}{%
+           family={Patel},
+           familyi={P\bibinitperiod},
+           given={Jignesh\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4c13b2d12705990cfa226f3dd222e9d8}{%
+           family={Kulkarni},
+           familyi={K\bibinitperiod},
+           given={Sanjeev},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b43a511f7068e16432acb7a99365cf9e}{%
+           family={Jackson},
+           familyi={J\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c14f8fbc9cb6e5e779a99f61e8f72cd6}{%
+           family={Gade},
+           familyi={G\bibinitperiod},
+           given={Krishna},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ab92d45334272394ee8ee831109bcc5a}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={Maosong},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b3660ee043f7f31285223b7bc45496c9}{%
+           family={Donham},
+           familyi={D\bibinitperiod},
+           given={Jake},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{85a71311d28b976001fedfeadaf5289c}
+      \strng{fullhash}{222dbb2aa724d0acdb3bacf23b8a5c37}
+      \strng{bibnamehash}{222dbb2aa724d0acdb3bacf23b8a5c37}
+      \strng{authorbibnamehash}{222dbb2aa724d0acdb3bacf23b8a5c37}
+      \strng{authornamehash}{85a71311d28b976001fedfeadaf5289c}
+      \strng{authorfullhash}{222dbb2aa724d0acdb3bacf23b8a5c37}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the 2014 ACM SIGMOD international conference on Management of data}
+      \field{title}{Storm@ twitter}
+      \field{year}{2014}
+      \field{pages}{147\bibrangedash 156}
+      \range{pages}{10}
+    \endentry
+    \entry{akidau2015dataflow}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=560867238a2b3dda80d4de568248774f}{%
+           family={Akidau},
+           familyi={A\bibinitperiod},
+           given={Tyler},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9af25671edb49e0c4b5c9da99fc536a3}{%
+           family={Bradshaw},
+           familyi={B\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=00b692b9ba70787b3d0ee3229fad1eb6}{%
+           family={Chambers},
+           familyi={C\bibinitperiod},
+           given={Craig},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=319a1b212976c1767f9eea83f07ba9ea}{%
+           family={Chernyak},
+           familyi={C\bibinitperiod},
+           given={Slava},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=430f0b5641be0cbf3cbcedd244c613c0}{%
+           family={Fernández-Moctezuma},
+           familyi={F\bibinithyphendelim M\bibinitperiod},
+           given={Rafael\bibnamedelima J},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0834ecbd081c4ab0456956310502ec3b}{%
+           family={Lax},
+           familyi={L\bibinitperiod},
+           given={Reuven},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c6e45a19b0ed75487c1a7c5e95ee09bd}{%
+           family={McVeety},
+           familyi={M\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=368dd2d4292b6444b88f71d2436265c1}{%
+           family={Mills},
+           familyi={M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b0c6f4b66d31229e6a2ab374402b601f}{%
+           family={Perry},
+           familyi={P\bibinitperiod},
+           given={Frances},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=64710d1904f6296478168783c5af196d}{%
+           family={Schmidt},
+           familyi={S\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spanish}%
+      }
+      \list{organization}{1}{%
+        {VLDB Endowment}%
+      }
+      \strng{namehash}{c23077986aad19e0af90e93190add2a9}
+      \strng{fullhash}{bfed40c61a32a1bc9f92e0cdc42447f1}
+      \strng{bibnamehash}{bfed40c61a32a1bc9f92e0cdc42447f1}
+      \strng{authorbibnamehash}{bfed40c61a32a1bc9f92e0cdc42447f1}
+      \strng{authornamehash}{c23077986aad19e0af90e93190add2a9}
+      \strng{authorfullhash}{bfed40c61a32a1bc9f92e0cdc42447f1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the VLDB Endowment}
+      \field{number}{12}
+      \field{title}{The dataflow model: a practical approach to balancing correctness, latency, and cost in massive-scale, unbounded, out-of-order data processing}
+      \field{volume}{8}
+      \field{year}{2015}
+      \field{pages}{1792\bibrangedash 1803}
+      \range{pages}{12}
+    \endentry
+    \entry{carbone2015apache}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=28a8a6d503e9d10ad67e2c76af9cf3e3}{%
+           family={Carbone},
+           familyi={C\bibinitperiod},
+           given={Paris},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=51ab9f7ff83aaea65e72449dcab8b87f}{%
+           family={Katsifodimos},
+           familyi={K\bibinitperiod},
+           given={Asterios},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=22bfd606df905144a9359e9ed45ae585}{%
+           family={Ewen},
+           familyi={E\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=21e42605859bb8c5a24c47387feadc9d}{%
+           family={Markl},
+           familyi={M\bibinitperiod},
+           given={Volker},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=94acb315b07d7d7375b98fadffda80ab}{%
+           family={Haridi},
+           familyi={H\bibinitperiod},
+           given={Seif},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=16c7c24d45719b06ba7b81d2e293e362}{%
+           family={Tzoumas},
+           familyi={T\bibinitperiod},
+           given={Kostas},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spanish}%
+      }
+      \strng{namehash}{a26974ff8de985170797cd97d9fb6cee}
+      \strng{fullhash}{1b4cde7fbda77603286830c5641a49ce}
+      \strng{bibnamehash}{1b4cde7fbda77603286830c5641a49ce}
+      \strng{authorbibnamehash}{1b4cde7fbda77603286830c5641a49ce}
+      \strng{authornamehash}{a26974ff8de985170797cd97d9fb6cee}
+      \strng{authorfullhash}{1b4cde7fbda77603286830c5641a49ce}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bulletin of the IEEE Computer Society Technical Committee on Data Engineering}
+      \field{number}{4}
+      \field{title}{Apache flink: Stream and batch processing in a single engine}
+      \field{volume}{36}
+      \field{year}{2015}
+    \endentry
+    \entry{bigdata}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=1d6e00223d047c2bca7a3210abbc5419}{%
+           family={Marz},
+           familyi={M\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=08b198ab026405fa552b7aa69891e181}{%
+           family={Warren},
+           familyi={W\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \list{publisher}{1}{%
+        {Manning Publications Co.}%
+      }
+      \strng{namehash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{fullhash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{bibnamehash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{authorbibnamehash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{authornamehash}{5bd03bd0dae9745ee5007270616c9edd}
+      \strng{authorfullhash}{5bd03bd0dae9745ee5007270616c9edd}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1st}
+      \field{isbn}{1617290343}
+      \field{title}{Big Data: Principles and best practices of scalable realtime data systems}
+      \field{year}{2015}
+    \endentry
+    \entry{samurai}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=3714463eb7c496eed75d3e4dc5c17ac0}{%
+           family={Preuveneers},
+           familyi={P\bibinitperiod},
+           given={Davy},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7be7a96d3635ce851b329b900ca785b5}{%
+           family={Berbers},
+           familyi={B\bibinitperiod},
+           given={Yolande},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ebb6bf71def119ef341be1fc1974891e}{%
+           family={Joosen},
+           familyi={J\bibinitperiod},
+           given={Wouter},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a77cf88e511979f565775406de61d1dd}
+      \strng{fullhash}{4f123c3ebc02a0f1506411fb98c5c3b5}
+      \strng{bibnamehash}{4f123c3ebc02a0f1506411fb98c5c3b5}
+      \strng{authorbibnamehash}{4f123c3ebc02a0f1506411fb98c5c3b5}
+      \strng{authornamehash}{a77cf88e511979f565775406de61d1dd}
+      \strng{authorfullhash}{4f123c3ebc02a0f1506411fb98c5c3b5}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1876-1364}
+      \field{journaltitle}{Journal of Ambient Intelligence, Smart Environments}
+      \field{number}{1}
+      \field{title}{SAMURAI: A batch and streaming context architecture for large-scale intelligent applications and environments.}
+      \field{volume}{8}
+      \field{year}{2016}
+      \field{pages}{63\bibrangedash 78}
+      \range{pages}{16}
+      \verb{urlraw}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=afac9a51-b38e-3302-b299-be23cea08349
+      \endverb
+      \verb{url}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=afac9a51-b38e-3302-b299-be23cea08349
+      \endverb
+      \keyw{Embedded computer systems; Context sensitive languages (Computer science); Streaming technology; Batch processing in electronic data processing; Scalability}
+    \endentry
+    \entry{kleppmann}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=34b8d5b1d29d175527a6642f3ec8a76d}{%
+           family={Kleppmann},
+           familyi={K\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media Inc.}%
+      }
+      \strng{namehash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{fullhash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{bibnamehash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{authorbibnamehash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{authornamehash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \strng{authorfullhash}{34b8d5b1d29d175527a6642f3ec8a76d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{978-1-4493-7332-0}
+      \field{title}{Designing {Data}-{Intensive} {Applications}}
+      \field{volume}{1}
+      \field{year}{2018}
+    \endentry
+    \entry{flink}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f62284c3f049e9c575a88c0b6b1a27af}{%
+           family={Hueske},
+           familyi={H\bibinitperiod},
+           given={Fabian},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=30c27001dd1b6fc0d82c589a5f6e5117}{%
+           family={Kalavri},
+           familyi={K\bibinitperiod},
+           given={Vasiliki},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spanish}%
+      }
+      \list{location}{1}{%
+        {Sebastopol, CA}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media}%
+      }
+      \strng{namehash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{fullhash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{bibnamehash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{authorbibnamehash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{authornamehash}{46f7ee35239cb2f3ea6dce481b723543}
+      \strng{authorfullhash}{46f7ee35239cb2f3ea6dce481b723543}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{First edition}
+      \field{isbn}{9781491974292; 9781491974261}
+      \field{title}{Stream Processing with Apache Flink : Fundamentals, Implementation, and Operation of Streaming Applications}
+      \field{year}{2019}
+      \keyw{COMPUTERS / Data Science / General; COMPUTERS / Data Transmission Systems / General; COMPUTERS / Data Transmission Systems / Electronic Data Interchange; COMPUTERS / Database Administration &amp; Management; COMPUTERS / Databases / Servers; Streaming technology (Telecommunications)--Software; Big data}
+    \endentry
+    \entry{capteo}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=7a3048971d194589863d638ee1868ac3}{%
+           family={Muñoz-Escoí},
+           familyi={M\bibinithyphendelim E\bibinitperiod},
+           given={Francesc\bibnamedelima D},
+           giveni={F\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e71491afb62b35dc05be0be5480682ac}{%
+           family={Juan-Marín},
+           familyi={J\bibinithyphendelim M\bibinitperiod},
+           given={Rubén\bibnamedelima de},
+           giveni={R\bibinitperiod\bibinitdelim d\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e1256fb569ed8325c9e7b952788380d3}{%
+           family={García-Escrivá},
+           familyi={G\bibinithyphendelim E\bibinitperiod},
+           given={José-Ramón},
+           giveni={J\bibinithyphendelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=71129d5cbef1278666b626ed82aca116}{%
+           family={Mendívil},
+           familyi={M\bibinitperiod},
+           given={J\bibnamedelima R\bibnamedelimb González\bibnamedelima de},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim d\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=374da47da29065b24ee979974edae1f4}{%
+           family={Bernabéu-Aubán},
+           familyi={B\bibinithyphendelim A\bibinitperiod},
+           given={José\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f53edb6c095e6ecbe571ccfe6e00b5d3}
+      \strng{fullhash}{95111c0c108c9bcf8dd1b761baf311a9}
+      \strng{bibnamehash}{95111c0c108c9bcf8dd1b761baf311a9}
+      \strng{authorbibnamehash}{95111c0c108c9bcf8dd1b761baf311a9}
+      \strng{authornamehash}{f53edb6c095e6ecbe571ccfe6e00b5d3}
+      \strng{authorfullhash}{95111c0c108c9bcf8dd1b761baf311a9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0010-4620}
+      \field{journaltitle}{Computer Journal}
+      \field{number}{6}
+      \field{title}{CAP Theorem: Revision of Its Related Consistency Models.}
+      \field{volume}{62}
+      \field{year}{2019}
+      \field{pages}{943\bibrangedash 960}
+      \range{pages}{18}
+      \verb{urlraw}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=3508200f-f883-34a0-a32c-3dea6a6209e0
+      \endverb
+      \verb{url}
+      \verb https://research.ebsco.com/linkprocessor/plink?id=3508200f-f883-34a0-a32c-3dea6a6209e0
+      \endverb
+      \keyw{CAP theorem (Distributed computer systems); CONSISTENCY models (Computers); CLOUD computing; TECHNOLOGY convergence; COMPUTER simulation; Data Processing,Hosting,and Related Services}
+    \endentry
+    \entry{deltalake}{article}{}
+      \name{author}{21}{}{%
+        {{un=0,uniquepart=base,hash=8eafad8289b06f72c2e8b7caf80a413a}{%
+           family={Armbrust},
+           familyi={A\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f8b27ed8b503bc3e7b32fc53bace3697}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Tathagata},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dc9fd91a0310465321c96012342339f4}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Liwen},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a3eacc6b98753794152fd446090f75e4}{%
+           family={Yavuz},
+           familyi={Y\bibinitperiod},
+           given={Burak},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5facba1e6f0a702439eb1d0538ec8486}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Shixiong},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=90a5cc961b86bfb20e97409cabff0d3e}{%
+           family={Murthy},
+           familyi={M\bibinitperiod},
+           given={Mukul},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=61e07ecaa02a7072790d9158e9c35be5}{%
+           family={Torres},
+           familyi={T\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7f9bc2bcffad729ecb4f39302c6a7a6e}{%
+           family={Hovell},
+           familyi={H\bibinitperiod},
+           given={Herman},
+           giveni={H\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=e584549e61e6a361a2d1183a1e0723cf}{%
+           family={Ionescu},
+           familyi={I\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=eb2280a2f77d870c7ac0aebc499fe898}{%
+           family={Łuszczak},
+           familyi={Ł\bibinitperiod},
+           given={Alicja},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f6c37836598b17f4d47c6d3e2be4ce3b}{%
+           family={undefinedwitakowski},
+           familyi={u\bibinitperiod},
+           given={Michał},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=705ea8a9d709444763b2f5e8aaff1b1a}{%
+           family={Szafrański},
+           familyi={S\bibinitperiod},
+           given={Michał},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9974d6382df9a9870c97dad6837bcf62}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Xiao},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=07a4b34fb3cfa0220a032db185bfc329}{%
+           family={Ueshin},
+           familyi={U\bibinitperiod},
+           given={Takuya},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c5ca28a81c904ddb06691f4273aa75e1}{%
+           family={Mokhtar},
+           familyi={M\bibinitperiod},
+           given={Mostafa},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9a9b1ccfbe3e81e38a1c1136ca101f64}{%
+           family={Boncz},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dfd14c69d2338ce9cf556c819a32d286}{%
+           family={Ghodsi},
+           familyi={G\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad8274eecf295463d2f856252e6aeac2}{%
+           family={Paranjpye},
+           familyi={P\bibinitperiod},
+           given={Sameer},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=852d893a0809c291433a7d11b793b8e3}{%
+           family={Senster},
+           familyi={S\bibinitperiod},
+           given={Pieter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=125f074bf46e8a83339101fd94d088e2}{%
+           family={Xin},
+           familyi={X\bibinitperiod},
+           given={Reynold},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=00dc518b94dfa6349c86e70661a1a5ef}{%
+           family={Zaharia},
+           familyi={Z\bibinitperiod},
+           given={Matei},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {VLDB Endowment}%
+      }
+      \strng{namehash}{1bae7c2a3fe6ea29ffc01edd0ac606b5}
+      \strng{fullhash}{33d49b31a57b958d54a0f082243bd222}
+      \strng{bibnamehash}{ecdf89a5e9f628dc09302057d1d09a66}
+      \strng{authorbibnamehash}{ecdf89a5e9f628dc09302057d1d09a66}
+      \strng{authornamehash}{1bae7c2a3fe6ea29ffc01edd0ac606b5}
+      \strng{authorfullhash}{33d49b31a57b958d54a0f082243bd222}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2150-8097}
+      \field{journaltitle}{Proc. VLDB Endow.}
+      \field{month}{8}
+      \field{number}{12}
+      \field{title}{Delta lake: high-performance ACID table storage over cloud object stores}
+      \field{volume}{13}
+      \field{year}{2020}
+      \field{pages}{3411\bibrangedash 3424}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.14778/3415478.3415560
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.14778/3415478.3415560
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.14778/3415478.3415560
+      \endverb
+    \endentry
+    \entry{delta}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0d5930e8f9deb4a5e7a2c682be2bf83b}{%
+           family={Leano},
+           familyi={L\bibinitperiod},
+           given={Hector},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Databricks}%
+      }
+      \strng{namehash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{fullhash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{bibnamehash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{authorbibnamehash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{authornamehash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \strng{authorfullhash}{0d5930e8f9deb4a5e7a2c682be2bf83b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{11}
+      \field{title}{Delta vs. Lambda: Why Simplicity Trumps Complexity for Data Pipelines}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.databricks.com/blog/2020/11/20/delta-vs-lambda-why-simplicity-trumps-complexity-for-data-pipelines.html
+      \endverb
+      \verb{url}
+      \verb https://www.databricks.com/blog/2020/11/20/delta-vs-lambda-why-simplicity-trumps-complexity-for-data-pipelines.html
+      \endverb
+    \endentry
+    \entry{tanenbaum}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=2414455c999bc471f803cd14fdea939d}{%
+           family={Tanenbaum},
+           familyi={T\bibinitperiod},
+           given={Andrew\bibnamedelima S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7ef720d0b57800861b86b5ce45425837}{%
+           family={Steen},
+           familyi={S\bibinitperiod},
+           given={Maarten},
+           giveni={M\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson Education, Inc}%
+      }
+      \strng{namehash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{fullhash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{bibnamehash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{authorbibnamehash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{authornamehash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \strng{authorfullhash}{725b361b521b2f1b1858b647cbe2cfcb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Third edition}
+      \field{isbn}{9781543057386; 9789081540629}
+      \field{title}{Distributed Systems: Principles and Paradigms}
+      \field{year}{2020}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

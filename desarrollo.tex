@@ -1,2 +1,43 @@
 \chapter{Desarrollo}
 Contenido del capítulo...
+
+\section{Implementación Arquitectura Kappa}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[node distance=2cm, auto,
+        block/.style={rectangle, draw, text width=5em, text centered, rounded corners, minimum height=4em},
+        line/.style={draw, -latex'}]
+    
+    % Define nodes
+    \node [block] (pulsar) {Apache Pulsar};
+    \node [block, below=of pulsar] (beam) {Apache Beam on Flink};
+    \node [block, below=of beam] (pinot) {Apache Pinot / Druid};
+    \node [block, below=of pinot] (superset) {Apache Superset};
+    \node [block, left=of beam] (airflow) {Apache Airflow};
+    \node [block, left=of pulsar] (sources) {Data Sources};
+    \node [block, right=of beam] (ml) {ML Models};
+    \node [block, right=of pulsar] (storage) {Data Lake / Storage};
+    
+    % Define edges
+    \path [line] (sources) -- (pulsar);
+    \path [line] (pulsar) -- (beam);
+    \path [line] (beam) -- (pinot);
+    \path [line] (pinot) -- (superset);
+    \path [line] (airflow) -- (pulsar);
+    \path [line] (airflow) -- (beam);
+    \path [line] (airflow) -- (pinot);
+    \path [line, dashed] (ml) -- (beam);
+    \path [line, dashed] (storage) -- (pulsar);
+    
+    % Add labels
+    \node [below=0.1cm of superset] {Users};
+    \node [above=0.1cm of sources] {Ingest};
+    \node [right=0.1cm of pulsar] {Stream};
+    \node [right=0.1cm of beam] {Process};
+    \node [right=0.1cm of pinot] {Query};
+    \node [below=0.1cm of airflow] {Monitor \& Manage};
+    
+    \end{tikzpicture}
+    \caption{Pulsar-Centric Kappa Architecture}
+    \end{figure}
