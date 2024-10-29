@@ -75,7 +75,8 @@ Consultas transaccionales & Regular & Excelente \\
 
 \subsubsection{Formatos Específicos}
 
-\textbf{JSON (JavaScript Object Notation)} se ha convertido en el estándar de facto para el intercambio 
+\paragraph{JSON (JavaScript Object Notation)} 
+se ha convertido en el estándar de facto para el intercambio 
 de datos en aplicaciones modernas, especialmente en entornos Web y APIs. Su popularidad se debe a su 
 simplicidad, legibilidad humana y amplia compatibilidad con prácticamente todos los lenguajes de 
 programación. A pesar de no ser el más eficiente en términos de espacio y rendimiento (ya que es un formato basado en filas), 
@@ -84,7 +85,8 @@ interoperabilidad y la facilidad de desarrollo son prioritarias. Es particularme
 donde las transacciones individuales y la flexibilidad del esquema son más importantes que la 
 eficiencia en el procesamiento de grandes volúmenes de datos.
 
-\textbf{Apache AVRO} destaca como un formato de serialización de datos binario que combina la 
+\paragraph{Apache AVRO} 
+destaca como un formato de serialización de datos binario que combina la 
 eficiencia del almacenamiento binario con la flexibilidad de esquemas evolutivos. Su característica 
 más distintiva es su capacidad para manejar cambios en el esquema de datos a lo largo del tiempo sin 
 requerir cambios en el código o reescritura de datos existentes. Para esto, AVRO almacena el esquema junto con 
@@ -94,7 +96,8 @@ eficiencia en la transmisión son cruciales. Su formato binario compacto y su ca
 lo hacen ideal para sistemas distribuidos donde el ancho de banda y el almacenamiento son 
 consideraciones importantes.
 
-\textbf{Apache Parquet} se ha establecido como el formato columnar dominante en el ecosistema de 
+\paragraph{Apache Parquet} 
+se ha establecido como el formato columnar dominante en el ecosistema de 
 Big Data, especialmente para cargas de trabajo analíticas. Su diseño columnar permite una compresión 
 altamente eficiente y un muy buen rendimiento en consultas que involucran solo un subconjunto de 
 columnas. Parquet destaca particularmente en escenarios de análisis de datos, 
@@ -102,12 +105,60 @@ donde su capacidad para manejar esquemas complejos anidados y su integración co
 casi todas las herramientas lo hacen indispensable. La adopción generalizada de Parquet en la 
 industria, lo ha convertido en el estándar de facto para almacenamiento de datos analíticos.
 
-\textbf{Optimized Row Columnar (ORC)} fue inicialmente desarrollado para optimizar Hive, 
+\paragraph{Optimized Row Columnar (ORC)} 
+inicialmente fué desarrollado para optimizar Hive, 
 y aunque ofrece excelentes capacidades de compresión y rendimiento en consultas, su relevancia 
 ha disminuido significativamente en los últimos años frente a Parquet. Aunque ORC sigue siendo 
 relevante en sistemas legacy y específicos de Hive, la tendencia de la industria se ha movido 
 claramente hacia Parquet como el formato columnar preferido para análisis de datos a gran escala.
 
-\subsubsection{Sistemas de Archivos Distribuidos}
-\subsubsection{Hadoop}
 \subsubsection{Almacenamiento de Objetos en la Nube}
+
+El almacenamiento de objetos en la nube constituye un paradigma de almacenamiento donde los datos se organizan y gestionan como objetos independientes dentro de una estructura plana.
+Cada objeto almacenado comprende tres elementos fundamentales: los datos en sí mismos, un conjunto extenso de metadatos que describen y categorizan la información, 
+y un identificador único global que permite su localización y recuperación. 
+Dicho paradigma, se caracteriza por su naturaleza distribuida y su capacidad para manejar tanto datos estructurados como no estructurados, 
+permitiendo almacenar desde documentos, archivos multimedia y hasta flujos de datos en tiempo real.
+
+Los sistemas de almacenamiento de objetos se destaca por su capacidad para satisfacer las demandas contemporáneas de procesamiento de datos a gran escala.
+Como por ejemplo, ofrece una escalabilidad prácticamente ilimitada, pudiendo crecer según las necesidades sin preocuparse por restricciones de capacidad.
+Por otro lado, la durabilidad y disponibilidad de los datos se garantiza a través de la replicación automática en múltiples ubicaciones de forma automática y transparente.
+Adicionalmente, proveen APIs normalmente basadas en el protocolo HTTP que permite acceder de forma interoperable y estandarizada a los recursos almacenados
+
+El uso de estos sistemas tambien conlleva sus propios desafíos. El más importante puede ser la latencia; pero también deben los grados de consistencia que ofrecen.
+
+\subsubsection{Bases de Datos Analíticas}
+
+Las bases de datos analíticas, también conocidas como bases de datos OLAP (Online Analytical Processing) orientadas a tiempo real, 
+son sistemas especializados diseñados para procesar y analizar grandes volúmenes de datos con énfasis particular en consultas complejas y agregaciones. 
+Estos sistemas están arquitecturalmente optimizados para procesar rápidamente consultas que involucran múltiples dimensiones y métricas sobre conjuntos masivos de datos, 
+permitiendo análisis en tiempo real o casi real. 
+
+Estas bases de datos se distinguen por su capacidad de manejar cargas de trabajo analíticas complejas mientras mantienen latencias bajas y consistentes; 
+especializandose en resultados en segundos o milisegundos.Esta característica se debe a su arquitectura orientada específicamente al análisis, 
+que contrasta con los sistemas diseñados primariamente para transacciones (OLTP) o almacenamiento general de datos.
+
+Por diseño permiten un análisis multidimensional eficiente, soportan alta concurrencia de usuarios, y pueden integrarse efectivamente con fuentes de datos en streaming.
+Además, su diseño orientado a columnas permite una compresión más eficiente y mejor rendimiento en consultas analíticas que típicamente involucran solo un subconjunto de ellas. 
+Proporcionando capacidades avanzadas de agregación y pueden manejar eficientemente tanto datos históricos como en tiempo real.
+
+Ninguno de estos beneficios vienen sin sus propios desafios, ya que se requiere una cuidadosa planificacion, operación y mantenimiento para ,amtemer su rendimiento.
+Además, más que nunca, es necesario organizar correctamente los indices y los esquemas de particionamiento son claves.
+
+Ejemplos de estos sistemas son:
+
+\paragraph{Apache Druid}
+es una base de datos analítica distribuida diseñada principalmente para análisis en tiempo real de grandes volúmenes de datos de series temporales. 
+Su arquitectura se distingue por su capacidad de ingesta en tiempo real combinada con consultas de baja latencia, 
+utilizando un modelo de almacenamiento columnar híbrido que combina datos en memoria con almacenamiento en disco. 
+
+\paragraph{Apache Pinot} 
+fué desarrollado incialmente por LinkedIn y se enfoca en proporcionar análisis en tiempo real con latencias extremadamente bajas, 
+incluso en escenarios de alta concurrencia de usuarios. 
+Su arquitectura está optimizada para consultas de lectura masivas y paralelas. 
+Además, destaca por su modelo de consistencia eventual y su capacidad para manejar esquemas dinámicos.
+
+\paragraph{Apache Doris} 
+inicialmente fue desarrollado por Baidu, integra capacidades de almacenamiento columnar MPP (Procesamiento Paralelo Masivo) con funcionalidades OLAP, 
+ofreciendo una solución más cercana a una base de datos tradicional pero con capacidades analíticas avanzadas. 
+Su arquitectura es más simple en comparación con Druid y Pinot, lo que facilita la operación y mantenimiento, manteniendo un buen rendimiento para consultas analíticas.
