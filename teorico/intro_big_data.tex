@@ -15,6 +15,7 @@ Esto significa que cualquier lectura en cualquier momento deberá devolver el va
 Si un sistema es consistente, una vez que se realiza una escritura, todas las lecturas subsiguientes deben reflejar esa escritura;
 sin importar desde que nodo se hagan. 
 Esta propiedad garantiza que los clientes de los sistemas nunca vean datos desactualizados o inconsistentes.
+\newpage
 \subsubsection{Disponibilidad}
 La Disponibilidad es la propiedad que tiene un sistema distribuido para responder a todas las peticiones, ya sean de lectura o escritura, sin fallos.
 Un sistema disponible garantiza que cada solicitud reciba una respuesta sin importar el estado individual de cada nodo que lo compone.
@@ -26,6 +27,7 @@ lo que resulta en que dos o más segmentos de la red no puedan comunicarse entre
 Un sistema tolerante a particiones puede seguir operando incluso cuando estas particiones ocurren, 
 lo que significa que puede manejar retrasos o pérdidas de mensajes entre nodos sin fallar por completo. 
 
+\newpage
 \subsection{Definición y características del Big Data}
 
 Big Data es un término paraguas que se usa en la industria de IT para denominar a un conjunto de tecnologías que manejan grandes volúmenes de datos.
@@ -77,6 +79,7 @@ a que se genere una partición. Por lo tanto, si no tuviera esta propiedad el se
 
 Entonces, como corolario, un sistema de Big Data de Streaming debe tambien ser tolerante a las particiones para poder ser disponible.
 Esto nos deja con una única opción: relajar el "grado de consistencia" hasta un punto razonable que permita que el sistema siga siendo eficáz.\parencite{capteo}
+\newpage
 \subsubsection{Consistencia Eventual}
 La consistencia eventual es un modelo de consistencia en sistemas distribuidos que garantiza que, 
 si no se realizan nuevas actualizaciones a un objeto, en algun momento (eventualmente) todos los accesos a ese objeto 
@@ -128,7 +131,3 @@ y asegurar que la aplicación pueda tolerar y resolver estas situaciones de mane
     La integración de paradigmas batch y streaming, a menudo referida como 'procesamiento híbrido', presenta desafíos únicos en términos de consistencia de datos y modelos de programación \parencite{carbone2015apache}.
 \end{enumerate}
 \newpage
-
-
-
-\subsection{Regluaciones en el Uso de Datos: GDPR}

@@ -20,6 +20,8 @@ Además, proporciona conectores para integración con diversos sistemas y un amp
 en tránsito mediante TLS y permite ser configurado para soportar encriptación en reposo (aunque esto debe hacerse a nivel de sistema de archivos).
 
 Por último, su arquitectura distribuida y replicada permite una alta disponibilidad y tolerancia a fallos.
+
+\newpage
 \subsubsection{Apache Pulsar}
 Apache Pulsar es también una plataforma de mensajería y streaming distribuida, al igual que Apache Kafka, pero que se distingue por tener una 
 arquitectura basada en capas, separando la capa de almacenamiento de la capa de procesamiento; lo que permite escalar cada uno independientemente.
@@ -107,28 +109,28 @@ control de acceso basado en roles, y encriptación en reposo y en tránsito.
     \item Servicios gestionados (Kinesis, Event Hubs) tienen encriptación en reposo por defecto, pero retención limitada.
     \item Pulsar ofrece exactly-once nativo, Kafka lo requiere configurable.
 \end{itemize}
-
 \clearpage
-
-\begin{table}
+\begin{table}[h]
+\footnotesize
+\begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+\textbf{Característica} & \textbf{Kafka} & \textbf{Pulsar} & \textbf{Kinesis} & \textbf{Event Hubs} \\
+\hline
+    Escalabilidad & Alta & Muy alta & Alta & Alta \\
+\hline
+Retención & Configurable & Ilimitada & 365 días máx. & 7 días máx. \\
+\hline
+Garantía de entrega & Exactly-once & Exactly-once & At-least-once & At-least-once \\
+\hline
+Encriptación en reposo & Configurable & Sí & Sí (AWS KMS) & Sí \\
+\hline
+Encriptación en tránsito & Sí & Sí & Sí & Sí \\
+\hline
+Throughput & {Muy alto} & {Muy alto} & {Alto} & {Alto} \\
+\hline
+\end{tabular}
 \caption{Comparación de Sistemas de Mensajería}
-\resizebox{1\textwidth}{!}{% <------ Don't forget this %
-  \begin{tabular}{|l|c|c|c|c|}
-    \hline
-    \textbf{Característica} & \textbf{Apache Kafka} & \textbf{Apache Pulsar} & \textbf{Amazon Kinesis} & \textbf{Azure Event Hubs} \\
-    \hline
-        Escalabilidad & Alta & Muy alta & Alta & Alta \\
-    \hline
-    Retención & Configurable & Ilimitada & 365 días máx. & 7 días máx. \\
-    \hline
-    Garantía entrega & At-least-once, Exactly-once* & Exactly-once & At-least-once & At-least-once \\
-    \hline
-    Encript. reposo & Configurable & Sí & Sí (AWS KMS) & Sí \\
-    \hline
-    Encript. tránsito & Sí & Sí & Sí & Sí \\
-    \hline
-    Throughput & {Muy alto (configurable)} & {Muy alto (configurable)} & {1MB/s por shard} & {1MB/s por unidad} \\
-    \hline
-  \end{tabular}% <------ Don't forget this %
-}
+\label{tab:comp_mensajeria}
 \end{table}
+\clearpage
+\newpage

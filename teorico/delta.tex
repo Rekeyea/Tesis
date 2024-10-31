@@ -10,7 +10,7 @@ como un canal de mensajes de modo que se puede hacer Streaming sobre él; ademá
 Esto permite utilizar una única tecnología tanto para análisis en tiempo real como análisis histórico. 
 
 
-\subsection{Fundamentos y principios de diseño}
+\subsection{Descripción General}
 
 Delta parte de la premisa de que es deseable separar la capacidad de cómputo de la capacidad de almacenamiento; 
 y que además es deseable hacerlo en base a sistemas de almacenamiento de objetos en la nube ya que son extremadamente
@@ -23,6 +23,8 @@ podría ser, la actualización del dataset entero para un usuario por cuestiones
 
 La solución a este tipo de problemas, es un formato de tabla analítica sobre el almacenamiento subyacente. 
 
+\newpage
+\subsection{Componentes Principales}
 
 \subsubsection{Formato de Tabla Analítica}
 
@@ -179,14 +181,15 @@ permitiendo que cada motor optimice su acceso aprovechando las características 
 
 \subsection{Vista Lógica}
 
-
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{teorico/delta.png}
+\caption{Diagrama de la Arquitectura Delta}
+\label{fig:arquitectura_delta}
+\end{figure}
 
 \subsection{Implementación Típica}
 
-\subsection{Ventajas}
+\subsection{Capacidades}
 
 \subsection{Desafíos}
-
-
-
-\subsection{Casos de uso ideales}
