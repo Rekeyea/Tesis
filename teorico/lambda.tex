@@ -29,7 +29,7 @@ La Arquitectura Lambda se compone de tres capas fundamentales:
 \end{itemize}
 
 \newpage
-\subsubsection{Vista Logica}
+\subsubsection{Vista Lógica}
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{teorico/lambda.png}
@@ -37,7 +37,7 @@ La Arquitectura Lambda se compone de tres capas fundamentales:
 \label{fig:arquitectura_lambda}
 \end{figure}
 
-\subsubsection{Implementacion Tipica}
+\subsubsection{Implementación Típica}
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{teorico/LambdaImplement.png}
@@ -58,10 +58,10 @@ La Arquitectura Lambda se compone de tres capas fundamentales:
 \item \textbf{Reprocesamiento}: En caso de necesitar reprocesar los datos, este proceso es trivial, pues se tiene almacenado el histórico completo.
 \end{itemize}
 
-\subsection{Debilidades}
+\subsection{Desafíos}
 \begin{itemize}
 \item \textbf{Complejidad}: La implementación y mantenimiento pueden ser complejos debido a la duplicación de lógica en las capas de lotes y velocidad.
-\item \textbf{Latencia}: El procesamiento por lotes genera latencia debido al tiempo de la actualización de vistas.
+\item \textbf{Latencia}: El procesamiento batch genera latencia debido al tiempo de la actualización de vistas.
 \item \textbf{Costo}: Al utilizar recursos computacionales diferentes entre el procesamiento batch y en stream, esto puede requerir varios nodos computacionales, lo que incrementa los costos.
 \end{itemize}
 

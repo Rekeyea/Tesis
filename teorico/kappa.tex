@@ -1,11 +1,31 @@
 \section{Arquitectura Kappa}
 
 \subsection{Descripción General}
-La Arquitectura Kappa es un patrón de arquitectura de procesamiento de datos propuesto por Jay Kreps en 2014 como una 
-simplificación de la Arquitectura Lambda. Su objetivo principal es unificar el procesamiento por lotes y en 
-tiempo real en un único flujo de datos, eliminando la necesidad de mantener códigos separados para estos dos tipos de procesamiento. 
-La Arquitectura Kappa se basa en la premisa de que todo es un flujo de datos (Stream) y que el reprocesamiento 
-se puede lograr simplemente reproduciendo este flujo desde el principio.
+
+La Arquitectura Kappa surge en 2014 como respuesta de parte de Jay Kreps a la Arquitectura Lambda. 
+Si bien Lambda puede describirse de forma "sencilla" como una serie de transformaciones y además pone 
+mucho enfasis en la posibilidad y facilidad de reprocesar los datos; 
+tiene la desventaja de obligar a mantener código que debe producir el mismo resultado en dos sistemas
+distribuidos. Esto implica que cualquier cambio o mejora que reciba uno debe recibir un tratamiento
+de reingenieria para que el otro también lo tenga. Y, según argumenta Jay Kreps, la tendencia es a 
+optimizar el código para uno de los motores (incluso si un mismo motor soporta dos modos de trabajo, 
+la semántica que maneja será distinta por lo que terminará siendo una base de código distinta). \parencite{kreps2014questioning}
+
+La Arquitectura Kappa busca responder la pregunta "Por qué un sistema de procesamiento de Streams no podría 
+incrementar su paralelismo y reprocesar su historia muy rápido?"   
+
+La intuición detrás de esta arquitectura es la siguiente: 
+
+\begin{itemize}
+    \item Usar Kafka o algún otro sistema que permita tener la traza completa de los datos que se quieren reproducir para múltiples suscriptores
+    \item Cuando se quiera hacer reprocesamiento, iniciar una segunda instancia de procesamiento que comience del principio de la historia
+    \item Redirigir el procesamiento de la nueva historia a una tabla auxiliar
+    \item Cuando el segundo procesamiento haya alcanzado al anterior, hacer que empiece a usarse la tabla auxiliar en lugar de la anterior
+    \item Parar el procesamiento anterior y eliminar la tabla anterior
+\end{itemize}
+
+De todas maneras, el resultado del procesamiento o los estados intermedios pueden llegar a ser guardados a su vez por alguna otra herramienta
+para realizar procesamiento en batch. 
 
 \subsection{Componentes Principales}
 
@@ -29,7 +49,7 @@ se puede lograr simplemente reproduciendo este flujo desde el principio.
 \end{itemize}
 
 \newpage
-\subsubsection{Vista Logica}
+\subsubsection{Vista Lógica}
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{teorico/kappa.png}
@@ -37,7 +57,7 @@ se puede lograr simplemente reproduciendo este flujo desde el principio.
 \label{fig:arquitectura_kappa}
 \end{figure}
 
-\subsubsection{Implementacion Tipica}
+\subsubsection{Implementación Típica}
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{teorico/KappaImplement.png}
@@ -50,16 +70,14 @@ La Arquitectura Kappa ofrece varias capacidades clave:
 \begin{itemize}
     \item \textbf{Simplificación}: Al unificar el procesamiento batch y en tiempo real, reduce la complejidad del sistema.
     \item \textbf{Consistencia}: Garantiza la coherencia entre los resultados del procesamiento en tiempo real y el reprocesamiento.
-    \item \textbf{Escalabilidad}: Se adapta fácilmente al crecimiento del volumen de datos.
-    \item \textbf{Reprocesamiento}: Permite actualizaciones sencillas de la lógica de procesamiento mediante el reprocesamiento del stream.
-    \item \textbf{Latencia reducida}: Proporciona resultados en tiempo real con menos latencia que Lambda para la mayoría de los casos de uso.
+    \item \textbf{Reprocesamiento}: Permite actualizaciones de forma relativamente simple de la lógica de procesamiento mediante el reprocesamiento del stream.
 \end{itemize}
 
-\subsection{Debilidades}
-A pesar de sus ventajas, la Arquitectura Kappa tiene algunas limitaciones:
+\subsection{Desafíos}
+A pesar de sus ventajas, la Arquitectura Kappa presenta algunos desafíos:
 \begin{itemize}
     \item \textbf{Complejidad tecnologica}: Requiere tecnologias con caracteristicas muy especificas en la capa de Stream Store.
-    \item \textbf{Dependencia del almacenamiento}: Requiere un sistema de almacenamiento capaz de retener grandes volúmenes de datos históricos.
+    \item \textbf{Recursos}: Requiere un incremento en el uso de recursos muy grande cuando es necesario reprocesar los datos históricos.
     \item \textbf{Complejidad}: Algunos análisis complejos pueden ser más difíciles de implementar en un modelo puramente basado en Streams.
 \end{itemize}
 
@@ -67,8 +85,4 @@ A pesar de sus ventajas, la Arquitectura Kappa tiene algunas limitaciones:
 La Arquitectura Kappa representa una alternativa interesante en el diseño de sistemas de procesamiento de datos, 
 ofreciendo una solución elegante para unificar el procesamiento batch y en tiempo real. 
 Su enfoque en el procesamiento de streams como paradigma único simplifica la arquitectura general y reduce la complejidad del mantenimiento del código.
-
-Mientras que es ideal para muchos casos de uso modernos de procesamiento de datos, 
-especialmente aquellos que requieren resultados en tiempo real y flexibilidad en la actualización de la lógica de procesamiento, 
-puede no ser la mejor opción para todos los escenarios.
 \newpage
