@@ -58,28 +58,21 @@ para realizar procesamiento en batch.
 \label{fig:arquitectura_kappa}
 \end{figure}
 
-\subsubsection{Implementación Típica}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{teorico/KappaImplement.png}
-\caption{Implementacion de la Arquitectura Kappa}
-\label{fig:implementation_arquitectura_kappa}
-\end{figure}
-
 \subsection{Capacidades}
 La Arquitectura Kappa ofrece varias capacidades clave:
 \begin{itemize}
-    \item \textbf{Simplificación}: Al unificar el procesamiento batch y en tiempo real, reduce la complejidad del sistema.
-    \item \textbf{Consistencia}: Garantiza la coherencia entre los resultados del procesamiento en tiempo real y el reprocesamiento.
-    \item \textbf{Reprocesamiento}: Permite actualizaciones de forma relativamente simple de la lógica de procesamiento mediante el reprocesamiento del stream.
+    \item Reduce la complejidad del sistema al unificar el procesamiento batch y streaming
+    \item Mejora la mantenibilidad al no tener que duplicar lógica para los distintos esquemas de procesamiento
+    \item Garantiza la coherencia entre los resultados del streaming y el reprocesamiento.
 \end{itemize}
 
+\newpage
 \subsection{Desafíos}
 A pesar de sus ventajas, la Arquitectura Kappa presenta algunos desafíos:
 \begin{itemize}
-    \item \textbf{Complejidad tecnologica}: Requiere tecnologias con caracteristicas muy especificas en la capa de Stream Store.
-    \item \textbf{Recursos}: Requiere un incremento en el uso de recursos muy grande cuando es necesario reprocesar los datos históricos.
-    \item \textbf{Complejidad}: Algunos análisis complejos pueden ser más difíciles de implementar en un modelo puramente basado en Streams.
+    \item Requiere un incremento en el uso de recursos muy grande cuando es necesario reprocesar los datos históricos.
+    \item El costo de retención de eventos a largo plazo son enormes y vuelven prohibitiva esta arquitectura sin cambios.
+    \item Es necesario reprocesar toda la historia en caso de que exista la necesidad de borrado de información
 \end{itemize}
 
 \subsection{Conclusiones}

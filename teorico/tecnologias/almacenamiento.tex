@@ -129,6 +129,91 @@ Adicionalmente, proveen APIs normalmente basadas en el protocolo HTTP que permit
 El uso de estos sistemas tambien conlleva sus propios desafíos. El más importante puede ser la latencia; pero también deben los grados de consistencia que ofrecen.
 
 \clearpage
+
+\subsubsection{Formato de Tabla Analítica}
+
+Los formatos de tabla analítica son tecnologías diseñadas para resolver los desafíos del manejo de datos
+a gran escala. Surgen como respuesta a las limitaciones de los formatos de archivo tradicionales como Parquet y ORC
+cuando se trabaja con ellos en la nube. 
+
+Las características más importantes que aporta un formato de tabla analítica son:
+
+\begin{itemize}
+    \item Proveen abstracciones sobre la metadata de archivos
+    \item Permiten el uso de tablas con semántica SQL y evolución de esquema en las mismas
+    \item Transacciones ACID
+    \item Actualizaciones y Borrados
+    \item Optimización de datos para mejoras de rendimiento
+    \item Compatibilidad con múltiples motores de procesamiento
+    \item Control de versiones en los datos
+\end{itemize}
+
+Los formatos de tablas analíticas dan a sus sistemas subyacentes estas características a través de diferentes mecanismos y estrategias. 
+La principal es la gestión de metadatos, ya que implementan estructuras de datos altamente optimizadas que permiten rastrear 
+eficientemente los archivos y sus cambios; mientras mantienen un historial detallado de transacciones que garantiza la consistencia de los datos, 
+complementando con estrategias efectivas de particionamiento y organización. 
+
+Para la optimización del rendimiento, estos formatos emplean diversas técnicas como la compactación automática de archivos, 
+estrategias de caching de datos para acceso rápido, utilización de formatos de archivo columnares como Parquet u ORC, 
+y la incorporación de capacidades avanzadas de indexación y filtrado optimizado. 
+La consistencia de los datos se garantiza mediante la implementación de transacciones ACID completas, 
+que proporcionan un sólido aislamiento entre operaciones de lectura y escritura, manejan conflictos de manera automática 
+y aseguran la consistencia en escenarios de operaciones concurrentes. 
+En cuanto a la evolución y mantenimiento, estos formatos facilitan cambios de esquema sin interrupciones en el servicio. 
+
+Todas estas mecanismos trabajan en conjunto para proporcionar una solución completa para el manejo de datos a escala masiva,
+que como subproducto permite tratar la escritura de los archivos como un canal de mensajes sobre el que se puede hacer streaming.
+
+Los exponentes más importantes de estos formatos son: Delta Table, Apache Iceberg y Apache Hudi
+
+\paragraph{Delta Lake}es un sistema de almacenamiento de datos diseñado por Databricks que utiliza archivos Parquet como base, 
+organizándolos en una estructura de directorios con dos componentes principales: 
+los archivos de datos en formato Parquet y el directorio {\_delta\_log} para metadatos y registro de transacciones. 
+Esta arquitectura mantiene las ventajas de Parquet mientras añade capacidades transaccionales y de control de versiones, 
+implementando un sistema de checkpoints para optimizar el rendimiento y un manejo de concurrencia que combina control optimista 
+con serialización de escrituras.
+
+Las características fundamentales de Delta Lake incluyen transacciones ACID completas, 
+capacidad de acceso a versiones anteriores, evolución de esquema controlada, 
+operaciones de Merge sofisticadas y optimización automática de datos mediante compactación de archivos y mantenimiento de estadísticas. 
+El sistema también proporciona soporte para procesamiento de datos en tiempo real con semántica exactly-once 
+y una integración robusta principalmente con Spark.
+
+\paragraph{Apache Hudi}desarrollado inicialmente por Uber, es una plataforma enfocada en crear una plataforma analítica transaccional,
+disponibilizando dos tipos principales de formatos de tablas: 
+Copy On Write (optimizado para lecturas) y Merge On Read (optimizado para escritura). 
+
+Utiliza una Timeline para gestionar metadatos y registrar cronológicamente todas las acciones, 
+implementando un sistema de indexación que permite optimizar operaciones y facilitar búsquedas rápidas, 
+además maneja control de concurrencia optimista que mantiene lecturas sin bloqueos mientras serializa escrituras.
+Las características principales de Hudi incluyen procesamiento incremental para manejar streams de datos, 
+gestión sofisticada de registros individuales con versionado a nivel de registro, borrado lógico y evolución de esquemas.
+También proporciona garantías de consistencia con transacciones ACID y semántica exactly-once, 
+ofreciendo buena integración con motores de procesamiento como Spark y Flink.
+
+Hudi, al ser una plataforma, no ofrece solo su formato de tabla analítica, 
+sino también "Table Services" que son componentes computacionales que permiten la optimización como compactación automática 
+y limpieza de almacenamiento. 
+
+\paragraph{Apache Iceberg}diseñado inicialmente por Netflix, implementa una arquitectura de almacenamiento que se caracteriza 
+por un modelo de metadatos enfocado en la evolución del esquema. 
+
+Utiliza una estructura jerárquica que separa completamente los metadatos de los datos, 
+implementando control de versiones basado en snapshots atómicos e inmutables, 
+donde cada snapshot representa un punto en el tiempo de la tabla y contiene referencias a todos los archivos de datos válidos para esa versión, 
+permitiendo operaciones concurrentes sin necesidad de bloqueos pesados.
+
+Entre sus características principales destacan una gestión de esquemas flexible que permite evolucionar tanto el esquema 
+como la estrategia de particionamiento sin reescribir datos, 
+una optimización de consultas avanzada basada en estadísticas detalladas a nivel de columna y archivos, 
+y un sistema de control de concurrencia optimista. 
+
+Además, disponibiliza herramientas de mantenimiento como expiración de snapshots, compactación de archivos 
+y reescritura de datos para optimización física, 
+junto con una robusta integración con diferentes motores de procesamiento como Spark y Flink.
+
+\newpage
+
 \subsubsection{Bases de Datos Analíticas}
 
 Las bases de datos analíticas, también conocidas como bases de datos OLAP (Online Analytical Processing) orientadas a tiempo real, 
