@@ -49,15 +49,17 @@ Por lo general se utiliza un patrón de diseño de datos llamado Medallion, que 
 
 \subsubsection{Catalog Layer}
 \begin{itemize}
-    \item 
+    \item Provee una capa de governanza permitiendo acceso granular a los datos, auditoría y políticas de retención
+    \item Permite interoperar con terceros, permitiendoles descubrir tablas en base a metadatos
+    \item Ofrece estadísticas de las tablas y herramientas para optimizar las consultas sobre ellas
+    \item Es necesario para acceder a los datos históricos
 \end{itemize}
 
 \subsubsection{Serving Layer}
 \begin{itemize}
-    \item Interopera con los datos de tabla de la Data Lakehouse Layer a través de la Catalog Layer 
-    \item Proporciona acceso de baja latencia a los resultados del procesamiento, idealmente del último nivel de la Data Lakehouse Layer
+    \item Almacena los resultados procesados del stream por un periodo de tiempo.
+    \item Proporciona acceso de baja latencia a los resultados del procesamiento y al histórico de datos disponibles.
 \end{itemize}
-
 
 \subsection{Vista Lógica}
 

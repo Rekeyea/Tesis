@@ -1,0 +1,134 @@
+\section{Monitoreo Remoto de Pacientes}
+
+Los Sistemas de Monitorización Remota de Pacientes (RPM, por sus siglas en inglés) constituyen un paradigma tecnológico de salud en el área de la Telemedicina 
+que permite la adquisición, transmisión y análisis, idealmente en tiempo real, de datos fisiológicos del paciente fuera de los entornos clínicos tradicionales, 
+mediante una red de dispositivos médicos y sensores de dispositivos inteligentes. 
+
+Este enfoque contribuye a mejores resultados para los pacientes, disminuye costos para las instituciones de salud y permite dar un acceso más 
+generalizado a los servicios médicos. Es especialmente para el seguimiento de condiciones pre-existente,
+población anciana y monitoreo luego de intervenciones quirúrgicas.\parencite{rpm_iot}
+
+
+\subsection{Monitoreo de Signos Vitales}
+
+\subsubsection{Frecuencia Respiratoria}
+\begin{itemize}
+    \item Número de ciclos respiratorios (inspiración/espiración) por minuto
+    \item Valores normales adulto: 12-20 respiraciones/min
+\end{itemize}
+
+\subsubsection{Saturación de Oxígeno}
+\begin{itemize}
+    \item Porcentaje de hemoglobina unida a oxígeno en sangre arterial
+    \item Valores normales: {95-100\%}
+\end{itemize}
+
+\subsubsection{Presión Sistólica}
+\begin{itemize}
+    \item Presión máxima ejercida por la sangre sobre las paredes arteriales durante la sístole
+    \item Valores normales: 90-120 mmHg
+    \item 
+\end{itemize}
+
+\subsubsection{Frecuencia Cardíaca}
+\begin{itemize}
+    \item Número de contracciones cardíacas por minuto
+    \item Valores normales adulto: 60-100 latidos/min
+\end{itemize}
+
+\subsubsection{Temperatura}
+\begin{itemize}
+    \item Medida del calor corporal
+    \item Valores normales: 36.5-37.5°C
+\end{itemize}
+
+\subsubsection{Escala Glasgow}
+\begin{itemize}
+    \item Escala neurológica que evalúa nivel de consciencia
+    \item Evalúa la apertura ocular, la respuesta verbal y la respuesta motora en distintos rangos
+    \item Valores normales: 15
+    \item Es difícil de automatizar
+\end{itemize}
+
+\subsubsection{Nivel de Conciencia}
+\begin{itemize}
+    \item Sistema simplificado de evaluación del estado de consciencia utilizado en valoración inicial y monitoreo
+    \item Utiliza el sistema APVU: Alerta, Respuesta a estímulos verbales, Respuesta a estímulos dolorosos, Sin respuesta
+    \item Valores normales: 0
+    \item Al ifual que la escala Glasgow es dificil de automatizar
+\end{itemize}
+
+\subsection{Identificación de Riesgo en Pacientes}
+
+En un entorno hospitalario, la monitorización de los signos vitales constituye un pilar fundamental en la evaluación del estado clínico de un paciente. 
+Estos parámetros fisiológicos esenciales incluyen la presión arterial (PA), la saturación de oxígeno en sangre (SpO2), la temperatura corporal (T), 
+la frecuencia cardíaca (FC) y la frecuencia respiratoria (FR), los cuales son registrados sistemáticamente en intervalos de 4 a 6 horas 
+como parte del protocolo estándar de vigilancia para detectar posibles deterioros en la condición del paciente.
+
+En diversos establecimientos sanitarios a nivel global, el personal médico y de enfermería implementa metodologías estandarizadas de evaluación, 
+conocidas como sistemas de alerta temprana (SAT). 
+Estos sistemas utilizan algoritmos validados que asignan puntuaciones específicas a las desviaciones de los rangos normales de los signos vitales, 
+permitiendo la activación de alertas cuando se detectan patrones que indican un deterioro clínico. 
+
+Esta práctica sistemática facilita la identificación a tiempo de pacientes en riesgo y permite la intervención terapéuticas a tiempo, 
+contribuyendo significativamente a la reducción de eventos adversos y a la optimización de los resultados clínicos.
+
+Existen diferentes estándares para la detección, muchos dependientes del contexto de la unidad donde se atienda al paciente. \parencite{rpm_pm}
+
+\subsubsection{MEWS}
+MEWS (Modified Early Warning Score) es un sistema de puntuación fisiológica validado para la detección temprana del deterioro clínico en pacientes hospitalizados, 
+que evalúa cinco parámetros vitales fundamentales: frecuencia respiratoria, frecuencia cardíaca, presión arterial sistólica, temperatura 
+y nivel de consciencia. 
+
+Cada parámetro recibe una puntuación de 0 a 3 según la gravedad de su alteración, siendo 0 el valor normal y 3 el más patológico; 
+La suma total de estos valores genera una puntuación que oscila entre 0 y 14, categorizando el riesgo del paciente en bajo (0--1), medio (2--3), alto (4--5) o crítico ($\geq$6), 
+lo que determina la frecuencia de monitorización necesaria y las intervenciones requeridas, 
+desde una vigilancia rutinaria cada 8-12 horas en puntuaciones bajas hasta la activación inmediata del equipo de respuesta rápida y posible traslado a UCI en puntuaciones críticas.
+
+\subsubsection{NEWS2}
+El NEWS2 (National Early Warning Score 2) es una versión mejorada y actualizada del sistema de alerta temprana, adoptado como estándar por el Servicio Nacional de Salud del Reino Unido, 
+que evalúa siete parámetros fisiológicos: frecuencia respiratoria (3-0 puntos), saturación de oxígeno (con dos escalas distintas según el riesgo de insuficiencia respiratoria hipercápnica, 3-0 puntos), 
+uso de oxígeno suplementario (2 puntos si requiere), temperatura (3-0 puntos), presión arterial sistólica (3-0 puntos), frecuencia cardíaca (3-0 puntos) 
+y nivel de consciencia utilizando la escala ACVPU; 
+la puntuación total varía de 0 a 20, estratificando el riesgo en bajo (0-4), medio (5-6), alto (7 o más, o cualquier parámetro individual con puntuación de 3) y determinando la respuesta clínica necesaria, 
+desde monitorización estándar hasta evaluación urgente por equipo de cuidados críticos, representando una mejora significativa respecto al MEWS al incluir la saturación de oxígeno 
+y la confusión como nuevo nivel de consciencia.
+
+\subsubsection{SOFA}
+El SOFA (Sequential Organ Failure Assessment Score) es un sistema de puntuación diseñado para evaluación diaria (cada 24 horas) de la disfunción/fallo multiorgánico en unidades de cuidados intensivos, 
+evaluando seis sistemas orgánicos: respiratorio (mediante la relación PaO2/FiO2 evaluada con cada gasometría, 0-4 puntos), 
+cardiovascular (mediante presión arterial media y requerimiento de vasopresores monitorizados continuamente, 0-4 puntos), hepático (mediante bilirrubina sérica medida diariamente, 0-4 puntos), 
+coagulación (mediante recuento plaquetario diario, 0-4 puntos), renal (mediante creatinina sérica diaria o gasto urinario horario, 0-4 puntos) 
+y neurológico (mediante la escala de Glasgow evaluada cada 4 horas o con cambios clínicos, 0-4 puntos); 
+cada sistema recibe una puntuación de 0 (normal) a 4 (máxima disfunción), con una puntuación total que varía de 0 a 24 puntos, calculándose cada 24 horas o antes si hay deterioro clínico significativo, 
+siendo especialmente relevante el cambio en la puntuación a lo largo del tiempo.
+
+\subsubsection{qSOFA}
+El qSOFA (quick Sequential Organ Failure Assessment) es una versión simplificada del SOFA, diseñada para la identificación rápida de pacientes con sospecha de sepsis y alto riesgo de mortalidad fuera de la UCI, 
+evaluando únicamente tres parámetros clínicos que se pueden medir de manera inmediata a pie de cama, sin necesidad de pruebas de laboratorio: 
+alteración del estado mental (escala de Glasgow $\leq$13 puntos, 1 punto), frecuencia respiratoria elevada ($\geq$22 respiraciones/minuto, 1 punto) y presión arterial sistólica baja ($\leq$100 mmHg, 1 punto);
+la puntuación total varía de 0 a 3 puntos, donde una puntuación $\geq$2 indica alto riesgo de mortalidad y la necesidad de evaluación más exhaustiva, monitorización estrecha
+y consideración de traslado a un nivel superior de cuidados; el qSOFA debe reevaluarse con cada valoración del paciente o ante cualquier cambio en su estado clínico, 
+típicamente cada 1-2 horas en pacientes inestables o con sospecha de sepsis, siendo una herramienta especialmente útil en servicios de urgencias, plantas de hospitalización y entornos extrahospitalarios.
+
+
+\subsection{Desafíos}
+
+Los sensores empleados en la monitorización remota permiten un monitoreo continuo de los parámetros fisiológicos correspondientes, 
+proporcionando una frecuencia de recolección de datos significativamente superior a los intervalos tradicionales establecidos en entornos convencional. 
+Sin embargo, la implementación de estos sistemas de monitorización remota presenta diversos desafíos técnicos y operativos que requieren consideración. 
+
+Entre las principales se encuentran:
+
+\begin{itemize}
+    \item Movilidad del usuario que puede afectar la calidad de la señal
+    \item Uso correcto del dispositivo
+    \item Variabilidad en las condiciones ambientales
+    \item Fallos intermitentes de los sensores
+    \item Agotamiento de la batería de los dispositivos
+    \item Pérdida de conectividad en la transmisión de datos
+    \item Falta de datos por dificultad de medición como en el caso de la escala Glasgow o niveles de conciencia
+\end{itemize}
+
+Esto genera la necesidad de procesar los datos adecuadamente y desarrollar técnicas para la limpieza y validación de datos.
+A su vez, se deben desarrollar estrategias para el manejo de datos faltantes e incompletos. \parencite{rpm_pm}
