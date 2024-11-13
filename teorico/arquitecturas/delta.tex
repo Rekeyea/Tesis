@@ -4,10 +4,10 @@
 La Arquitectura Delta surge desde Databricks, al igual que la Arquitectura Kappa, 
 como una respuesta a los desafíos que presenta la arquitectura Lambda.
 A diferencia de la suposición que hace Kappa de que todo puede ser tratado como un Stream, 
-Delta por su parte, utiliza el almacenamiento de objetos en la nube como sustrato de almacenamiento y 
+Delta por su parte, utiliza el almacenamiento de objetos en la nube como base y 
 agrega por encima tecnología de metadata que otorga la posibilidad de utilizar este sistema de almacenamiento
 como un canal de mensajes de modo que se puede hacer Streaming sobre él; además de agregar otras capacidades.
-Esto permite utilizar una única tecnología tanto para análisis en tiempo real como análisis histórico. 
+Esto permite utilizar un único flujo de datos tanto para análisis en tiempo real como análisis histórico. 
 
 
 \subsection{Descripción General}
@@ -65,7 +65,7 @@ Por lo general se utiliza un patrón de diseño de datos llamado Medallion, que 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{teorico/delta.png}
+\includegraphics[width=0.8\textwidth]{teorico/arquitecturas/delta.png}
 \caption{Diagrama de la Arquitectura Delta}
 \label{fig:arquitectura_delta}
 \end{figure}
@@ -85,3 +85,4 @@ Por lo general se utiliza un patrón de diseño de datos llamado Medallion, que 
     \item Se requieren compromisos de latencia y rendimiento por el problema de "Manejo de archivos pequeños"
     \item Si el Catalog Layer no se construye correctamente no es posible que la arquitectura escale
 \end{itemize}
+\newpage

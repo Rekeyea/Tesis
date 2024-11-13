@@ -1,0 +1,29 @@
+\section{Arquitecturas de Referencia}
+
+Una arquitectura de referencia representa una plantilla abstracta y probada que encapsula las decisiones arquitectónicas fundamentales de un sistema, 
+mejores prácticas y experiencias acumuladas en un dominio específico. 
+Esta proporciona un vocabulario común, además de componentes estandarizados y patrones de interacción que sirven como base para el desarrollo de los sistemas concretos. 
+La arquitectura de referencia no solo define la estructura y comportamiento base del sistema, sino que también establece los principios de diseño, 
+restricciones técnicas y mecanismos de extensibilidad que guiarán estas implementaciones.
+
+\subsection{Instancias de Arquitectura}
+
+Una plataforma que soporte el Monitoreo Remoto de Pacientes, necesita soportar grandes volúmenes de datos analizados como streaming.
+Además, para poder dar soporte al uso de la plataforma se requiere poder analizar el histórico de dichos datos. 
+Por último, el tiempo en que el análisis de los datos de streaming es disponibilizado debe ser lo más cercano a tiempo real para poder tomar 
+decisiones a tiempo para la salud del paciente. 
+
+Existen tres grandes familias de arquitecturas de referencia que cubren estos tres casos: 
+\begin{itemize}
+    \item Lambda
+    \item Kappa
+    \item Delta
+\end{itemize}
+
+De entre ellas, se instanciarán y se compararán Kappa y Delta; ya que son evoluciones propuestas sobre Lambda que siguen distintos caminos para alcanzar el mismo objetivo.
+ 
+Realizar esta instanciación implica seleccionar las tecnologías que se usarán para cumplir las condiciones de la arquitectura de referencia; 
+así como también componentes que si bien no son descritos por la arquitectura de referencia, son necesarios para cumplir con las características de calidad
+necesarias para el caso de uso propuesto.
+
+Por último, las dos instancias de arquitectura implementadas utilizarán las mismas tecnologías, o tanto como sea posible, de modo que los resultados sean comparables.  

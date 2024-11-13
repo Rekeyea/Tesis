@@ -1,0 +1,41 @@
+\section{Conjunto de Datos}
+
+\subsection{Proceso de Análisis}
+
+El objetivo es que se pueda utilizar el sistema como plataforma para poder darle mejor seguimiento a los pacientes ambulatorios,
+así como también ingresados a los centros de salud. 
+Por esto, se propone tomar como referencia la implementación de los sistemas de alerta temprana para diversas áreas: 
+
+\begin{itemize}
+    \item MEWS como sistema de alerta de pacientes fuera de una instituición de salud
+    \item NEWS2 como sistema de alerta de pacientes ingresados en una institución de salud
+    \item qSOFA como sistema de alerta de pacientes en ingresados en una Unidad de Cuidados Intensivos
+\end{itemize}
+
+Se modularizará la lógica tanto como sea posible, de modo de reducir problemas de medición teniendo dos implementaciones diferentes. 
+
+\subsection{Conjunto de Datos}
+
+El conjunto de datos utilizado para evaluar el sistema será de datos sintéticos. 
+Se utilizará la plataforma Node-RED para la creación de una red de nodos de dispositivos virtuales que enviarán datos a los distintos sistemas. 
+Se buscará generar un fuerte volúmen de datos, del orden de los 10 GB para poder tener una buena evaluación de los criterios de evaluación de los sistemas. 
+
+Existen dos razones principales para el uso de datos sintéticos: 
+
+\begin{itemize}
+    \item Los conjuntos de datos de sensores disponibles son heterogéneos y muy pequeños; lo que de todos modos implicaría generar datos sintéticos.
+    \item No es necesario contar con datos que muestren tendencias reales, sino que se comporten como lo harían en realidad para demostrar los atributos de calidad.
+\end{itemize}
+
+Para esto, se definirá un flujo de datos para cada sensor que será interconectado pero definiendo comportamientos especificos que tengan que ver con la naturaleza de su medición.
+Los signos vitales tomados para esto son: 
+
+\begin{itemize}
+    \item Frecuencia respiratoria
+    \item Presión sistólica
+    \item Frecuencia cardíaca
+    \item Temperatura
+    \item Saturación de oxígeno
+    \item Nivel de conciencia en escala AVPU
+    \item Nivel de conciencia en escala Glasgow
+\end{itemize}

@@ -2,53 +2,12 @@
 
 Para evaluar y comparar las arquitecturas Kappa y Delta en el contexto del monitoreo remoto de pacientes, se considerarán los siguientes criterios:
 
-\subsection{Latencia de Procesamiento}
-\begin{itemize}
-    \item Tiempo de respuesta para el procesamiento de datos en tiempo real
-    \item Capacidad para manejar picos de datos sin aumentar significativamente la latencia
-\end{itemize}
-
-\subsection{Escalabilidad}
-\begin{itemize}
-    \item Capacidad para manejar un aumento en el volumen de datos
-    \item Facilidad de agregar recursos computacionales según sea necesario
-    \item Rendimiento bajo diferentes cargas de trabajo
-\end{itemize}
-
-\subsection{Consistencia de Datos}
-\begin{itemize}
-    \item Garantía de consistencia entre datos en tiempo real y datos históricos
-    \item Manejo de datos fuera de orden o retrasados
-\end{itemize}
-
-\subsection{Tolerancia a Fallos}
-\begin{itemize}
-    \item Capacidad de recuperación ante fallos del sistema
-    \item Prevención de pérdida de datos en caso de interrupciones
-\end{itemize}
-
-\subsection{Manejo de Datos Históricos}
-\begin{itemize}
-    \item Eficiencia en el acceso y análisis de datos históricos
-    \item Capacidad para reprocesar datos históricos cuando sea necesario
-\end{itemize}
-
-\subsection{Costo Operativo}
-\begin{itemize}
-    \item Requisitos de hardware y software
-    \item Costos de mantenimiento y operación a largo plazo
-\end{itemize}
-
-\subsection{Seguridad y Cumplimiento Normativo}
-\begin{itemize}
-    \item Capacidad para cifrar datos en tránsito y en reposo
-    \item Cumplimiento con regulaciones de protección de datos en salud (por ejemplo, HIPAA)
-\end{itemize}
-
-\subsection{Rendimiento en Análisis Complejos}
-\begin{itemize}
-    \item Capacidad para realizar análisis en tiempo real de múltiples fuentes de datos
-    \item Eficiencia en la ejecución de modelos de machine learning
-\end{itemize}
+\input{metodologia/criterios/latencia}
+\input{metodologia/criterios/escalabilidad}
+\input{metodologia/criterios/consistencia}
+\input{metodologia/criterios/fallos}
+\input{metodologia/criterios/historicos}
+\input{metodologia/criterios/costos}
 
 Estos criterios servirán como base para una evaluación exhaustiva y objetiva de las arquitecturas Kappa y Delta en el contexto del monitoreo remoto de pacientes, permitiendo una comparación detallada y fundamentada.
+\newpage

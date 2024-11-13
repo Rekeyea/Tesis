@@ -1,0 +1,22 @@
+\section{Stack de Tecnologías a Utilizar}
+
+Para que la implementación de las instancias de arquitecturas de referencia sean comparables es necesario mantener criterios similares para no favorecer a una de ellas.
+Estas instancias serán definidas mediante contenedores y desplegadas en Kubernetes de forma local utilizando la herramienta Minikube; 
+lo que permitirá definir un ambiente Cloud-Native para la comparación de las mismas.
+
+Se realizó un análisis exhaustivo de las tecnologías y se decidió por: 
+
+\begin{itemize}
+    \item Apache Pulsar como punto de ingestión de datos y ruteo de mensajes
+    \item Apache Flink como motor de procesamiento distribuido
+    \item MinIO como almacenamiento de objetos
+    \item Apache Pinot como base de datos de análisis
+    \item Apache Superset como tablero que consume de los sistemas implementados
+    \item Apache Iceberg como formato de tabla analítica
+    \item Apache Airflow como gestor de procesos de mantenimiento
+    \item Prometheus para monitoreo de métricas de los sistemas
+    \item Grafana para creación de tableros de métricas comparativas
+    \item K6 para pruebas de carga y consistencia
+    \item ChaosMonkey para pruebas de tolerancia a fallos
+\end{itemize}
+\newpage
