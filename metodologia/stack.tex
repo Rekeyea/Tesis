@@ -4,18 +4,69 @@ Para que la implementación de las instancias de arquitecturas de referencia sea
 Estas instancias serán definidas mediante contenedores y desplegadas en Kubernetes de forma local utilizando la herramienta Minikube; 
 lo que permitirá definir un ambiente Cloud-Native para la comparación de las mismas.
 
-Se realizó un análisis exhaustivo de las tecnologías y se decidió por: 
+Se realizó un análisis exhaustivo de las tecnologías, de modo de utilizar aquellas que puedan ser compartidas entre ambas implementaciones y a su vez permitan
+optimizar su uso. Las seleccionadas son: 
 
 \begin{itemize}
-    \item Apache Pulsar como punto de ingestión de datos y ruteo de mensajes
+    \item Apache Kafka como punto de ingestión de datos y ruteo de mensajes
+       \begin{itemize}
+           \item Estandard de la industria
+           \item Ecosistema maduro con fuertes integraciones
+       \end{itemize}
     \item Apache Flink como motor de procesamiento distribuido
+       \begin{itemize}
+           \item Su modelo de procesamiento ofrece la menor latencia posible
+           \item Tiene amplia compatibilidad con los diferentes ecosistemas de tecnologías
+       \end{itemize}
     \item MinIO como almacenamiento de objetos
-    \item Apache Pinot como base de datos de análisis
-    \item Apache Superset como tablero que consume de los sistemas implementados
+       \begin{itemize}
+           \item Compatible con API S3
+           \item Alta disponibilidad
+           \item Gestión de datos distribuida
+       \end{itemize}
     \item Apache Iceberg como formato de tabla analítica
+       \begin{itemize}
+           \item Es el formato de tabla más extendido
+           \item Ecosistema diverso para integración con otras tecnologías
+       \end{itemize}
+    \item Apache Doris como base de datos de análisis
+       \begin{itemize}
+           \item Consultas con baja latencia
+           \item Tablas en tiempo real
+           \item Integración con Apache Iceberg mediante un catálogo
+           \item Tablas híbridas
+       \end{itemize}
+    \item Apache Superset como tablero que consume de los sistemas implementados
+       \begin{itemize}
+           \item Visualizaciones interactivas
+           \item Múltiples fuentes de datos
+       \end{itemize}
     \item Apache Airflow como gestor de procesos de mantenimiento
+       \begin{itemize}
+           \item Orquestación de tareas
+           \item Monitoreo de flujos de trabajos
+       \end{itemize}
     \item Prometheus para monitoreo de métricas de los sistemas
+       \begin{itemize}
+           \item Estandard de la industria
+           \item Muy buena integración con diferentes ecosistemas
+       \end{itemize}
     \item Grafana para creación de tableros de métricas comparativas
+       \begin{itemize}
+            \item Estandard de la industria
+            \item Tableros personalizables
+       \end{itemize}
     \item K6 para pruebas de carga
-\end{itemize}
+       \begin{itemize}
+           \item Scripts en JavaScript
+           \item Métricas detalladas
+           \item Escenarios personalizables
+       \end{itemize}
+    \item Kubernetes para el despliegue de los componentes del sistema
+       \begin{itemize}
+           \item Orquestación de contenedores
+           \item Auto-escalado
+           \item Alta disponibilidad
+       \end{itemize}
+   \end{itemize}
 \newpage
