@@ -120,10 +120,75 @@ El throughput puede escalar horizontalmente añadiendo más instancias de funcio
 La arquitectura de este sistema está diseñada para ser simple y eficiente, permitiendo casos de uso como enriquecimiento de datos, filtrado, y transformaciones 
 en tiempo real.
 
-\clearpage
+
 \newpage
 \subsubsection{Comparación}
 
+\paragraph{Modelo de Procesamiento}
+\begin{itemize}
+    \item \textbf{Apache Spark:} Micro-batches.
+    \item \textbf{Apache Flink:} Streaming nativo con procesamiento registro a registro.
+    \item \textbf{Apache Beam:} Mismo que el modelo de su motor asociado 
+    \item \textbf{Apache Samza:} Streaming nativo con procesamiento basado en tiempo
+    \item \textbf{Apache NiFi:} Procesamiento basado en flujos de datos dirigidos
+    \item \textbf{Kafka Streams:} Procesamiento de baja complejidad mensaje a mensaje integrado con Kafka
+    \item \textbf{Pulsar Functons:} Procesamiento de baja complejidad mensaje a mensaje integrado con Pulsar
+\end{itemize}
+
+\paragraph{Manejo de Estado}
+\begin{itemize}
+    \item \textbf{Apache Spark:} Estado en memoria distribuido entre los nodos procesadores.
+    \item \textbf{Apache Flink:} Estado distribuido utilizando snapshots.
+    \item \textbf{Apache Beam:} Mismo que el manejo de su motor asociado 
+    \item \textbf{Apache Samza:} Estado local con respaldo en Kafka
+    \item \textbf{Apache NiFi:} Se maneja localmente en memoria en el nodo que procesa el flujo
+    \item \textbf{Kafka Streams:} Estado local con respaldo en Kafka
+    \item \textbf{Pulsar Functons:} Almacenado y gestionado con la instancia de manejo de almacenamiento (BookKeeper) de Pulsar
+\end{itemize}
+
+\paragraph{Latencia}
+\begin{itemize}
+    \item \textbf{Apache Spark:} Dependiendo de la configuración del micro-batch puede ir desde milisegundos a segundos.
+    \item \textbf{Apache Flink:} Microsegundos a milisegundos.
+    \item \textbf{Apache Beam:} Mismo que el de su motor asociado 
+    \item \textbf{Apache Samza:} Milisegundos a segundos
+    \item \textbf{Apache NiFi:} Segundos a Minutos
+    \item \textbf{Kafka Streams:} Milisegundos a segundos
+    \item \textbf{Pulsar Functons:} Milisegundos a segundos
+\end{itemize}
+
+\paragraph{Capacidad de Procesamiento}
+\begin{itemize}
+    \item \textbf{Apache Spark:} Cientos de miles de eventos por segundo por nodo
+    \item \textbf{Apache Flink:} Millones de eventos por segundo por nodo
+    \item \textbf{Apache Beam:} Mismo que el de su motor asociado 
+    \item \textbf{Apache Samza:} Cientos de miles de eventos por segundo por partición
+    \item \textbf{Apache NiFi:} Miles de eventos por segundo por nodo
+    \item \textbf{Kafka Streams:} Cientos de miles de eventos por segundo por partición
+    \item \textbf{Pulsar Functons:} Decenas de miles de eventos por segundo por nodo
+\end{itemize}
+
+\paragraph{Garantías de Entrega}
+\begin{itemize}
+    \item \textbf{Apache Spark:} at-least-once por defecto aunque puede ser configurado para permitir exactly-once
+    \item \textbf{Apache Flink:} exactly-once nativo
+    \item \textbf{Apache Beam:} exactly-once, at-least-once y at-most-once dependiendo del motor utilizado
+    \item \textbf{Apache Samza:} at-least-once por defecto aunque puede ser configurado para permitir exactly-once
+    \item \textbf{Apache NiFi:} at-least--once con garantía de entrega a pesar de fallas del sistema
+    \item \textbf{Kafka Streams:} at-least-once y exactly-once
+    \item \textbf{Pulsar Functons:} mejor rendimiento con at-least-once pero soporta exactly-once y at-most-once
+\end{itemize}
+
+\paragraph{Observaciones clave}
+\begin{itemize}
+    \item Spark es el que tiene un ecosistema más extendido y es más accesible
+    \item Flink tiene las mejores prestaciones a nivel de latencia y rendimiento
+    \item NiFi no es una buena opción para streaming por su latencia 
+    \item Kafka Streams y Pulsar Functions pueden ser usados de forma ligera para ruteo de mensajes
+\end{itemize}
+
+\clearpage
+\newpage
 
 \setlength\cellspacetoplimit{4pt}
 \setlength\cellspacebottomlimit{4pt}
@@ -137,21 +202,21 @@ en tiempo real.
     \setlength{\tabcolsep}{3pt}
     \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}m{2.2cm}|>{\raggedright\arraybackslash}m{0.14\textwidth}|>{\raggedright\arraybackslash}m{0.16\textwidth}|>{\raggedright\arraybackslash}m{0.14\textwidth}|>{\raggedright\arraybackslash}m{0.16\textwidth}|>{\raggedright\arraybackslash}m{0.14\textwidth}|}
     \hline
-    \rule{0pt}{5ex} & \textbf{Modelo} & \textbf{Estado} & \textbf{Latencia} & \textbf{Throughput} & \textbf{Garantías} \\[0.3ex]
+    \rule{0pt}{5ex} & \textbf{Modelo} & \textbf{Estado} & \textbf{Latencia} & \textbf{Proc.} & \textbf{Garantías} \\[0.3ex]
     \hline
-    \textbf{Apache Spark} & Micro-batches & En memoria & Media & Muy alto & At-least-once \\[0.3ex]
+    \textbf{Apache Spark} & Micro-batches & En memoria & Baja & Alto & Exactly-once \\[0.3ex]
     \hline
-    \textbf{Apache Flink} & Streaming & Distribuido & Muy baja & Alto & Exactly-once \\[0.3ex]
+    \textbf{Apache Flink} & Streaming & Distribuido & Muy baja & Muy Alto & Exactly-once \\[0.3ex]
     \hline
-    \textbf{Apache Beam} & Modelo unificado & Según runner & Variable & Variable & Según runner \\[0.3ex]
+    \textbf{Apache Beam} & Variable & Variable & Variable & Variable & Variable \\[0.3ex]
     \hline
-    \textbf{Apache Samza} & Streaming & Local por partición & Baja & Alto & At-least-once \\[0.3ex]
+    \textbf{Apache Samza} & Streaming & Por partición & Baja & Alto & Exactly-once \\[0.3ex]
     \hline
-    \textbf{Apache NiFi} & Flujo dirigido & Local por procesador & Media-Alta & Medio & At-least-once \\[0.3ex]
+    \textbf{Apache NiFi} & Flujo dirigido & Procesador & Media-Alta & Medio & At-least-once \\[0.3ex]
     \hline
     \textbf{Kafka Streams} & Streaming & Distribuido & Baja & Alto & Exactly-once \\[0.3ex]
     \hline
-    \textbf{Pulsar Funcitons} & Mensaje & Distribuido & Muy Baja & Alto & Exactly-once \\[0.3ex]
+    \textbf{Pulsar Functions} & Mensaje & Distribuido & Baja & Alto & Exactly-once \\[0.3ex]
     \hline
     \end{tabularx}
     \end{table}

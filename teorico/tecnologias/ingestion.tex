@@ -68,15 +68,16 @@ control de acceso basado en roles, y encriptación en reposo y en tránsito.
 
 \paragraph{Escalabilidad}
 \begin{itemize}
-    \item \textbf{Apache Kafka:} Alta escalabilidad horizontal, millones de mensajes/segundo.
+    \item \textbf{Apache Kafka:} Muy Alta escalabilidad horizontal, millones de mensajes/segundo.
     \item \textbf{Apache Pulsar:} Muy alta escalabilidad horizontal, millones de mensajes/segundo con separación de almacenamiento y cómputo.
     \item \textbf{Amazon Kinesis:} Buena escalabilidad, con 1.000 mensajes por segundo con la configuración por defecto aunque con configuración adicional puede llegar al millon por segundo hipotético.
     \item \textbf{Azure Event Hubs:} Buena escalabilidad, con 1.000 mensajes por segundo. También puede escalar con configuración adicional a los 20.000 mensajes. Existe la posibilidad de tener una instancia dedicada que permite escalar a millones de eventos por segundo de forma hipotética.
 \end{itemize}
 
+\newpage
 \paragraph{Retención de datos}
 \begin{itemize}
-    \item \textbf{Apache Kafka:} Configurable, potencialmente indefinida.
+    \item \textbf{Apache Kafka:} Configurable, potencialmente ilimitada.
     \item \textbf{Apache Pulsar:} Ilimitada por diseño.
     \item \textbf{Amazon Kinesis:} Hasta 365 días, configurable.
     \item \textbf{Azure Event Hubs:} Hasta 7 días, opción de Capture para largo plazo.
@@ -104,10 +105,9 @@ control de acceso basado en roles, y encriptación en reposo y en tránsito.
 
 \paragraph{Observaciones clave}
 \begin{itemize}
-    \item Pulsar destaca en escalabilidad y retención ilimitada.
-    \item Kafka ofrece mayor flexibilidad en configuración.
+    \item Pulsar destaca en escalabilidad, retención, seguridad y consistencia nativos.
+    \item Kafka ofrece el ecosistema más maduro y desarrollado que le otorga características muy completas.
     \item Servicios gestionados (Kinesis, Event Hubs) tienen encriptación en reposo por defecto, pero retención limitada.
-    \item Pulsar ofrece exactly-once nativo, Kafka lo requiere configurable.
 \end{itemize}
 \clearpage
 \begin{table}[h]
@@ -116,7 +116,7 @@ control de acceso basado en roles, y encriptación en reposo y en tránsito.
 \hline
 \textbf{Característica} & \textbf{Kafka} & \textbf{Pulsar} & \textbf{Kinesis} & \textbf{Event Hubs} \\
 \hline
-    Escalabilidad & Alta & Muy alta & Alta & Alta \\
+    Escalabilidad & Muy Alta & Muy alta & Alta & Alta \\
 \hline
 Retención & Configurable & Ilimitada & 365 días máx. & 7 días máx. \\
 \hline

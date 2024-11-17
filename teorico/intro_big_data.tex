@@ -19,7 +19,7 @@ Esta propiedad garantiza que los clientes de los sistemas nunca vean datos desac
 \subsubsection{Disponibilidad}
 La Disponibilidad es la propiedad que tiene un sistema distribuido para responder a todas las peticiones, ya sean de lectura o escritura, sin fallos.
 Un sistema disponible garantiza que cada solicitud reciba una respuesta sin importar el estado individual de cada nodo que lo compone.
-Esto significa que incluso si algunos nodos estan caidos, el sistema en su conjunto debe poder seguir dando servicio a las peticiones que recibe.
+Esto significa que incluso si algunos nodos falla, el sistema en su conjunto debe poder seguir dando servicio a las peticiones que recibe.
 \subsubsection{Tolerancia a Particiones}
 La Tolerancia a Particiones es la propiedad que tiene un sistema distribuido en la que continua funcionando a pesar de la perdida de 
 conectividad entre nodos. Una partición ocurre cuando hay una ruptura en la comunicación dentro de la red, 
@@ -30,25 +30,24 @@ lo que significa que puede manejar retrasos o pérdidas de mensajes entre nodos 
 \newpage
 \subsection{Definición y características del Big Data}
 
-Big Data es un término paraguas que se usa en la industria de IT para denominar a un conjunto de tecnologías que manejan grandes volúmenes de datos.
+Big Data es un término paraguas que se usa para denominar a un conjunto de tecnologías que manejan grandes volúmenes de datos.
 La pregunta que se presenta entonces es: ¿qué tan grandes deberían ser estos volúmenes para ser considerados Big Data?
 O incluso, ¿existen otras características que definan lo que es Big Data?
 Una definición generalmente aceptada es la siguiente:
+\bigskip
 
-\begin{quote}
 Las tecnologías de Big Data están orientadas a
-procesar datos (conjuntos/activos) de alto volumen, alta velocidad y alta variedad
+procesar datos de alto volumen, alta velocidad y alta variedad
 para extraer el valor de datos previsto y asegurar una alta
 veracidad de los datos originales y la información obtenida, lo que demanda
-formas de procesamiento de datos e información (análisis) rentables e innovadoras
+formas de procesamiento de datos e información rentables e innovadoras
 para mejorar el conocimiento, la toma de decisiones y el control de procesos;
-todo esto exige (debe ser apoyado por) nuevos modelos de datos
-(que soporten todos los estados y etapas de los datos durante todo su ciclo de vida)
-y nuevos servicios y herramientas de infraestructura que permitan obtener (y procesar)
-datos de una variedad de fuentes (incluidas las redes de sensores) y
+todo esto exige nuevos modelos de datos
+que soporten todos los estados y etapas de los datos durante todo su ciclo de vida, 
+y nuevos servicios y herramientas de infraestructura que permitan obtener y procesar
+datos de una variedad de fuentes y
 entregar datos en una variedad de formas a diferentes consumidores y dispositivos
 de datos e información. \parencite{demchenko2014addressing}
-\end{quote}
 
 \newpage
 Por lo que podríamos considerar que es Big Data todo aquello que esté orientado a datos
@@ -97,13 +96,13 @@ y asegurar que la aplicación pueda tolerar y resolver estas situaciones de mane
     
     El procesamiento de datos debe ocurrir con un retraso mínimo para proporcionar resultados en tiempo real.
     
-    Un desafío clave en el procesamiento de streams es lograr equilibrar la latencia, el costo y la correctitud simultáneamente \parencite{akidau2015dataflow}.
+    Un desafío clave en el streaming es lograr equilibrar la latencia, el costo y la correctitud simultáneamente \parencite{akidau2015dataflow}.
 
     \item \textbf{Manejo de datos fuera de orden}
     
     Los datos pueden llegar en un orden diferente al que fueron generados, lo que complica el procesamiento.
     
-    El procesamiento de eventos fuera de orden es un desafío fundamental en los sistemas de procesamiento de streams \parencite[p.~87]{flink}.
+    El procesamiento de eventos fuera de orden es un desafío fundamental en los sistemas de streaming \parencite[p.~87]{flink}.
 
     \item \textbf{Escalabilidad}
     
@@ -116,7 +115,7 @@ y asegurar que la aplicación pueda tolerar y resolver estas situaciones de mane
     
     El sistema debe poder recuperarse de fallos sin pérdida de datos y mantener la consistencia eventual de los resultados.
     
-    Garantizar la semántica de "exactamente una vez" en presencia de fallos es un desafío significativo en el procesamiento de streams \parencite{carbone2015apache}.
+    Garantizar la semántica de "exactly-once" en presencia de fallos es un desafío significativo en streaming \parencite{carbone2015apache}.
 
     \item \textbf{Procesamiento de ventanas temporales}
     
@@ -126,7 +125,7 @@ y asegurar que la aplicación pueda tolerar y resolver estas situaciones de mane
 
     \item \textbf{Integración con sistemas batch}
     
-    Combinar eficazmente el procesamiento de streams con sistemas batch existentes.
+    Combinar eficazmente el streaming con sistemas batch existentes.
     
     La integración de paradigmas batch y streaming, a menudo referida como 'procesamiento híbrido', presenta desafíos únicos en términos de consistencia de datos y modelos de programación \parencite{carbone2015apache}.
 \end{enumerate}

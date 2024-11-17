@@ -215,6 +215,26 @@ junto con una robusta integración con diferentes motores de procesamiento como 
 
 \newpage
 
+\subsubsection{Catálogos de Metadatos}
+Los catálogos de metadatos actúan como un registro centralizado y organizado de toda la información sobre las tablas y conjuntos de datos en un sistema. 
+Son una capa de abstracción que mantiene información crítica sobre la estructura, ubicación, esquema, particiones, historial de versiones y estadísticas de los datos, 
+permitiendo una gestión eficiente y un acceso optimizado a los mismos.
+
+Son necesarios para que sistemas externos conozcan la ubicación y la estructura de los datos almacenados. 
+
+\paragraph{Hive Metastore} es la implementación más adoptada y el estándar de estos catálogos. Opera como un servicio centralizado que almacena la información sobre las estructuras de datos,
+típicamente usando una base de datos relacional como base (por ejemplo PostgreSQL o MySQL). Sin embargo, puede presentar problemas con operaciones concurrentes complejas. 
+Sin embargo, se pueden implementar capas de abstracción que permitan manejar estos escenarios, y generalmente se prefiere utilizar este sistema ya que está ampliamente probado.
+
+\paragraph{Project Nessie} es otra implementación de catálogo de datos, aunque con un enfoque moderno, aplicando conceptos de control de versiones a los datos; similar a como lo hace git. 
+No intenta mantener compatibilidad con Hive Metastore, sino que ofrece un nuevo paradigma de gestión de datos, por lo que puede implementar características más complejas. 
+Sin embargo, esto también significa que requiere más esfuerzo en integración con herramientas existentes ya que su ecosistema aún no está tan desarrollado.
+
+\paragraph{Apache Polaris} es un proyecto relativamente nuevo que busca estandarizar y modernizar la gestión de metadatos. Es un esfuerzo para estandarizar y unificar los catálogos de metadatos.
+De esta manera, Apache Polaris busca ser una solución neutral y agnóstica a los distintos proveedores de catálogos.  
+
+\newpage
+
 \subsubsection{Bases de Datos Analíticas}
 
 Las bases de datos analíticas, también conocidas como bases de datos OLAP (Online Analytical Processing) orientadas a tiempo real, 
