@@ -270,5 +270,19 @@ Además, destaca por su modelo de consistencia eventual y su capacidad para mane
 inicialmente fue desarrollado por Baidu, integra capacidades de almacenamiento columnar MPP (Procesamiento Paralelo Masivo) con funcionalidades OLAP, 
 ofreciendo una solución más cercana a una base de datos tradicional pero con capacidades analíticas avanzadas. 
 Su arquitectura es más simple en comparación con Druid y Pinot, lo que facilita la operación y mantenimiento, manteniendo un buen rendimiento para consultas analíticas.
+Permite realizar consultas federadas sin necesidad de ingestar información duplicada.
 
+\newpage
+
+\subsection{Comparación}
+
+\paragraph{Observaciones clave}
+\begin{itemize}
+    \item Apache Parquet es el formato más utilizado para análisis de datos
+    \item El almacenamiento de objetos especialmente en la nube es extremadamente barato y su uso permite extender los casos de uso de almacenamiento
+    \item De entre los formatos de tabla analítica, Apache Iceberg es el que se encuentra en mejor posición de adopción debido a su naturaleza abierta
+    \item Hive Metastore sigue siendo el estandar de facto de la industria
+    \item Polaris es una excelente opción abierta como remplazo de Hive Metastore aunque su ecosistema aún no se encuentra del todo maduro
+    \item Apache Doris permite reducir la duplicación de datos al tener capacidades tanto de almacenamiento en tiempo real como de consultas federadas
+\end{itemize}
 \newpage
