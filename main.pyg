@@ -1,0 +1,12 @@
+{
+    "measurement_type": "RESPIRATORY_RATE",
+    "device_id": "string",
+    "readings": [
+        {
+            "timestamp": "ISO8601",
+            "raw_value": "number",           // Respiraciones por minuto
+            "signal_quality": "number",       // Escala 0-1
+            "motion_detected": "boolean"      // Para condiciones de medición
+        }
+    ]
+}

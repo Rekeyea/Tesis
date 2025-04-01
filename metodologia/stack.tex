@@ -24,27 +24,22 @@ optimizar su uso. Las seleccionadas son:
            \item Alta disponibilidad
            \item Gestión de datos distribuida
        \end{itemize}
-    \item Apache Iceberg como formato de tabla analítica
+    \item Apache Paimon como formato de tabla analítica
        \begin{itemize}
-           \item Es el formato de tabla más extendido
-           \item Ecosistema diverso para integración con otras tecnologías
+           \item Formato de tabla analítica especialmente pensado para streaming de datos
+           \item Fuerte integración con Apache Flink
        \end{itemize}
     \item Apache Doris como base de datos de análisis
        \begin{itemize}
            \item Consultas con baja latencia
            \item Tablas en tiempo real
-           \item Integración con Apache Iceberg mediante un catálogo
+           \item Integración con Apache Paimon mediante un catálogo
            \item Tablas híbridas
        \end{itemize}
-    \item Apache Superset como tablero que consume de los sistemas implementados
+    \item Grafana como tablero que consume de los sistemas implementados
        \begin{itemize}
            \item Visualizaciones interactivas
            \item Múltiples fuentes de datos
-       \end{itemize}
-    \item Apache Airflow como gestor de procesos de mantenimiento
-       \begin{itemize}
-           \item Orquestación de tareas
-           \item Monitoreo de flujos de trabajos
        \end{itemize}
     \item Prometheus para monitoreo de métricas de los sistemas
        \begin{itemize}
@@ -56,17 +51,9 @@ optimizar su uso. Las seleccionadas son:
             \item Estandard de la industria
             \item Tableros personalizables
        \end{itemize}
-    \item K6 para pruebas de carga
-       \begin{itemize}
-           \item Scripts en JavaScript
-           \item Métricas detalladas
-           \item Escenarios personalizables
-       \end{itemize}
-    \item Kubernetes para el despliegue de los componentes del sistema
+    \item Docker Compose para el despliegue de los componentes del sistema
        \begin{itemize}
            \item Orquestación de contenedores
-           \item Auto-escalado
-           \item Alta disponibilidad
        \end{itemize}
    \end{itemize}
 \newpage

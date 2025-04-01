@@ -1,5 +1,28 @@
 \section{Arquitectura Kappa}
 
+\subsection{Principios de Diseño}
+\subsection{Componentes de la Arquitectura}
+\subsection{Stack Tecnológico}
+
+Para la capa de ingesta y transporte de datos, la Arquitectura Kappa implementa \textbf{Apache Kafka} como componente central, 
+funcionando no solo como sistema de mensajería sino como la fuente única de verdad y almacén principal de eventos. 
+En Kappa se configura Kafka con períodos de retención extendidos, 
+aprovechando la capacidad de compactación de logs para mantener el historial completo de eventos mientras 
+se optimiza el espacio de almacenamiento. 
+Esto se logra agregando la capacidad de almacenamiento en capas, mediante la cual se pueden mantener los eventos
+en Object Storage (utilizando \textbf{MinIO}), cuando pasa un tiempo definido de mantención en almacenamiento local.
+
+El procesamiento de datos se realiza mediante \textbf{Apache Flink},
+se despliega en un cluster con un nodo Job Manager y cinco nodos Task Manager; de forma de distribuir la carga de trabajo lo mejor posible.
+En este caso, se define como punto de entrada un tópico de Kafka, para procesar los datos en tiempo real y
+enviarlos a un nuevo topico y continuar con el procesamiento más adelante en la arquitectura.
+
+En el último paso, se guarda el resultado del procesamiento en \textbf{Apache Doris}, un motor de análisis de datos
+distribuido que permite realizar consultas SQL en tiempo real sobre grandes volúmenes de datos con una interfaz basada en MySQL.
+Este componente permite escalar de forma diferente el acceso a los datos del procesamiento, 
+siendo desplegado como un nodo frontend y tres nodos backend. 
+Estos comparten el trabajo de procesamiento de consultas y almacenamiento de datos, 
+mientras que el frontend se encarga de la distribución de las mismas. 
 \subsection{Vista de Componentes}
 
 \begin{figure}[h]
@@ -8,3 +31,6 @@
 \caption{Diagrama de la Arquitectura Kappa}
 \label{fig:des_arquitectura_kappa}
 \end{figure}
+
+\subsection{Vista de Despliegue}
+\subsection{Flujo de Procesamiento}

@@ -214,6 +214,17 @@ y reescritura de datos para optimización física,
 junto con una robusta integración con diferentes motores de procesamiento como Spark y Flink.
 
 \newpage
+\paragraph{Apache Paimon} es un formato de tabla analítica que busca permitir la construcción de arquitecturas basadas en Lakehouse en tiempo real.
+Nació como un proyecto dentro del mismo Apache Flink por lo que tiene una integración muy fuerte con este motor de procesamiento.
+Paimon se destaca por su capacidad de manejar datos en tiempo real y batch, permitiendo la construcción de pipelines híbridos.
+Lo hace mediante el uso de su formato de datos propio en conjunto con un Log-structured Merge-Tree (LSM) para la gestión de metadatos; similar a Apache Hudi.
+
+Permite actualizaciones en tiempo real a través del motor de procesamiento y deduplicar los datos de forma personalizada. También se encarga automáticamente 
+de la limpieza y compactación de archivos, y ofrece soporte para la evolución de esquemas y control de versiones.
+
+Por último, también permite almacenar metadata que otorga la capacidad de realizar transacciones ACID, evolución de esquema y control de versiones.
+
+\newpage
 
 \subsubsection{Catálogos de Metadatos}
 Los catálogos de metadatos actúan como un registro centralizado y organizado de toda la información sobre las tablas y conjuntos de datos en un sistema. 
@@ -281,8 +292,7 @@ Permite realizar consultas federadas sin necesidad de ingestar información dupl
     \item Apache Parquet es el formato más utilizado para análisis de datos
     \item El almacenamiento de objetos especialmente en la nube es extremadamente barato y su uso permite extender los casos de uso de almacenamiento
     \item De entre los formatos de tabla analítica, Apache Iceberg es el que se encuentra en mejor posición de adopción debido a su naturaleza abierta
-    \item Hive Metastore sigue siendo el estandar de facto de la industria
-    \item Polaris es una excelente opción abierta como remplazo de Hive Metastore aunque su ecosistema aún no se encuentra del todo maduro
+    \item Hive Metastore sigue siendo el estandar de facto de la industria debido a su amplia adopción y madurez
     \item Apache Doris permite reducir la duplicación de datos al tener capacidades tanto de almacenamiento en tiempo real como de consultas federadas
 \end{itemize}
 \newpage

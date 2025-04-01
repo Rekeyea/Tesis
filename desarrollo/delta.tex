@@ -1,5 +1,40 @@
 \section{Arquitectura Delta}
 
+\subsection{Principios de Diseño}
+\subsection{Componentes de la Arquitectura}
+\subsection{Stack Tecnológico}
+Para la capa de ingesta y transporte de datos se implementó \textbf{Apache Kafka}, 
+un sistema de mensajería distribuido que proporciona alta durabilidad, replicación y garantía en el orden de los eventos. 
+Kafka actúa como el punto de entrada de la arquitectura, permitiendo desacoplar la ingesta de datos del procesamiento 
+y asegurando una capa de buffer que absorbe picos de tráfico mientras mantiene los datos disponibles para su consumo.
+En este caso, Kafka se despliega en un cluster de tres nodos, con un factor de replicación de tres y un factor de partición de tres.
+Por otro lado, se definió un tiempo de retención de mensajes acotado, en este caso de 7 días, para evitar la acumulación de datos
+pero a su vez asegurar la disponibilidad de los mismos para su procesamiento.
+
+El procesamiento de datos se realiza mediante \textbf{Apache Flink}, se despliega en un cluster con un nodo Job Manager 
+y cinco nodos Task Manager; de forma de distribuir la carga de trabajo lo mejor posible.
+En este caso, se define como punto de entrada un tópico de Kafka, para luego continuar procesando los datos, 
+no utilizando Kafka sino aprovechando las capacidades de \textbf{Apache Paimon}. 
+
+Este permite tratar una tabla de datos como un flujo continuo de eventos, funcionando de forma efectiva como 
+una cola de mensajes, pero con la ventaja de tener los datos materializados en un almacenamiento persistente y barato.
+
+Por último, este formato de almacenamiento permite ser leido por \textbf{Apache Doris}, un motor de análisis de datos
+distribuido que permite realizar consultas SQL en tiempo real sobre grandes volúmenes de datos con una interfaz basada en MySQL.
+
+Para esto, tanto como para el uso de Flink, se necesita definir un catálogo de tablas.
+Normalmente, esto podría hacerse utilizando Apache Hive, pero se optó por simplificar el sistema tanto como sea posible, 
+y dado que no se necesitaba interactuar con un sistema existente; por lo que el catálogo se almacenó en Object Storage.
+
+Esto último se logró mediante el uso de \textbf{MinIO}, un servidor de almacenamiento de objetos de código abierto que
+permite almacenar datos de forma segura y eficiente, y que además es compatible con el protocolo S3 de Amazon Web Services.
+
+Esta combinación tecnológica permite implementar efectivamente los principios de la Arquitectura Delta, 
+donde los datos fluyen desde las fuentes a través de Kafka, son procesados por Flink, 
+almacenados en diferentes capas mediante Paimon sobre MinIO, y finalmente consultados a través de Doris, 
+manteniendo en todo momento las propiedades ACID 
+y permitiendo el procesamiento continuo así como análisis retrospectivos sobre datos históricos.
+
 \subsection{Vista de Componentes}
 
 \begin{figure}[h]
@@ -8,3 +43,6 @@
 \caption{Diagrama de la Arquitectura Delta}
 \label{fig:des_arquitectura_delta}
 \end{figure}
+
+\subsection{Vista de Despliegue}
+\subsection{Flujo de Procesamiento}
