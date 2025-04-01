@@ -1,7 +1,24 @@
 \section{Arquitectura Kappa}
 
 \subsection{Principios de Diseño}
-\subsection{Componentes de la Arquitectura}
+
+La principal característica de esta arquitectura es su fuerte uso de un registro de eventos inmutable 
+y ordenado cronológicamente que actúa como única fuente de verdad sobre los datos ingresados al sistema.
+
+De esta manera, se logra unificar el procesamiento de datos en batch y streaming tratándolos como un flujo continuo de eventos, 
+eliminando la dualidad de código y reduciendo la complejidad operativa.
+
+El procesamiento de estos datos se realiza mediante motores de procesamiento de eventos que leen este registro, 
+aplican transformaciones determinísticas 
+y generan resultados derivados que pueden recomputarse en cualquier momento desde el inicio del log.
+
+Este principio de reproducibilidad permite regenerar el estado completo del sistema cuando cambian los requisitos 
+o algoritmos de procesamiento, sin necesidad de mantener rutas de código separadas.
+
+Las vistas materializadas son otro principio fundamental, 
+donde los resultados procesados se almacenan en sistemas optimizados para consultas, 
+proporcionando acceso eficiente al estado actual sin necesidad de reprocesar todo el historial de eventos.
+
 \subsection{Stack Tecnológico}
 
 Para la capa de ingesta y transporte de datos, la Arquitectura Kappa implementa \textbf{Apache Kafka} como componente central, 
@@ -33,4 +50,5 @@ mientras que el frontend se encarga de la distribución de las mismas.
 \end{figure}
 
 \subsection{Vista de Despliegue}
+
 \subsection{Flujo de Procesamiento}

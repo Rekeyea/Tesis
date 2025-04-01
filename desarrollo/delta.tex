@@ -1,7 +1,30 @@
 \section{Arquitectura Delta}
 
 \subsection{Principios de Diseño}
-\subsection{Componentes de la Arquitectura}
+
+Todo el almacenamiento de datos a largo plazo se realiza en un formato de tabla abierta, 
+que combina archivos en formato Parquet con un registro de transacciones. 
+Esto garantiza propiedades ACID y permite operaciones confiables en entornos distribuidos. 
+
+Al utilizar object storage, se logra una separación clara entre los recursos de procesamiento y los de almacenamiento, 
+lo que permite escalarlos de manera independiente. 
+
+Además, múltiples clientes pueden acceder a los mismos datos de forma simultánea sin interferencias, 
+incluso utilizando herramientas diferentes, siempre que sean compatibles con el formato subyacente.
+
+El formato Parquet, al ser columnar, permite ejecutar consultas SQL de manera eficiente 
+y es compatible con la mayoría de los motores de análisis modernos. 
+
+El procesamiento de datos se gestiona como un flujo continuo de eventos, 
+donde el motor de procesamiento utiliza el log de transacciones como fuente de verdad para mantener el estado de los datos. 
+Esto permite unificar el procesamiento batch y streaming en una misma arquitectura. 
+
+Además, el sistema se encarga automáticamente de optimizaciones como la compactación de archivos pequeños
+y la gestión eficiente de metadatos, asegurando un rendimiento óptimo sin intervención manual.
+
+Por último, al estar basado en estándares abiertos, el sistema evita el vendor lock-in 
+y permite integración con diversas herramientas de BI, machine learning y ETL.
+
 \subsection{Stack Tecnológico}
 Para la capa de ingesta y transporte de datos se implementó \textbf{Apache Kafka}, 
 un sistema de mensajería distribuido que proporciona alta durabilidad, replicación y garantía en el orden de los eventos. 
@@ -15,6 +38,8 @@ El procesamiento de datos se realiza mediante \textbf{Apache Flink}, se desplieg
 y cinco nodos Task Manager; de forma de distribuir la carga de trabajo lo mejor posible.
 En este caso, se define como punto de entrada un tópico de Kafka, para luego continuar procesando los datos, 
 no utilizando Kafka sino aprovechando las capacidades de \textbf{Apache Paimon}. 
+Este adopta un enfoque log-structured para las escrituras, 
+lo que lo hace especialmente eficiente para cargas de trabajo de streaming con alta frecuencia de actualizaciones.
 
 Este permite tratar una tabla de datos como un flujo continuo de eventos, funcionando de forma efectiva como 
 una cola de mensajes, pero con la ventaja de tener los datos materializados en un almacenamiento persistente y barato.
@@ -45,4 +70,5 @@ y permitiendo el procesamiento continuo así como análisis retrospectivos sobre
 \end{figure}
 
 \subsection{Vista de Despliegue}
+
 \subsection{Flujo de Procesamiento}
