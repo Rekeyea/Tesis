@@ -14,6 +14,11 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{amsmath}
+
+\usepackage{tcolorbox}
+\usepackage{listings}
+
+
 % Define JSON language
 \definecolor{delim}{RGB}{20,105,176}
 \definecolor{numb}{RGB}{106, 109, 32}
@@ -37,7 +42,7 @@
 \lstset{
   language=JSON,
   backgroundcolor=\color{gray!5},
-  basicstyle=\ttfamily\small,
+  basicstyle=\ttfamily\footnotesize,
   breaklines=true,
   breakatwhitespace=true,
   columns=fullflexible,
@@ -75,26 +80,29 @@
 }
 
 \lstset{
-  language=SQL,
-  backgroundcolor=\color{gray!10},
-  basicstyle=\ttfamily\small,
-  keywordstyle=\color{blue}\bfseries,
-  identifierstyle=\color{black},
-  commentstyle=\color{green!60!black}\itshape,
-  stringstyle=\color{red},
-  numberstyle=\tiny\color{gray},
-  numbers=left,
-  stepnumber=1,
-  breaklines=true,
-  breakatwhitespace=false,
-  showstringspaces=false,
-  tabsize=2,
-  captionpos=b,
-  frame=single,
-  rulecolor=\color{black},
-  framesep=3pt,
-  xleftmargin=5pt,
+ language=SQL,
+ backgroundcolor=\color{gray!5},
+ basicstyle=\fontfamily{lmtt}\selectfont\footnotesize,
+ keywordstyle=\color{blue!80!black},
+ identifierstyle=\color{black},
+ commentstyle=\color{green!60!black},
+ stringstyle=\color{red!70!black},
+ numberstyle=\tiny\color{gray!70},
+ numbers=left,
+ stepnumber=1,
+ breaklines=true,
+ breakatwhitespace=false,
+ showstringspaces=false,
+ tabsize=2,
+ captionpos=b,
+ frame=single,
+ frameround=tttt,
+ rulecolor=\color{gray!50},
+ framesep=3pt,
+ xleftmargin=5pt,
 }
+
+
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning}
 

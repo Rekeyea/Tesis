@@ -17,7 +17,10 @@ y es compatible con la mayoría de los motores de análisis modernos.
 
 El procesamiento de datos se gestiona como un flujo continuo de eventos, 
 donde el motor de procesamiento utiliza el log de transacciones como fuente de verdad para mantener el estado de los datos. 
-Esto permite unificar el procesamiento batch y streaming en una misma arquitectura. 
+Esto permite unificar el procesamiento batch y streaming en una misma arquitectura.
+Como efecto secundario de esto, todos los datos son guardados para cada etapa del flujo de procesamiento. 
+Esto significa que están disponibles para su fácil consumo en caso de que se quieran analizar; 
+pero como contraparte, consumen más espacio de almacenamiento ya que se almacena potencialmente varias veces el mismo dato (aunque enriquecido). 
 
 Además, el sistema se encarga automáticamente de optimizaciones como la compactación de archivos pequeños
 y la gestión eficiente de metadatos, asegurando un rendimiento óptimo sin intervención manual.
@@ -69,13 +72,13 @@ y permitiendo el procesamiento continuo así como análisis retrospectivos sobre
 \label{fig:des_arquitectura_delta}
 \end{figure}
 
+\clearpage
+\newpage
+
 \subsection{Flujo de Procesamiento}
 
-Se utilizó Flink SQL para realizar el procesamiento de los datos, de modo que salvo por los "sinks" de salida,
-los pasos de procesamiento son iguales para ambas arquitecturas.
+El siguiente es un ejemplo de uno de los trabajos de procesamiento de datos desarrollados:
 
-Un ejemplo de esto es el primer paso del flujo de procesamiento que permite leer datos desde un tópico de Kafka,
-y guardar los datos en crudos en una tabla de Paimon.
 \begin{lstlisting}[language=sql]
     SET 'execution.runtime-mode' = 'streaming';
     SET 'execution.checkpointing.mode' = 'EXACTLY_ONCE';
@@ -86,7 +89,6 @@ y guardar los datos en crudos en una tabla de Paimon.
     SET 'table.exec.state.ttl' = '300000';
     SET 'parallelism.default' = '2';
 
-
     CREATE CATALOG paimon WITH (
         'type' = 'paimon',
         'warehouse' = 's3://datalake/paimon',
@@ -96,7 +98,24 @@ y guardar los datos en crudos en una tabla de Paimon.
         's3.path.style.access' = 'true',
         'location-in-properties' = 'true'
     );
+\end{lstlisting}
 
+\begin{lstlisting}[language=sql]
+    CREATE TABLE paimon.delta.raw_measurements (
+        measurement_timestamp TIMESTAMP(3),
+        measurement_type STRING,
+        raw_value STRING,
+        device_id STRING,
+        battery DOUBLE,
+        signal_strength DOUBLE,
+        ingestion_timestamp TIMESTAMP(3),
+        WATERMARK FOR measurement_timestamp AS measurement_timestamp - INTERVAL '10' SECONDS
+    );
+\end{lstlisting}
+
+\newpage
+
+\begin{lstlisting}[language=sql]
     CREATE TABLE default_catalog.default_database.raw_measurements (
         measurement_timestamp TIMESTAMP(3),
         measurement_type STRING,
@@ -114,7 +133,9 @@ y guardar los datos en crudos en una tabla de Paimon.
         'json.timestamp-format.standard' = 'ISO-8601',
         'scan.startup.mode' = 'latest-offset'
     );
+\end{lstlisting}
 
+\begin{lstlisting}[language=sql]
     INSERT INTO paimon.delta.raw_measurements
     SELECT * FROM default_catalog.default_database.raw_measurements;
 \end{lstlisting}
@@ -135,3 +156,12 @@ los recursos del sistema para evitar retrasos en el procesamiento.
 Algo importante a destacar es que si bien en este caso se define el catalogo en cada uno de los scripts, 
 esto no debería ser necesario pues Flink permite definir mediante configuración sus catálogos disponibles.
 Sin embargo, no fue posible configurarlo de esta manera, por lo que se optó por definirlo en cada uno de los scripts.
+
+Un último detalle a destacar, es que se define el paralelismo en 2 de modo tal que se pueda aprovechar al máximo 
+las particiones del tópico de Kafka. Lo ideal sería definirlo en 3, 
+pero esto no es posible por una limitante de hardware en cuanto a memoria en el nodo que ejecuta el trabajo de procesamiento.
+
+Esta primer inserción de datos que se encarga de recibir los datos en formato JSON desde el tópico de Kafka
+y almacenarlos en el formato de Paimon es una de las dos grandes diferencias de esta arquitectura respecto a la anterior.
+La segunda diferencia es que en este caso no es necesaria la inserción en Doris, ya que esta es sólo una herramienta que se usa para acceder a los datos pero no los almacena. 
+Esto hace que el flujo de procesamiento sea mas simple y liviano al no haber un tercer componente que tenga que procesar información. 

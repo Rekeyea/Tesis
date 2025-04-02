@@ -1,13 +1,11 @@
 \subsection{Tecnologías Complementarias}
 
-\subsubsection{Kubernetes}
+\subsubsection{Docker}
 
-Kubernetes es una plataforma open-source diseñada para automatizar la implementación, el escalado y la gestión de aplicaciones en contenedores. 
-Su principal fortaleza radica en su capacidad de escalado: puede escalar automáticamente las aplicaciones según la demanda en tiempo real, 
-añadiendo o eliminando contenedores según sea necesario. 
-Esto significa que puede aumentar los recursos cuando hay picos de tráfico y reducirlos en momentos de baja actividad, optimizando así los costos de infraestructura. 
-Además, maneja automáticamente la distribución de carga entre contenedores, la recuperación ante fallos y actualizaciones continuas sin tiempo de inactividad, 
-lo que lo hace especialmente valioso para aplicaciones que requieren alta disponibilidad y escalabilidad como las necesarias para Big Data.
+Docker es una plataforma de software que permite crear, desplegar y ejecutar aplicaciones en contenedores. 
+Los contenedores son entornos ligeros y portátiles que encapsulan una aplicación y todas sus dependencias, lo que garantiza que funcionen de manera consistente en diferentes entornos.
+A nivel de desarrollo, también permite crear imágenes de contenedores que pueden ser compartidas y reutilizadas, facilitando la colaboración entre equipos y la integración continua.
+Es especialmente sencillo de usar y provee Docker Compose, una herramienta que permite definir y ejecutar aplicaciones multi-contenedor.
 
 \subsubsection{Prometheus}
 Prometheus es un sistema de monitorización y alerta open-source, Es especialmente eficaz para monitorizar entornos dinámicos como los que se encuentran en arquitecturas de microservicios y contenedores.
@@ -23,25 +21,4 @@ Cuando se utiliza junto con Prometheus, Grafana actúa como la capa de visualiza
 Esto facilita la detección temprana de problemas, el análisis de tendencias y la toma de decisiones basada en datos. 
 Una de sus características más poderosas es la capacidad de combinar datos de múltiples fuentes en un único dashboard, proporcionando una vista unificada del sistema. 
 
-\subsubsection{K6}
-K6 es una herramienta open-source diseñada para realizar pruebas de rendimiento y carga con enfoque en desarrolladores, permitiendo escribir pruebas de carga en JavaScript.
-Puede exportar sus métricas directamente a Prometheus y visualizarlas en Grafana, creando así un ecosistema completo de pruebas y monitorización. 
-Esto permite no solo ejecutar pruebas de carga, sino también analizar los resultados en tiempo real y mantener un histórico del rendimiento del sistema. 
-
-\subsubsection{Apache Airflow}
-
-Apache Airflow es una plataforma open-source de orquestación que permite programar, ejecutar y monitorizar flujos complejos de tareas. 
-En el contexto de Big Data, destaca especialmente por su capacidad para automatizar tareas de mantenimiento y procesos de manera robusta y programable. 
-Su modelo de programación está basado en DAGs (Directed Acyclic Graphs), lo que permite definir dependencias claras entre tareas y asegurar que se ejecuten en el orden correcto.
-Una de sus mayores fortalezas es su capacidad para automatizar tareas rutinarias como la limpieza de datos antiguos, compactación de tablas, rebalanceo de particiones y regeneración de índices. 
-Airflow puede orquestar estas tareas entre diferentes sistemas, manejando automáticamente los reintentos cuando las tareas fallan 
-y permitiendo programar tareas condicionales basadas en el éxito de tareas previas.
-
-\subsubsection{Apache Superset}
-Apache Superset es una plataforma moderna de visualización y exploración de datos open-source, diseñada para hacer el análisis de datos empresariales más accesible y eficiente. 
-Destaca por su capacidad para conectarse directamente con una amplia variedad de fuentes de datos, desde bases de datos SQL tradicionales hasta sistemas Big Data como Apache Druid o Apache Pinot.
-Otra de sus características más poderosas es su capacidad para crear visualizaciones interactivas sin necesidad de escribir código, 
-mientras que a la vez permite usar SQL personalizado para análisis más complejos. 
-Incluye un amplio conjunto de tipos de gráficos y tableros interactivos. 
-Además, su arquitectura permite compartir y colaborar en tableros, establecer permisos granulares y programar informes automatizados.
 \newpage
