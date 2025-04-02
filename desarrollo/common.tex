@@ -161,3 +161,38 @@ Se propone utilizar la siguiente fórmula para calcular la puntuación de degrad
 \end{equation}
 
 Se calcula este puntaje para cada uno de los parámetros de NEWS2 y se promedia para obtener la puntuación de degradación final.
+
+\subsection{Algoritmo de Puntuación de NEWS2}
+
+El algoritmo de puntuación NEWS2 se basa en la suma de los puntajes de cada uno de los parámetros,
+\begin{equation}
+    \text{NEWS2 Score} = \sum_{i=1}^{n} \text{Parameter Score}_i
+\end{equation}
+donde $n$ es la cantidad de parámetros que se tienen disponibles.
+En caso de que no se tenga un parámetro disponible, se asumirá una puntuación de cero para ese parámetro en su lugar.
+De esta manera, se puede calcular la puntuación NEWS2 incluso cuando no se tienen todos los datos disponibles.
+
+Por otro lado, se propone utilizar la puntuación de degradación para dar contexto sobre la puntuación NEWS2 final.
+Así, se puede explicar que tan confiable es la puntuación NEWS2 calculada en base a los datos disponibles.
+
+\subsection{Pipeline de Procesamiento}
+El pipeline de procesamiento se encargará de recibir los datos en formato JSON,
+realizar el procesamiento de los mismos y devolver la puntuación NEWS2 calculada.
+
+Esto se realizará de la siguiente manera:
+\begin{itemize}
+    \item Recepción de datos en formato JSON
+    \item Enriquecimiento de los datos con los puntajes de calidad y frescura
+    \item Enrutamiento de los datos para su procesamiento particular según el signo vital
+    \item Cálculo de la puntuación NEWS2 para cada una de las Componentes
+    \item Unión y agrupación según una ventana de tiempo
+    \item Calculo de valores de agregación de los puntajes de NEWS2 y de degradación
+\end{itemize}
+
+A continuación se presenta un diagrama de flujo del pipeline de procesamiento:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{desarrollo/pipeline.png}
+    \caption{Diagrama de flujo del pipeline de procesamiento}
+    \label{fig:flowchart}
+\end{figure}

@@ -69,6 +69,69 @@ y permitiendo el procesamiento continuo así como análisis retrospectivos sobre
 \label{fig:des_arquitectura_delta}
 \end{figure}
 
-\subsection{Vista de Despliegue}
-
 \subsection{Flujo de Procesamiento}
+
+Se utilizó Flink SQL para realizar el procesamiento de los datos, de modo que salvo por los "sinks" de salida,
+los pasos de procesamiento son iguales para ambas arquitecturas.
+
+Un ejemplo de esto es el primer paso del flujo de procesamiento que permite leer datos desde un tópico de Kafka,
+y guardar los datos en crudos en una tabla de Paimon.
+\begin{lstlisting}[language=sql]
+    SET 'execution.runtime-mode' = 'streaming';
+    SET 'execution.checkpointing.mode' = 'EXACTLY_ONCE';
+    SET 'table.local-time-zone' = 'UTC';
+    SET 'execution.checkpointing.interval' = '60000';
+    SET 'execution.checkpointing.timeout' = '30000';
+    SET 'state.backend' = 'hashmap';
+    SET 'table.exec.state.ttl' = '300000';
+    SET 'parallelism.default' = '2';
+
+
+    CREATE CATALOG paimon WITH (
+        'type' = 'paimon',
+        'warehouse' = 's3://datalake/paimon',
+        's3.endpoint' = 'http://minio:9000',
+        's3.access-key' = 'minioadmin',  
+        's3.secret-key' = 'minioadmin',
+        's3.path.style.access' = 'true',
+        'location-in-properties' = 'true'
+    );
+
+    CREATE TABLE default_catalog.default_database.raw_measurements (
+        measurement_timestamp TIMESTAMP(3),
+        measurement_type STRING,
+        raw_value STRING,
+        device_id STRING,
+        battery DOUBLE,
+        signal_strength DOUBLE,
+        ingestion_timestamp TIMESTAMP(3) METADATA FROM 'timestamp' VIRTUAL,
+        WATERMARK FOR measurement_timestamp AS measurement_timestamp - INTERVAL '10' SECONDS
+    ) WITH (
+        'topic' = 'raw.measurements',
+        'connector' = 'kafka',
+        'properties.bootstrap.servers' = 'kafka-1:19091,kafka-2:19092,kafka-3:19093',
+        'format' = 'json',
+        'json.timestamp-format.standard' = 'ISO-8601',
+        'scan.startup.mode' = 'latest-offset'
+    );
+
+    INSERT INTO paimon.delta.raw_measurements
+    SELECT * FROM default_catalog.default_database.raw_measurements;
+\end{lstlisting}
+
+Este código muestra algunas de las características principales del uso de Flink SQL en conjunto con Paimon.
+Las primeras tres reglas son las estándares para un procesamiento de streaming 
+con manejo de mensajes en tiempo real y que además utilice una hora estándar para tener sincronizadas
+las marcas de tiempo de todos los sistemas que intervienen.
+
+Luego se define el 'execution.checkpointing.interval' que es de los parámetros más importantes para el procesamiento de streaming,
+ya que define cada cuanto tiempo se guardan los estados intermedios de los datos procesados.
+Para el caso de Paimon particularmente, marca cada cuanto se impactan los datos procesados en el almacenamiento,
+por lo que define que tan pronto estarán disponibles estos para su consumo.
+
+Esto afecta directamente a la latencia, por lo que es algo que se tiene que balancear fuertemente con 
+los recursos del sistema para evitar retrasos en el procesamiento.
+
+Algo importante a destacar es que si bien en este caso se define el catalogo en cada uno de los scripts, 
+esto no debería ser necesario pues Flink permite definir mediante configuración sus catálogos disponibles.
+Sin embargo, no fue posible configurarlo de esta manera, por lo que se optó por definirlo en cada uno de los scripts.
