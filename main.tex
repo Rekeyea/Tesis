@@ -18,6 +18,8 @@
 \usepackage{tcolorbox}
 \usepackage{listings}
 
+\usepackage{longtable}
+
 
 % Define JSON language
 \definecolor{delim}{RGB}{20,105,176}
@@ -57,6 +59,41 @@
   literate=
     {,}{{\color{blue},}}1
     {:}{{\color{blue}:}}1
+    {\{}{{\color{darkgray}\{}}1
+    {\}}{{\color{darkgray}\}}}1
+    {[}{{\color{darkgray}[}}1
+    {]}{{\color{darkgray}]}}1,
+}
+
+\lstdefinelanguage{CSV}{
+  string=[s]{"}{"},
+  stringstyle=\color{red},
+  comment=[l]{\#},
+  commentstyle=\color{gray},
+  keywords={},
+  morecomment=[l]{//},
+  morestring=[b]',
+  morestring=[b]",
+  sensitive=false
+}
+
+\lstset{
+  language=CSV,
+  backgroundcolor=\color{gray!5},
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=fullflexible,
+  showstringspaces=false,
+  frame=single,
+  frameround=tttt,
+  framesep=2pt,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=5pt,
+  tabsize=2,
+  literate=
+    {,}{{\color{blue},}}1
     {\{}{{\color{darkgray}\{}}1
     {\}}{{\color{darkgray}\}}}1
     {[}{{\color{darkgray}[}}1

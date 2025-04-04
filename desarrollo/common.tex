@@ -71,3 +71,84 @@ El código de cada uno de los repositorios se encuentra disponible en el siguien
     \item \url{https://github.com/Rekeyea/Tesis-Delta}\\
     \item \url{https://github.com/Rekeyea/Tesis-SynthDS}\\
 \end{itemize}
+
+\newpage
+
+\subsection{Generación de Datos Sintéticos}
+
+Se utilizaron datos sintéticos para realizar las pruebas de carga y estrés de ambas arquitecturas.
+Para la generación de los datos sintéticos se utilizó un script en Python que permite definir perfiles de pacientes con diferentes características,
+así como tambien el rango de tiempo para el que se genera la información.
+Se generaron datos sintéticos para 32 pacientes a lo largo de un año, con un total de 110.122.654 registros;
+que implica un archivo CSV de aproximadamente 7GB.
+
+El proceso de generación de datos es el siguiente:
+\begin{itemize}
+    \item Se genera un archivo CSV con los datos sintéticos ordenados por signo vital.
+    \item Se separa este archivo CSV en un archivo por paciente y se ordena cada uno.
+    \item Se vuelve a juntar la información de cada paciente de forma ordenada en un único archivo CSV.
+    \item Se envía cada línea del CSV a los nodos Kafka de la cada una de las arquitecturas para su ingestión
+\end{itemize}
+
+
+Se debieron definir estos pasos debido al tamaño del archivo CSV, ya que al ser tan grande no se puede cargar en memoria.
+Por otro lado, para simular demoras, se agregó una columna de delay al archivo inicial que luego fué tomada en cuenta al momento de ordenar las filas. 
+El archivo CSV final resultante tiene el siguiente formato:
+\begin{lstlisting}[language=CSV]
+    device_id,measurement_type,timestamp,raw_value,battery,signal
+    DEVICE_002_P0001,RESPIRATORY_RATE,-19.48,16.27,99.59,0.48
+    DEVICE_002_P0001,TEMPERATURE,-3.46,36.43,99.67,0.72
+    DEVICE_002_P0001,BLOOD_PRESSURE_SYSTOLIC,1.22,119.03,99.71,0.75
+    DEVICE_002_P0001,HEART_RATE,3.0,70.31,99.8,0.71
+    DEVICE_002_P0001,HEART_RATE,173.27,73.08,100.0,0.48
+    DEVICE_002_P0001,RESPIRATORY_RATE,247.35,16.36,99.32,0.71
+\end{lstlisting}
+
+\newpage
+
+El archivo de configuración usado tiene la siguiente forma: 
+
+\begin{lstlisting}[language=JSON]
+    {
+        "time_range": "1_year",
+        "patients": [
+            {"patient_id": "P0001", "category": "HEALTHY"},
+            ...
+            {"patient_id": "P0005", "category": "ILL_STABLE"},
+            ...
+            {"patient_id": "P0009", "category": "HEALTHY_DETERIORATING"},
+            ...
+        ],
+        "devices": [
+            {
+                "device_id": "MEDICAL_RR",
+                "patient_ids": [
+                    ...
+                ],
+                "vitals": {
+                    "RESPIRATORY_RATE": {"measurement_rate": 60}
+                },
+                "battery": {"initial": 100, "drain_rate": 0.05},
+                "signal_strength": {"base": 0.9, "variation": 0.1}
+            },
+            ...
+            {
+                "device_id": "CONSUMER_SMARTWATCH_002",
+                "patient_ids": [
+                    ...
+                ],
+                "vitals": {
+                    "RESPIRATORY_RATE": {"measurement_rate": 240},
+                    "BLOOD_PRESSURE_SYSTOLIC": {"measurement_rate": 300},
+                    "HEART_RATE": {"measurement_rate": 180},
+                    "TEMPERATURE": {"measurement_rate": 600}
+                },
+                "battery": {"initial": 100, "drain_rate": 0.02},
+                "signal_strength": {"base": 0.6, "variation": 0.2}
+            }
+        ]
+    }
+\end{lstlisting}
+
+\subsection{Limitaciones en la Implementación}
+

@@ -1,0 +1,134 @@
+\section{Aspectos Operativos}
+
+Se realizó una prueba de carga de ambas arquitecturas con datos sintéticos de 32 pacientes a lo largo de un año, con un total de 110.122.654 registros; 
+que implica un archivo CSV de aproximadamente 7GB.
+El hardware donde se realizó la prueba cuenta con 64GB de RAM y 24 núcleos de CPU, y se utilizó Docker Compose para la ejecución de las pruebas.
+
+Variaron no solo los tiempos de carga del total del conjunto de datos, sino también el uso de recursos.
+
+
+\subsection{Throughput}
+El throughput se refiere a la cantidad de datos procesados por unidad de tiempo.
+En este caso, se midió en base a los mismos límites en el uso de recursos, la cantidad de datos que podían ser ingestados por el sistema hasta completar la carga total.
+
+Para \textbf{Delta} se pudieron ingestar en un promedio de 1300 registros por segundo; y la carga completa llevó alrededor de 23 horas y media.
+Para \textbf{Kappa} se pudieron ingestar en un promedio de X registros por segundo; y la carga completa llevó alrededor de Y horas.
+
+Es importante destacar que la carga de Kappa debió generó problemas de rendimiento en el sistema ya que hubieron episodios en los que el disco fué totalmente llenado. 
+Si bien esto ocurre por ser un sistema compartido con otras aplicaciones, esto no fué el caso para Delta, que no tuvo problemas de rendimiento.
+Se entiende entonces que a nivel de gestión de disco al menos, Delta es más eficiente que Kappa. 
+
+\subsection{Latencia}
+
+La latencia se refiere al tiempo que tarda un dato en ser procesado por el sistema.
+En este caso, se midió en base a los mismos límites en el uso de recursos, la cantidad de tiempo que tardó un dato en pasar por todo el flujo de datos.
+
+Para \textbf{Delta} se presentan los siguientes resultados: 
+
+\begin{itemize}
+    \item \textbf{Latencia Mínima:} 91 segundos
+    \item \textbf{Latencia Máxima:} 610 segundos
+    \item \textbf{Latencia Promedio:} 180 segundos
+    \item \textbf{Distribución de la Latencia:} en el 96.7\% de los casos la latencia se encontró entre 150 y 210 segundos. 
+    Menos de un 2\% de registros mostraron latencia entre 210 y 240 segundos. 
+    Sólo 26 registros tuvieron latencia por encima de 240 segundos y nunca mayores a 630 segundos 
+\end{itemize}
+
+
+Para \textbf{Kappa} se presentan los siguientes resultados: 
+
+\begin{itemize}
+    \item \textbf{Latencia Mínima:} 10 milisegundos
+    \item \textbf{Latencia Máxima:} 800 milisegundos
+    \item \textbf{Latencia Promedio:} 200 milisegundos
+    \item \textbf{Distribución de la Latencia:} 
+\end{itemize}
+
+En términos de Latencia hay una clara diferencia entre ambos sistemas, siendo Kappa mucho más rápido que Delta.
+Esto se debe en mayor medida, a las características que tiene Delta en el uso de Object Storage; mientras que Kappa está diseñado para trabajar con datos en tiempo real.
+De esta manera queda claro que si el escenario que se maneja requiere latencias menores a un minuto Kappa es la mejor opción. 
+Y si las necesidades son de latencias menores al segundo Kappa es la únicas opción posible.
+
+De hecho, con estos resultados no se puede decir que Delta sea una opción válida para procesamiento de datos en tiempo real. 
+Sin embargo, es importante destacar que la mayoría de los casos de uso en los que se implementan flujos de datos si bien requieren procesamiento contínuo, 
+menos de cinco minutos de latencia son una característica más que aceptable.
+
+\newpage
+\subsection{Uso de Recursos}
+
+El uso de recursos se refiere a la cantidad de recursos que utiliza el sistema para procesar los datos.
+En este caso, se midió en base a los mismos límites en el uso de recursos, la cantidad máxima de recursos que utilizó el sistema para procesar los datos.
+
+Para \textbf{Delta} se presentan los siguientes resultados:
+
+\begin{longtable}{|p{3cm}|c|c|c|c|}
+    \hline
+    \textbf{Componente} & \textbf{Uso de CPU} & \textbf{Memoria} & \textbf{Almacenamiento} & \textbf{Transferencia} \\
+    \hline
+    Job Manager & 250\% & 3.5 GB & - & 5.9 GB \\
+    \hline
+    Task Manager 1 & 208\% & 9.7 GB & - & 86.1 GB \\
+    \hline
+    Task Manager 2 & 166\% & 7.6 GB & - & 45.2 GB \\
+    \hline
+    Task Manager 3 & 194\% & 8.5 GB & - & 40.2 GB \\
+    \hline
+    Task Manager 4 & 206\% & 7.5 GB & - & 10.9 GB \\
+    \hline
+    Kafka 1 & 234\% & 2.7 GB & 38 GB & 101.8 GB \\
+    \hline
+    Kafka 2 & 274\% & 2.7 GB & 38 GB & 101.9 GB \\
+    \hline
+    Kafka 3 & 176\% & 2.7 GB & 38 GB & 102.1 GB \\
+    \hline
+    Doris Frontend & 365\% & 3.6 GB & - & 1.1 GB \\
+    \hline
+    Doris Backend 1 & 331\% & 4.1 GB & 0 GB & 0.2 GB \\
+    \hline
+    Doris Backend 2 & 351\% & 4.1 GB & 0 GB & 0.2 GB \\
+    \hline
+    Doris Backend 3 & 340\% & 4.1 GB & 0 GB & 0.2 GB \\
+    \hline
+\end{longtable}
+
+
+Por su lado para \textbf{Kappa} se presentan los siguientes resultados:
+
+\begin{longtable}{|p{3cm}|c|c|c|c|}
+    \hline
+    \textbf{Componente} & \textbf{Uso de CPU} & \textbf{Memoria} & \textbf{Almacenamiento} & \textbf{Transferencia} \\
+    \hline
+    Job Manager & X\% & X GB & - & X GB \\
+    \hline
+    Task Manager 1 & X\% & X GB & - & X GB \\
+    \hline
+    Task Manager 2 & X\% & X GB & - & X GB \\
+    \hline
+    Task Manager 3 & X\% & X GB & - & X GB \\
+    \hline
+    Task Manager 4 & X\% & X GB & - & X GB \\
+    \hline
+    Kafka 1 & 234\% & X GB & X GB & X GB \\
+    \hline
+    Kafka 2 & 274\% & X GB & X GB & X GB \\
+    \hline
+    Kafka 3 & 176\% & X GB & X GB & X GB \\
+    \hline
+    Doris Frontend & X\% & X GB & - & X GB \\
+    \hline
+    Doris Backend 1 & X\% & X GB & X GB & X GB \\
+    \hline
+    Doris Backend 2 & X\% & X GB & X GB & X GB \\
+    \hline
+    Doris Backend 3 & X\% & X GB & X GB & X GB \\
+    \hline
+\end{longtable}
+
+Es claro que Kafka tiene una gran incidencia en el consumo de recursos. Teniendo para ambos casos muchísimo uso de CPU, RAM y uso de red. 
+El uso de disco tampoco es un elemento despreciable a considerar, en especial para Kappa que necesita tener sus nodos de Kafka siempre a máxima potencia 
+y son estos los que presentan el mayor desafío para la escalabilidad del sistema debido a que si no se configuran las politicas de retención apropiadamente, 
+los costos pueden crecer desmesuradamente.
+
+
+
+\newpage
