@@ -1,5 +1,22 @@
 % Abstract
 \renewcommand{\abstractname}{Abstract}
 \begin{abstract}
-    Aquí va el resumen...
+    En el contexto del monitoreo remoto de pacientes, 
+    el procesamiento eficiente y confiable de datos de sensores en tiempo real se vuelve un requisito fundamental para la prevención y mejora de la atención médica. 
+    
+    Este trabajo analiza y compara dos arquitecturas modernas de procesamiento de datos en streaming: \textit{Kappa} y \textit{Delta}, 
+    con el objetivo de determinar cuál resulta más adecuada para este tipo de sistemas.
+
+    Se desarrolló un sistema de monitoreo basado en sensores que simula un entorno hospitalario y utiliza puntuaciones derivadas del sistema \textit{NEWS2} para evaluar el estado de salud de los pacientes. 
+    Sobre este entorno se implementaron ambas arquitecturas utilizando un stack tecnológico compuesto por herramientas como Apache Kafka, Apache Flink y Apache Doris, entre otras.
+
+    La comparación se realizó en función de métricas técnicas como latencia, throughput, uso de recursos y tolerancia a fallos, 
+    así como también aspectos operativos y de costo. 
+    
+    Los resultados muestran que la arquitectura \textit{Kappa} ofrece menores tiempos de latencia, 
+    mientras que la arquitectura \textit{Delta} destaca por su alto throughtput, escalabilidad, gestión operativa 
+    y flexibilidad para reprocesamiento histórico y mejor integración con almacenamiento analítico.
+
+    Finalmente, se discuten los desafíos asociados a la implementación de estas arquitecturas en entornos de salud, 
+    y se presentan recomendaciones para su adopción según las necesidades específicas del sistema.
 \end{abstract}
