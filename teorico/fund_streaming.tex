@@ -44,9 +44,9 @@ adecuado para análisis profundos de grandes volúmenes de datos históricos.\pa
 La evolución de las arquitecturas de procesamiento de datos ha sido impulsada por la necesidad de manejar volúmenes cada vez mayores de datos en tiempo real:
 
 \begin{enumerate}
-    \item \textbf{Arquitecturas por lotes}: Sistemas tradicionales como Hadoop MapReduce, diseñados para procesar grandes volúmenes de datos estáticos \parencite{dean2008mapreduce}.
+    \item \textbf{Arquitecturas batch}: Sistemas tradicionales como Hadoop MapReduce, diseñados para procesar grandes volúmenes de datos estáticos \parencite{dean2008mapreduce}.
     \item \textbf{Arquitecturas de streaming puro}: Como Apache Storm, enfocadas en el procesamiento en tiempo real pero con limitaciones en la consistencia y exactitud \parencite{toshniwal2014storm}.
-    \item \textbf{Arquitectura Lambda}: Propuesta por Marz \parencite{marz2011cap}, combina procesamiento por lotes y en tiempo real para balancear latencia, throughput y tolerancia a fallos.
+    \item \textbf{Arquitectura Lambda}: Propuesta por Marz \parencite{marz2011cap}, combina procesamiento batch y en tiempo real para balancear latencia, throughput y tolerancia a fallos.
     \item \textbf{Arquitectura Kappa}: Introducida por Kreps \parencite{kreps2014questioning}, simplifica Lambda tratando todos los datos como streams.
     \item \textbf{Arquitectura Delta}: Desarrollada por Databricks, también como respuesta a Lambda optimiza el procesamiento de datos tanto batch como streaming \parencite{deltalake} \parencite{delta}.
 \end{enumerate}

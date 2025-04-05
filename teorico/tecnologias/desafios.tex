@@ -1,98 +1,53 @@
-\subsection{Desafíos}
+\section{Desafíos en Arquitecturas de Streaming}
+Diseñar e implementar sistemas de procesamiento de datos en tiempo real conlleva varios desafíos técnicos y operativos. A continuación se presentan los más relevantes para arquitecturas de streaming como Kappa y Delta.
 
-Las tecnologías que se han mencionado son parte de los bloques que componen un sistema de Big Data para Streaming.
-Sin embargo, solo con el hecho de usarlas no alcanza para construir estos sistemas; debido a que existen desafíos que
-si bien las tecnologías ayudan a mitigar, deben tenerse en cuenta para cumplir con éxito el propósito que tienen dichos sistemas.
+\subsection{Procesamiento Fuera de Orden}
+En sistemas distribuidos, los eventos pueden llegar desordenados debido a retrasos de red o procesamiento. Para mitigar este problema, se utilizan:
+\begin{itemize}
+    \item \textbf{Ventanas con tolerancia al desorden} (\textit{allowed lateness})
+    \item \textbf{Algoritmos tolerantes al orden de llegada}
+\end{itemize}
+Ambas soluciones incrementan la latencia del sistema, por lo que se debe alcanzar un equilibrio entre precisión y velocidad.
 
-A continuación se describirán brevemente los desafíos más importantes que deben tenerse en cuenta a la hora de diseñar estos sistemas.
+\subsection{Manejo de Archivos Pequeños}
+El procesamiento continuo genera muchos archivos pequeños, lo que reduce la eficiencia de lectura/escritura y afecta negativamente el rendimiento. Para resolverlo se aplican técnicas como:
+\begin{itemize}
+    \item Compactación periódica
+    \item Uso de formatos columnar como Parquet
+    \item Estrategias de particionamiento y organización eficientes
+\end{itemize}
 
-\subsubsection{Procesamiento fuera de Orden}
-Los sistemas distribuidos tienen la característica de que los eventos pueden no ser procesados en el orden en que fueron generados. 
-Por ejemplo, podría pasar que dos eventos generados en lugares geográficamente distintos viajen por dos conexiones de red con velocidades
-dispares y lleguen al sistema desordenados. Más aún, los componentes de un sistema distribuido estan asimismos distribuidos por lo que 
-podría pasar que aunque lleguen en ordern el procesamiento de dichos mensajes podría darse fuera de orden. 
+\subsection{Gestión del Estado}
+El manejo de estado distribuido es clave para mantener agregaciones, ventanas y cálculos históricos. Requiere:
+\begin{itemize}
+    \item \textbf{Checkpointing confiable} para tolerancia a fallos
+    \item \textbf{Escalabilidad del backend de estado} (e.g. RocksDB)
+    \item \textbf{Estrategias de limpieza} para evitar crecimiento no controlado
+\end{itemize}
 
-Esto provoca, fundamentalmente, una posible inconsistencia en los datos. Como se describió previamente, se puede decir que de todas formas
-eventualmente el sistema será consistente. El problema radica en que se necesita asegurar que el sistema es tan consistente como sea posible, 
-tan seguido como sea posible. Para esto, lo que se suele hacer es tener una ventana de espera para los mensajes de forma de recibirlos si llegan
-un poco más tarde que otros mensajes o por otro lado complejizar los algoritmos de procesamiento utilizados para soportar procesamiento fuera de orden.
-En cualquier caso ambas soluciones llevan a un aumento de la latencia, por lo que se debe llegar a un compromiso entre una propiedad del sistema y la otra.
+\subsection{Backpressure}
+Cuando el sistema no puede procesar datos tan rápido como los recibe, se produce backpressure. Un buen diseño debe:
+\begin{itemize}
+    \item Detectar desequilibrios entre fuentes y sinks
+    \item Ajustar dinámicamente el ritmo de procesamiento
+    \item Monitorear métricas como tiempo en cola y uso de buffers
+\end{itemize}
 
+\subsection{Reprocesamiento}
+Reprocesar datos históricos por errores o nuevas reglas de negocio requiere:
+\begin{itemize}
+    \item \textbf{Persistencia de eventos crudos}
+    \item \textbf{Mecanismos de replay controlado}
+    \item \textbf{Separación de recursos} para evitar degradar el procesamiento en línea
+\end{itemize}
 
-\subsubsection{Manejo de Archivos Pequeños}
-Un desafío que puede parecer contraintuitivo es el Manejo de Archivos Pequeños. En este caso, los procesadores de datos reciben muchos archivos o eventos
-de poco tamaño, que no permiten aprovechar adecuadamente la capacidad de procesamiento y almacenamiento del sistema. 
-Esto se debe a que leer y escribir muchos archivos pequeños es menos eficiente que leer y escribir pocos archivos grandes. Esto puede generar que se 
-pase más tiempo gestionando estos archivos que procesando los datos en si mismos. 
-Esto por su parte genera un problema de latencia. 
+\subsection{Conformidad Normativa}
+Cumplir con normativas como GDPR o HIPAA impone requerimientos estrictos:
+\begin{itemize}
+    \item \textbf{Cifrado en tránsito y en reposo}
+    \item \textbf{Gestión de consentimiento y derecho al olvido}
+    \item \textbf{Trazabilidad y auditoría de accesos}
+\end{itemize}
 
-
-\subsubsection{Gestión del Estado}
-
-La gestión del estado en representa un gran desafío técnico en el procesamiento de datos.
-Estos sistemas deben manejar un flujo constante de datos entrantes mientras mantienen y actualizan información histórica necesaria para realizar cálculos y análisis significativos. 
-Esta tarea se vuelve particularmente desafiante debido al volumen de datos que debe procesarse, junto con la necesidad de mantener tiempos de respuesta bajos y garantizar la precisión de los resultados.
-
-La naturaleza distribuida de estos sistemas añade una capa adicional de complejidad ya que el estado debe distribuirse entre múltiples nodos de procesamiento, 
-lo que introduce desafíos en términos de coordinación y consistencia. Cada nodo debe ser capaz de acceder y modificar su porción del estado de eficientemente, 
-mientras mantiene una vista coherente del sistema en su conjunto. 
-
-Adicionalmente la tolerancia a fallos y la durabilidad del estado son aspectos críticos que no pueden ignorarse.
-Las limitaciones en los recursos representan otro desafío ya que la memoria disponible es finita, pero el estado puede crecer indefinidamente. 
-
-Todos estos desafíos deben abordarse pensando en mantener la disponibilidad, el rendimiento y la latencia del sistema en niveles aceptables.
-
-\subsubsection{Backpressure}
-
-El backpressure es un mecanismo que aborda el desafío del desequilibrio entre las tasas de producción y consumo de datos. 
-Cuando los productores generan datos más rápidamente de lo que los consumidores pueden procesarlos, surge el riesgo de sobrecargar el sistema. 
-El backpressure actúa como un sistema de control de flujo que permite evitar el desbordamiento de recursos.
-
-La implementación efectiva de backpressure requiere coordinación entre los diferentes componentes del sistema de manera dinámica y adaptativo, ajustándose continuamente a las condiciones cambiantes del sistema. 
-Sin embargo, implementar estos mecanismos de señalización de manera eficiente en sistemas distribuidos presenta desafíos significativos, especialmente cuando hay múltiples productores y consumidores involucrados.
-
-La gestión del backpressure tiene implicaciones directas en la latencia y el rendimiento del sistema, 
-ya que se puede generar un aumento en la latencia de procesamiento mientras el sistema se ajusta para manejar la carga. 
-Esta compensación entre latencia y throughput debe manejarse cuidadosamente para mantener el sistema dentro de sus objetivos de nivel de servicio.
-
-\subsubsection{Reprocesamiento}
-
-El reprocesamiento surge cuando se necesita volver a procesar datos históricos debido a diversos factores como errores en el código, cambios en la lógica de negocio, o la necesidad de actualizar resultados anteriores.
-Este proceso, es complejo debido a la naturaleza continua y distribuida de los sistemas de streaming, donde el procesamiento de datos nuevos no puede detenerse mientras se realiza el reprocesamiento de datos históricos.
-
-La gestión de recursos durante el reprocesamiento presenta desafíos particulares, ya que se debe balancear la carga entre el procesamiento de datos en tiempo real y el reprocesamiento de datos históricos. 
-Esto es crítico para mantener el rendimiento del sistema y que el reprocesamiento termine en un tiempo razonable.
-La consistencia de los datos durante el reprocesamiento es otro aspecto crucial ya que se debe garantizar la coherencia con el estado actual del sistema y que no se degrade la calidad de los datos. 
-
-\subsubsection{Conformidad Normativa}
-
-La conformidad normativa representa un desafío que va más allá de los aspectos puramente técnicos, abarcando requisitos legales, éticos y de privacidad que deben cumplirse rigurosamente. 
-De las más importantes son HIPAA para datos de salud y GDPR para datos personales en Europa. 
-Los sistemas deben implementar mecanismos robustos que garanticen la protección de datos sensibles mientras mantienen la funcionalidad y el rendimiento del procesamiento en tiempo real.
-
-La gestión del consentimiento y los derechos de los usuarios presenta desafíos particulares en sistemas de tiempo real. 
-Bajo GDPR, los usuarios tienen el derecho de acceder, modificar y eliminar sus datos personales (llamado "derecho al olvido"), 
-lo que requiere que los sistemas puedan rastrear y gestionar estos datos a través de toda su estructura de procesamiento. 
-En el caso de HIPAA, se requiere mantener registros detallados de quién accede a la información médica protegida y con qué propósito.
-
-La seguridad y el cifrado de datos plantean otro conjunto de desafíos. 
-Los datos sensibles deben estar cifrados tanto en tránsito como en reposo. 
-El sistema debe ser capaz de cifrar y descifrar datos rápidamente sin introducir latencias significativas, mientras mantiene la integridad y la trazabilidad de los datos. 
-Además, se deben implementar controles de acceso granulares y mecanismos de autenticación robustos que cumplan con los requisitos específicos de cada regulación, 
-como las salvaguardas administrativas, físicas y técnicas requeridas por HIPAA.
-
-\newpage
-
-Por su parte la retención y eliminación de datos sensibles presentan desafíos únicos. 
-Las regulaciones pueden requerir que ciertos datos se conserven durante períodos específicos mientras otros deben eliminarse tan pronto como ya no sean necesarios. 
-Se debe mantener un equilibrio entre cumplir con los requisitos de retención y mantener el rendimiento del sistema, 
-especialmente cuando se trata de datos históricos que pueden ser necesarios para análisis o auditorías.
-
-La auditoría y el monitoreo son aspectos cruciales para demostrar conformidad. 
-Se debe mantener registros detallados de todas las operaciones de procesamiento de datos, especialmente aquellas que involucran datos sensibles o protegidos. 
-Estos registros deben ser inmutables y seguros, permitiendo reconstruir quién accedió a qué datos, cuándo y con qué propósito. 
-En el caso de HIPAA, esto incluye mantener registros de acceso a información médica protegida durante al menos seis años, 
-mientras que GDPR requiere la capacidad de demostrar el cumplimiento en cualquier momento a través de registros detallados de procesamiento.
-
-En sistemas distribuidos que procesan datos continuamente, implementar estas capacidades sin interrumpir el flujo de procesamiento o comprometer la integridad del sistema se vuelve extremadamente complejo. 
-\newpage
+\medskip
+Estos desafíos deben abordarse desde la arquitectura, el diseño de datos y las políticas operativas para garantizar un sistema robusto, escalable y confiable.

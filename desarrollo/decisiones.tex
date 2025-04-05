@@ -1,0 +1,32 @@
+\section{Decisiones Técnicas de Arquitectura}
+
+En esta sección se detallan las principales decisiones de diseño arquitectónico tomadas durante la implementación del sistema,
+ con foco en los aspectos de alta disponibilidad, interoperabilidad, simplicidad operativa y escalabilidad futura.
+
+\subsection{Cluster de Kafka y ZooKeeper}
+Se configuró un clúster de Kafka con 3 brokers y 3 nodos de ZooKeeper. Esta arquitectura permite:
+\begin{itemize}
+    \item Alta disponibilidad y tolerancia a fallos de nodos individuales
+    \item Replicación de particiones con \texttt{replication.factor = 3}
+    \item Tolerancia a la pérdida de hasta un nodo en cada capa (brokers o ZooKeeper)
+\end{itemize}
+Esta configuración es apropiada para entornos productivos y garantiza durabilidad y disponibilidad en la capa de mensajería.
+
+\subsection{Despliegue de Apache Doris}
+Se implementaron 3 nodos Backend (BE), permitiendo la distribución de datos y procesamiento paralelo. 
+Sin embargo, sólo se desplegó una instancia de Frontend (FE), lo que representa un punto único de falla (\textit{Single Point of Failure}). 
+En un entorno de producción, se recomienda utilizar múltiples nodos FE en configuración maestro-seguidor para garantizar disponibilidad continua del servicio de consultas y acceso al catálogo.
+
+\subsection{Catálogo de Datos}
+Se optó por utilizar un catálogo basado en sistema de archivos (object storage) para el manejo de tablas analíticas, sin integración con Hive Metastore. 
+Esta decisión simplificó la infraestructura y redujo la complejidad operativa. Si bien esta elección limita la interoperabilidad entre motores de procesamiento, 
+resulta adecuada para soluciones encapsuladas donde no se requiere acceso simultáneo desde múltiples tecnologías.
+
+\subsection{Coordinación de Procesamiento}
+Se utilizó una única instancia de JobManager de Apache Flink. Esta configuración es suficiente para entornos controlados, pero representa una limitación en cuanto a tolerancia a fallos. 
+En escenarios reales, se recomienda implementar Flink en modo de alta disponibilidad, utilizando múltiples JobManagers (activo y pasivos), un backend compartido para almacenamiento de estado (por ejemplo, MinIO o HDFS), 
+y un coordinador de liderazgo como ZooKeeper o Kubernetes.
+
+\subsection{Justificación General}
+Las decisiones tomadas responden a un enfoque de prototipo funcional, priorizando la validación de las arquitecturas Kappa y Delta en condiciones controladas. 
+Se buscó un equilibrio entre fidelidad técnica y simplicidad de despliegue, permitiendo reproducibilidad y flexibilidad sin incurrir en la complejidad de un entorno productivo completo.
