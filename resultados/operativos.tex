@@ -6,58 +6,142 @@ El hardware donde se realizó la prueba cuenta con 64GB de RAM y 24 núcleos de 
 
 Variaron no solo los tiempos de carga del total del conjunto de datos, sino también el uso de recursos.
 
-
 \subsection{Throughput}
 El throughput se refiere a la cantidad de datos procesados por unidad de tiempo.
 En este caso, se midió en base a los mismos límites en el uso de recursos, la cantidad de datos que podían ser ingestados por el sistema hasta completar la carga total.
 
-Para \textbf{Delta} se pudieron ingestar en un promedio de 1300 registros por segundo; y la carga completa llevó alrededor de 23 horas y media.
-Para \textbf{Kappa} se pudieron ingestar en un promedio de X registros por segundo; y la carga completa llevó alrededor de Y horas.
+Para \textbf{Delta} se pudieron ingestar en un promedio de 1300 registros por segundo; y la carga completa llevó 88438 segundos.
+Para \textbf{Kappa} se pudieron ingestar en un promedio de 792 registros por segundo; y la carga del 61\% de los datos llevó 84879 segundos.
 
-Es importante destacar que la carga de Kappa debió generó problemas de rendimiento en el sistema ya que hubieron episodios en los que el disco fué totalmente llenado. 
-Si bien esto ocurre por ser un sistema compartido con otras aplicaciones, esto no fué el caso para Delta, que no tuvo problemas de rendimiento.
-Se entiende entonces que a nivel de gestión de disco al menos, Delta es más eficiente que Kappa. 
+La carga de datos en Kappa no pudo completarse completamente ya que en todas las instancias en que se realizó, 
+el hardware usado para el despliegue de la arquitectura consumió toda la memoria de su disco duro.  
+
+Se entiende entonces que a nivel de gestión (al menos de disco), Delta es más eficiente que Kappa.
+A su vez, a nivel de cantidad de mensajes que se pueden consumir por segundo, Delta fué dos veces más eficiente que Kappa.
+
+\newpage
 
 \subsection{Latencia}
 
 La latencia se refiere al tiempo que tarda un dato en ser procesado por el sistema.
 En este caso, se midió en base a los mismos límites en el uso de recursos, la cantidad de tiempo que tardó un dato en pasar por todo el flujo de datos.
 
-Para \textbf{Delta} se presentan los siguientes resultados: 
+La latencia se midió en segundos y los resultados fueron los siguientes:
 
-\begin{itemize}
-    \item \textbf{Latencia Mínima:} 91 segundos
-    \item \textbf{Latencia Máxima:} 610 segundos
-    \item \textbf{Latencia Promedio:} 180 segundos
-    \item \textbf{Distribución de la Latencia:} en el 96.7\% de los casos la latencia se encontró entre 150 y 210 segundos. 
-    Menos de un 2\% de registros mostraron latencia entre 210 y 240 segundos. 
-    Sólo 26 registros tuvieron latencia por encima de 240 segundos y nunca mayores a 630 segundos 
-\end{itemize}
+\begin{longtable}{|p{3cm}|c|c|c|}
+    \hline
+    \textbf{Arquitectura} & \textbf{Mínima} & \textbf{Máxima} & \textbf{Promedio} \\
+    \hline
+    Kappa & -1 & 322 & 0.18 \\
+    \hline
+    Delta & 91 & 610 & 180 \\
+    \hline
+\end{longtable}
 
+\begin{longtable}{|l|r|r|}
+    \hline
+    \textbf{Rango (segundos)} & \textbf{Registros} & \textbf{Porcentaje (\%)} \\
+    \hline
+    \endhead
+    90-120 & 12247607 & 64,1047 \\
+    \hline
+    120-150 & 13210708 & 24,1907 \\
+    \hline
+    150-180 & 7582878 & 47,3081 \\
+    \hline
+    180-210 & 7892041 & 49,2370 \\
+    \hline
+    210-240 & 299165 & 1,8664 \\
+    \hline
+    240-270 & 16,24 & 8,1E-06 \\
+    \hline
+    270-300 & 116,86 & 6,9E-05 \\
+    \hline
+    330-360 & 95,61 & 9,3E-05 \\
+    \hline
+    390-420 & 31,87 & 6,4E-05 \\
+    \hline
+    420-450 & 16,24 & 8,1E-06 \\
+    \hline
+    600-630 & 16,24 & 8,1E-06 \\
+    \hline
+    \caption{Distribución de Latencia en Delta} \\
+\end{longtable}
 
-Para \textbf{Kappa} se presentan los siguientes resultados: 
+\begin{longtable}{|l|r|r|}
+    \hline
+    \textbf{Rango (segundos)} & \textbf{Registros} & \textbf{Porcentaje (\%)} \\
+    \hline
+    \endhead
+    <1 & 9962080 & 81,48 \\
+    \hline
+    1-10 & 2264616 & 18,52 \\
+    \hline
+    10-60 & 60 & 0,0005 \\
+    \hline
+    60-180 & 17 & 0,00014 \\
+    \hline
+    180-300 & 17 & 0,00014 \\
+    \hline
+    >300 & 2 & 1,63575E-05 \\
+    \hline
+    \caption{Distribución de Latencia en Kappa} \\
+\end{longtable}
 
-\begin{itemize}
-    \item \textbf{Latencia Mínima:} 10 milisegundos
-    \item \textbf{Latencia Máxima:} 800 milisegundos
-    \item \textbf{Latencia Promedio:} 200 milisegundos
-    \item \textbf{Distribución de la Latencia:} 
-\end{itemize}
+\newpage
 
-En términos de Latencia hay una clara diferencia entre ambos sistemas, siendo Kappa mucho más rápido que Delta.
-Esto se debe en mayor medida, a las características que tiene Delta en el uso de Object Storage; mientras que Kappa está diseñado para trabajar con datos en tiempo real.
-De esta manera queda claro que si el escenario que se maneja requiere latencias menores a un minuto Kappa es la mejor opción. 
-Y si las necesidades son de latencias menores al segundo Kappa es la únicas opción posible.
+Es interesante ver los resultados. Ya que la latencia mínima de Kappa es negativa. 
+Esto se debe a que el conector de kafka que se usa, no actualiza el campo \textbf{aggregation\_timestamp} cuando se actualiza el registro porque llegan nuevos datos.
+Esto muestra que también muestra un problema de diseño del trabajo de inserción al calcular los datos pero no se encontró una solución al mismo. 
+Por otro lado, se registroó el tiempo de latencia de los registros que se insertaron en el sistema; sin embargo, debido al conector de Flink con Doris, 
+este proceso se realiza en batch, por lo que nuevamente es posible que el registro de tiempo de inserción sea anterior al de procesamiento. 
 
-De hecho, con estos resultados no se puede decir que Delta sea una opción válida para procesamiento de datos en tiempo real. 
-Sin embargo, es importante destacar que la mayoría de los casos de uso en los que se implementan flujos de datos si bien requieren procesamiento contínuo, 
-menos de cinco minutos de latencia son una característica más que aceptable.
+Por otro lado, Delta muestra una latencia de varias magnitudes superior a Kafka. Esto es esperable debido al uso extensivo de Object Storage;
+ya que las lecturas en disco en conjunto con la transferencia por red suelen ser mucho más lentas que las lecturas en memoria.
+Sin embargo, es importante destacar que la latencia máxima de Delta es de 610 segundos, lo que implica que en el peor de los casos,
+el sistema tardó 10 minutos en procesar un dato.
+Esto es un tiempo aceptable para la mayoría de los casos de uso en los que se implementan flujos de datos; 
+aunque no se puede decir que lo sea para un sistema de procesamiento de datos en tiempo real. 
 
 \newpage
 \subsection{Uso de Recursos}
 
 El uso de recursos se refiere a la cantidad de recursos que utiliza el sistema para procesar los datos.
 En este caso, se midió en base a los mismos límites en el uso de recursos, la cantidad máxima de recursos que utilizó el sistema para procesar los datos.
+
+Para \textbf{Kappa} se presentan los siguientes resultados:
+
+\begin{longtable}{|p{3cm}|c|c|c|c|}
+    \hline
+    \textbf{Componente} & \textbf{Uso de CPU} & \textbf{Memoria} & \textbf{Almacenamiento} & \textbf{Transferencia} \\
+    \hline
+    Job Manager & 134\% & 1.8 GB & - & 54 GB \\
+    \hline
+    Task Manager 1 & 260\% & 6.2 GB & - & 230 GB \\
+    \hline
+    Task Manager 2 & 244\% & 6.3 GB & - & 252 GB \\
+    \hline
+    Task Manager 3 & 272\% & 6.2 GB & - & 243 GB \\
+    \hline
+    Task Manager 4 & 256\% & 6.4 GB & - & 240 GB \\
+    \hline
+    Kafka 1 & 250\% & 8.2 GB & 234 GB & 255 GB \\
+    \hline
+    Kafka 2 & 282\% & 8.4 GB & 234 GB & 255 GB \\
+    \hline
+    Kafka 3 & 268\% & 8.5 GB & 234 GB & 255 GB \\
+    \hline
+    Doris Frontend & 370\% & 2.4 GB & - & 0.55 GB \\
+    \hline
+    Doris Backend 1 & 374\% & 4.2 GB & 0.234 GB & 0.1 GB \\
+    \hline
+    Doris Backend 2 & 345\% & 4.2 GB & 0.234 GB & 0.1 GB \\
+    \hline
+    Doris Backend 3 & 356\% & 4.3 GB & 0.234 GB & 0.1 GB \\
+    \hline
+    MinIO & 127\% & 4.2 GB & 384 GB & 386 GB \\
+    \hline
+\end{longtable}
 
 Para \textbf{Delta} se presentan los siguientes resultados:
 
@@ -88,47 +172,32 @@ Para \textbf{Delta} se presentan los siguientes resultados:
     Doris Backend 2 & 351\% & 4.1 GB & 0 GB & 0.2 GB \\
     \hline
     Doris Backend 3 & 340\% & 4.1 GB & 0 GB & 0.2 GB \\
+    \hline 
+    MinIO & 127\% & 3.8 GB & 8.4 GB & 374 GB \\
     \hline
 \end{longtable}
 
+\newpage
 
-Por su lado para \textbf{Kappa} se presentan los siguientes resultados:
+Acorde con lo esperado, Kappa requiere un mayor uso de recursos para los nodos de Kafka que Delta.
+Por su lado, Delta requiere un mayor uso de recursos para los nodos de procesamiento. También para el nodo de frontend de Doris. 
+Aunque es notablemente menor el uso de memoria que requiere de los nodos Kafka.
 
-\begin{longtable}{|p{3cm}|c|c|c|c|}
-    \hline
-    \textbf{Componente} & \textbf{Uso de CPU} & \textbf{Memoria} & \textbf{Almacenamiento} & \textbf{Transferencia} \\
-    \hline
-    Job Manager & X\% & X GB & - & X GB \\
-    \hline
-    Task Manager 1 & X\% & X GB & - & X GB \\
-    \hline
-    Task Manager 2 & X\% & X GB & - & X GB \\
-    \hline
-    Task Manager 3 & X\% & X GB & - & X GB \\
-    \hline
-    Task Manager 4 & X\% & X GB & - & X GB \\
-    \hline
-    Kafka 1 & 234\% & X GB & X GB & X GB \\
-    \hline
-    Kafka 2 & 274\% & X GB & X GB & X GB \\
-    \hline
-    Kafka 3 & 176\% & X GB & X GB & X GB \\
-    \hline
-    Doris Frontend & X\% & X GB & - & X GB \\
-    \hline
-    Doris Backend 1 & X\% & X GB & X GB & X GB \\
-    \hline
-    Doris Backend 2 & X\% & X GB & X GB & X GB \\
-    \hline
-    Doris Backend 3 & X\% & X GB & X GB & X GB \\
-    \hline
-\end{longtable}
+El uso de CPU es similar en las dos arquitecturas, aunque Delta tiene más diferencias entre nodos del mismo tipo. 
+Probablemente sea debido a un desbalanceo en el paralelismo de los trabajos de procesamiento. 
 
-Es claro que Kafka tiene una gran incidencia en el consumo de recursos. Teniendo para ambos casos muchísimo uso de CPU, RAM y uso de red. 
-El uso de disco tampoco es un elemento despreciable a considerar, en especial para Kappa que necesita tener sus nodos de Kafka siempre a máxima potencia 
-y son estos los que presentan el mayor desafío para la escalabilidad del sistema debido a que si no se configuran las politicas de retención apropiadamente, 
-los costos pueden crecer desmesuradamente.
+La sorpresa más grande es el uso de almacenamiento y de transferencia de red. 
+Kappa requiere un uso de almacenamiento mucho mayor que Delta, y también un uso de transferencia de red mucho mayor.
+Esto se debe a que Delta guarda sus datos en Parquet, lo que lo hace muchísimo más eficiente que el formato de Kafka.
+Incluso, en el caso de Delta, todas las transformaciones de los datos están guardadas en Object Storage 
+y aún así el uso de almacenamiento es notablementemenor que en Kappa. 
 
+\newpage
 
+\subsection{Resultados}
+
+A nivel de throughput, Delta es más eficiente que Kappa. No solo eso sino que es más fácil de operar y consume menos recursos.
+A nivel de latencia, Kappa es más eficiente que Delta. Sin embargo, la latencia máxima de Delta es aceptable para la mayoría de los casos de uso.
+En cuanto a uso de memoria y procesamiento, ambas son similares. Aunque Delta es muchísimo mas eficiente en el uso de almacenamiento y transferencia de red. 
 
 \newpage

@@ -943,6 +943,118 @@
       \field{title}{Distributed Systems: Principles and Paradigms}
       \field{year}{2020}
     \endentry
+    \entry{rpm_pm}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=15beae2b6a9eed637323212aa3bbc03f}{%
+           family={Arora},
+           familyi={A\bibinitperiod},
+           given={Teena},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b90572a420da10989e28cd02dbc7b06e}{%
+           family={Balasubramanian},
+           familyi={B\bibinitperiod},
+           given={Venki},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9317ac5e48d9f4a294797cd75eae0cc3}{%
+           family={Stranieri},
+           familyi={S\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=236959c0d1bd5bb2076e785aaaf69ce3}{%
+           family={Menon},
+           familyi={M\bibinitperiod},
+           given={Varun\bibnamedelima G.},
+           giveni={V\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9fac540462734125f07604fc198bd313}
+      \strng{fullhash}{a9467bc2dc577735ef72ecb61e53c7db}
+      \strng{bibnamehash}{a9467bc2dc577735ef72ecb61e53c7db}
+      \strng{authorbibnamehash}{a9467bc2dc577735ef72ecb61e53c7db}
+      \strng{authornamehash}{9fac540462734125f07604fc198bd313}
+      \strng{authorfullhash}{a9467bc2dc577735ef72ecb61e53c7db}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{Modified Early Warning Score (MEWS) Visualization and Pattern Matching Imputation in Remote Patient Monitoring}
+      \field{volume}{12}
+      \field{year}{2024}
+      \field{pages}{74784\bibrangedash 74794}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1109/ACCESS.2024.3396274
+      \endverb
+      \keyw{Data visualization;Medical services;Biomedical monitoring;Patient monitoring;Hidden Markov models;Wireless communication;Data integrity;Remote monitoring;Clinical diagnosis;Pattern imputation;data integrity;visualized remote patient monitoring (VRPM);clinical decision support;wearable technology}
+    \endentry
+    \entry{rpm_iot}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=ea8d6f10af85fd6886fd60bdcbfd3a81}{%
+           family={V},
+           familyi={V\bibinitperiod},
+           given={Dankan\bibnamedelima Gowda},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1df300965150bb155ace030e76828b5e}{%
+           family={Joshi},
+           familyi={J\bibinitperiod},
+           given={Devendra},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bf424f4041a5b83f89d7367c5f25a648}{%
+           family={C},
+           familyi={C\bibinitperiod},
+           given={Senthil\bibnamedelima kumar},
+           giveni={S\bibinitperiod\bibinitdelim k\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2cbd3ae381a596d5d514f3053fd1afe8}{%
+           family={G},
+           familyi={G\bibinitperiod},
+           given={Madasamy\bibnamedelima Raja.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3365c977f4edf50e9435a47e5ef79aba}{%
+           family={D},
+           familyi={D\bibinitperiod},
+           given={Srinivas.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f2903b4826772538ece6a382e97a871c}{%
+           family={Habeeb},
+           familyi={H\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c09658c50c3af2060aa494e6748c16eb}
+      \strng{fullhash}{c40c83e18a2fc9ab02b536eb6cc10691}
+      \strng{bibnamehash}{c40c83e18a2fc9ab02b536eb6cc10691}
+      \strng{authorbibnamehash}{c40c83e18a2fc9ab02b536eb6cc10691}
+      \strng{authornamehash}{c09658c50c3af2060aa494e6748c16eb}
+      \strng{authorfullhash}{c40c83e18a2fc9ab02b536eb6cc10691}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{2024 Second International Conference on Intelligent Cyber Physical Systems and Internet of Things (ICoICI)}
+      \field{title}{Impact of IoT on Remote Patient Monitoring and Advancements in Telemedicine}
+      \field{year}{2024}
+      \field{pages}{319\bibrangedash 326}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/ICoICI62503.2024.10696558
+      \endverb
+    \endentry
   \enddatalist
   \datalist[entry]{ynt/global//global/global}
     \entry{stonebraker2005one}{article}{}
@@ -1868,6 +1980,118 @@
       \field{isbn}{9781543057386; 9789081540629}
       \field{title}{Distributed Systems: Principles and Paradigms}
       \field{year}{2020}
+    \endentry
+    \entry{rpm_pm}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=15beae2b6a9eed637323212aa3bbc03f}{%
+           family={Arora},
+           familyi={A\bibinitperiod},
+           given={Teena},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b90572a420da10989e28cd02dbc7b06e}{%
+           family={Balasubramanian},
+           familyi={B\bibinitperiod},
+           given={Venki},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9317ac5e48d9f4a294797cd75eae0cc3}{%
+           family={Stranieri},
+           familyi={S\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=236959c0d1bd5bb2076e785aaaf69ce3}{%
+           family={Menon},
+           familyi={M\bibinitperiod},
+           given={Varun\bibnamedelima G.},
+           giveni={V\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9fac540462734125f07604fc198bd313}
+      \strng{fullhash}{a9467bc2dc577735ef72ecb61e53c7db}
+      \strng{bibnamehash}{a9467bc2dc577735ef72ecb61e53c7db}
+      \strng{authorbibnamehash}{a9467bc2dc577735ef72ecb61e53c7db}
+      \strng{authornamehash}{9fac540462734125f07604fc198bd313}
+      \strng{authorfullhash}{a9467bc2dc577735ef72ecb61e53c7db}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{Modified Early Warning Score (MEWS) Visualization and Pattern Matching Imputation in Remote Patient Monitoring}
+      \field{volume}{12}
+      \field{year}{2024}
+      \field{pages}{74784\bibrangedash 74794}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1109/ACCESS.2024.3396274
+      \endverb
+      \keyw{Data visualization;Medical services;Biomedical monitoring;Patient monitoring;Hidden Markov models;Wireless communication;Data integrity;Remote monitoring;Clinical diagnosis;Pattern imputation;data integrity;visualized remote patient monitoring (VRPM);clinical decision support;wearable technology}
+    \endentry
+    \entry{rpm_iot}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=ea8d6f10af85fd6886fd60bdcbfd3a81}{%
+           family={V},
+           familyi={V\bibinitperiod},
+           given={Dankan\bibnamedelima Gowda},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1df300965150bb155ace030e76828b5e}{%
+           family={Joshi},
+           familyi={J\bibinitperiod},
+           given={Devendra},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bf424f4041a5b83f89d7367c5f25a648}{%
+           family={C},
+           familyi={C\bibinitperiod},
+           given={Senthil\bibnamedelima kumar},
+           giveni={S\bibinitperiod\bibinitdelim k\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2cbd3ae381a596d5d514f3053fd1afe8}{%
+           family={G},
+           familyi={G\bibinitperiod},
+           given={Madasamy\bibnamedelima Raja.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3365c977f4edf50e9435a47e5ef79aba}{%
+           family={D},
+           familyi={D\bibinitperiod},
+           given={Srinivas.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f2903b4826772538ece6a382e97a871c}{%
+           family={Habeeb},
+           familyi={H\bibinitperiod},
+           given={Mohammad},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c09658c50c3af2060aa494e6748c16eb}
+      \strng{fullhash}{c40c83e18a2fc9ab02b536eb6cc10691}
+      \strng{bibnamehash}{c40c83e18a2fc9ab02b536eb6cc10691}
+      \strng{authorbibnamehash}{c40c83e18a2fc9ab02b536eb6cc10691}
+      \strng{authornamehash}{c09658c50c3af2060aa494e6748c16eb}
+      \strng{authorfullhash}{c40c83e18a2fc9ab02b536eb6cc10691}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{2024 Second International Conference on Intelligent Cyber Physical Systems and Internet of Things (ICoICI)}
+      \field{title}{Impact of IoT on Remote Patient Monitoring and Advancements in Telemedicine}
+      \field{year}{2024}
+      \field{pages}{319\bibrangedash 326}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/ICoICI62503.2024.10696558
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

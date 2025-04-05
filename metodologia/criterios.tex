@@ -4,10 +4,46 @@ Para evaluar y comparar las arquitecturas Kappa y Delta en el contexto del monit
 Estos servirán como base para una evaluación objetiva de las arquitecturas Kappa y Delta en el contexto del monitoreo remoto de pacientes, permitiendo tomar criterios 
 fundamentados para la elección de una u otra según el escenario.
 
-\input{metodologia/criterios/latencia}
-\input{metodologia/criterios/escalabilidad}
-\input{metodologia/criterios/historicos}
 \newpage
-\input{metodologia/criterios/costos}
+
+\subsection{Latencia y Rendimiento}
+
+Se implementarán mediciones a través de puntos de instrumentación estratégicos a lo largo de los componentes de la arquitectura.  
+Estos puntos de medición incluirían timestamps en los mensajes, métricas de procesamiento en los componentes intermedios, y el tiempo de escritura/lectura en la capa final. 
+
+Las métricas serán tomadas utilizando Prometheus y mostradas en un tablero de Grafana.
+
+Las métricas a considerar serán:
+\begin{itemize}
+    \item Tiempo de ingesta de histórico
+    \item Latencia de procesamiento
+\end{itemize}
+
+\subsection{Manejo de Datos Históricos}
+
+Se medirán especificamente la efectividad con la que el sistema permite consultar datos históricos y reprocesar toda la historia.
+Las métricas serán tomadas utilizando Prometheus y mostradas en un tablero de Grafana.
+
+\begin{itemize}
+    \item Tiempo de reprocesamiento de la historia completa
+    \item Uso de recursos en reprocesamiento de la historia completa
+\end{itemize}
+
+Se omitirá la implementación de un cambio en el modelo de procesamiento que implique reprocesar la historia completa, 
+pero se dará una propuesta de como hacerlo y se evaluará las implicancias de su puesta en producción manteniendo los dos sistemas funcionando e integrandolos eventualmente.
+
+\subsection{Costos Operativos}
+
+La implementación del sistema en contenedores, permitirá un monitoreo del uso de los recursos del sistema.
+Además, se plantearán cálculos, utilizando las calculadoras de costo que proveen los sistemas de nube Azure y AWS, que permitan dimensionar el costo operativo de estos sistemas.
+Las métricas serán tomadas utilizando Prometheus y mostradas en un tablero de Grafana.
+
+Las métricas a considerar serán:
+\begin{itemize}
+    \item Uso de memoria RAM
+    \item Uso de CPU
+    \item Uso de disco
+    \item Uso de red
+\end{itemize}
 
 \newpage

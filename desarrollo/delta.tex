@@ -28,6 +28,7 @@ y la gestión eficiente de metadatos, asegurando un rendimiento óptimo sin inte
 Por último, al estar basado en estándares abiertos, el sistema evita el vendor lock-in 
 y permite integración con diversas herramientas de BI, machine learning y ETL.
 
+\newpage
 \subsection{Stack Tecnológico}
 Para la capa de ingesta y transporte de datos se implementó \textbf{Apache Kafka}, 
 un sistema de mensajería distribuido que proporciona alta durabilidad, replicación y garantía en el orden de los eventos. 
@@ -57,12 +58,14 @@ y dado que no se necesitaba interactuar con un sistema existente; por lo que el 
 Esto último se logró mediante el uso de \textbf{MinIO}, un servidor de almacenamiento de objetos de código abierto que
 permite almacenar datos de forma segura y eficiente, y que además es compatible con el protocolo S3 de Amazon Web Services.
 
+\newpage
 Esta combinación tecnológica permite implementar efectivamente los principios de la Arquitectura Delta, 
 donde los datos fluyen desde las fuentes a través de Kafka, son procesados por Flink, 
 almacenados en diferentes capas mediante Paimon sobre MinIO, y finalmente consultados a través de Doris, 
 manteniendo en todo momento las propiedades ACID 
 y permitiendo el procesamiento continuo así como análisis retrospectivos sobre datos históricos.
 
+\newpage
 \subsection{Vista de Componentes}
 
 \begin{figure}[h]
@@ -157,6 +160,7 @@ Algo importante a destacar es que si bien en este caso se define el catalogo en 
 esto no debería ser necesario pues Flink permite definir mediante configuración sus catálogos disponibles.
 Sin embargo, no fue posible configurarlo de esta manera, por lo que se optó por definirlo en cada uno de los scripts.
 
+\newpage
 Un último detalle a destacar, es que se define el paralelismo en 2 de modo tal que se pueda aprovechar al máximo 
 las particiones del tópico de Kafka. Lo ideal sería definirlo en 3, 
 pero esto no es posible por una limitante de hardware en cuanto a memoria en el nodo que ejecuta el trabajo de procesamiento.

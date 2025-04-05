@@ -257,6 +257,7 @@ Todo esto sin cambiar el código del trabajo de procesamiento.
     ) as t;
 \end{lstlisting}
 
+\newpage
 Por último, se guarda el resultado del procesamiento en \textbf{Apache Doris} directamente desde Flink.
 Para esto, es necesario que la tabla en Doris haya sido creada previamente y además definir un nombre con el que llamarla en el trabajo de procesamiento.
 Luego, se puede insertar los datos y Flink y Doris acordarán la forma de hacerlo. Según las pruebas realizadas, esto se hace en batches. 

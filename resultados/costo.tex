@@ -1,0 +1,97 @@
+\section{Costos}
+
+\subsection{Suposiciones}
+Se calcularán los costos basados en el despliegue de cada arquitectura en AWS.
+
+La arquitectura desplegada en AWS consiste en:
+
+\begin{itemize}
+    \item Cluster de EKS (Elastic Kubernetes Service) distribuido en 4 Availability Zones (a, b, c, d)
+    \item AZ-a: Doris Backend 1, Task Manager 1, Kafka Broker 1, Zookeeper 1
+    \item AZ-b: Doris Backend 2, Task Manager 2, Kafka Broker 2, Zookeeper 2
+    \item AZ-c: Doris Backend 3, Task Manager 3, Kafka Broker 3, Zookeeper 3
+    \item AZ-d: Doris Frontend, Job Manager, Task Manager 4
+    \item Almacenamiento S3 nativo (sustituyendo MinIO)
+    \item Interconexión entre zonas de disponibilidad
+\end{itemize}
+
+El costo de EKS en AWS es de \$0.10 por hora por cada nodo del cluster.
+Por lo que el costo mensual base es de U\$S 72.00.
+
+Se asume además que todos los nodos experimentan una carga constante igual a la mayor carga registrada en las pruebas. 
+Esto asegura que se mantenga la disponibilidad del sistema.
+
+Por otro lado, Zookeeper no fué incluido en la comparación de costos operativos ya que no hace una diferencia. 
+Sin embargo, será incluido en el costo total de ambas arquitecturas.
+
+Se asume que el trafico de red entre los nodos de la misma zona de disponibilidad es gratuito. 
+Sin embargo, el tráfico entre zonas de disponibilidad tiene un costo de \$0.01 por GB.
+Y habiendo 4 zonas de disponibilidad que practicamente simétricas, se asume que se deistribuye el tráfico de forma equitativa entre todas ellas.
+
+Se le dará a cada nodo una instancia de AWS que permita de forma óptima el procesamiento de los datos. 
+Además, se asignará un volumen EBS de mínimo 50 GB a cada nodo.
+
+\newpage
+\subsection{Costos de la Arquitectura Kappa}
+
+\begin{longtable}{|p{3cm}|c|c|c|c|c|}
+    \hline
+    \textbf{Componente} & \textbf{Instancia} & \textbf{Base} & \textbf{Almacenamiento} & \textbf{Red} & \textbf{Total} \\
+    \hline
+    Job Manager & c5.large & \$47 & \$5 & \$0.4 & \$52.4 \\
+    \hline
+    Task Manager & r5.xlarge & \$137 & \$5 & \$1.7 & \$143.7 \\
+    \hline
+    Kafka Broker & c5.x2large & \$188 & \$23.4 & \$5.74 & \$217.14 \\
+    \hline
+    Zookeeper & m5.large & \$69.12 & \$5 & \$1.9 & \$76.02 \\
+    \hline
+    Doris Frontend & c5.xlarge & \$94 & \$5 & \$0.01 & \$99.01 \\
+    \hline
+    Doris Backend & c5.x2large & \$188 & \$5 & \$0.05 & \$193.05 \\
+    \hline
+    Almacenamiento S3 & - & \$0 & \$38.4 & \$2.9 & \$41.3 \\
+    \hline
+\end{longtable}
+
+El costo total de la arquitectura Kappa es de: 
+\newline
+\newline
+\text{\small\$52.4 + 4 * \$143.7 + 3 * \$217,14 + 3 * \$76.02 + \$99.01 + 3 * \$193.05 + \$41.3 + \$72.00 = 2298.11\\}
+\newpage
+
+
+\subsection{Costos de la Arquitectura Delta}
+
+\begin{longtable}{|p{3cm}|c|c|c|c|c|}
+    \hline
+    \textbf{Componente} & \textbf{Instancia} & \textbf{Base} & \textbf{Almacenamiento} & \textbf{Red} & \textbf{Total} \\
+    \hline
+    Job Manager & c5.large & \$47 & \$5 & \$0.4 & \$52.4 \\
+    \hline
+    Task Manager & r5.xlarge & \$137 & \$5 & \$0.65 & \$142.65 \\
+    \hline
+    Kafka Broker & c5.xlarge & \$94 & \$3.8 & \$2.30 & \$100,1 \\
+    \hline
+    Zookeeper & m5.large & \$69.12 & \$5 & \$1.9 & \$76.02 \\
+    \hline
+    Doris Frontend & c5.xlarge & \$94 & \$5 & \$0.01 & \$99.01 \\
+    \hline
+    Doris Backend & c5.x2large & \$188 & \$5 & \$0.05 & \$193.05 \\
+    \hline
+    Almacenamiento S3 & - & \$0 & \$0.84 & \$2.8 & \$3.64 \\
+    \hline
+\end{longtable}
+
+El costo total de la arquitectura Delta es de:
+\newline
+\newline
+\text{\small\$52.4 + 4 * \$142.65 + 3 * \$100.1 + 3 * \$76.02 + \$99.01 + 3 * \$193.05 + \$3.64 + \$72.00 = 1905.16\\}
+\newpage
+
+\subsection{Resultados}
+
+Se puede ver que la arquitectura Delta es más económica que la arquitectura Kappa.
+Además, a medida que crecen los datos este diferencial se hace más grande.
+La diferencia más grande se da en el uso extensivo de Kafka por parte de Kappa para el ruteo de mensajes. 
+Esto se traduce no sólo en un mayor costo de almacenamiento (aún usando almacenamiento en capas) sino también en un mayor costo de procesamiento.
