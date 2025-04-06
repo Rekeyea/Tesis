@@ -156,6 +156,7 @@ complementando con estrategias efectivas de particionamiento y organización.
 Para la optimización del rendimiento, estos formatos emplean diversas técnicas como la compactación automática de archivos, 
 estrategias de caching de datos para acceso rápido, utilización de formatos de archivo columnares como Parquet u ORC, 
 y la incorporación de capacidades avanzadas de indexación y filtrado optimizado. 
+
 La consistencia de los datos se garantiza mediante la implementación de transacciones ACID completas, 
 que proporcionan un sólido aislamiento entre operaciones de lectura y escritura, manejan conflictos de manera automática 
 y aseguran la consistencia en escenarios de operaciones concurrentes. 
@@ -164,7 +165,9 @@ En cuanto a la evolución y mantenimiento, estos formatos facilitan cambios de e
 Todas estas mecanismos trabajan en conjunto para proporcionar una solución completa para el manejo de datos a escala masiva,
 que como subproducto permite tratar la escritura de los archivos como un canal de mensajes sobre el que se puede hacer streaming.
 
-Los exponentes más importantes de estos formatos son: Delta Table, Apache Iceberg y Apache Hudi
+Los exponentes más importantes de estos formatos son: Delta Table, Apache Iceberg y Apache Hudi.
+Existen además otros formatos menos conocidos como Apache Paimon,
+que aunque no tienen la misma adopción, ofrecen características similares.
 
 \paragraph{Delta Lake}es un sistema de almacenamiento de datos diseñado por Databricks que utiliza archivos Parquet como base, 
 organizándolos en una estructura de directorios con dos componentes principales: 

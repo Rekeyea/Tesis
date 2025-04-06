@@ -1,64 +1,46 @@
 \chapter{Conclusiones}
-Contenido del capítulo...
 
+\section{Conclusiones Generales}
 
+El objetivo de este trabajo fue comparar las arquitecturas Kappa y Delta en el contexto del monitoreo remoto de pacientes mediante sensores.
+Se realizó un análisis exhaustivo de ambas arquitecturas, considerando sus componentes, flujos de datos y características técnicas.
+Se definieron métricas y criterios para la comparación objetiva de ambas arquitecturas, y se implementaron en un caso de uso simulado.
+Se implementó un sistema de monitoreo remoto de pacientes utilizando ambas arquitecturas, y se realizaron pruebas de rendimiento y funcionalidad.
+Los resultados obtenidos mostraron que ambas arquitecturas tienen ventajas y desventajas en diferentes contextos.
+La arquitectura Kappa es más adecuada para el procesamiento de datos en tiempo real, con baja latencia, pero requiere más recursos y es más compleja de implementar.
+La arquitectura Delta, por otro lado, es más escalable y eficiente en el uso de recursos, pero tiene tiempos de latencia más altos, lo que la hace menos adecuada para el procesamiento en tiempo real.
+En un sistema de salud integral, se podría combinar ambas arquitecturas, utilizando Delta como fuente de verdad y un subsistema basado en Kappa para el monitoreo intrahospitalario, donde la latencia es crítica.
+Esta combinación permitiría aprovechar las ventajas de ambas arquitecturas y mejorar la eficiencia del sistema en su conjunto.
+\newpage
+\section{Trabajo Futuro}
 
-% # 7. Future Research Directions
+Este trabajo puede abrir las puertas a futuras investigaciones en el área de monitoreo remoto de pacientes y análisis de datos en tiempo real.
+Se pueden explorar diversas direcciones de investigación:
 
-% ## 7.1 Parameter Optimization
+\begin{itemize}
+    \item \textbf{Optimización de Parámetros:} Investigar la optimización de ventanas de tiempo y tasas de degradación para mejorar la validez de las mediciones.
+    \item \textbf{Mejora de la Evaluación de Calidad:} Desarrollar métricas de calidad más precisas y protocolos de validación para nuevos tipos de dispositivos.
+    \item \textbf{Validación Clínica:} Comparar la efectividad del sistema gdNEWS2 con métodos tradicionales en entornos clínicos.
+    \item \textbf{Optimización del Sistema:} Investigar parámetros de rendimiento y capacidades de integración para mejorar la eficiencia del sistema.
+    \item \textbf{Tecnologías Emergentes:} Explorar el uso de tecnologías emergentes como inteligencia artificial y aprendizaje automático para mejorar la toma de decisiones en tiempo real.
+    \item \textbf{Interoperabilidad:} Investigar la interoperabilidad entre diferentes sistemas y dispositivos para mejorar la integración de datos.
+    \item \textbf{Seguridad y Privacidad:} Evaluar la seguridad y privacidad de los datos en el contexto del monitoreo remoto de pacientes.
+    \item \textbf{Experiencia del Usuario:} Investigar la experiencia del usuario y la usabilidad de las interfaces de monitoreo remoto.
+    \item \textbf{Governanza de Datos:} Desarrollar políticas y prácticas para la gobernanza de datos en el contexto del monitoreo remoto de pacientes.
+\end{itemize}
+\newpage
+\section{Reflexiones Finales}
 
-% ### Time Windows and Degradation Rates
-% - Empirical validation of freshness weight decay rates
-% - Patient-specific adaptation of maximum time windows
-% - Impact of circadian rhythms on measurement validity periods
-% - Optimization of quality weight component ratios
+Este trabajo me ha permitido explorar y comparar las arquitecturas Kappa y Delta en el contexto del monitoreo remoto de pacientes.
+Esta es un área en constante evolución y crecimiento, y la implementación de estas arquitecturas puede tener un impacto significativo en la atención médica.
 
-% ### Alert Thresholds
-% - Machine learning approaches for dynamic threshold adjustment
-% - Population-based threshold optimization
-% - Context-aware alert modification
-% - Alert fatigue reduction strategies
+Además, desde el punto de vista académico, este trabajo me ha permitido profundizar en el análisis de datos en tiempo real.
+Esto implicó la investigación, aprendizaje y aplicación de diferentes herramientas y tecnologías que no sólo aplican 
+a este trabajo sino que podré aplicar en el ámbito profesional.
 
-% ## 7.2 Quality Assessment Enhancement
+Este proceso ha sido desafiante porque he tenido que aprender a utilizar herramientas y tecnologías que no conocía previamente 
+y que no están tan difundidas como aquellas con las que trabajo habitualmente.
 
-% ### Device Quality Metrics
-% - Validation protocols for new device types
-% - Cross-device correlation studies
-% - Environmental impact on device accuracy
-% - Long-term drift detection methods
+Sin embargo, esto me ha permitido adquirir nuevas habilidades y conocimientos que serán valiosos en mi carrera profesional.
 
-% ### Measurement Conditions
-% - Automated detection of measurement interference
-% - Impact of patient activity on measurement quality
-% - Environmental factor quantification
-% - Multi-sensor fusion for condition assessment
-
-% ## 7.3 Clinical Validation
-
-% ### gdNEWS2 Effectiveness
-% - Comparison with traditional NEWS2 in clinical settings
-% - Impact on patient outcomes
-% - False positive/negative rate analysis
-% - Cost-benefit analysis of implementation
-
-% ### Score Adjustment Mechanisms
-% - Alternative degradation models
-% - Non-linear quality weight impacts
-% - Parameter interdependency effects
-% - Confidence level optimization
-
-% ## 7.4 System Optimization
-
-% ### Performance Parameters
-% - Optimal measurement frequencies
-% - Data validation thresholds
-% - Alert buffer periods
-% - System recovery procedures
-
-% ### Integration Capabilities
-% - Multi-device synchronization methods
-% - Data format standardization
-% - Legacy system compatibility
-% - Real-time processing optimization
-
-% These research directions aim to enhance the system's clinical validity while maintaining its practical implementability. Each area represents an opportunity for focused studies that could lead to meaningful improvements in remote patient monitoring capabilities.
+Por último, ha sido un proceso gratificante y espero poder seguir profundizando en el esta área en el futuro.
