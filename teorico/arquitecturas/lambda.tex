@@ -17,7 +17,7 @@ La Arquitectura Lambda se compone de tres capas fundamentales:
 
 \subsubsection{Serving Layer}
 \begin{itemize}
-\item Almacena las vistas pre-computadas de la capa de lotes.
+\item Almacena las vistas pre-computadas de la capa batch.
 \item Proporciona acceso de baja latencia a los resultados.
 \end{itemize}
 
@@ -52,7 +52,7 @@ La Arquitectura Lambda se compone de tres capas fundamentales:
 
 \subsection{Desafíos}
 \begin{itemize}
-\item \textbf{Complejidad}: La implementación y mantenimiento pueden ser complejos debido a la duplicación de lógica en las capas de lotes y velocidad.
+\item \textbf{Complejidad}: La implementación y mantenimiento pueden ser complejos debido a la duplicación de lógica en batch layer y speed layer.
 \item \textbf{Latencia}: El procesamiento batch genera latencia debido al tiempo de la actualización de vistas.
 \item \textbf{Costo}: Al utilizar recursos computacionales diferentes entre el procesamiento batch y en stream, esto puede requerir varios nodos computacionales, lo que incrementa los costos.
 \end{itemize}
