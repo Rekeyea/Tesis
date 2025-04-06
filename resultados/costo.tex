@@ -34,6 +34,14 @@ Además, se asignará un volumen EBS de mínimo 50 GB a cada nodo.
 \newpage
 \subsection{Costos de la Arquitectura Kappa}
 
+Para el caso de Kappa, se asumirá que tanto el almacenamiento como el uso de red medidos corresponden al 61\% del valor real si se hubiera podido completar la carga de datos completa.
+De esta forma, se consideran instancias que cumplan estos requisitos. 
+El caso más complejo es el de Kafka, que requiere un muy buen acceso a disco y una buena red. 
+Para acomodar los patrones de almacenamiento vistos en la prueba se propone el uso de una instancia i3.xlarge que proporciona 950 GB de almacenamiento SSD NVMe.
+Para el caso de Doris, se utilizará una instancia c5.xlarge para el frontend y una c5.x2large para el backend ya que requieren un buen uso de CPU y de red.
+Para el caso de Flink, se utilizará una instancia r5.xlarge para los nodos Task Manager  ya que proveen un muy buen rendimiento de memorua y una c5.large para el Job Manager.
+Para el caso de Zookeeper, se utilizará una instancia m5.large.  
+
 \begin{longtable}{|p{3cm}|c|c|c|c|c|}
     \hline
     \textbf{Componente} & \textbf{Instancia} & \textbf{Base} & \textbf{Almacenamiento} & \textbf{Red} & \textbf{Total} \\
@@ -42,7 +50,7 @@ Además, se asignará un volumen EBS de mínimo 50 GB a cada nodo.
     \hline
     Task Manager & r5.xlarge & \$137 & \$5 & \$1.7 & \$143.7 \\
     \hline
-    Kafka Broker & c5.x2large & \$188 & \$23.4 & \$5.74 & \$217.14 \\
+    Kafka Broker & i3.xlarge & \$227.76 & \$0 & \$40.41 & \$268.17 \\
     \hline
     Zookeeper & m5.large & \$69.12 & \$5 & \$1.9 & \$76.02 \\
     \hline
@@ -57,7 +65,7 @@ Además, se asignará un volumen EBS de mínimo 50 GB a cada nodo.
 El costo total de la arquitectura Kappa es de: 
 \newline
 \newline
-\text{\small\$52.4 + 4 * \$143.7 + 3 * \$217,14 + 3 * \$76.02 + \$99.01 + 3 * \$193.05 + \$41.3 + \$72.00 = 2298.11\\}
+\text{\small\$52.4 + 4 * \$143.7 + 3 * \$268.17 + 3 * \$76.02 + \$99.01 + 3 * \$193.05 + \$41.3 + \$72.00 = \$ 2301,19\\}
 \newpage
 
 

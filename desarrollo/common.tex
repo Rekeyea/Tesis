@@ -23,8 +23,7 @@ Por lo que se optó por no tener en cuenta los datos anteriores y solo calcular 
 
 A continuación se presenta un diagrama de flujo del pipeline de procesamiento:
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=1\textwidth]{desarrollo/pipeline.png}
+    \makebox[\textwidth]{\includegraphics[width=\paperwidth]{desarrollo/pipeline.png}}
     \caption{Diagrama de flujo del pipeline de procesamiento}
     \label{fig:flowchart}
 \end{figure}
@@ -37,8 +36,7 @@ El despliegue de los componentes se realizó mediante el uso de \textbf{Docker C
 Por otro lado, para el calculo de costos, se asume un despliegue de alta disponibilidad en la nube de AWS basado en el siguiente diagrama:
 
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=1\textwidth]{desarrollo/deployment.png}
+    \makebox[\textwidth]{\includegraphics[width=\paperwidth]{desarrollo/deployment.png}}
     \caption{Diagrama de despliegue de componentes}
     \label{fig:infraestructura}
 \end{figure}
@@ -55,21 +53,6 @@ La cuarta zona de disponibilidad (d) tiene el nodo de frontend de Doris y el nod
 No se incluye MinIO en este despliegue porque se utiliza S3 nativo, que se define en una región y esta igualmente comunicado con todas las zonas de disponibilidad.
 
 A su vez, estarían idealmente desplegados mediante un orquestador de contenedores como Kubernetes, utilizando algún servicio como Elastic Kubernetes Serice (EKS).
-
-\subsection{Repositorio de Código}
-
-Se definireron tres repositorios de código para el desarrollo de la arquitectura Kappa y Delta.
-El primero de ellos es el repositorio de la arquitectura Kappa, que contiene el código de procesamiento de datos y la configuración de los componentes.
-El segundo es el repositorio de la arquitectura Delta, que contiene el código de procesamiento de datos y la configuración de los componentes.
-El tercero es el repositorio del generador de datos sintéticos que se utilizó para realizar las pruebas de carga y estrés.
-
-El código de cada uno de los repositorios se encuentra disponible en el siguiente enlace:
-
-\begin{itemize}
-    \item \url{https://github.com/Rekeyea/Tesis-Kappa}\\
-    \item \url{https://github.com/Rekeyea/Tesis-Delta}\\
-    \item \url{https://github.com/Rekeyea/Tesis-SynthDS}\\
-\end{itemize}
 
 \newpage
 
