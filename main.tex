@@ -146,17 +146,47 @@
 \usetikzlibrary{shapes,arrows,positioning}
 
 % Load biblatex with Spanish options
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
 \usepackage[
-    style=apa,
-    backend=biber,
-    language=spanish,
-    sorting=ynt
+  backend=biber,
+  style=ieee,          % Estilo IEEE, muy usado en informática
+  giveninits=true,     % Usa iniciales para nombres
+  maxcitenames=3,      % Usa "et al." después de 3 autores en citas
+  maxbibnames=3,       % Muestra hasta 6 autores en la bibliografía
+  mincitenames=1,      % Mínimo 1 autor antes de "et al."
+  uniquelist=false,    % No intenta hacer listas de autores únicas
+  uniquename=false,    % No intenta hacer nombres únicos
+  minbibnames=3,       % Mínimo 3 autores en bibliografía antes de "et al."
+  sorting=nyt,         % Ordena por nombre, año, título
+  url=false,           % No muestra URLs en entradas que tienen DOI
+  doi=true,            % Muestra DOIs
+  isbn=false,          % No muestra ISBN en la bibliografía
+  dashed=false,        % No usa guiones para autores repetidos
+  urldate=comp,        % Formato compacto para fechas de acceso
+  useprefix=false      % Maneja correctamente prefijos en apellidos como "de
 ]{biblatex}
 
-\DeclareLanguageMapping{spanish}{spanish-apa}
+% Traducir "et al." a "y otros" en español
 \DefineBibliographyStrings{spanish}{
-  andothers = {{et al\adddot}},
+  andothers = {y otros},
 }
+\renewcommand*{\bibinitperiod}{.}
+\renewcommand*{\bibinitdelim}{\addnbthinspace}
+
+\DeclareNameFormat{given-family}{%
+  \ifgiveninits
+    {\usebibmacro{name:given-family}
+      {\namepartfamily}
+      {\namepartgiveni}
+      {\namepartprefix}
+      {\namepartsuffix}}
+    {\usebibmacro{name:given-family}
+      {\namepartfamily}
+      {\namepartgiven}
+      {\namepartprefix}
+      {\namepartsuffix}}%
+  \usebibmacro{name:andothers}}
 
 % Add your bibliography file
 \addbibresource{references.bib}
