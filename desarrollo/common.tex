@@ -1,13 +1,13 @@
 \section{Implementación}
 
-Se implementará le especificación definida en el capítulo anterior de modo tal que para ambas arquitecturas los detalles de implementación sean lo más similares posible.
-Para esto, se utilizará como lenguaje de procesamiento Flink SQL, que permite desarrollar los trabajos de procesamiento utilizando un lenguaje agnóstico a las plataformas subyascentes. 
+Se implementó le especificación definida en el capítulo anterior de modo tal que para ambas arquitecturas los detalles de implementación sean lo más similares posible.
+Para esto, se utilizó como lenguaje de procesamiento Flink SQL, que permite desarrollar los trabajos de procesamiento utilizando un lenguaje agnóstico a las plataformas subyascentes. 
 
 \subsection{Pipeline de Procesamiento}
-El pipeline de procesamiento se encargará de recibir los datos en formato JSON,
+El pipeline de procesamiento se encarga de recibir los datos en formato JSON,
 realizar el procesamiento de los mismos y devolver la puntuación NEWS2 calculada.
 
-Esto se realizará de la siguiente manera:
+Esto se desarrolló de la siguiente manera:
 \begin{itemize}
     \item Recepción de datos en formato JSON mediante un topico de Kafka
     \item Enriquecimiento de los datos con los puntajes de calidad y frescura
@@ -18,7 +18,7 @@ Esto se realizará de la siguiente manera:
 \end{itemize}
 
 Debido a una limitante en el hardware de procesamiento, se simplificó el calculo de frescura de los datos para no tener en cuenta los anteriores. 
-Esto provocaba que el sistema se quedara sin memoria y no pudiera procesar los datos para ambas arquitecturas. 
+Esto provocaba que el sistema se quedara sin memoria RAM y no pudiera procesar los datos para ambas arquitecturas. 
 Por lo que se optó por no tener en cuenta los datos anteriores y solo calcular la frescura de los datos con las medidas de tiempo propias de cada registro.
 
 A continuación se presenta un diagrama de flujo del pipeline de procesamiento:
@@ -55,7 +55,6 @@ La cuarta zona de disponibilidad (d) tiene el nodo de frontend de Doris y el nod
 No se incluye MinIO en este despliegue porque se utiliza S3 nativo, que se define en una región y esta igualmente comunicado con todas las zonas de disponibilidad.
 
 A su vez, estarían idealmente desplegados mediante un orquestador de contenedores como Kubernetes, utilizando algún servicio como Elastic Kubernetes Serice (EKS).
-
 
 \subsection{Repositorio de Código}
 
@@ -151,6 +150,32 @@ El archivo de configuración usado tiene la siguiente forma:
 \end{lstlisting}
 
 \newpage
+
+\subsection{Visualizaciones}
+
+Se implementó un tablero de monitoreo utilizando Grafana, que permite visualizar la latencia, el throughtput y el uso de hardware en tiempo real.
+Grafana se conecta con Prometheus que es el sistema de monitoreo utilizado para recolectar las métricas de los componentes de la arquitectura.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{desarrollo/monitoring1.png}
+    \includegraphics[width=1\textwidth]{desarrollo/monitoring2.png}
+    \includegraphics[width=1\textwidth]{desarrollo/monitoring3.png}
+    \caption{Tablero de Monitoreo}
+    \label{fig:monitoring}
+\end{figure}
+\clearpage
+
+También se implementó en Grafana un tablero de datos por pacientes, que permite visualizar la evolución de los signos vitales de cada paciente a lo largo del tiempo.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{desarrollo/visualization1.png}
+    \includegraphics[width=1\textwidth]{desarrollo/visualization2.png}
+    \caption{Tablero de Visualizaciones}
+    \label{fig:visualization}
+\end{figure}
+\clearpage
 
 \subsection{Limitaciones en la Implementación}
 
