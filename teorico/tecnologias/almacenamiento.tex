@@ -183,7 +183,7 @@ y una integración robusta principalmente con Spark.
 disponibilizando dos tipos principales de formatos de tablas: 
 Copy On Write (optimizado para lecturas) y Merge On Read (optimizado para escritura). 
 
-Utiliza una Timeline para gestionar metadatos y registrar cronológicamente todas las acciones, 
+Utiliza una linea de tiempo para gestionar metadatos y registrar cronológicamente todas las acciones, 
 implementando un sistema de indexación que permite optimizar operaciones y facilitar búsquedas rápidas, 
 además maneja control de concurrencia optimista que mantiene lecturas sin bloqueos mientras serializa escrituras.
 Las características principales de Hudi incluyen procesamiento incremental para manejar streams de datos, 
@@ -214,15 +214,15 @@ y reescritura de datos para optimización física,
 junto con una robusta integración con diferentes motores de procesamiento como Spark y Flink.
 
 \newpage
-\paragraph{Apache Paimon} es un formato de tabla analítica que busca permitir la construcción de arquitecturas basadas en Lakehouse en tiempo real.
+\paragraph{Apache Paimon} es un formato de tabla analítica que busca permitir la construcción de arquitecturas de streaming.
 Nació como un proyecto dentro del mismo Apache Flink por lo que tiene una integración muy fuerte con este motor de procesamiento.
 Paimon se destaca por su capacidad de manejar datos en tiempo real y batch, permitiendo la construcción de pipelines híbridos.
-Lo hace mediante el uso de su formato de datos propio en conjunto con un Log-structured Merge-Tree (LSM) para la gestión de metadatos; similar a Apache Hudi.
+Lo hace mediante el uso de su formato de datos propio en conjunto con mecanismos para la gestión de metadatos que son 
+similares a Apache Hudi.
 
-Permite actualizaciones en tiempo real a través del motor de procesamiento y deduplicar los datos de forma personalizada. También se encarga automáticamente 
-de la limpieza y compactación de archivos, y ofrece soporte para la evolución de esquemas y control de versiones.
-
-Por último, también permite almacenar metadata que otorga la capacidad de realizar transacciones ACID, evolución de esquema y control de versiones.
+Permite actualizaciones en tiempo real a través del motor de procesamiento y deduplicar los datos de forma personalizada. 
+También se encarga automáticamente de la limpieza y compactación de archivos, 
+y ofrece soporte para la evolución de esquemas, control de versiones y transacciones.
 
 \newpage
 
