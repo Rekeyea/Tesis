@@ -32,10 +32,10 @@ Por lo general se utiliza un patrón de diseño de datos llamado Medallion, que 
 \newpage
 \subsection{Componentes Principales}
 
-\subsubsection{Stream Store Layer}
+\subsubsection{Ingestion Layer}
 \begin{itemize}
-    \item Similar a su función en la Arquitectura Kappa
     \item Recibe eventos y los envía al Data Lakehouse Layer
+    \item Su función es más limitada que en la Arquitectura Kappa
 \end{itemize}
 
 \subsubsection{Data Lakehouse Layer}
@@ -73,7 +73,7 @@ Por lo general se utiliza un patrón de diseño de datos llamado Medallion, que 
 
 \subsection{Capacidades}
 \begin{itemize}
-    \item Garantiza características ACID para un sistema distribuido
+    \item Garantiza transacciones para un sistema distribuido
     \item Reduce los costos de almacenamiento y procesamiento de la información 
     \item Define una fuente de verdad única que puede ser usada por todos los procesos de análisis
     \item Reduce la cantidad de código que se debe mantener
