@@ -24,8 +24,9 @@ resulta adecuada para soluciones encapsuladas donde no se requiere acceso simult
 
 \subsection{Coordinación de Procesamiento}
 Se utilizó una única instancia de JobManager de Apache Flink. Esta configuración es suficiente para entornos controlados, pero representa una limitación en cuanto a tolerancia a fallos. 
-En escenarios reales, se recomienda implementar Flink en modo de alta disponibilidad, utilizando múltiples JobManagers (activo y pasivos), un backend compartido para almacenamiento de estado (por ejemplo, MinIO o HDFS), 
-y un coordinador de liderazgo como ZooKeeper o Kubernetes.
+En escenarios reales, se recomienda implementar Flink en modo de alta disponibilidad, utilizando múltiples JobManagers (activo y pasivos), 
+un backend compartido para almacenamiento de estado (por ejemplo, S3), 
+y un coordinador de liderazgo como ZooKeeper.
 
 \subsection{Justificación General}
 Las decisiones tomadas responden a un enfoque de prototipo funcional, priorizando la validación de las arquitecturas Kappa y Delta en condiciones controladas. 

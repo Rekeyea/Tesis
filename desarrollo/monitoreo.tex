@@ -86,28 +86,61 @@ Un nuevo algoritmo de puntuación de calidad debería basarse en la experiencia 
 se propone un algoritmo sencillo a fin de ilustrar su potencial y mantener limitado el enfoque de este trabajo.
 
 Se tomarán los identificadores de los dispositivos, que luego serán clasificados en 3 grupos cada uno con un peso asociado: 
-\begin{itemize}
-    \item Dispositivos de calidad médica: 1.0
-    \item Dispositivos de calidad premium: 0.7
-    \item Dispositivos de calidad de consumo: 0.4
-\end{itemize}
+
+\begin{longtable}{|p{6cm}|p{3cm}|}
+    \hline
+    \textbf{Clasificación de Dispositivos} & \textbf{Peso Asociado} \\
+    \hline
+    \endhead
+    Dispositivos de calidad médica & 1.0 \\
+    \hline
+    Dispositivos de calidad premium & 0.7 \\
+    \hline
+    Dispositivos de calidad de consumo & 0.4 \\
+    \hline
+    \caption{Clasificación de dispositivos y sus pesos correspondientes}
+    \label{tab:dispositivos}
+\end{longtable}
+    
 
 Además, se tomará en cuenta la señal de batería y la intensidad de la señal, que serán clasificados en 3 grupos cada uno con un peso asociado:
-\begin{itemize}
-    \item Batería a mas del 80\%: 1.0
-    \item Batería entre 80\% y 50\%: 0.7
-    \item Batería entre 50\% y 20\%: 0.6
-    \item Batería a menos de 20\%: 0.4
-\end{itemize}
+
+\begin{longtable}{|p{6cm}|p{3cm}|}
+    \hline
+    \textbf{Nivel de Batería} & \textbf{Peso Asociado} \\
+    \hline
+    \endhead
+    Batería a más del 80\% & 1.0 \\
+    \hline
+    Batería entre 80\% y 50\% & 0.7 \\
+    \hline
+    Batería entre 50\% y 20\% & 0.6 \\
+    \hline
+    Batería a menos de 20\% & 0.4 \\
+    \hline
+    \caption{Clasificación de niveles de batería y sus pesos correspondientes}
+    \label{tab:bateria}
+\end{longtable}
 
 Por último, se tomará en cuenta la intensidad de la señal:
-\begin{itemize}
-    \item Valor de señal de mas de 0.8: 1.0
-    \item Valor de señal entre 0.8 y 0.6: 0.8
-    \item Valor de señal entre 0.5 y 0.6: 0.6
-    \item Valor de señal menor a 0.5: 0.4
-\end{itemize}
+\begin{longtable}{|p{6cm}|p{3cm}|}
+    \hline
+    \textbf{Intensidad de Señal} & \textbf{Peso Asociado} \\
+    \hline
+    \endhead
+    Valor de señal de más de 0.8 & 1.0 \\
+    \hline
+    Valor de señal entre 0.8 y 0.6 & 0.8 \\
+    \hline
+    Valor de señal entre 0.5 y 0.6 & 0.6 \\
+    \hline
+    Valor de señal menor a 0.5 & 0.4 \\
+    \hline
+    \caption{Clasificación de intensidad de señal y sus pesos correspondientes}
+    \label{tab:senal}
+\end{longtable}
 
+\newpage
 De esta manera, el cálculo de la puntuación de calidad se realizará de la siguiente manera:
 
 
