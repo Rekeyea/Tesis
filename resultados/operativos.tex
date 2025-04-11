@@ -2,22 +2,33 @@
 
 Se realizó una prueba de carga de ambas arquitecturas con datos sintéticos de 32 pacientes a lo largo de un año, con un total de 110.122.654 registros; 
 que implica un archivo CSV de aproximadamente 7GB.
-El hardware donde se realizó la prueba cuenta con 64GB de RAM y 24 núcleos de CPU, y se utilizó Docker Compose para la ejecución de las pruebas.
-
+El hardware donde se realizó la prueba cuenta con 64GB de RAM, 16 núcleos de CPU y 2 TB de disco duro de estado sólido, y se utilizó Docker Compose para la ejecución de las pruebas.
+Se realizaron 5 pruebas de carga para cada arquitectura, y se registraron los tiempos de carga, latencia y uso de recursos.
 Variaron no solo los tiempos de carga del total del conjunto de datos, sino también el uso de recursos.
+
+Un aspecto importante a destacar es que cada una de las pruebas de carga se realizó en un entorno limpio, 
+es decir, se realizó una reinstalación completa del sistema operativo y de los componentes de la arquitectura.
+Esto se hizo para evitar que el sistema operativo o los componentes de la arquitectura afecten los resultados de las pruebas.
+
+Un resultado importante a destacar es que la arquitectura Kappa no pudo ser ejecutada en su totalidad en ninguna de las pruebas. 
+Esto debido a que el sistema operativo se quedó sin espacio en disco, lo que provocó que el sistema se detuviera.
+La cantidad de datos que se pudieron guardar, en promedio, fue del 61\% del total de los datos.
+Para la arquitectura Delta, se logró cargar el 100\% de los datos en todas las pruebas.
 
 \subsection{Throughput}
 El throughput se refiere a la cantidad de datos procesados por unidad de tiempo.
-En este caso, se midió en base a los mismos límites en el uso de recursos, la cantidad de datos que podían ser ingestados por el sistema hasta completar la carga total.
+En este caso, se midió en base a los mismos límites en el uso de recursos, la cantidad de datos que podían ser ingestados por el sistema hasta completar la carga total o fallar.
+Para ambas arquitecturas y en cada prueba de carga se registró una ingesta de registros por segundo promedio estable.
+  
 
 Para \textbf{Delta} se pudieron ingestar en un promedio de 1300 registros por segundo; y la carga completa llevó 88438 segundos.
-Para \textbf{Kappa} se pudieron ingestar en un promedio de 792 registros por segundo; y la carga del 61\% de los datos llevó 84879 segundos.
+Para \textbf{Kappa} se pudieron ingestar en un promedio de 790 registros por segundo; y la carga del 61\% de los datos llevó 84879 segundos.
 
 La carga de datos en Kappa no pudo completarse completamente ya que en todas las instancias en que se realizó, 
 el hardware usado para el despliegue de la arquitectura consumió toda la memoria de su disco duro.  
 
 Se entiende entonces que a nivel de gestión (al menos de disco), Delta es más eficiente que Kappa.
-A su vez, a nivel de cantidad de mensajes que se pueden consumir por segundo, Delta fué dos veces más eficiente que Kappa.
+A su vez, a nivel de cantidad de mensajes que se pueden consumir por segundo, Delta fue dos veces más eficiente que Kappa.
 
 \newpage
 
@@ -28,45 +39,65 @@ En este caso, se midió en base a los mismos límites en el uso de recursos, la 
 
 La latencia se midió en segundos y los resultados fueron los siguientes:
 
-\begin{longtable}{|p{3cm}|c|c|c|}
+\begin{longtable}{|p{3cm}|c|c|c|c|}
     \hline
     \textbf{Arquitectura} & \textbf{Mínima} & \textbf{Máxima} & \textbf{Promedio} \\
     \hline
-    Kappa & -1 & 322 & 0.18 \\
+    Kappa 1 & -1 & 333 & 0.198 \\
     \hline
-    Delta & 91 & 610 & 180 \\
+    Kappa 2 & -1 & 305 & 0.179 \\
+    \hline
+    Kappa 3 & -1 & 326 & 0.176 \\
+    \hline
+    Kappa 4 & -1 & 329 & 0.177 \\
+    \hline
+    Kappa 5 & -1 & 318 & 0.169 \\
+    \hline
+    Delta 1 & 90 & 611 & 180 \\
+    \hline
+    Delta 2 & 90 & 609 & 180 \\
+    \hline
+    Delta 3 & 90 & 609 & 180 \\
+    \hline
+    Delta 4 & 90 & 610 & 180 \\
+    \hline
+    Delta 5 & 90 & 610 & 180 \\
     \hline
 \end{longtable}
 
-\begin{longtable}{|l|r|r|}
+De esta forma promediando los resultados de las 5 pruebas de carga de cada arquitectura: 
+
+\begin{longtable}{|p{3cm}|c|c|c|c|}
     \hline
-    \textbf{Rango (segundos)} & \textbf{Registros} & \textbf{Porcentaje (\%)} \\
+    \textbf{Arquitectura} & \textbf{Mínima} & \textbf{Máxima} & \textbf{Promedio}  & \textbf{Desviación} \\
     \hline
-    \endhead
-    90-120 & 12247607 & 64,1047 \\
+    Kappa & -1 & 322 & 0.18 & 0.01\\
     \hline
-    120-150 & 13210708 & 24,1907 \\
+    Delta & 90 & 610 & 180 & 0\\
     \hline
-    150-180 & 7582878 & 47,3081 \\
-    \hline
-    180-210 & 7892041 & 49,2370 \\
-    \hline
-    210-240 & 299165 & 1,8664 \\
-    \hline
-    240-270 & 16,24 & 8,1E-06 \\
-    \hline
-    270-300 & 116,86 & 6,9E-05 \\
-    \hline
-    330-360 & 95,61 & 9,3E-05 \\
-    \hline
-    390-420 & 31,87 & 6,4E-05 \\
-    \hline
-    420-450 & 16,24 & 8,1E-06 \\
-    \hline
-    600-630 & 16,24 & 8,1E-06 \\
-    \hline
-    \caption{Distribución de Latencia en Delta} \\
 \end{longtable}
+
+Es interesante ver los resultados. Ya que la latencia mínima de Kappa es negativa. 
+Esto se debe a que el conector de kafka que se usa, no actualiza el campo \textbf{aggregation\_timestamp} cuando se actualiza el registro porque llegan nuevos datos.
+Esto muestra que también muestra un problema de diseño del trabajo de inserción al calcular los datos pero no se encontró una solución al mismo. 
+Por otro lado, se registroó el tiempo de latencia de los registros que se insertaron en el sistema; sin embargo, debido al conector de Flink con Doris, 
+este proceso se realiza en batch, por lo que nuevamente es posible que el registro de tiempo de inserción sea anterior al de procesamiento. 
+
+\newpage
+
+Por otro lado, Delta muestra una latencia de varias magnitudes superior a Kafka. Esto es esperable debido al uso extensivo de Object Storage;
+ya que las lecturas en disco en conjunto con la transferencia por red suelen ser mucho más lentas que las lecturas en memoria.
+Sin embargo, es importante destacar que la latencia máxima prmedio de Delta es de 610 segundos, lo que implica que en el peor de los casos,
+el sistema tardó 10 minutos en procesar un dato.
+Esto es un tiempo aceptable para la mayoría de los casos de uso en los que se implementan flujos de datos; 
+aunque no se puede decir que lo sea para un sistema de procesamiento de datos en tiempo real. \newline
+
+Se puede ver también que ambas arquitecturas son bastante estables en cuanto a latencia, ya que la desviación estándar es baja.
+Sin embargo, Delta parecería ser más consistente en sus resultados. 
+Sin embargo, esto puede deberse a que la escala de la latencia en la que se maneja Kappa es mucho más baja que la de Delta. \newline
+
+Se analizó también la distribución de latencia de ambos sistemas y también en todas las pruebas de carga se obtuvieron resultados similares.
+Un ejemplo de estas distribuciones se presentan a continuación:
 
 \begin{longtable}{|l|r|r|}
     \hline
@@ -90,24 +121,65 @@ La latencia se midió en segundos y los resultados fueron los siguientes:
 
 \newpage
 
-Es interesante ver los resultados. Ya que la latencia mínima de Kappa es negativa. 
-Esto se debe a que el conector de kafka que se usa, no actualiza el campo \textbf{aggregation\_timestamp} cuando se actualiza el registro porque llegan nuevos datos.
-Esto muestra que también muestra un problema de diseño del trabajo de inserción al calcular los datos pero no se encontró una solución al mismo. 
-Por otro lado, se registroó el tiempo de latencia de los registros que se insertaron en el sistema; sin embargo, debido al conector de Flink con Doris, 
-este proceso se realiza en batch, por lo que nuevamente es posible que el registro de tiempo de inserción sea anterior al de procesamiento. 
+\begin{longtable}{|l|r|r|}
+    \hline
+    \textbf{Rango (segundos)} & \textbf{Registros} & \textbf{Porcentaje (\%)} \\
+    \hline
+    \endhead
+    90-120 & 122476 & 0,76 \\
+    \hline
+    120-150 & 132107 & 0,82 \\
+    \hline
+    150-180 & 7582878 & 47,31 \\
+    \hline
+    180-210 & 7892041 & 49,24 \\
+    \hline
+    210-240 & 299165 & 1,87 \\
+    \hline
+    240-270 & 1 & 6,24 E-06 \\
+    \hline
+    270-300 & 11 & 6,86 E-05 \\
+    \hline
+    330-360 & 9 & 5,61 E-05 \\
+    \hline
+    390-420 & 3 & 1,87 E-05 \\
+    \hline
+    420-450 & 1 & 6,24 E-06 \\
+    \hline
+    600-630 & 1 & 6,24 E-06 \\
+    \hline
+    \caption{Distribución de Latencia en Delta} \\
+\end{longtable}
 
-Por otro lado, Delta muestra una latencia de varias magnitudes superior a Kafka. Esto es esperable debido al uso extensivo de Object Storage;
-ya que las lecturas en disco en conjunto con la transferencia por red suelen ser mucho más lentas que las lecturas en memoria.
-Sin embargo, es importante destacar que la latencia máxima de Delta es de 610 segundos, lo que implica que en el peor de los casos,
-el sistema tardó 10 minutos en procesar un dato.
-Esto es un tiempo aceptable para la mayoría de los casos de uso en los que se implementan flujos de datos; 
-aunque no se puede decir que lo sea para un sistema de procesamiento de datos en tiempo real. 
+Más del 80\% de los registros en Kappa tienen una latencia menor a 1 segundo, lo que implica que el sistema es capaz de procesar los datos en tiempo real.
+Sin embargo, la latencia máxima de Kappa es de 333 segundos, lo que implica que en el peor de los casos, el sistema tardó 5 minutos en procesar un dato (aunque solo para dos casos). \newline
+
+Esto es un tiempo aceptable para la mayoría de los casos de uso en los que se implementan flujos de datos;
+sobre todo porque un sólo punto de latencia no es un problema para el sistema en su conjunto.
+Hay también mas de un 18\% de registros que tienen una latencia de entre 1 y 10 segundos, 
+que si bien son tiempos aceptables para la mayoría de los casos de uso, son mayores que los esperados para un sistema de procesamiento de datos en tiempo real. \newline
+
+Dada la cantidad de registros, se podría decir que aquellos puntos de latencia mayores a 10 segundos son outliers.
+Aunque hay que considerar que para Kappa no se pudo cargar el 100\% de los datos,
+por lo que no se puede asegurar que esta distribución se mantenga en el tiempo. \newline
+
+
+Por su parte, Delta tiene casi su totalidad de registros entre 150 y 210 segundos,
+que no es un tiempo aceptable para un sistema en tiempo real, 
+pero si significa que es bastante consistentes con sus tiempos y su distribución está bien definida.
+Además, para Delta si se pudo cargar el 100\% de los datos, por lo que se puede asegurar que esta distribución se mantenga en el tiempo.
+
+\newpage
 
 \newpage
 \subsection{Uso de Recursos}
 
 El uso de recursos se refiere a la cantidad de recursos que utiliza el sistema para procesar los datos.
-En este caso, se midió en base a los mismos límites en el uso de recursos, la cantidad máxima de recursos que utilizó el sistema para procesar los datos.
+En este caso, se midió en base a los mismos límites en el uso de recursos, 
+la cantidad máxima de recursos que utilizó el sistema para procesar los datos. \newline
+
+Al igual que con la latencia, para todas las pruebas de carga los resultados fueron similares. 
+Por lo que se presenta una tabla con los resultados de una de estas pruebas. \newline
 
 Para \textbf{Kappa} se presentan los siguientes resultados:
 
@@ -142,6 +214,8 @@ Para \textbf{Kappa} se presentan los siguientes resultados:
     MinIO & 127\% & 4.2 GB & 384 GB & 386 GB \\
     \hline
 \end{longtable}
+
+\newpage
 
 Para \textbf{Delta} se presentan los siguientes resultados:
 
@@ -179,12 +253,12 @@ Para \textbf{Delta} se presentan los siguientes resultados:
 
 \newpage
 
-Acorde con lo esperado, Kappa requiere un mayor uso de recursos para los nodos de Kafka que Delta.
+Acorde a lo esperado, Kappa requiere un mayor uso de recursos para los nodos de Kafka que Delta.
 Por su lado, Delta requiere un mayor uso de recursos para los nodos de procesamiento. También para el nodo de frontend de Doris. 
-Aunque es notablemente menor el uso de memoria que requiere de los nodos Kafka.
+Aunque es notablemente menor el uso de memoria que requiere de los nodos Kafka. \newline
 
 El uso de CPU es similar en las dos arquitecturas, aunque Delta tiene más diferencias entre nodos del mismo tipo. 
-Probablemente sea debido a un desbalanceo en el paralelismo de los trabajos de procesamiento. 
+Probablemente sea debido a un desbalanceo en el paralelismo de los trabajos de procesamiento. \newline 
 
 La sorpresa más grande es el uso de almacenamiento y de transferencia de red. 
 Kappa requiere un uso de almacenamiento mucho mayor que Delta, y también un uso de transferencia de red mucho mayor.

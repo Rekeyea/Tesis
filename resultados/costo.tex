@@ -21,7 +21,7 @@ Por lo que el costo mensual base es de U\$S 72.00.
 Se asume además que todos los nodos experimentan una carga constante igual a la mayor carga registrada en las pruebas. 
 Esto asegura que se mantenga la disponibilidad del sistema.
 
-Por otro lado, Zookeeper no fué incluido en la comparación de costos operativos ya que no hace una diferencia. 
+Por otro lado, Zookeeper no fue incluido en la comparación de costos operativos ya que no hace una diferencia. 
 Sin embargo, será incluido en el costo total de ambas arquitecturas.
 
 Se asume que el trafico de red entre los nodos de la misma zona de disponibilidad es gratuito. 
@@ -42,30 +42,32 @@ Para el caso de Doris, se utilizará una instancia c5.xlarge para el frontend y 
 Para el caso de Flink, se utilizará una instancia r5.xlarge para los nodos Task Manager  ya que proveen un muy buen rendimiento de memorua y una c5.large para el Job Manager.
 Para el caso de Zookeeper, se utilizará una instancia m5.large.  
 
+
 \begin{longtable}{|p{3cm}|c|c|c|c|c|}
     \hline
     \textbf{Componente} & \textbf{Instancia} & \textbf{Base} & \textbf{Almacenamiento} & \textbf{Red} & \textbf{Total} \\
     \hline
-    Job Manager & c5.large & \$47 & \$5 & \$0.4 & \$52.4 \\
+    Job Manager & c5.large & \$61.20 & \$5.00 & \$0.40 & \$66.60 \\
     \hline
-    Task Manager & r5.xlarge & \$137 & \$5 & \$1.7 & \$143.7 \\
+    Task Manager & r5.xlarge & \$163.68 & \$5.00 & \$1.70 & \$170.38 \\
     \hline
-    Kafka Broker & i3.xlarge & \$227.76 & \$0 & \$40.41 & \$268.17 \\
+    Kafka Broker & i3.xlarge & \$232.32 & incluido & \$2.00 & \$234.32 \\
     \hline
-    Zookeeper & m5.large & \$69.12 & \$5 & \$1.9 & \$76.02 \\
+    Zookeeper & m5.large & \$69.12 & \$5.00 & \$1.90 & \$76.02 \\
     \hline
-    Doris Frontend & c5.xlarge & \$94 & \$5 & \$0.01 & \$99.01 \\
+    Doris Frontend & c5.xlarge & \$122.40 & \$5.00 & \$0.10 & \$127.50 \\
     \hline
-    Doris Backend & c5.x2large & \$188 & \$5 & \$0.05 & \$193.05 \\
+    Doris Backend & c5.2xlarge & \$244.80 & \$40.00 & \$0.05 & \$284.85 \\
     \hline
-    Almacenamiento S3 & - & \$0 & \$38.4 & \$2.9 & \$41.3 \\
+    Almacenamiento S3 & - & - & \$38.40 & \$2.90 & \$41.30 \\
     \hline
 \end{longtable}
 
 El costo total de la arquitectura Kappa es de: 
 \newline
 \newline
-\text{\small\$52.4 + 4 * \$143.7 + 3 * \$268.17 + 3 * \$76.02 + \$99.01 + 3 * \$193.05 + \$41.3 + \$72.00 = \$ 2301,19\\}
+\hbox{{\footnotesize\$61.2 + 4 * \$163.68 + 3 * \$232.32 + 3 * \$76.02 + \$127.5 + 3 * \$244.8 + \$41.3 + \$72.00 = \textbf{\$2366.24}}}
+
 \newpage
 
 
@@ -96,6 +98,29 @@ El costo total de la arquitectura Delta es de:
 \newline
 \text{\small\$52.4 + 4 * \$142.65 + 3 * \$100.1 + 3 * \$76.02 + \$99.01 + 3 * \$193.05 + \$3.64 + \$72.00 = 1905.16\\}
 \newpage
+
+\subsection{Comparación de Costos}
+
+\begin{longtable}{|c|c|c|}
+    \hline
+    \textbf{Componente} & \textbf{Kappa (USD)} & \textbf{Delta (USD)} \\
+    \hline
+    Job Manager & \$61.20 & \$61.20 \\
+    \hline
+    Task Manager & \$163.68 × 4 = \$654.72 & \$163.68 × 4 = \$654.72 \\
+    \hline
+    Kafka Broker & i3.xlarge × 3 = \$232.32 × 3 = \$696.96 & c5d.xlarge × 3 = \$140.16 × 3 = \$420.48 \\
+    \hline
+    Zookeeper & \$69.12 × 3 = \$207.36 & \$69.12 × 3 = \$207.36 \\
+    \hline
+    Doris Frontend & \$122.40 & \$122.40 \\
+    \hline
+    Doris Backend & \$244.80 × 3 = \$734.40 & \$244.80 × 3 = \$734.40 \\
+    \hline
+    \textbf{Total base mensual} & \textbf{\$2,477.04} & \textbf{\$2,200.56} \\
+    \hline
+\end{longtable}
+
 
 \subsection{Resultados}
 

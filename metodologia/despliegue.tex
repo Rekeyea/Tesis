@@ -1,0 +1,50 @@
+\section{Despliegue}
+
+Se realizará un despliegue de ambas arquitecturas manteniendo la misma cantidad de nodos de cada tecnología.
+Para esto se utilizarán contenedores con la tecnología Docker Compose dentro de una única máquina virtual linux.
+El sistema donde se desplegará el sistema cuenta con 16 núcleos, 64 GB de RAM y 2 TB de disco duro de estado sólido.
+El sistema operativo utilizado es Ubuntu 22.04 LTS.
+
+\subsection{Componentes}
+
+Se desplegarán los siguientes componentes: 
+
+\begin{longtable}{|p{6cm}|p{6cm}|}
+    \hline
+    \textbf{Componente} & \textbf{Cantidad} \\
+    \hline
+    \endhead
+    Broker Apache Kafka & 3 \\ 
+    \hline
+    Zookeeper & 3 \\ 
+    \hline
+    Apache Flink Job Manager & 1 \\ 
+    \hline
+    Apache Flink Task Manager & 4 \\ 
+    \hline
+    Apache Doris Frontend & 1 \\ 
+    \hline
+    Apache Doris Backend & 3 \\ 
+    \hline
+    MinIO & 1 \\ 
+    \hline
+    Grafana & 1 \\ 
+    \hline
+    Prometheus & 1 \\ 
+    \hline 
+    \caption{Cantidad de componentes desplegados}
+    \label{tab:deployed_components}
+\end{longtable}
+
+El objetivo de esta configuración es proveer de un entorno de alta disponibilidad que a su vez permita escalar horizontalmente y
+se adecúe al ambiente de pruebas.
+
+\newpage
+
+\subsection{Configuración de los componentes}
+
+Se utilizarán configuraciones por defecto para cada uno de los componentes desplegados.
+Sin embargo, se realizán los cambios necesarios para asegurar el correcto funcionamiento de los mismos.
+Se deberá asegurar la mayor cantidad de recursos del sistema para cada uno de los componentes,
+dándole mayor importancia a los componentes que se encargan de la ingestión y procesamiento de datos.
+De esta forma, se deberá asegurar el procesamiento ininterrumpido de los datos.
