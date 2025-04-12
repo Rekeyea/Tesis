@@ -16,116 +16,213 @@ La arquitectura desplegada en AWS consiste en:
 \end{itemize}
 
 El costo de EKS en AWS es de \$0.10 por hora por cada nodo del cluster.
-Por lo que el costo mensual base es de U\$S 72.00.
+Por lo que el costo mensual base es de U\$S 72.00. \newline
 
 Se asume además que todos los nodos experimentan una carga constante igual a la mayor carga registrada en las pruebas. 
-Esto asegura que se mantenga la disponibilidad del sistema.
+Esto asegura que se mantenga la disponibilidad del sistema.\newline
 
 Por otro lado, Zookeeper no fue incluido en la comparación de costos operativos ya que no hace una diferencia. 
-Sin embargo, será incluido en el costo total de ambas arquitecturas.
+Sin embargo, será incluido en el costo total de ambas arquitecturas. \newline
 
-Se asume que el trafico de red entre los nodos de la misma zona de disponibilidad es gratuito. 
-Sin embargo, el tráfico entre zonas de disponibilidad tiene un costo de \$0.01 por GB.
-Y habiendo 4 zonas de disponibilidad que practicamente simétricas, se asume que se deistribuye el tráfico de forma equitativa entre todas ellas.
+Se asume que para todos los nodos, salvo Job Manager y Doris Frontend hay un 25\% de uso de red en la misma zona de disponibilidad y un 75\% de uso de red entre zonas de disponibilidad.
+El Job Manager, por el despliegue que definimos, tendrá un 100\% de uso de red en zonas de disponibilidad distintas.
+A su vez Doris Frontend tendrá un 100\% de uso de red hacia internet. \newline
 
-Se le dará a cada nodo una instancia de AWS que permita de forma óptima el procesamiento de los datos. 
-Además, se asignará un volumen EBS de mínimo 50 GB a cada nodo.
 
 \newpage
 \subsection{Costos de la Arquitectura Kappa}
 
 Para el caso de Kappa, se asumirá que tanto el almacenamiento como el uso de red medidos corresponden al 61\% del valor real si se hubiera podido completar la carga de datos completa.
+
 De esta forma, se consideran instancias que cumplan estos requisitos. 
-El caso más complejo es el de Kafka, que requiere un muy buen acceso a disco y una buena red. 
-Para acomodar los patrones de almacenamiento vistos en la prueba se propone el uso de una instancia i3.xlarge que proporciona 950 GB de almacenamiento SSD NVMe.
-Para el caso de Doris, se utilizará una instancia c5.xlarge para el frontend y una c5.x2large para el backend ya que requieren un buen uso de CPU y de red.
-Para el caso de Flink, se utilizará una instancia r5.xlarge para los nodos Task Manager  ya que proveen un muy buen rendimiento de memorua y una c5.large para el Job Manager.
-Para el caso de Zookeeper, se utilizará una instancia m5.large.  
 
+El caso más complejo es el de Kafka, que requiere un muy buen acceso a disco y una buena red. Y por otro lado, necesita que si se cae un nodo no se pierdan datos, ya que es nuestra fuente de verdad. \newline
 
-\begin{longtable}{|p{3cm}|c|c|c|c|c|}
+Para cumplir los patrones de almacenamiento vistos en la prueba se propone para Kafka el uso de una instancia r6i.xlarge con 4vCPU y 32GB de RAM,
+ que permite asegurar que los nodos no estén sobrecargados. Además se le deberá agregar un volúmen persistente EBS de 1TB para asegurar que el nodo pueda almacenar los datos necesarios.\newline
+
+Para el caso de Doris, se utilizará una instancia c5d.xlarge para el frontend (que viene con un disco) y una c5.x2large para el backend ya que requieren un buen uso de CPU y de red. 
+Además, el backend debe tener un volúmen persistente de al menos 50 GB para asegurar que pueda almacenar los datos necesarios y estos no se pierdan. \newline
+Para el caso de Flink, se utilizará una instancia r5.xlarge para los nodos Task Manager  ya que proveen un muy buen rendimiento de memoria y una c5.large para el Job Manager. \newline
+Para el caso de Zookeeper, se utilizará una instancia m5.large que asegura un buen funcionamiento de este sistema.  
+
+\newpage
+
+\begin{longtable}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{3cm}|}
     \hline
-    \textbf{Componente} & \textbf{Instancia} & \textbf{Base} & \textbf{Almacenamiento} & \textbf{Red} & \textbf{Total} \\
+    \textbf{Componente} & \textbf{Cantidad} & \textbf{Instancia} & \textbf{Costo} & \textbf{Total} \\
     \hline
-    Job Manager & c5.large & \$61.20 & \$5.00 & \$0.40 & \$66.60 \\
+    Job Manager & 1 & c5d.large & \$69,12 & \$69,12 \\
     \hline
-    Task Manager & r5.xlarge & \$163.68 & \$5.00 & \$1.70 & \$170.38 \\
+    Task Manager & 4 & r5d.large & \$181,44 & \$725,76 \\
     \hline
-    Kafka Broker & i3.xlarge & \$232.32 & incluido & \$2.00 & \$234.32 \\
+    Kafka Broker & 3 & r6i.xlarge & \$144,72 & \$434,16 \\
     \hline
-    Zookeeper & m5.large & \$69.12 & \$5.00 & \$1.90 & \$76.02 \\
+    Zookeeper & 3 & m5.large & \$69,12 & \$207,36 \\
     \hline
-    Doris Frontend & c5.xlarge & \$122.40 & \$5.00 & \$0.10 & \$127.50 \\
+    Doris Frontend & 1 & c5d.xlarge & \$144,72 & \$144,72 \\
     \hline
-    Doris Backend & c5.2xlarge & \$244.80 & \$40.00 & \$0.05 & \$284.85 \\
+    Doris Backend & 3 & c5.2xlarge & \$244,8 & \$734,4 \\
     \hline
-    Almacenamiento S3 & - & - & \$38.40 & \$2.90 & \$41.30 \\
-    \hline
+    \caption{Costo de Kappa en instancias} \\
 \end{longtable}
 
-El costo total de la arquitectura Kappa es de: 
-\newline
-\newline
-\hbox{{\footnotesize\$61.2 + 4 * \$163.68 + 3 * \$232.32 + 3 * \$76.02 + \$127.5 + 3 * \$244.8 + \$41.3 + \$72.00 = \textbf{\$2366.24}}}
+\begin{longtable}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \hline
+    \textbf{Componente} & \textbf{Cantidad} & \textbf{Servicio} & \textbf{Tamaño} & \textbf{Costo} & \textbf{Total} \\
+    \hline
+    Job Manager & 1 & Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    Task Manager & 4 & Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    Kafka Broker & 3 & EBS gp3 & 1 TB & \$398,72 & \$1196,16 \\
+    \hline
+    Zookeeper & 3 & Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    Doris Frontend & 1 & Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    Doris Backend & 3 &  EBS gp3 & 50 GB & \$4 & \$12 \\
+    \hline
+    S3 & N/A & S3 & 1TB & \$23,55 & \$23,55 \\
+    \hline
+    \caption{Costo de Kappa en almacenamiento} \\
+\end{longtable}
+
+\begin{longtable}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \hline
+    \textbf{Componente} & \textbf{Cantidad} & \textbf{Salida} & \textbf{Entre AZ} & \textbf{Internet} & \textbf{Total} \\
+    \hline
+    Job Manager & 1 & 90 GB    & \$0.90 & \$0 & \$0.9 \\
+    \hline
+    Task Manager & 4 & 420 GB  & \$12,6 & \$0 & \$12,6 \\
+    \hline
+    Kafka Broker & 3 & 420 GB  & \$9,45 & \$0 & \$9,45 \\
+    \hline
+    Doris Frontend & 1 & 1 GB  & \$0 & \$0.09 & \$0.09 \\
+    \hline
+    Doris Backend & 3 & 0,2 GB & \$0.0045 & \$0.00 & \$0.0045 \\
+    \hline
+    S3 & N/A & 700 GB & N/A & N/A & \$7 \\
+    \hline
+    \caption{Costo de Kappa en uso de red} \\
+\end{longtable}
+
+\begin{longtable}{|p{3cm}|>{\raggedleft\arraybackslash}p{11cm}|}
+    \hline
+    \textbf{Componente} & \textbf{Costo} \\
+    \hline
+    Instancia & \$2315,52 \\
+    \hline
+    Almacenamiento & \$1231,71 \\
+    \hline
+    Red & \$30,04 \\
+    \hline
+    Total & \textbf{\$3577,27} \\
+    \hline
+    \caption{Costo de Kappa} \\
+\end{longtable}
 
 \newpage
 
 
 \subsection{Costos de la Arquitectura Delta}
 
-\begin{longtable}{|p{3cm}|c|c|c|c|c|}
-    \hline
-    \textbf{Componente} & \textbf{Instancia} & \textbf{Base} & \textbf{Almacenamiento} & \textbf{Red} & \textbf{Total} \\
-    \hline
-    Job Manager & c5.large & \$47 & \$5 & \$0.4 & \$52.4 \\
-    \hline
-    Task Manager & r5.xlarge & \$137 & \$5 & \$0.65 & \$142.65 \\
-    \hline
-    Kafka Broker & c5.xlarge & \$94 & \$3.8 & \$2.30 & \$100,1 \\
-    \hline
-    Zookeeper & m5.large & \$69.12 & \$5 & \$1.9 & \$76.02 \\
-    \hline
-    Doris Frontend & c5.xlarge & \$94 & \$5 & \$0.01 & \$99.01 \\
-    \hline
-    Doris Backend & c5.x2large & \$188 & \$5 & \$0.05 & \$193.05 \\
-    \hline
-    Almacenamiento S3 & - & \$0 & \$0.84 & \$2.8 & \$3.64 \\
-    \hline
-\end{longtable}
+Para el caso de Delta, las instancias son similares a Kappa, aunque su menor uso de Kafka permite reducir el costo en el tipo de instancia.
+Por otro lado, como la fuente de verdad es el almacenamiento en S3, tampoco se necesitan tener volúmenes persistentes ni para Kafka ni para Doris.\newline
 
-El costo total de la arquitectura Delta es de:
-\newline
-\newline
-\text{\small\$52.4 + 4 * \$142.65 + 3 * \$100.1 + 3 * \$76.02 + \$99.01 + 3 * \$193.05 + \$3.64 + \$72.00 = 1905.16\\}
+Para cumplir con estos requisitos se propone el uso de una instancia c5d.xlarge para Kafka que cuenta con 4 vCPU, 8 GB RAM y 100 GB de disco efímero.\newline
+
+Para el resto de las instancias se utilizarán las misma que para Kappa. 
+S3 es un caso especial, ya que gracias a la optimización de Paimon con el uso de Parquet se necesita menos espacio para almacenar los datos y 
+se pueden reducir los requisitos.
+
 \newpage
 
-\subsection{Comparación de Costos}
-
-\begin{longtable}{|c|c|c|}
+\begin{longtable}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{3cm}|}
     \hline
-    \textbf{Componente} & \textbf{Kappa (USD)} & \textbf{Delta (USD)} \\
+    \textbf{Componente} & \textbf{Cantidad} & \textbf{Instancia} & \textbf{Costo} & \textbf{Total} \\
     \hline
-    Job Manager & \$61.20 & \$61.20 \\
+    Job Manager & 1 & c5d.large & \$69,12 & \$69,12 \\
     \hline
-    Task Manager & \$163.68 × 4 = \$654.72 & \$163.68 × 4 = \$654.72 \\
+    Task Manager & 4 & r5d.large & \$181,44 & \$725,76 \\
     \hline
-    Kafka Broker & i3.xlarge × 3 = \$232.32 × 3 = \$696.96 & c5d.xlarge × 3 = \$140.16 × 3 = \$420.48 \\
+    Kafka Broker & 3 & c5d.xlarge & \$138,24 & \$414,72 \\
     \hline
-    Zookeeper & \$69.12 × 3 = \$207.36 & \$69.12 × 3 = \$207.36 \\
+    Zookeeper & 3 & m5.large & \$69,12 & \$207,36 \\
     \hline
-    Doris Frontend & \$122.40 & \$122.40 \\
+    Doris Frontend & 1 & c5d.xlarge & \$144,72 & \$144,72 \\
     \hline
-    Doris Backend & \$244.80 × 3 = \$734.40 & \$244.80 × 3 = \$734.40 \\
+    Doris Backend & 3 & c5.2xlarge & \$244,8 & \$734,4 \\
     \hline
-    \textbf{Total base mensual} & \textbf{\$2,477.04} & \textbf{\$2,200.56} \\
-    \hline
+    \caption{Costo de Delta en instancias} \\
 \end{longtable}
 
+\begin{longtable}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \hline
+    \textbf{Componente} & \textbf{Cantidad} & \textbf{Servicio} & \textbf{Tamaño} & \textbf{Costo} & \textbf{Total} \\
+    \hline
+    Job Manager & 1 & Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    Task Manager & 4 & Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    Kafka Broker & 3 & Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    Zookeeper & 3 & Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    Doris Frontend & 1 & Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    Doris Backend & 3 &  Incluido & 50 GB & \$0 & \$0 \\
+    \hline
+    S3 & N/A & S3 & 50 GB & \$1,15 & \$1,15 \\
+    \hline
+    \caption{Costo de Delta en almacenamiento} \\
+\end{longtable}
+
+\begin{longtable}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \hline
+    \textbf{Componente} & \textbf{Cantidad} & \textbf{Salida} & \textbf{Entre AZ} & \textbf{Internet} & \textbf{Total} \\
+    \hline
+    Job Manager & 1 & 6 GB    & \$0.06 & \$0 & \$0.06 \\
+    \hline
+    Task Manager & 4 & 86 GB  & \$2,58 & \$0 & \$2,58 \\
+    \hline
+    Kafka Broker & 3 & 102 GB  & \$2,295 & \$0 & \$2,295 \\
+    \hline
+    Doris Frontend & 1 & 1,1 GB  & \$0 & \$0.099 & \$0.099 \\
+    \hline
+    Doris Backend & 3 & 0,2 GB & \$0.0045 & \$0.00 & \$0.0045 \\
+    \hline
+    S3 & N/A & 374 GB & N/A & N/A & \$3,74 \\
+    \hline
+    \caption{Costo de Delta en uso de red} \\
+\end{longtable}
+
+\begin{longtable}{|p{3cm}|>{\raggedleft\arraybackslash}p{11cm}|}
+    \hline
+    \textbf{Componente} & \textbf{Costo} \\
+    \hline
+    Instancia & \$2288,16 \\
+    \hline
+    Almacenamiento & \$1,15 \\
+    \hline
+    Red & \$8,78 \\
+    \hline
+    Total & \textbf{\$2298,09} \\
+    \hline
+    \caption{Costo de Delta} \\
+\end{longtable}
+
+\newpage
 
 \subsection{Resultados}
 
-Se puede ver que la arquitectura Delta es más económica que la arquitectura Kappa.
-Además, a medida que crecen los datos este diferencial se hace más grande.
-La diferencia más grande se da en el uso extensivo de Kafka por parte de Kappa para el ruteo de mensajes. 
-Esto se traduce no sólo en un mayor costo de almacenamiento (aún usando almacenamiento en capas) sino también en un mayor costo de procesamiento.
+El costo de delta es un \textbf{64\%} del costo de Kappa. 
+Esto se debe sobre todo a la nececsidad que tiene Kappa de que Kafka sea su fuente de verdad.
+Y si bien el almacenamiento en capas que ofrece Kafka permite reducir costos al almacenar sus segmentos en Object Storage,
+aún así necesita de mucha cantidad de disco para funcionar correctamente en un entorno de alta disponibilidad.
+
+Por su lado, Delta hace un uso extensivo de Object Storage en combinación con el formato Parquet, lo que reduce 
+tanto la necesidad de almacenamiento como el tráfico de red; volviéndose una solución mucho más económica.
+
+En cuanto al costo de las instancias, no existen diferencias significativas entre las arquitecturas. 
 \newpage
