@@ -1,22 +1,18 @@
 % Abstract
 \renewcommand{\abstractname}{Abstract}
 \begin{abstract}
-    En el contexto del monitoreo remoto de pacientes, 
-    el procesamiento eficiente y confiable de datos de sensores en tiempo real se vuelve un requisito fundamental para la prevención y mejora de la atención médica. 
-    
-    Este trabajo analiza y compara dos arquitecturas modernas de procesamiento de datos en streaming: \textit{Kappa} y \textit{Delta}, 
-    con el objetivo de determinar cuál resulta más adecuada para este tipo de sistemas.
+    Esta investigación presenta un análisis comparativo entre las arquitecturas de streaming Kappa y Delta en el contexto del monitoreo remoto de pacientes. 
+    Frente al creciente volumen de datos generados por dispositivos IoT médicos, estas arquitecturas ofrecen enfoques distintos para el procesamiento en tiempo real e histórico de información crítica para el ámbito de salud.\newline
 
-    Se desarrolló un sistema de monitoreo basado en sensores que simula un entorno hospitalario y utiliza puntuaciones derivadas del sistema \textit{NEWS2} para evaluar el estado de salud de los pacientes. 
-    Sobre este entorno se implementaron ambas arquitecturas utilizando un stack tecnológico compuesto por herramientas como Apache Kafka, Apache Flink y Apache Doris, entre otras.
+    Para la evaluación, se implementó un sistema de monitoreo basado en el protocolo NEWS2 (National Early Warning Score 2), enriquecido con métricas de calidad y frescura de datos que permiten una degradación gradual de la fiabilidad de las mediciones en condiciones subóptimas. 
+    Se desplegaron ambas arquitecturas utilizando un stack tecnológico común, 
+    evaluando su rendimiento mediante métricas de latencia, throughput, uso de recursos y costos operativos.\newline
 
-    La comparación se realizó en función de métricas técnicas como latencia, throughput, uso de recursos y tolerancia a fallos, 
-    así como también aspectos operativos y de costo. 
-    
-    Los resultados muestran que la arquitectura \textit{Kappa} ofrece menores tiempos de latencia, 
-    mientras que la arquitectura \textit{Delta} destaca por su alto throughtput, escalabilidad, gestión operativa 
-    y flexibilidad para reprocesamiento histórico y mejor integración con almacenamiento analítico.
+    Los resultados revelan que la arquitectura Kappa proporciona latencias significativamente menores (80\% de las mediciones por debajo de 1 segundo) frente a Delta (promedio de 180 segundos), 
+    haciéndola superior para escenarios que requieren respuesta inmediata. 
+    Por otro lado, Delta demostró un throughput 64\% mayor, mejor eficiencia en almacenamiento y un costo operativo 36\% inferior, 
+    resultando más adecuada para análisis históricos y procesamiento contínuo que no requieran resultados inmediatos.\newline
 
-    Finalmente, se discuten los desafíos asociados a la implementación de estas arquitecturas en entornos de salud, 
-    y se presentan recomendaciones para su adopción según las necesidades específicas del sistema.
+    El estudio concluye que, en sistemas de salud integrales, una estrategia híbrida que combine ambas arquitecturas según los requerimientos específicos de cada caso de uso representaría la solución óptima, 
+    aprovechando las fortalezas complementarias de cada enfoque.
 \end{abstract}
