@@ -19,13 +19,17 @@ con los requisitos de negocio.
 
 Apache Spark se destaca como uno de los motores de procesamiento más populares y versátiles en el ecosistema de Big Data.
 Ofrece dos APIs principales para el procesamiento en tiempo real: Spark Streaming y Structured Streaming,
-siendo esta última la más moderna y recomendada. Implementa el procesamiento en tiempo real tratando los datos streaming
+siendo esta última la más moderna y recomendada. \newline
+
+Implementa el procesamiento en tiempo real tratando los datos streaming
 como micro-batches y su enfoque de procesamiento es en memoria, siendo capaz de mantener su estado distribuido a través
-de checkpoints, que son archivos que se guardan en un sistema de almacenamiento al que todos los nodos pueden acceder.
+de checkpoints, que son archivos que se guardan en un sistema de almacenamiento al que todos los nodos pueden acceder.\newline
+
 Su modelo de procesamiento le permite ofrecer un cierto equilibrio entre latencia y throughput. La abstracción fundamental
 de Spark son los RDDs (Resilient Distributed Datasets), que son colecciones inmutables de datos distribuidos que pueden
 ser procesadas en paralelo, y los DataFrames, que proporcionan una abstracción de más alto nivel similar a una tabla de
-base de datos.
+base de datos.\newline
+
 Spark destaca por su amplio soporte de lenguajes de programación:
 
 \begin{itemize}
@@ -44,7 +48,9 @@ grafos, y Spark SQL para procesamiento estructurado.
 
 Apache Flink adopta un enfoque nativo de streaming, tratando al procesamiento batch como un caso especial de streaming
 con límites finitos. Su arquitectura está diseñada para mantener estado distribuido con garantías de consistencia muy
-fuertes y latencias extremadamente bajas. El motor gestiona automáticamente la distribución del estado y los checkpoints,
+fuertes y latencias extremadamente bajas.\newline
+
+El motor gestiona automáticamente la distribución del estado y los checkpoints,
 asegurando semánticas de exactly-once y permitiendo recuperación exacta ante fallos sin duplicados.
 Su modelo de procesamiento se basa en dos conceptos fundamentales:
 
@@ -76,46 +82,57 @@ Los lenguajes soportados son:
 
 Apache Beam, por su lado, se distingue por proporcionar un modelo de programación unificado que abstrae el motor de ejecución subyacente.
 Su potencia radica en la capacidad de escribir la lógica de procesamiento una vez y ejecutarla en 
-diferentes motores de procesamiento (runners) como Spark o Flink.
+diferentes motores de procesamiento (runners) como Spark o Flink.\newline
+
 Esta capacidad de abstracción es particularmente valiosa en escenarios donde la portabilidad y la flexibilidad de despliegue son requisitos clave, 
 permitiendo cambiar de motor de procesamiento según evolucionen las necesidades y sin reescribir el código de procesamiento.
 
 \subsubsection{Apache Samza}
 
 Apache Samza se distingue por su estrecha integración con Apache Kafka y su arquitectura diseñada para mantener el estado 
-de procesamiento de forma distribuida con un modelo de particionamiento que permite escalar horizontalmente.
+de procesamiento de forma distribuida con un modelo de particionamiento que permite escalar horizontalmente.\newline
+
 Samza proporciona un modelo de procesamiento simple pero potente, con fuerte énfasis en la gestión de estado local y la tolerancia a fallos.
 Se utiliza en Linkedin y la arquitectura Kappa fue propuesta inicialmente pensando en la utilización de este motor de procesamiento.
 
 \subsubsection{Apache NiFi}
 
 Apache NiFi aborda el procesamiento de datos desde una perspectiva de orquestación y gobierno de datos; 
-centrándose en la automatización del flujo de datos entre sistemas.
+centrándose en la automatización del flujo de datos entre sistemas.\newline
+
 Su arquitectura está orientada a la trazabilidad y auditabilidad de cada dato que fluye por el sistema, 
 manteniendo un registro detallado de todas las transformaciones y movimientos. Los datos fluyen 
 a través de un grafo de procesadores que pueden transformar, enrutar y mediar entre diferentes protocolos y formatos. 
 NiFi se destaca por su capacidad para garantizar la entrega confiable de datos, proveer linaje de datos completo y 
-permitir modificaciones de flujos en tiempo real sin necesidad de detener el sistema.
+permitir modificaciones de flujos en tiempo real sin necesidad de detener el sistema.\newline
+
 Por último, NiFi proporciona una interfaz visual para diseñar, controlar y 
 monitorizar flujos de datos.
 
 \newpage
 \subsubsection{Apache Kafka Streams}
 
-Apache Kafka Streams es una biblioteca de procesamiento de streaming que forma parte del ecosistema de Apache Kafka, diseñada para construir aplicaciones y microservicios de procesamiento en tiempo real.
+Apache Kafka Streams es una biblioteca de procesamiento de streaming que forma parte del ecosistema de Apache Kafka, 
+diseñada para construir aplicaciones y microservicios de procesamiento en tiempo real.\newline
+
 Opera con un modelo de procesamiento que permite operaciones con manejo de estado, incluyendo agregaciones por ventanas, manejo de múltiples streams de datos 
-y transformaciones complejas mediante APIs de alto y bajo nivel. Tiene un manejo de estado distribuido que se gestionan con los mismos logs de Kafka.
+y transformaciones complejas mediante APIs de alto y bajo nivel. Tiene un manejo de estado distribuido que se gestionan con los mismos logs de Kafka.\newline
+
 En cuanto a rendimiento, Kafka Streams alcanza una latencia típica de decenas de milisegundos a segundos, dependiendo de la complejidad del procesamiento y la configuración, 
-mientras que su throughput puede escalar linealmente añadiendo más instancias. También ofrece grantías de procesamiento at-least-once con posibilidad de exactly-once mediante configuración.
+mientras que su throughput puede escalar linealmente añadiendo más instancias.\newline 
+
+También ofrece grantías de procesamiento at-least-once con posibilidad de exactly-once mediante configuración.
 
 
 \subsubsection{Apache Pulsar Functions}
 
-Apache Pulsar Functions ofrece capacidad de cómputo integrandose directamente en la infraestructura de Apache Pulsar. 
+Apache Pulsar Functions ofrece capacidad de cómputo integrandose directamente en la infraestructura de Apache Pulsar. \newline
+
 Este framework permite implementar funciones livianas que procesan mensaje a mensaje. 
 El manejo del estado es distribuido y se realiza mediante un almacenamiento basado en RocksDB, que permite mantener información 
 entre invocaciones de funciones de manera consistente y tolerante a fallos. En términos de rendimiento, está optimizado para baja latencia, típicamente en el rango de milisegundos, 
-gracias a su modelo de procesamiento directo. 
+gracias a su modelo de procesamiento directo. \newline
+
 El throughput puede escalar horizontalmente añadiendo más instancias de funciones, y el sistema proporciona garantías de procesamiento exactly-once 
 La arquitectura de este sistema está diseñada para ser simple y eficiente, permitiendo casos de uso como enriquecimiento de datos, filtrado, y transformaciones 
 en tiempo real.
@@ -190,35 +207,26 @@ en tiempo real.
 \clearpage
 \newpage
 
-\setlength\cellspacetoplimit{4pt}
-\setlength\cellspacebottomlimit{4pt}
-
-\begin{table}[htbp]
-    \footnotesize
-    \renewcommand{\arraystretch}{1.2}
-    \centering
+\begin{longtable}{|p{2cm}|p{2.5cm}|p{3cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \hline
+    \textbf{ } & \textbf{Modelo} & \textbf{Estado} & \textbf{Latencia} & \textbf{Proc.} & \textbf{Garantías} \\
+    \hline
+    \textbf{Apache Spark} & Micro-batches & En memoria & Baja & Alto & Exactly-once \\
+    \hline
+    \textbf{Apache Flink} & Streaming & Distribuido & Muy baja & Muy Alto & Exactly-once \\
+    \hline
+    \textbf{Apache Beam} & Variable & Variable & Variable & Variable & Variable \\
+    \hline
+    \textbf{Apache Samza} & Streaming & Por partición & Baja & Alto & Exactly-once \\
+    \hline
+    \textbf{Apache NiFi} & Flujo dirigido & Procesador & Media-Alta & Medio & At-least-once \\
+    \hline
+    \textbf{Kafka Streams} & Streaming & Distribuido & Baja & Alto & Exactly-once \\
+    \hline
+    \textbf{Pulsar Functions} & Mensaje & Distribuido & Baja & Alto & Exactly-once \\
+    \hline
     \caption{Comparativa de Motores de Procesamiento Big Data}
-    \label{tab:comparison-engines}
-    \setlength{\tabcolsep}{3pt}
-    \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}m{2.2cm}|>{\raggedright\arraybackslash}m{0.14\textwidth}|>{\raggedright\arraybackslash}m{0.16\textwidth}|>{\raggedright\arraybackslash}m{0.14\textwidth}|>{\raggedright\arraybackslash}m{0.16\textwidth}|>{\raggedright\arraybackslash}m{0.14\textwidth}|}
-    \hline
-    \rule{0pt}{5ex} & \textbf{Modelo} & \textbf{Estado} & \textbf{Latencia} & \textbf{Proc.} & \textbf{Garantías} \\[0.3ex]
-    \hline
-    \textbf{Apache Spark} & Micro-batches & En memoria & Baja & Alto & Exactly-once \\[0.3ex]
-    \hline
-    \textbf{Apache Flink} & Streaming & Distribuido & Muy baja & Muy Alto & Exactly-once \\[0.3ex]
-    \hline
-    \textbf{Apache Beam} & Variable & Variable & Variable & Variable & Variable \\[0.3ex]
-    \hline
-    \textbf{Apache Samza} & Streaming & Por partición & Baja & Alto & Exactly-once \\[0.3ex]
-    \hline
-    \textbf{Apache NiFi} & Flujo dirigido & Procesador & Media-Alta & Medio & At-least-once \\[0.3ex]
-    \hline
-    \textbf{Kafka Streams} & Streaming & Distribuido & Baja & Alto & Exactly-once \\[0.3ex]
-    \hline
-    \textbf{Pulsar Functions} & Mensaje & Distribuido & Baja & Alto & Exactly-once \\[0.3ex]
-    \hline
-    \end{tabularx}
-    \end{table}
+\end{longtable}
+
 \clearpage
 \newpage

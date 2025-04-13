@@ -9,9 +9,9 @@ fundamentados para la elección de una u otra según el escenario.
 \subsection{Latencia y Rendimiento}
 
 Se implementarán mediciones a través de puntos de instrumentación estratégicos a lo largo de los componentes de la arquitectura.  
-Estos puntos de medición incluirían timestamps en los mensajes, métricas de procesamiento en los componentes intermedios, y el tiempo de escritura/lectura en la capa final. 
+Estos puntos de medición incluirían timestamps en los mensajes, métricas de procesamiento en los componentes intermedios, y el tiempo de escritura/lectura en la capa final. \newline
 
-Las métricas serán tomadas utilizando Prometheus y mostradas en un tablero de Grafana.
+Las métricas serán tomadas utilizando Prometheus y mostradas en un tablero de Grafana.\newline
 
 Las métricas a considerar serán:
 \begin{itemize}
@@ -32,11 +32,14 @@ Las métricas serán tomadas utilizando Prometheus y mostradas en un tablero de 
 Se omitirá la implementación de un cambio en el modelo de procesamiento que implique reprocesar la historia completa, 
 pero se dará una propuesta de como hacerlo y se evaluará las implicancias de su puesta en producción manteniendo los dos sistemas funcionando e integrandolos eventualmente.
 
+\newpage
+
 \subsection{Costos Operativos}
 
 La implementación del sistema en contenedores, permitirá un monitoreo del uso de los recursos del sistema.
-Además, se plantearán cálculos, utilizando las calculadoras de costo que proveen los sistemas de nube, que permitan dimensionar el costo operativo de estos sistemas.
-Las métricas serán tomadas utilizando Prometheus y mostradas en un tablero de Grafana.
+Además, se plantearán cálculos, utilizando las calculadoras de costo que proveen los sistemas de nube, que permitan dimensionar el costo operativo de estos sistemas.\newline
+
+Las métricas serán tomadas utilizando Prometheus y mostradas en un tablero de Grafana.\newline
 
 Las métricas a considerar serán:
 \begin{itemize}

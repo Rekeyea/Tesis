@@ -32,7 +32,7 @@ A su vez Doris Frontend tendrá un 100\% de uso de red hacia internet. \newline
 \newpage
 \subsection{Costos de la Arquitectura Kappa}
 
-Para el caso de Kappa, se asumirá que tanto el almacenamiento como el uso de red medidos corresponden al 61\% del valor real si se hubiera podido completar la carga de datos completa.
+Para el caso de Kappa, se asumirá que tanto el almacenamiento como el uso de red medidos corresponden al 61\% del valor real si se hubiera podido completar la carga de datos completa.\newline
 
 De esta forma, se consideran instancias que cumplan estos requisitos. 
 
@@ -43,7 +43,9 @@ Para cumplir los patrones de almacenamiento vistos en la prueba se propone para 
 
 Para el caso de Doris, se utilizará una instancia c5d.xlarge para el frontend (que viene con un disco) y una c5.x2large para el backend ya que requieren un buen uso de CPU y de red. 
 Además, el backend debe tener un volúmen persistente de al menos 50 GB para asegurar que pueda almacenar los datos necesarios y estos no se pierdan. \newline
+
 Para el caso de Flink, se utilizará una instancia r5.xlarge para los nodos Task Manager  ya que proveen un muy buen rendimiento de memoria y una c5.large para el Job Manager. \newline
+
 Para el caso de Zookeeper, se utilizará una instancia m5.large que asegura un buen funcionamiento de este sistema.  
 
 \newpage
@@ -219,10 +221,10 @@ se pueden reducir los requisitos.
 El costo de delta es un \textbf{64\%} del costo de Kappa. 
 Esto se debe sobre todo a la nececsidad que tiene Kappa de que Kafka sea su fuente de verdad.
 Y si bien el almacenamiento en capas que ofrece Kafka permite reducir costos al almacenar sus segmentos en Object Storage,
-aún así necesita de mucha cantidad de disco para funcionar correctamente en un entorno de alta disponibilidad.
+aún así necesita de mucha cantidad de disco para funcionar correctamente en un entorno de alta disponibilidad.\newline
 
 Por su lado, Delta hace un uso extensivo de Object Storage en combinación con el formato Parquet, lo que reduce 
-tanto la necesidad de almacenamiento como el tráfico de red; volviéndose una solución mucho más económica.
+tanto la necesidad de almacenamiento como el tráfico de red; volviéndose una solución mucho más económica.\newline
 
 En cuanto al costo de las instancias, no existen diferencias significativas entre las arquitecturas. 
 \newpage

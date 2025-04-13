@@ -2,24 +2,30 @@
 
 
 La Arquitectura Delta surge desde Databricks, al igual que la Arquitectura Kappa, 
-como una respuesta a los desafíos que presenta la arquitectura Lambda.
+como una respuesta a los desafíos que presenta la arquitectura Lambda.\newline
+
 A diferencia de la suposición que hace Kappa de que todo puede ser tratado como un Stream, 
 Delta por su parte, utiliza el almacenamiento de objetos en la nube como base y 
 agrega por encima tecnología de metadata que otorga la posibilidad de utilizar este sistema de almacenamiento
-como un canal de mensajes de modo que se puede hacer Streaming sobre él; además de agregar otras capacidades.
+como un canal de mensajes de modo que se puede hacer Streaming sobre él; además de agregar otras capacidades.\newline
+
 Esto permite utilizar un único flujo de datos tanto para análisis en tiempo real como análisis histórico. 
 
 
 \subsection{Descripción General}
 
 Delta surge de la necesidad de procesar datos masivos a bajo costo; intentando aprovechar la estructura existente
-en las organizaciones que utilizan almacenamiento en la nube.
+en las organizaciones que utilizan almacenamiento en la nube.\newline
+
 Los formatos de tabla analítica permiten abstraer el almacenamiento y tratarlo como si fuera una tabla, 
 por lo que se ingestan y luego, mediante el uso de motores de procesamiento se realiza el análisis de dichos datos,
-que se vuelcan en otras tablas dentro de la misma infrastructura.
+que se vuelcan en otras tablas dentro de la misma infrastructura.\newline
+
 Esto permite no tener que distinguir entre batch y streaming, ya que los formatos de tabla analítica proveen 
 mecanismos para detectar los cambios en las tablas y transmitirlos, generando un stream interno que puede ser
 aprovechado para realizar un análisis incremental. 
+
+\newpage
 
 Por lo general se utiliza un patrón de diseño de datos llamado Medallion, que define tres niveles de calidad de datos:
 \begin{itemize}

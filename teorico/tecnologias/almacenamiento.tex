@@ -3,11 +3,13 @@
 \subsubsection {Formatos de Almacenamiento}
 
 Los formatos de datos son un componente fundamental en cualquier arquitectura de sistemas de información moderna, 
-ya que determinan no solo cómo se almacena la información, sino también cómo se procesa, transmite y analiza. 
+ya que determinan no solo cómo se almacena la información, sino también cómo se procesa, transmite y analiza. \newline
+
 La elección adecuada del formato de datos puede tener un impacto significativo en el rendimiento, 
 la escalabilidad y la eficiencia del sistema en su conjunto. Para un sistema de Big Data, 
 donde se manejan grandes volúmenes de información, la importancia de estos formatos se magnifica, 
-ya que pueden significar la diferencia entre un sistema eficiente y uno que consume recursos excesivos. 
+ya que pueden significar la diferencia entre un sistema eficiente y uno que consume recursos excesivos. \newline
+
 Además, los formatos de datos actúan como un lenguaje común entre diferentes componentes, 
 facilitando la interoperabilidad y la integración de tecnologías.
 
@@ -79,28 +81,38 @@ Consultas transaccionales & Regular & Excelente \\
 se ha convertido en el estándar de facto para el intercambio 
 de datos en aplicaciones modernas, especialmente en entornos Web y APIs. Su popularidad se debe a su 
 simplicidad, legibilidad humana y amplia compatibilidad con prácticamente todos los lenguajes de 
-programación. A pesar de no ser el más eficiente en términos de espacio y rendimiento (ya que es un formato basado en filas), 
+programación. \newline
+
+A pesar de no ser el más eficiente en términos de espacio y rendimiento (ya que es un formato basado en filas), 
 su flexibilidad para representar datos estructurados y semiestructurados lo hace invaluable en sistemas donde la 
-interoperabilidad y la facilidad de desarrollo son prioritarias. Es particularmente útil en aplicaciones
+interoperabilidad y la facilidad de desarrollo son prioritarias. \newline
+
+Es particularmente útil en aplicaciones
 donde las transacciones individuales y la flexibilidad del esquema son más importantes que la 
 eficiencia en el procesamiento de grandes volúmenes de datos.
 
 \paragraph{Apache AVRO} 
 destaca como un formato de serialización de datos binario que combina la 
-eficiencia del almacenamiento binario con la flexibilidad de esquemas evolutivos. Su característica 
-más distintiva es su capacidad para manejar cambios en el esquema de datos a lo largo del tiempo sin 
+eficiencia del almacenamiento binario con la flexibilidad de esquemas evolutivos. \newline 
+
+Su característica más distintiva es su capacidad para manejar cambios en el esquema de datos a lo largo del tiempo sin 
 requerir cambios en el código o reescritura de datos existentes. Para esto, AVRO almacena el esquema junto con 
-los datos, lo que permite una deserialización precisa y eficiente. Es especialmente valioso en 
-sistemas de mensajería y streaming de datos, donde la evolución del esquema y la 
+los datos, lo que permite una deserialización precisa y eficiente.\newline 
+
+Es especialmente valioso en sistemas de mensajería y streaming de datos, donde la evolución del esquema y la 
 eficiencia en la transmisión son cruciales. Su formato binario compacto y su capacidad de compresión 
 lo hacen ideal para sistemas distribuidos donde el ancho de banda y el almacenamiento son 
 consideraciones importantes.
+
+\newpage
 
 \paragraph{Apache Parquet} 
 se ha establecido como el formato columnar dominante en el ecosistema de 
 Big Data, especialmente para cargas de trabajo analíticas. Su diseño columnar permite una compresión 
 altamente eficiente y un muy buen rendimiento en consultas que involucran solo un subconjunto de 
-columnas. Parquet destaca particularmente en escenarios de análisis de datos, 
+columnas. \newline
+
+Parquet destaca particularmente en escenarios de análisis de datos, 
 donde su capacidad para manejar esquemas complejos anidados y su integración con 
 casi todas las herramientas lo hacen indispensable. La adopción generalizada de Parquet en la 
 industria, lo ha convertido en el estándar de facto para almacenamiento de datos analíticos.
@@ -109,7 +121,9 @@ industria, lo ha convertido en el estándar de facto para almacenamiento de dato
 \paragraph{Optimized Row Columnar (ORC)} 
 inicialmente fue desarrollado para optimizar Hive, 
 y aunque ofrece excelentes capacidades de compresión y rendimiento en consultas, su relevancia 
-ha disminuido significativamente en los últimos años frente a Parquet. Aunque ORC sigue siendo 
+ha disminuido significativamente en los últimos años frente a Parquet. \newline
+
+Aunque ORC sigue siendo 
 relevante en sistemas legacy y específicos de Hive, la tendencia de la industria se ha movido 
 claramente hacia Parquet como el formato columnar preferido para análisis de datos a gran escala.
 
@@ -117,14 +131,16 @@ claramente hacia Parquet como el formato columnar preferido para análisis de da
 
 El almacenamiento de objetos en la nube constituye un paradigma de almacenamiento donde los datos se organizan y gestionan como objetos independientes dentro de una estructura plana.
 Cada objeto almacenado comprende tres elementos fundamentales: los datos en sí mismos, un conjunto extenso de metadatos que describen y categorizan la información, 
-y un identificador único global que permite su localización y recuperación. 
+y un identificador único global que permite su localización y recuperación. \newline
+
 Dicho paradigma, se caracteriza por su naturaleza distribuida y su capacidad para manejar tanto datos estructurados como no estructurados, 
-permitiendo almacenar desde documentos, archivos multimedia y hasta flujos de datos en tiempo real.
+permitiendo almacenar desde documentos, archivos multimedia y hasta flujos de datos en tiempo real.\newline
 
 Los sistemas de almacenamiento de objetos se destaca por su capacidad para satisfacer las demandas contemporáneas de procesamiento de datos a gran escala.
-Como por ejemplo, ofrece una escalabilidad prácticamente ilimitada, pudiendo crecer según las necesidades sin preocuparse por restricciones de capacidad.
+Como por ejemplo, ofrece una escalabilidad prácticamente ilimitada, pudiendo crecer según las necesidades sin preocuparse por restricciones de capacidad.\newline
+
 Por otro lado, la durabilidad y disponibilidad de los datos se garantiza a través de la replicación automática en múltiples ubicaciones de forma automática y transparente.
-Adicionalmente, proveen APIs normalmente basadas en el protocolo HTTP que permite acceder de forma interoperable y estandarizada a los recursos almacenados
+Adicionalmente, proveen APIs normalmente basadas en el protocolo HTTP que permite acceder de forma interoperable y estandarizada a los recursos almacenados.\newline
 
 El uso de estos sistemas también conlleva sus propios desafíos. El más importante puede ser la latencia; pero también deben los grados de consistencia que ofrecen.
 
@@ -134,7 +150,7 @@ El uso de estos sistemas también conlleva sus propios desafíos. El más import
 
 Los formatos de tabla analítica son tecnologías diseñadas para resolver los desafíos del manejo de datos
 a gran escala. Surgen como respuesta a las limitaciones de los formatos de archivo tradicionales como Parquet y ORC
-cuando se trabaja con ellos en la nube. 
+cuando se trabaja con ellos en la nube. \newline
 
 Las características más importantes que aporta un formato de tabla analítica son:
 
@@ -151,49 +167,58 @@ Las características más importantes que aporta un formato de tabla analítica 
 Los formatos de tablas analíticas dan a sus sistemas subyacentes estas características a través de diferentes mecanismos y estrategias. 
 La principal es la gestión de metadatos, ya que implementan estructuras de datos altamente optimizadas que permiten rastrear 
 eficientemente los archivos y sus cambios; mientras mantienen un historial detallado de transacciones que garantiza la consistencia de los datos, 
-complementando con estrategias efectivas de particionamiento y organización. 
+complementando con estrategias efectivas de particionamiento y organización. \newline
 
 Para la optimización del rendimiento, estos formatos emplean diversas técnicas como la compactación automática de archivos, 
 estrategias de caching de datos para acceso rápido, utilización de formatos de archivo columnares como Parquet u ORC, 
-y la incorporación de capacidades avanzadas de indexación y filtrado optimizado. 
+y la incorporación de capacidades avanzadas de indexación y filtrado optimizado. \newline
+
+\newpage
 
 La consistencia de los datos se garantiza mediante la implementación de transacciones ACID completas, 
 que proporcionan un sólido aislamiento entre operaciones de lectura y escritura, manejan conflictos de manera automática 
 y aseguran la consistencia en escenarios de operaciones concurrentes. 
-En cuanto a la evolución y mantenimiento, estos formatos facilitan cambios de esquema sin interrupciones en el servicio. 
+En cuanto a la evolución y mantenimiento, estos formatos facilitan cambios de esquema sin interrupciones en el servicio. \newline
 
 Todas estas mecanismos trabajan en conjunto para proporcionar una solución completa para el manejo de datos a escala masiva,
-que como subproducto permite tratar la escritura de los archivos como un canal de mensajes sobre el que se puede hacer streaming.
+que como subproducto permite tratar la escritura de los archivos como un canal de mensajes sobre el que se puede hacer streaming. \newline
 
 Los exponentes más importantes de estos formatos son: Delta Table, Apache Iceberg y Apache Hudi.
 Existen además otros formatos menos conocidos como Apache Paimon,
-que aunque no tienen la misma adopción, ofrecen características similares.
+que aunque no tienen la misma adopción, ofrecen características similares. \newline
 
 \paragraph{Delta Lake}es un sistema de almacenamiento de datos diseñado por Databricks que utiliza archivos Parquet como base, 
-organizándolos en una estructura de directorios con dos componentes principales: 
-los archivos de datos en formato Parquet y el directorio {\_delta\_log} para metadatos y registro de transacciones. 
+organizándolos en una estructura de directorios con dos componentes principales:
+
+\begin{itemize}
+    \item Los archivos de datos en formato Parquet
+    \item El directorio {\_delta\_log} para metadatos y registro de transacciones
+\end{itemize}
+
 Esta arquitectura mantiene las ventajas de Parquet mientras añade capacidades transaccionales y de control de versiones, 
 implementando un sistema de checkpoints para optimizar el rendimiento y un manejo de concurrencia que combina control optimista 
-con serialización de escrituras.
+con serialización de escrituras.\newline
 
 Las características fundamentales de Delta Lake incluyen transacciones ACID completas, 
 capacidad de acceso a versiones anteriores, evolución de esquema controlada, 
-operaciones de Merge sofisticadas y optimización automática de datos mediante compactación de archivos y mantenimiento de estadísticas. 
+operaciones de Merge sofisticadas y optimización automática de datos mediante compactación de archivos y mantenimiento de estadísticas. \newline
+
 El sistema también proporciona soporte para procesamiento de datos en tiempo real con semántica exactly-once 
 y una integración robusta principalmente con Spark.
 
 \newpage
 \paragraph{Apache Hudi}desarrollado inicialmente por Uber, es una plataforma enfocada en crear una plataforma analítica transaccional,
 disponibilizando dos tipos principales de formatos de tablas: 
-Copy On Write (optimizado para lecturas) y Merge On Read (optimizado para escritura). 
+Copy On Write (optimizado para lecturas) y Merge On Read (optimizado para escritura). \newline
 
 Utiliza una linea de tiempo para gestionar metadatos y registrar cronológicamente todas las acciones, 
 implementando un sistema de indexación que permite optimizar operaciones y facilitar búsquedas rápidas, 
-además maneja control de concurrencia optimista que mantiene lecturas sin bloqueos mientras serializa escrituras.
+además maneja control de concurrencia optimista que mantiene lecturas sin bloqueos mientras serializa escrituras.\newline
+
 Las características principales de Hudi incluyen procesamiento incremental para manejar streams de datos, 
 gestión sofisticada de registros individuales con versionado a nivel de registro, borrado lógico y evolución de esquemas.
 También proporciona garantías de consistencia con transacciones ACID y semántica exactly-once, 
-ofreciendo buena integración con motores de procesamiento como Spark y Flink.
+ofreciendo buena integración con motores de procesamiento como Spark y Flink.\newline
 
 Hudi, al ser una plataforma, no ofrece solo su formato de tabla analítica, 
 sino también "Table Services" que son componentes computacionales que permiten la optimización como compactación automática 
@@ -201,28 +226,29 @@ y limpieza de almacenamiento.
 
 \newpage
 \paragraph{Apache Iceberg}diseñado inicialmente por Netflix, implementa una arquitectura de almacenamiento que se caracteriza 
-por un modelo de metadatos enfocado en la evolución del esquema. 
+por un modelo de metadatos enfocado en la evolución del esquema. \newline
 
 Utiliza una estructura jerárquica que separa completamente los metadatos de los datos, 
 implementando control de versiones basado en snapshots atómicos e inmutables, 
 donde cada snapshot representa un punto en el tiempo de la tabla y contiene referencias a todos los archivos de datos válidos para esa versión, 
-permitiendo operaciones concurrentes sin necesidad de bloqueos pesados.
+permitiendo operaciones concurrentes sin necesidad de bloqueos pesados.\newline
 
 Entre sus características principales destacan una gestión de esquemas flexible que permite evolucionar tanto el esquema 
 como la estrategia de particionamiento sin reescribir datos, 
 una optimización de consultas avanzada basada en estadísticas detalladas a nivel de columna y archivos, 
-y un sistema de control de concurrencia optimista. 
+y un sistema de control de concurrencia optimista. \newline
 
 Además, disponibiliza herramientas de mantenimiento como expiración de snapshots, compactación de archivos 
 y reescritura de datos para optimización física, 
 junto con una robusta integración con diferentes motores de procesamiento como Spark y Flink.
 
 \newpage
-\paragraph{Apache Paimon} es un formato de tabla analítica que busca permitir la construcción de arquitecturas de streaming.
+\paragraph{Apache Paimon} es un formato de tabla analítica que busca permitir la construcción de arquitecturas de streaming.\newline
+
 Nació como un proyecto dentro del mismo Apache Flink por lo que tiene una integración muy fuerte con este motor de procesamiento.
 Paimon se destaca por su capacidad de manejar datos en tiempo real y batch, permitiendo la construcción de pipelines híbridos.
 Lo hace mediante el uso de su formato de datos propio en conjunto con mecanismos para la gestión de metadatos que son 
-similares a Apache Hudi.
+similares a Apache Hudi.\newline
 
 Permite actualizaciones en tiempo real a través del motor de procesamiento y deduplicar los datos de forma personalizada. 
 También se encarga automáticamente de la limpieza y compactación de archivos, 
@@ -233,7 +259,7 @@ y ofrece soporte para la evolución de esquemas, control de versiones y transacc
 \subsubsection{Catálogos de Metadatos}
 Los catálogos de metadatos actúan como un registro centralizado y organizado de toda la información sobre las tablas y conjuntos de datos en un sistema. 
 Son una capa de abstracción que mantiene información crítica sobre la estructura, ubicación, esquema, particiones, historial de versiones y estadísticas de los datos, 
-permitiendo una gestión eficiente y un acceso optimizado a los mismos.
+permitiendo una gestión eficiente y un acceso optimizado a los mismos.\newline
 
 Son necesarios para que sistemas externos conozcan la ubicación y la estructura de los datos almacenados. 
 
@@ -255,19 +281,19 @@ De esta manera, Apache Polaris busca ser una solución neutral y agnóstica a lo
 Las bases de datos analíticas, también conocidas como bases de datos OLAP (Online Analytical Processing) orientadas a tiempo real, 
 son sistemas especializados diseñados para procesar y analizar grandes volúmenes de datos con énfasis particular en consultas complejas y agregaciones. 
 Estos sistemas están arquitecturalmente optimizados para procesar rápidamente consultas que involucran múltiples dimensiones y métricas sobre conjuntos masivos de datos, 
-permitiendo análisis en tiempo real o casi real. 
+permitiendo análisis en tiempo real o casi real. \newline
 
 Estas bases de datos se distinguen por su capacidad de manejar cargas de trabajo analíticas complejas mientras mantienen latencias bajas y consistentes; 
 especializandose en resultados en segundos o milisegundos.Esta característica se debe a su arquitectura orientada específicamente al análisis, 
-que contrasta con los sistemas diseñados primariamente para transacciones (OLTP) o almacenamiento general de datos.
+que contrasta con los sistemas diseñados primariamente para transacciones (OLTP) o almacenamiento general de datos.\newline
 
 Por diseño permiten un análisis multidimensional eficiente, soportan alta concurrencia de usuarios, y pueden integrarse efectivamente con fuentes de datos en streaming.
 Además, su diseño orientado a columnas permite una compresión más eficiente y mejor rendimiento en consultas analíticas que típicamente involucran solo un subconjunto de ellas. 
-Proporcionando capacidades avanzadas de agregación y pueden manejar eficientemente tanto datos históricos como en tiempo real.
+Proporcionando capacidades avanzadas de agregación y pueden manejar eficientemente tanto datos históricos como en tiempo real.\newline
 
 Ninguno de estos beneficios vienen sin sus propios desafios, ya que se requiere una cuidadosa planificacion y operativa para mantener su rendimiento.
-Además, más que nunca, es necesario organizar correctamente los indices y los esquemas de particionamiento son claves.
-
+Además, más que nunca, es necesario organizar correctamente los indices y los esquemas de particionamiento son claves.\newline
+\newpage
 Ejemplos de estos sistemas son:
 
 \paragraph{Apache Druid}

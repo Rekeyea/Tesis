@@ -1,33 +1,41 @@
 \section{Análisis de Resultados}
 
-Se pudo ver que ambas arquitecturas presentan características y ventajas distintas. 
-La arquitectura Kappa es la más adecuada para procesar datos en tiempo real, con muy baja latencia. 
-Como contraparte presenta un uso de recursos más elevado que Delta y una mayor complejidad operativa.
+El análisis de resultados permitió evidenciar que las arquitecturas Kappa y Delta presentan características, 
+ventajas y limitaciones diferenciadas, las cuales deben ser consideradas cuidadosamente según el contexto de aplicación. \newline
 
-Por su lado, Delta parece ser más escalable con menos recursos, 
-ya que puede ingestar una mayor cantidad de datos en la misma cantidad de tiempo.
-Sin embargo, sus tiempos de latencia lo hacen inadecuado para procesamiento en tiempo real. 
+La arquitectura Kappa demostró ser altamente eficiente para el procesamiento en tiempo real, logrando latencias inferiores al segundo en más del 80 \% de los casos. 
+Esta capacidad la posiciona como la opción más adecuada en escenarios donde la reacción inmediata es crítica, 
+como en el monitoreo de pacientes en unidades de cuidados intensivos o emergencias. 
+No obstante, esta eficiencia viene acompañada de un mayor consumo de recursos, 
+una complejidad operativa superior y una necesidad considerable de almacenamiento, 
+debido a su dependencia de Kafka como fuente de verdad. \newline
 
-Considerando esto, si el objetivo del sistema es el monitoreo de pacientes ambulatorios por ejemplo, 
-la arquitectura Delta es más adecuada, ya que no necesariamente requiere un accionar del sistema de forma inmediata.
+Por otro lado, la arquitectura Delta evidenció una mayor escalabilidad y una mejor eficiencia en el uso de recursos, 
+especialmente en almacenamiento y transferencia de datos, gracias al uso de formatos columnar como Parquet y almacenamiento en Object Storage. 
+Sin embargo, sus tiempos de latencia (aunque estables) alcanzaron valores promedio de alrededor de 180 segundos, 
+lo que la hace inadecuada para casos que requieren inmediatez. Aun así, esta latencia puede considerarse aceptable en contextos como el monitoreo ambulatorio, 
+donde las decisiones clínicas no dependen de una reacción instantánea. \newline
 
-En cambio, si el objetivo es el monitoreo de pacientes en una sala de emergencias o cuidados intensivos,
-la arquitectura Kappa es la más adecuada, ya que permite actuar de forma inmediata ante cualquier evento inesperado.
+En cuanto a throughput, Delta logró duplicar la capacidad de ingesta de Kappa, 
+procesando hasta 1300 registros por segundo frente a los 790 de Kappa. 
+Asimismo, logró completar el 100 \% de la carga de datos, a diferencia de Kappa, 
+que presentó fallos por limitaciones en el uso de disco durante el despliegue. \newline
 
-Para un sistema de salud integral, se podrían combinar ambas arquitecturas, 
-utilizando Delta como fuente de verdad, y un subsistema basado en Kappa para el monitoreo intrahospitalario,
-donde la latencia es crítica. 
-Este subsistema podría a su vez alimentar al sistema principal de modo que todos los datos fluyan por ambos.
+Desde la perspectiva económica, el despliegue de Delta implicó un costo 36 \% menor que el de Kappa. 
+Esta diferencia se debe principalmente a la menor necesidad de almacenamiento persistente y al menor tráfico de red requerido.\newline
 
-Esta idea es similar a la arquitectura Lambda, aunque optimizado para el procesamiento continuo de datos.
-Lo más interesante de este enfoque es que se puede hacer con las tecnologías actuales,
-Kafka seguiría siendo el punto de ingesta de datos, 
-luego cada uno de los sistemas podrías hacer su análisis. Por último Kappa enviaría sus datos a Doris, 
-que además ya está configurado para poder hacer las consultas federadas sobre los datos que almacena Delta. 
-Esto permitiría tener un sistema de salud integral, 
-donde consultar datos en tiempo real, que pueden tener un ciclo de vida corto que permita el menor uso de recursos 
-y a su vez consultar los datos históricos que fueron procesados de manera contínua pero que tienen una latencia de 
-algunos minutos. 
+Dado lo anterior, la elección entre Kappa y Delta dependerá del caso de uso específico.
+
+\newpage
+
+Para un sistema de salud integral, una estrategia híbrida que combine ambas arquitecturas se perfila como una solución óptima. 
+En este enfoque, Delta puede actuar como fuente de verdad y repositorio histórico, 
+mientras que un subsistema basado en Kappa podría operar en paralelo para los casos donde la baja latencia sea un requerimiento indispensable. \newline
+
+Esta estrategia se asemeja conceptualmente a la arquitectura Lambda, 
+aunque enfocada en el procesamiento continuo de datos y utilizando tecnologías actuales como Doris, 
+que permite consultas federadas sobre los datos almacenados en ambas arquitecturas; 
+y Kafka que permite el ruteo de mensajes a ambos sistemas a la vez paraque cada uno lo procese a la velocidad que pueda.
 
 \begin{figure}[h]
     \makebox[\textwidth]{\includegraphics[width=\paperwidth]{resultados/combine.png}}

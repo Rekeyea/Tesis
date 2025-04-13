@@ -3,17 +3,17 @@
 \subsection{Principios de Diseño}
 
 La principal característica de esta arquitectura es su fuerte uso de un registro de eventos inmutable 
-y ordenado cronológicamente que actúa como única fuente de verdad sobre los datos ingresados al sistema.
+y ordenado cronológicamente que actúa como única fuente de verdad sobre los datos ingresados al sistema.\newline
 
 De esta manera, se logra unificar el procesamiento de datos en batch y streaming tratándolos como un flujo continuo de eventos, 
-eliminando la dualidad de código y reduciendo la complejidad operativa.
+eliminando la dualidad de código y reduciendo la complejidad operativa.\newline
 
 El procesamiento de estos datos se realiza mediante motores de procesamiento de eventos que leen este registro, 
 aplican transformaciones determinísticas 
-y generan resultados derivados que pueden recomputarse en cualquier momento desde el inicio del log.
+y generan resultados derivados que pueden recomputarse en cualquier momento desde el inicio del log.\newline
 
 Este principio de reproducibilidad permite regenerar el estado completo del sistema cuando cambian los requisitos 
-o algoritmos de procesamiento, sin necesidad de mantener rutas de código separadas.
+o algoritmos de procesamiento, sin necesidad de mantener rutas de código separadas.\newline
 
 Las vistas materializadas son otro principio fundamental, 
 donde los resultados procesados se almacenan en sistemas optimizados para consultas, 
@@ -28,12 +28,12 @@ En Kappa se configura Kafka con períodos de retención extendidos,
 aprovechando la capacidad de compactación de logs para mantener el historial completo de eventos mientras 
 se optimiza el espacio de almacenamiento. 
 Esto se logra agregando la capacidad de almacenamiento en capas, mediante la cual se pueden mantener los eventos
-en Object Storage (utilizando \textbf{MinIO}), cuando pasa un tiempo definido de mantención en almacenamiento local.
+en Object Storage (utilizando \textbf{MinIO}), cuando pasa un tiempo definido de mantención en almacenamiento local.\newline
 
 El procesamiento de datos se realiza mediante \textbf{Apache Flink},
 se despliega en un cluster con un nodo Job Manager y cuatro nodos Task Manager; de forma de distribuir la carga de trabajo lo mejor posible.
 En este caso, se define como punto de entrada un tópico de Kafka, para procesar los datos en tiempo real y
-enviarlos a un nuevo topico y continuar con el procesamiento más adelante en la arquitectura.
+enviarlos a un nuevo topico y continuar con el procesamiento más adelante en la arquitectura.\newline
 
 En el último paso, se guarda el resultado del procesamiento en \textbf{Apache Doris}, un motor de análisis de datos
 distribuido que permite realizar consultas SQL en tiempo real sobre grandes volúmenes de datos con una interfaz basada en MySQL.
@@ -163,7 +163,7 @@ El siguiente es un ejemplo de uno de los trabajos de procesamiento de datos desa
 
 Como se puede ver, FLink SQL permite tratar a los tópicos de Kafka como tablas, pudiendose así leer y escribir sobre ellos. 
 Esto permite realizar un procesamiento de datos en tiempo real,
-enriquecerlos y enviarlos a otro tópico de Kafka para su posterior procesamiento.
+enriquecerlos y enviarlos a otro tópico de Kafka para su posterior procesamiento.\newline
 
 Para esta arquitectura se utilizaron dos conectores diferentes de Kafka. El primero, visto en los ejemplos, permite leer y escribir pero no modificar. 
 Por otro lado, para las agregaciones, se utilizó \textbf{upsert-kafka} que agrega la semántica de actualización y borrado de mensajes,

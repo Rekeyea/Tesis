@@ -2,45 +2,48 @@
 
 Desde el punto de vista técnico se eligió realizar una comparación basandose en el común denominador tecnológico para ambas arquitecturas.
 Esto implica que se realizó una optimización profunda para aprovechar al máximo las capacidades de ambas. 
-Sin embargo, se pudieron ver las características más notables en los ecosistemas tecnológicos en los que se basan sus implementaciones. 
+Sin embargo, se pudieron ver las características más notables en los ecosistemas tecnológicos en los que se basan sus implementaciones. \newline
 
 Un caso interesante es Kafka. Kappa surge del mismísimo creador de Kafka y por lo tanto, aprovecha al máximo las capacidades de baja latencia de esta tecnología.
 Aún años después de introducida, es la tecnología de mensajería y streaming más popular; habiendo cosechado una enorme comunidad. 
-Esto permitió que para ambas arquitecturas se pudiera implementar un cluster altamente distribuido, con las mejores prácticas posibles. 
+Esto permitió que para ambas arquitecturas se pudiera implementar un cluster altamente distribuido, con las mejores prácticas posibles. \newline
+
 Es de destacar que inicialmente se intentó utilizar Apache Pulsar ya que es otra plataforma que cumple con los mismos casos de uso que Kafka y promete mayor escalabilidad. 
 Sin embargo, no existe suficiente documentación para llegar rápidamente a la misma calidad con la que se llegó al usar Kafka. 
 Otra desventaja es en su uso en conjunto con Flink ya que los conectores existentes no funcionaban correctamente. 
 Es importante mencionar también, que la comunidad de Kafka es tremendamente activa 
-y en el tiempo que se desarrolló esta tesis mejoraron los protocolos de comunicación entre nodos por lo que Apache Zookeeper dejó de ser necesario en las últimas versiones.
+y en el tiempo que se desarrolló esta tesis mejoraron los protocolos de comunicación entre nodos por lo que Apache Zookeeper dejó de ser necesario en las últimas versiones.\newline
 
 También Flink fue un caso problemático ya que si bien promete unas muy buenas prestaciones para el caso de uso de streaming, 
 su comunidad es muchísimo más pequeña que la de la alternativa más clara (Apache Spark) lo que implicó mucho tiempo de investigación inicial y poco de profundización en la misma. 
 Teniendo en cuenta esto, a menos que el caso de uso específico requiera un procesamiento de streaming puro y tiempos de latencia del nivel de milisegundos,
-se recomienda utilizar Spark ya que es más fácil de usar y tiene una comunidad mucho más activa.
+se recomienda utilizar Spark ya que es más fácil de usar y tiene una comunidad mucho más activa.\newline
+
+\newpage
 
 Doris por su parte, es una tecnología relativamente nueva. Sumado a esto, la mayoría de la documentación está en chino, lo que dificultó mucho su implementación.
 Sin embargo, las capacidades que ofrece son muy interesantes y prometedoras. Parece tener una comunidad bastante activa y en crecimiento, 
 que apuesta por la adopción y evolución de esta tecnología. 
 Sin embargo, no se pudo encontrar una comunidad de usuarios en inglés que permita una rápida adopción y resolución de problemas. Por lo que tampoco se pudo utilizar 
-las últimas versiones de la misma y por ende se perdió la posibilidad de poner a prueba las últimas mejoras que se han ido introduciendo.
-
-\newpage
+las últimas versiones de la misma y por ende se perdió la posibilidad de poner a prueba las últimas mejoras que se han ido introduciendo.\newline
 
 A nivel tecnológico Apache Paimon, fue un hallazgo inesperado pero afortunado ya que es una herramienta que funciona nativamente con Flink (y de hecho nace como un subproyecto de esa comunidad).
 Esto permitió que si bien la comunidad es pequeña y también en su mayoría en chino, fuera fácilmente integrable para la arquitectura Delta. 
 También su caso de uso más importante era exactamente el que se buscaba en este caso en un formato de tabla analítica. 
+
 De no haberlo encontrado, se hubiera tenido que utilizar Apache Iceberg, que es la alternativa más popular y que está tomando más relevancia en el mundo de la ingenería de datos. 
 De todas maneras, en base a las pruebas realizadas inicialmente, Apache Hudi hubiera sido la mejor opción por su enfoque en streaming de datos. 
 Su mayor problema es que tiene una comunidad mucho más pequeña que Iceberg (aunque muchisimo más grande que Paimon), que no es tan fácil de integrar con Flink 
-y que por su parte también presenta complejidades en su despliegue ya que no es solamente un formato de tabla analítica sino que se proveen de forma separada servicios de Lakehouse que se deben integrar. 
+y que por su parte también presenta complejidades en su despliegue ya que no es solamente un formato de tabla analítica sino que se proveen de forma separada servicios de Lakehouse que se deben integrar. \newline
 
 El catálogo de metadatos fue otro punto importante a tener en cuenta. En este caso, al no necesitar integración con otras herramientas,
 se optó por un catálogo en sistema de archivos. Sin embargo, normalmente sería preferible por cuestiones de integración exponer un servicio de metadatos como Apache Hive o AWS Glue.
 Este es otro aspecto muy emergentes, sobre todo en el mundo de los Data Lakehouse, donde se están desarrollando estándares abiertos para la interoperabilidad entre distintas herramientas.
 Sin embargo, todas las iniciativas existentes son extremadamente nuevas y no están maduras; o no son soportadas por algún otro componente de la arquitectura. 
-Tal fue el caso de Project Nessie que no tenía una forma de ser integrado a Apache Doris para su uso; y que de todas maneras será absorbido por Apache Polaris en un futuro.
+Tal fue el caso de Project Nessie que no tenía una forma de ser integrado a Apache Doris para su uso; y que de todas maneras será absorbido por Apache Polaris en un futuro.\newline
 
-Desde el punto de vista de su componentes técnicos, las arquitecturas extremadamente similares y no presentan ventajas significativas una sobre otra 
+Desde el punto de vista de su componentes técnicos y debido al enfoque de utilizar las mismas tecnologías para ambas, 
+las arquitecturas son extremadamente similares y no presentan ventajas significativas una sobre otra 
 (más allá de que para utilizar Paimon en Flink es necesario incluir algunos JAR adicionales).
 De hecho, una vez resuelta la implementación de la arquitectura Kappa (que fue la primera en implementarse), fue trivial implementar la arquitectura Delta. 
 

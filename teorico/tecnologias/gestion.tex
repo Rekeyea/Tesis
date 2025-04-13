@@ -1,24 +1,33 @@
 \subsection{Tecnologías Complementarias}
 
+Consideramos tecnologías complementarias, aquellas que no son directamente parte de la arquitectura, pero que son necesarias para su correcto funcionamiento.\newline
+Estas tecnologías son sobre todo referentes a la gestión de contenedores, monitorización y visualización de datos.
+
 \subsubsection{Docker}
 
 Docker es una plataforma de software que permite crear, desplegar y ejecutar aplicaciones en contenedores. 
-Los contenedores son entornos ligeros y portátiles que encapsulan una aplicación y todas sus dependencias, lo que garantiza que funcionen de manera consistente en diferentes entornos.
+Los contenedores son entornos ligeros y portátiles que encapsulan una aplicación y todas sus dependencias, lo que garantiza que funcionen de manera consistente en diferentes entornos.\newline
+
 A nivel de desarrollo, también permite crear imágenes de contenedores que pueden ser compartidas y reutilizadas, facilitando la colaboración entre equipos y la integración continua.
 Es especialmente sencillo de usar y provee Docker Compose, una herramienta que permite definir y ejecutar aplicaciones multi-contenedor.
 
 \subsubsection{Prometheus}
 Prometheus es un sistema de monitorización y alerta open-source, Es especialmente eficaz para monitorizar entornos dinámicos como los que se encuentran en arquitecturas de microservicios y contenedores.
-Permite recolectar y analizar métricas en tiempo real de manera altamente eficiente y tiene un potente lenguaje de consultas. 
+Permite recolectar y analizar métricas en tiempo real de manera altamente eficiente y tiene un potente lenguaje de consultas. \newline
+
 Destaca por su capacidad para manejar millones de métricas simultáneamente y su arquitectura pull-based, que le permite escalar horizontalmente sin problemas. 
 Además, cuenta con un sistema de alertas flexible y puede integrarse fácilmente con Docker y otras herramientas de orquestación, 
 lo que lo convierte en una herramienta fundamental para monitorizar aplicaciones modernas a gran escala.
 
+\newpage
+
 \subsubsection{Grafana}
 Grafana es una plataforma de visualización y análisis de datos de open-source que destaca especialmente cuando se combina con Prometheus. 
-Su principal valor radica en su capacidad para transformar datos complejos en visualizaciones claras e interactivas a través de tableros personalizables.
+Su principal valor radica en su capacidad para transformar datos complejos en visualizaciones claras e interactivas a través de tableros personalizables.\newline
+
 Cuando se utiliza junto con Prometheus, Grafana actúa como la capa de visualización, permitiendo crear paneles intuitivos que muestran en tiempo real el estado y rendimiento de los sistemas. 
-Esto facilita la detección temprana de problemas, el análisis de tendencias y la toma de decisiones basada en datos. 
+Esto facilita la detección temprana de problemas, el análisis de tendencias y la toma de decisiones basada en datos. \newline
+
 Una de sus características más poderosas es la capacidad de combinar datos de múltiples fuentes en un único dashboard, proporcionando una vista unificada del sistema. 
 
 \newpage

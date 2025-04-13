@@ -1,10 +1,10 @@
 \subsection{Mensajería Distribuida}
 
 Las tecnologías de mensajería distribuidas en tiempo real cumplen el crucial rol de actuar como intermediarios entre las fuentes de datos 
-y los sistemas que efectivamente procesan estos datos. \parencite{kleppmann} 
+y los sistemas que efectivamente procesan estos datos. \parencite{kleppmann} \newline
 
 Deben funcionar como un conducto de alta capacidad de almacenamiento y baja latencia, capturando y canalizando los flujos de información
-desde sus múltiples orígenes y hacia sus diversos destinos en tiempo real. \parencite{bigdata}
+desde sus múltiples orígenes y hacia sus diversos destinos en tiempo real. \parencite{bigdata} \newline
 
 Su papel es fundamentalmente el de un sistema nervioso central, coordinando y distribuyendo datos a través de complejas arquitecturas distribuidas. 
 Actúan como amortiguadores, absorbiendo picos en el flujo de datos y garantizando un procesamiento constante y eficiente. 
@@ -14,10 +14,11 @@ lo que permite una mayor flexibilidad y escalabilidad en el diseño del sistema.
 \subsubsection{Apache Kafka}
 Apache Kafka es el estandar de facto de este tipo de sistemas. Utiliza un modelo de publicación-subscripcion (pub/sub) basado en logs, 
 donde los datos se envían a "topics" y se almacenan en particiones distribuidas. Las particiones tienen una garantía de orden de los mensajes
-y permiten la retención de datos a largo plazo.
+y permiten la retención de datos a largo plazo.\newline
 
 Además, proporciona conectores para integración con diversos sistemas y un amplio ecosistema. A nivel de seguridad ofrece encriptación
 en tránsito mediante TLS y permite ser configurado para soportar encriptación en reposo (aunque esto debe hacerse a nivel de sistema de archivos).
+\newline
 
 Por último, su arquitectura distribuida y replicada permite una alta disponibilidad y tolerancia a fallos.
 
@@ -25,10 +26,12 @@ Por último, su arquitectura distribuida y replicada permite una alta disponibil
 \subsubsection{Apache Pulsar}
 Apache Pulsar es también una plataforma de mensajería y streaming distribuida, al igual que Apache Kafka, pero que se distingue por tener una 
 arquitectura basada en capas, separando la capa de almacenamiento de la capa de procesamiento; lo que permite escalar cada uno independientemente.
+\newline
 
 Apache Pulsar soporta modelos de entrega como colas, publicación y suscripción y puede ofrecer garantías de entregar un mensaje 
 exactamente una vez ("exactly-once"). Ofrece encriptación a nivel de mensaje, lo que permite una granularidad fina en cuanto a que encriptar. 
 También soporta TLS para la encriptación en tránsito y permite la configuración de encriptación en reposo.
+\newline
 
 Por último, también soporta almacenamiento de mensajes a largo plazo y soporte nativo para esquemas:
 Esto es, permite definir la estructura y el tipo de datos de los mensajes, lo que a su vez permite una validación automática de los datos 
@@ -47,6 +50,7 @@ Kinesis, en realidad, se compone de varios servicios:
 \end{enumerate}
 Adicionalmente ofrece capacidades de auto-escalado, replicación entre zonas de disponibilidad para alta durabilidad, encriptación en reposo 
 (y puede habilitarsele la encriptación en tránsito) y permite la retención de datos hasta 365 días.
+\newline
 
 Como se puede ver, al ser tan completo permitiría implementar, al menos en principio, una gran parte de un sistema de Big Data en tiempo real.
 
@@ -54,12 +58,12 @@ Como se puede ver, al ser tan completo permitiría implementar, al menos en prin
 Azure Event Hubs es un servicio de ingestión de datos en tiempo real administrado en la plataforma Microsoft Azure.
 Se supone que está diseñado para soportar millones de eventos por segundo con baja latencia. Al igual que Kinesis,
 ofrece una muy buena con otros servicios de Microsoft Azure, lo que permite por ejemplo capturar directamente los eventos
-en los servicios de almacenamiento disponibles en este proveedor de nube.
+en los servicios de almacenamiento disponibles en este proveedor de nube.\newline
 
 Event Hubs es compatible con el protocolo Kafka, lo que permite a las aplicaciones existentes de Kafka conectarse sin cambios de código.
 Ofrece una retención de mensajes por defecto de 1 dia que puede aumentado hasta 7. En caso de necesitar una retención más a largo plazo
 se recomienda guardar los eventos en Azure Blob Storage o Azure Data Lake para su posterior procesamiento. 
-Cuenta también con encriptación en transito con TLS y en reposo.
+Cuenta también con encriptación en transito con TLS y en reposo.\newline
 
 Proporciona además, características como el procesamiento batch para optimizar el rendimiento, 
 control de acceso basado en roles, y encriptación en reposo y en tránsito. 
@@ -110,27 +114,24 @@ control de acceso basado en roles, y encriptación en reposo y en tránsito.
     \item Servicios gestionados (Kinesis, Event Hubs) tienen encriptación en reposo por defecto, pero retención limitada.
 \end{itemize}
 \clearpage
-\begin{table}[h]
-\footnotesize
-\begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
-\hline
-\textbf{Característica} & \textbf{Kafka} & \textbf{Pulsar} & \textbf{Kinesis} & \textbf{Event Hubs} \\
-\hline
+
+\begin{longtable}{|p{3cm}|p{2.5cm}|p{3cm}|p{3cm}|p{2.5cm}|}
+    \hline
+    \textbf{Característica} & \textbf{Kafka} & \textbf{Pulsar} & \textbf{Kinesis} & \textbf{Event Hubs} \\
+    \hline
     Escalabilidad & Muy Alta & Muy alta & Alta & Alta \\
-\hline
-Retención & Configurable & Ilimitada & 365 días máx. & 7 días máx. \\
-\hline
-Garantía de entrega & Exactly-once & Exactly-once & At-least-once & At-least-once \\
-\hline
-Encriptación en reposo & Configurable & Sí & Sí (AWS KMS) & Sí \\
-\hline
-Encriptación en tránsito & Sí & Sí & Sí & Sí \\
-\hline
-Throughput & {Muy alto} & {Muy alto} & {Alto} & {Alto} \\
-\hline
-\end{tabular}
-\caption{Comparación de Sistemas de Mensajería}
-\label{tab:comp_mensajeria}
-\end{table}
+    \hline
+    Retención & Configurable & Ilimitada & 365 días máx. & 7 días máx. \\
+    \hline
+    Garantías & Exactly-once & Exactly-once & At-least-once & At-least-once \\
+    \hline
+    Enc. en reposo & Configurable & Sí & Sí (AWS KMS) & Sí \\
+    \hline
+    Enc. en tránsito & Sí & Sí & Sí & Sí \\
+    \hline
+    Throughput & {Muy alto} & {Muy alto} & {Alto} & {Alto} \\
+    \hline
+    \caption{Comparación de Sistemas de Mensajería}
+\end{longtable}
 \clearpage
 \newpage

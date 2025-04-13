@@ -52,7 +52,8 @@ NEWS2 fue originalmente diseñado para mediciones manuales periódicas en entorn
 
 \subsubsection{Concepto y Fundamentos}
 Se propone aumentar el sistema NEWS2 con el concepto de degradación gradual (graceful degradation) de modo que la puntuación aún sea útil incluso cuando la medición de alguno de los datos de signos vitales no 
-se encuentre presente o no se confíe del todo en la calidad del mismo.
+se encuentre presente o no se confíe del todo en la calidad del mismo.\newline
+
 Cada parámetro de NEWS2 tiene un puntaje de calidad y de frescura asociado, que se utilizarán para definir el nivel de confianza que se le tiene a dicho parámetro.
 De esta forma, se puede calcular una puntuación de alerta temprana incluso cuando no se tienen todos los datos disponibles 
 y brindarle transparencia al profesional de la salud para que tome las decisiones correspondientes en cuanto al tratamiento del paciente.
@@ -84,7 +85,7 @@ El esquema general es el siguiente:
 
 \subsection{Algoritmo de Puntuación de Calidad}
 Un nuevo algoritmo de puntuación de calidad debería basarse en la experiencia clínica y la evidencia científica. Para el caso de estudio presentado, 
-se propone un algoritmo sencillo a fin de ilustrar su potencial y mantener limitado el enfoque de este trabajo.
+se propone un algoritmo sencillo a fin de ilustrar su potencial y mantener limitado el enfoque de este trabajo.\newline
 
 Se tomarán los identificadores de los dispositivos, que luego serán clasificados en 3 grupos cada uno con un peso asociado: 
 
@@ -102,7 +103,6 @@ Se tomarán los identificadores de los dispositivos, que luego serán clasificad
     \caption{Clasificación de dispositivos y sus pesos correspondientes}
     \label{tab:dispositivos}
 \end{longtable}
-    
 
 Además, se tomará en cuenta la señal de batería y la intensidad de la señal, que serán clasificados en 3 grupos cada uno con un peso asociado:
 
@@ -153,29 +153,52 @@ De esta manera, el cálculo de la puntuación de calidad se realizará de la sig
 En este momento, los valores tanto de los pesos como de los parametros son arbitrarios y se espera que en caso de encontrar útil este acercamiento, 
 futuras iteraciones ajusten estos parámetros o utilicen un criterio diferente para su cálculo.
 
+\newpage
+
 \subsection{Algoritmo de Puntuación de Frescura}
 
 Para medir la frescura de los datos, se propone un enfoque simple que considera el tiempo transcurrido desde la última medición 
-y el tiempo que le tomó a la medición actual llegar a ser procesada.
+y el tiempo que le tomó a la medición actual llegar a ser procesada.\newline
 
 Tiempo desde medición hasta procesamiento:
-\begin{itemize}
-    \item Menos de una hora: 1.0
-    \item Entre una y seis horas: 0.9
-    \item Entre seis y doce horas: 0.7
-    \item Entre doce y veinticuatro horas: 0.5
-    \item Entre veinticuatro y cuarenta y ocho horas: 0.3
-    \item En cualquier otro caso: 0.2
-\end{itemize}
+\begin{longtable}{|p{9cm}|p{3cm}|}
+    \hline
+    \textbf{Tiempo de Medición hasta Procesamiento} & \textbf{Peso Asociado} \\
+    \hline
+    \endhead
+    Menos de una hora & 1.0 \\
+    \hline
+    Entre una y seis horas & 0.9 \\
+    \hline
+    Entre seis y doce horas & 0.7 \\
+    \hline
+    Entre doce y veinticuatro horas & 0.5 \\
+    \hline
+    Entre veinticuatro y cuarenta y ocho horas & 0.3 \\
+    \hline
+    Otros & 0.2 \\
+    \hline
+    \caption{Clasificación de tiempo desde medición hasta procesamiento}
+\end{longtable}
 
 Tiempos entre mediciones:
-\begin{itemize}
-    \item Menos de cuatro horas: 1.0
-    \item Entre cuatro y ocho horas: 0.8
-    \item Entre ocho y doce horas: 0.6
-    \item Entre doce y veinticuatro horas: 0.4
-    \item Más de veinticuatro horas: 0.2
-\end{itemize}
+\begin{longtable}{|p{9cm}|p{3cm}|}
+    \hline
+    \textbf{Tiempo entre Mediciones} & \textbf{Peso Asociado} \\
+    \hline
+    \endhead
+    Menos de cuatro horas & 1.0 \\
+    \hline
+    Entre cuatro y ocho horas & 0.8 \\
+    \hline
+    Entre ocho y doce horas & 0.6 \\
+    \hline
+    Entre doce y veinticuatro horas & 0.4 \\
+    \hline
+    Más de veinticuatro horas & 0.2 \\
+    \hline
+    \caption{Clasificación de tiempo entre mediciones}
+\end{longtable}
 
 De esta manera, se propone el siguiente algoritmo de puntuación de frescura:
 
@@ -188,7 +211,7 @@ De esta manera, se propone el siguiente algoritmo de puntuación de frescura:
 \subsection{Algoritmo de Puntuación de Degradación}
 
 Este algoritmo se encargará de calcular la puntuación de degradación de la puntuación NEWS2 en caso de que no se tengan todos los datos disponibles.
-Simboliza la confianza que se le tiene a la puntuación NEWS2 en base a la calidad y frescura de los datos.
+Simboliza la confianza que se le tiene a la puntuación NEWS2 en base a la calidad y frescura de los datos.\newline
 
 Se propone utilizar la siguiente fórmula para calcular la puntuación de degradación:
 
@@ -206,7 +229,7 @@ El algoritmo de puntuación NEWS2 se basa en la suma de los puntajes de cada uno
 \end{equation}
 donde $n$ es la cantidad de parámetros que se tienen disponibles.
 En caso de que no se tenga un parámetro disponible, se asumirá una puntuación de cero para ese parámetro en su lugar.
-De esta manera, se puede calcular la puntuación NEWS2 incluso cuando no se tienen todos los datos disponibles.
+De esta manera, se puede calcular la puntuación NEWS2 incluso cuando no se tienen todos los datos disponibles.\newline
 
 Por otro lado, se propone utilizar la puntuación de degradación para dar contexto sobre la puntuación NEWS2 final.
 Así, se puede explicar que tan confiable es la puntuación NEWS2 calculada en base a los datos disponibles.

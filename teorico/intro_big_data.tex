@@ -4,7 +4,8 @@
 Un sistema distribuido es una colección de elementos computacionales autonomos que para su usuario 
 parecen un sistema único y coherente. \parencite{tanenbaum}
 
-Los sistemas distribuidos tienen dos caracteristicas que pueden regularse para escalar: Procesamiento y Almacenamiento.
+Los sistemas distribuidos tienen dos caracteristicas que pueden regularse para escalar: Procesamiento y Almacenamiento. 
+\newline
 
 En el último tiempo, ha habido una tendencia a preferir que la escala de ambas propiedades sea individual. 
 Es decir, que se pueda escalar por un lado la potencia de procesamiento y por otro la capacidad de almacenamiento.
@@ -41,8 +42,9 @@ procesar datos de alto volumen, alta velocidad y alta variedad
 para extraer el valor de datos previsto y asegurar una alta
 veracidad de los datos originales y la información obtenida, lo que demanda
 formas de procesamiento de datos e información rentables e innovadoras
-para mejorar el conocimiento, la toma de decisiones y el control de procesos;
-todo esto exige nuevos modelos de datos
+para mejorar el conocimiento, la toma de decisiones y el control de procesos. \newline
+
+Todo esto exige nuevos modelos de datos
 que soporten todos los estados y etapas de los datos durante todo su ciclo de vida, 
 y nuevos servicios y herramientas de infraestructura que permitan obtener y procesar
 datos de una variedad de fuentes y
@@ -66,15 +68,15 @@ o llegan al sistema. \parencite{flink}
 \subsection{Teorema CAP}
 El Teorema CAP es un concepto fundamental en el diseño de sistemas distribuidos. 
 Este establece que es imposible garantizar al mismo tiempo, tanto la Consistencia (Consistency), 
-Disponibilidad (Availability) y la Tolerancia a las Particiones (Partition Tolerance).
+Disponibilidad (Availability) y la Tolerancia a las Particiones (Partition Tolerance).\newline
 
 Según esto, un sistema distribuido sólo es capaz de garantizar dos de estas propiedades al mismo tiempo. 
 En general, para los sistemas de Big Data de Streaming, la disponibilidad es una propiedad obligatoria, ya que cualquier inactividad puede 
-resultar en la pérdida de datos valiosos o en la imposibilidad de realizar acciones.
+resultar en la pérdida de datos valiosos o en la imposibilidad de realizar acciones.\newline
 
 Por otro lado, la Tolerancia a Particiones es también indispensable para estos sistemas, que por su naturaleza requieren que su capacidad de 
 procesamiento este distribuida a través de múltiples nodos dispersos en una red no confiable; por lo que son suceptibles 
-a que se genere una partición. Por lo tanto, si no tuviera esta propiedad el servicio podría dejar de ser disponible. 
+a que se genere una partición. Por lo tanto, si no tuviera esta propiedad el servicio podría dejar de ser disponible.\newline 
 
 Entonces, como corolario, un sistema de Big Data de Streaming debe también ser tolerante a las particiones para poder ser disponible.
 Esto nos deja con una única opción: relajar el "grado de consistencia" hasta un punto razonable que permita que el sistema siga siendo eficáz.\parencite{capteo}
@@ -82,12 +84,16 @@ Esto nos deja con una única opción: relajar el "grado de consistencia" hasta u
 \subsubsection{Consistencia Eventual}
 La consistencia eventual es un modelo de consistencia en sistemas distribuidos que garantiza que, 
 si no se realizan nuevas actualizaciones a un objeto, en algun momento (eventualmente) todos los accesos a ese objeto 
-devolverán el último valor actualizado.  
+devolverán el último valor actualizado. \newline
+
 La consistencia eventual se alinea con las compensaciones descritas por el teorema CAP, 
-permitiendo que estos sistemas prioricen la disponibilidad y la tolerancia a particiones. 
+permitiendo que estos sistemas prioricen la disponibilidad y la tolerancia a particiones. \newline
+
 Además, facilita la escalabilidad horizontal, crucial para manejar el crecimiento continuo de datos y clientes de los sistemas.
 Por último, es importante diseñar cuidadosamente el sistema para manejar las posibles inconsistencias temporales 
 y asegurar que la aplicación pueda tolerar y resolver estas situaciones de manera apropiada \parencite{capteo}
+
+\newpage
 
 \subsection{Desafíos en el manejo de datos de streaming}
 

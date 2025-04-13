@@ -21,6 +21,7 @@ Debido a una limitante en el hardware de procesamiento, se simplificó el calcul
 Esto provocaba que el sistema se quedara sin memoria RAM y no pudiera procesar los datos para ambas arquitecturas. 
 Por lo que se optó por no tener en cuenta los datos anteriores y solo calcular la frescura de los datos con las medidas de tiempo propias de cada registro.
 
+\newpage
 A continuación se presenta un diagrama de flujo del pipeline de procesamiento:
 \begin{figure}[h]
     \makebox[\textwidth]{\includegraphics[width=\paperwidth]{desarrollo/pipeline.png}}
@@ -45,12 +46,12 @@ Por otro lado, para el calculo de costos, se asume un despliegue de alta disponi
 
 La razón de este despliegue es la alta disponibilidad y la tolerancia a fallos, por lo que se despliega en una única región 
 y se dividen los servicios en zonas de disponibilidad para asegurar que si una de ellas falla,
-el sistema siga funcionando lo mejor posible.
+el sistema siga funcionando lo mejor posible.\newline
 
 Tres de las zonas de disponibilidad (a, b y c) son idempotentes en cuanto a su funcionamiento, 
 cada una cuenta con un nodo de Kafka, un nodo Zookeeper, un nodo de procesamiento de Flink y un nodo de backend de Doris.
 La cuarta zona de disponibilidad (d) tiene el nodo de frontend de Doris y el nodo de gestión de Flink; así como también un nodo extra de procesamiento de Flink.
-No se incluye MinIO en este despliegue porque se utiliza S3 nativo, que se define en una región y esta igualmente comunicado con todas las zonas de disponibilidad.
+No se incluye MinIO en este despliegue porque se utiliza S3 nativo, que se define en una región y esta igualmente comunicado con todas las zonas de disponibilidad.\newline
 
 A su vez, estarían idealmente desplegados mediante un orquestador de contenedores como Kubernetes, utilizando algún servicio como Elastic Kubernetes Serice (EKS).
 
@@ -60,7 +61,8 @@ A su vez, estarían idealmente desplegados mediante un orquestador de contenedor
 
 Se utilizaron datos sintéticos para realizar las pruebas de carga y estrés de ambas arquitecturas.
 Para la generación de los datos sintéticos se utilizó un script en Python que permite definir perfiles de pacientes con diferentes características,
-así como también el rango de tiempo para el que se genera la información.
+así como también el rango de tiempo para el que se genera la información.\newline
+
 Se generaron datos sintéticos para 32 pacientes a lo largo de un año, con un total de 110.122.654 registros;
 que implica un archivo CSV de aproximadamente 7GB.
 

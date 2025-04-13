@@ -6,13 +6,17 @@ La Arquitectura Kappa surge en 2014 como respuesta de parte de Jay Kreps a la Ar
 Si bien Lambda puede describirse de forma "sencilla" como una serie de transformaciones y además pone 
 mucho enfasis en la posibilidad y facilidad de reprocesar los datos; 
 tiene la desventaja de obligar a mantener código que debe producir el mismo resultado en dos sistemas
-distribuidos. Esto implica que cualquier cambio o mejora que reciba uno debe recibir un tratamiento
+distribuidos. \newline 
+
+Esto implica que cualquier cambio o mejora que reciba uno debe recibir un tratamiento
 de reingenieria para que el otro también lo tenga. Y, según argumenta Jay Kreps, la tendencia es a 
 optimizar el código para uno de los motores (incluso si un mismo motor soporta dos modos de trabajo, 
-la semántica que maneja será distinta por lo que terminará siendo una base de código distinta). \parencite{kreps2014questioning}
+la semántica que maneja será distinta por lo que terminará siendo una base de código distinta). \parencite{kreps2014questioning}\newline
 
-La Arquitectura Kappa busca responder la pregunta "Por qué un sistema de procesamiento de Streams no podría 
-incrementar su paralelismo y reprocesar su historia muy rápido?"   
+La Arquitectura Kappa busca responder la pregunta: \newline
+
+\textbf{¿Por qué un sistema de procesamiento de Streams no podría incrementar su paralelismo y reprocesar su historia muy rápido?}   
+\newline
 
 La intuición detrás de esta arquitectura es la siguiente: 
 

@@ -1,12 +1,15 @@
 \section{Mediciones}
 
-Se realizarán mediciones de rendimiento y latencia de ambas arquitecturas.
+Se realizarán mediciones de rendimiento y latencia de ambas arquitecturas.\newline
+
 Para esto se tomarán 5 muestras de cada medición y se calculará el promedio y la desviación estándar.
 Las mediciones se realizarán en el mismo entorno de despliegue y con la misma carga de trabajo.
 Se utilizará un conjunto de datos sintético que corresponden a 1 año de datos de 32 pacientes,
-lo que implica alrededor de 7 GB de datos. 
+lo que implica alrededor de 7 GB de datos. \newline
+
 Todas las mediciones se harán sobre un entorno recien instalado para asegurar que no haya interferencias entre mediciones.
-Se desarrollará un script en Python que se encargará de enviar las mediciones a cada uno de los sistemas.
+Se desarrollará un script en Python que se encargará de enviar las mediciones a cada uno de los sistemas.\newline
+
 El script se encargará de enviar los datos a través de un productor de Kafka y lo hará tan rápido como sea posible,
 lo que permitirá medir el impacto que tiene el despliege del sistema en el entorno donde se ejecuta.
 
