@@ -1,60 +1,82 @@
 \section{Stack de Tecnologías a Utilizar}
 
-Para que la implementación de las instancias de arquitecturas de referencia sean comparables es necesario mantener criterios similares para no favorecer a una de ellas.
-Estas instancias serán definidas mediante contenedores y desplegadas en Docker Compose, 
-lo que permitirá definir un ambiente similar para la comparación de las mismas.\newline
+Con el objetivo de comparar objetivamente las arquitecturas Kappa y Delta, 
+se definió un stack tecnológico común que permite mantener condiciones similares en términos de despliegue, 
+monitoreo y operación.\newline 
 
-Se realizó un análisis exhaustivo de las tecnologías, de modo de utilizar aquellas que puedan ser compartidas entre ambas implementaciones y a su vez permitan
-optimizar su uso. Las seleccionadas son: 
+Estas tecnologías fueron seleccionado considerando aspectos como compatibilidad, 
+madurez del ecosistema, integración con otras herramientas, facilidad de operación, 
+disponibilidad de documentación y eficiencia de recursos.
 
-\begin{itemize}
-    \item Apache Kafka como punto de ingestión de datos y ruteo de mensajes
-       \begin{itemize}
-           \item Estandard de la industria
-           \item Ecosistema maduro con fuertes integraciones
-       \end{itemize}
-    \item Apache Flink como motor de procesamiento distribuido
-       \begin{itemize}
-           \item Su modelo de procesamiento ofrece la menor latencia posible
-           \item Tiene amplia compatibilidad con los diferentes ecosistemas de tecnologías
-       \end{itemize}
-    \item MinIO como almacenamiento de objetos
-       \begin{itemize}
-           \item Compatible con API S3
-           \item Alta disponibilidad
-           \item Gestión de datos distribuida
-       \end{itemize}
-    \item Apache Paimon como formato de tabla analítica
-       \begin{itemize}
-           \item Formato de tabla analítica especialmente pensado para streaming de datos
-           \item Fuerte integración con Apache Flink
-       \end{itemize}
-    \item Apache Doris como base de datos de análisis
-       \begin{itemize}
-           \item Consultas con baja latencia
-           \item Tablas en tiempo real
-           \item Integración con Apache Paimon mediante un catálogo
-           \item Tablas híbridas
-       \end{itemize}
-    \newpage
-    \item Grafana como tablero que consume de los sistemas implementados
-       \begin{itemize}
-           \item Visualizaciones interactivas
-           \item Múltiples fuentes de datos
-       \end{itemize}
-    \item Prometheus para monitoreo de métricas de los sistemas
-       \begin{itemize}
-           \item Estandard de la industria
-           \item Muy buena integración con diferentes ecosistemas
-       \end{itemize}
-    \item Grafana para creación de tableros de métricas comparativas
-       \begin{itemize}
-            \item Estandard de la industria
-            \item Tableros personalizables
-       \end{itemize}
-    \item Docker Compose para el despliegue de los componentes del sistema
-       \begin{itemize}
-           \item Orquestación de contenedores
-       \end{itemize}
-   \end{itemize}
+\subsection*{Sistema de Mensajería - Apache Kafka}
+
+Apache Kafka fue elegido como el punto de entrada del sistema por ser el estándar de facto en mensajería distribuida en arquitecturas de datos modernas. 
+Su arquitectura distribuida permite alta disponibilidad, tolerancia a fallos, retención configurable 
+y orden garantizado en particiones. \newline
+
+Kafka desacopla la ingesta del procesamiento, permitiendo escalabilidad horizontal 
+y resiliencia ante picos de carga.\newline
+
+Se hicieron pruebas con Apache Pulsar, que promete ser el sucesor de Kafka,
+pero su adopción en la industria es aún limitada y su ecosistema de herramientas no es tan maduro.
+A su vez, su documentación presenta inconsistencias que hacen un desafío su integración en escenarios poco convencionales. \newline
+
+\newpage
+
+\subsection*{Motor de Procesamiento de Flujos - Apache Flink}
+
+Flink fue seleccionado por su baja latencia, manejo avanzado de estado y compatibilidad directa con fuentes como Kafka y formatos de tablas analíticas como Apache Paimon.\newline 
+
+Su modelo de programación basado en flujos de datos y su integración con catálogos lo hacen ideal tanto para arquitecturas Kappa como Delta.\newline 
+
+Además, permite operaciones con garantías \textit{exactly-once} y es capaz de reprocesar eventos desde el principio del log si fuera necesario.\newline
+
+Aunque Apache Spark Structured Streaming podría haber sido considerado, 
+Flink presenta menor latencia y mejor soporte para semánticas de estado complejas.
+
+\subsection*{Almacenamiento de Objetos - MinIO}
+
+MinIO fue elegido como la solución de almacenamiento distribuido compatible con la API de S3. 
+Su facilidad de despliegue, rendimiento eficiente y compatibilidad con entornos locales lo posicionan como una alternativa ideal a soluciones propietarias en la nube, 
+permitiendo independencia de proveedor y bajo costo operativo.
+
+\subsection*{Formato de Tabla Analítica - Apache Paimon}
+
+Apache Paimon fue seleccionado como formato de tabla debido a su diseño nativo para flujos de datos. 
+Su integración con Flink es directa y permite operaciones de escritura eficientes en escenarios de actualización frecuente. 
+A pesar de tener una comunidad pequeña, 
+su especialización para el procesamiento incremental en tiempo real fue clave para esta elección.\newline
+
+Otras alternativas como Apache Iceberg o Hudi tienen comunidades más grandes y mejor documentación, 
+pero presentan mayores desafíos en integración directa con Flink 
+o no funcionan también para el caso de procesamiento de streaming.
+
+\newpage
+
+\subsection*{Motor Analítico - Apache Doris}
+
+Doris combina procesamiento paralelo masivo (MPP) con consultas OLAP en tiempo real. 
+Su soporte para tablas híbridas y la posibilidad de realizar consultas federadas sin necesidad de duplicar los datos lo convierte en una excelente opción para analítica en tiempo real e histórica.
+También la integración con Paimon mediante un catálogo lo posiciona como una solución eficiente y simple de operar.\newline
+
+Aunque Druid o Pinot fueron considerados, 
+Doris ofrece capacidades que estas otras tecnologías no tienen. En particular, las consultas federadas.
+
+\subsection*{Orquestación de Contenedores - Docker Compose}
+
+El uso de Docker Compose permite una gestión simple, portable y reproducible del entorno experimental. 
+Facilita el aislamiento de componentes, el control de versiones de imágenes y la replicabilidad del experimento. \newline
+
+Esta elección responde a la necesidad de contar con un entorno controlado sin la complejidad que presentan otras herramientas.
+
+\subsection*{Monitoreo y Visualización: Prometheus + Grafana}
+
+Prometheus permite recolección y análisis eficiente de métricas, 
+mientras que Grafana proporciona una interfaz amigable y personalizable para visualizar el estado del sistema y comparar el rendimiento entre arquitecturas. 
+
+Esta combinación es ampliamente adoptada en entornos productivos, y su integración nativa con sistemas de contenedores y servicios distribuidos la vuelve especialmente útil para este caso.
+
+Además, se aprovecha la capacidad de Grafana para crear paneles de control personalizados 
+para también visualizar los resultados de las consultas analíticas.
+
 \newpage
