@@ -95,6 +95,34 @@ y asegurar que la aplicación pueda tolerar y resolver estas situaciones de mane
 
 \newpage
 
+\subsection{Principio SCV}
+
+El principio SCV (Speed, Consistency, Volume o Velocidad, Consistencia y Volúmen) es como el teorema CAP pero para el procesamiento distribuido. 
+
+Establece que un sistema de procesamiento de datos distribuido solo puede optimizar dos de las siguientes tres dimensiones:
+
+\begin{itemize}
+    \item \textbf{Speed}: La rapidez con que se procesan los datos una vez generados; asociada con la latencia.
+    \item \textbf{Consistency}: La precisión y exactitud de los resultados. Un sistema más consistente utiliza todos los datos disponibles, mientras que uno menos consistente emplea técnicas de muestreo.
+    \item \textbf{Volume}: La cantidad de datos que pueden procesarse. Los entornos de Big Data generan conjuntos de datos enormes que requieren procesamiento distribuido.
+\end{itemize}
+
+Las compensaciones entre estas dimensiones son:
+
+\begin{itemize}
+    \item Si se necesita velocidad y consistencia, no es posible procesar grandes volúmenes de datos.
+    \item Si se necesita consistencia y alto volumen, la velocidad de procesamiento se verá comprometida.
+    \item Si se necesita alto volumen y alta velocidad, los resultados carecerán de consistencia debido al muestreo.
+\end{itemize}
+
+En entornos de Big Data, donde maximizar la disponibilidad de datos es esencial para análisis profundos como identificación de patrones, 
+prescindir del volumen debe considerarse cuidadosamente. \newline
+
+Asumiendo que la pérdida de datos es inaceptable, un sistema de análisis en tiempo real normalmente priorizará \textbf{Velocidad + Volumen} o \textbf{Consistencia + Volumen}, 
+dependiendo de si se valora más la rapidez o la precisión de los resultados. \parencite{scv}
+
+\newpage
+
 \subsection{Desafíos en el manejo de datos de streaming}
 
 \begin{enumerate}
