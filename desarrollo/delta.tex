@@ -36,7 +36,7 @@ Kafka actúa como el punto de entrada de la arquitectura, permitiendo desacoplar
 y asegurando una capa de buffer que absorbe picos de tráfico mientras mantiene los datos disponibles para su consumo.
 En este caso, Kafka se despliega en un cluster de tres nodos, con un factor de replicación de tres y un factor de partición de tres.
 Por otro lado, se definió un tiempo de retención de mensajes acotado, en este caso de 7 días, para evitar la acumulación de datos
-pero a su vez asegurar la disponibilidad de los mismos para su procesamiento.\newline
+pero a su vez, asegurar la disponibilidad de los mismos para su procesamiento.\newline
 
 El procesamiento de datos se realiza mediante \textbf{Apache Flink}, se despliega en un cluster con un nodo Job Manager 
 y cinco nodos Task Manager; de forma de distribuir la carga de trabajo lo mejor posible.

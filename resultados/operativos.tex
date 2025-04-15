@@ -80,7 +80,7 @@ De esta forma promediando los resultados de las 5 pruebas de carga de cada arqui
     \hline
 \end{longtable}
 
-Es interesante ver los resultados. Ya que la latencia mínima de Kappa es negativa. 
+Es interesante ver los resultados. Ya que la latencia mínima de Kappa es negativa.  
 Esto se debe a que el conector de kafka que se usa, no actualiza el campo \textbf{aggregation\_timestamp} cuando se actualiza el registro porque llegan nuevos datos.
 Esto muestra que también muestra un problema de diseño del trabajo de inserción al calcular los datos pero no se encontró una solución al mismo. \newline
 
@@ -256,7 +256,7 @@ Para \textbf{Delta} se presentan los siguientes resultados:
 
 \newpage
 
-Acorde a lo esperado, Kappa requiere un mayor uso de recursos para los nodos de Kafka que Delta.
+De acuerdo a lo esperado, Kappa requiere un mayor uso de recursos para los nodos de Kafka que Delta.
 Por su lado, Delta requiere un mayor uso de recursos para los nodos de procesamiento. También para el nodo de frontend de Doris. 
 Aunque es notablemente menor el uso de memoria que requiere de los nodos Kafka. \newline
 
