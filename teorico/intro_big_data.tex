@@ -1,7 +1,7 @@
 \section{Introducción a Big Data y Streaming de Datos}
 
 \subsection{Sistemas Distribuidos}
-Un sistema distribuido es una colección de elementos computacionales autonomos que para su usuario 
+Un sistema distribuido es una colección de elementos computacionales autónomos que para su usuario 
 parecen un sistema único y coherente. \parencite{tanenbaum}
 
 Los sistemas distribuidos tienen dos caracteristicas que pueden regularse para escalar: Procesamiento y Almacenamiento. 
@@ -22,7 +22,7 @@ La Disponibilidad es la propiedad que tiene un sistema distribuido para responde
 Un sistema disponible garantiza que cada solicitud reciba una respuesta sin importar el estado individual de cada nodo que lo compone.
 Esto significa que incluso si algunos nodos falla, el sistema en su conjunto debe poder seguir dando servicio a las peticiones que recibe.
 \subsubsection{Tolerancia a Particiones}
-La Tolerancia a Particiones es la propiedad que tiene un sistema distribuido en la que continua funcionando a pesar de la perdida de 
+La Tolerancia a Particiones es la propiedad que tiene un sistema distribuido en la que continua funcionando a pesar de la pérdida de 
 conectividad entre nodos. Una partición ocurre cuando hay una ruptura en la comunicación dentro de la red, 
 lo que resulta en que dos o más segmentos de la red no puedan comunicarse entre sí.
 Un sistema tolerante a particiones puede seguir operando incluso cuando estas particiones ocurren, 
@@ -31,7 +31,7 @@ lo que significa que puede manejar retrasos o pérdidas de mensajes entre nodos 
 \newpage
 \subsection{Definición y características del Big Data}
 
-Big Data es un término paraguas que se usa para denominar a un conjunto de tecnologías que manejan grandes volúmenes de datos.
+Big Data es un término que se usa para denominar a un conjunto de tecnologías que manejan grandes volúmenes de datos.
 La pregunta que se presenta entonces es: ¿qué tan grandes deberían ser estos volúmenes para ser considerados Big Data?
 O incluso, ¿existen otras características que definan lo que es Big Data?
 Una definición generalmente aceptada es la siguiente:
@@ -75,15 +75,15 @@ En general, para los sistemas de Big Data de Streaming, la disponibilidad es una
 resultar en la pérdida de datos valiosos o en la imposibilidad de realizar acciones.\newline
 
 Por otro lado, la Tolerancia a Particiones es también indispensable para estos sistemas, que por su naturaleza requieren que su capacidad de 
-procesamiento este distribuida a través de múltiples nodos dispersos en una red no confiable; por lo que son suceptibles 
+procesamiento este distribuida a través de múltiples nodos dispersos en una red no confiable; por lo que son susceptibles 
 a que se genere una partición. Por lo tanto, si no tuviera esta propiedad el servicio podría dejar de ser disponible.\newline 
 
 Entonces, como corolario, un sistema de Big Data de Streaming debe también ser tolerante a las particiones para poder ser disponible.
-Esto nos deja con una única opción: relajar el "grado de consistencia" hasta un punto razonable que permita que el sistema siga siendo eficáz.\parencite{capteo}
+Esto nos deja con una única opción: relajar el "grado de consistencia" hasta un punto razonable que permita que el sistema siga siendo eficaz.\parencite{capteo}
 \newpage
 \subsubsection{Consistencia Eventual}
 La consistencia eventual es un modelo de consistencia en sistemas distribuidos que garantiza que, 
-si no se realizan nuevas actualizaciones a un objeto, en algun momento (eventualmente) todos los accesos a ese objeto 
+si no se realizan nuevas actualizaciones a un objeto, en algún momento (eventualmente) todos los accesos a ese objeto 
 devolverán el último valor actualizado. \newline
 
 La consistencia eventual se alinea con las compensaciones descritas por el teorema CAP, 
@@ -97,22 +97,22 @@ y asegurar que la aplicación pueda tolerar y resolver estas situaciones de mane
 
 \subsection{Principio SCV}
 
-El principio SCV (Speed, Consistency, Volume o Velocidad, Consistencia y Volúmen) es como el teorema CAP pero para el procesamiento distribuido. 
+El principio SCV (Speed, Consistency, Volume o Velocidad, Consistencia y Volumen) es como el teorema CAP pero para el procesamiento distribuido. 
 
 Establece que un sistema de procesamiento de datos distribuido solo puede optimizar dos de las siguientes tres dimensiones:
 
 \begin{itemize}
-    \item \textbf{Speed}: La rapidez con que se procesan los datos una vez generados; asociada con la latencia.
-    \item \textbf{Consistency}: La precisión y exactitud de los resultados. Un sistema más consistente utiliza todos los datos disponibles, mientras que uno menos consistente emplea técnicas de muestreo.
-    \item \textbf{Volume}: La cantidad de datos que pueden procesarse. Los entornos de Big Data generan conjuntos de datos enormes que requieren procesamiento distribuido.
+    \item \textbf{Speed}: La rapidez con que se procesan los datos una vez generados; asociada con la latencia
+    \item \textbf{Consistency}: La precisión y exactitud de los resultados. Un sistema más consistente utiliza todos los datos disponibles, mientras que uno menos consistente emplea técnicas de muestreo
+    \item \textbf{Volume}: La cantidad de datos que pueden procesarse. Los entornos de Big Data generan conjuntos de datos enormes que requieren procesamiento distribuido
 \end{itemize}
 
 Las compensaciones entre estas dimensiones son:
 
 \begin{itemize}
-    \item Si se necesita velocidad y consistencia, no es posible procesar grandes volúmenes de datos.
-    \item Si se necesita consistencia y alto volumen, la velocidad de procesamiento se verá comprometida.
-    \item Si se necesita alto volumen y alta velocidad, los resultados carecerán de consistencia debido al muestreo.
+    \item Si se necesita velocidad y consistencia, no es posible procesar grandes volúmenes de datos
+    \item Si se necesita consistencia y alto volumen, la velocidad de procesamiento se verá comprometida
+    \item Si se necesita alto volumen y alta velocidad, los resultados carecerán de consistencia debido al muestreo
 \end{itemize}
 
 En entornos de Big Data, donde maximizar la disponibilidad de datos es esencial para análisis profundos como identificación de patrones, 

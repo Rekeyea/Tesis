@@ -68,9 +68,9 @@ que implica un archivo CSV de aproximadamente 7GB.
 
 El proceso de generación de datos es el siguiente:
 \begin{itemize}
-    \item Se genera un archivo CSV con los datos sintéticos ordenados por signo vital.
-    \item Se separa este archivo CSV en un archivo por paciente y se ordena cada uno.
-    \item Se vuelve a juntar la información de cada paciente de forma ordenada en un único archivo CSV.
+    \item Se genera un archivo CSV con los datos sintéticos ordenados por signo vital
+    \item Se separa este archivo CSV en un archivo por paciente y se ordena cada uno
+    \item Se vuelve a juntar la información de cada paciente de forma ordenada en un único archivo CSV
     \item Se envía cada línea del CSV a los nodos Kafka de la cada una de las arquitecturas para su ingestión
 \end{itemize}
 
@@ -166,7 +166,7 @@ También se implementó en Grafana un tablero de datos por pacientes, que permit
 
 Se definieron algunas limitaciones en la implementación de la arquitectura Kappa y Delta, que se detallan a continuación:
 \begin{itemize}
-    \item No se implementará una solución de Governanza de datos
+    \item No se implementará una solución de Gobernanza de datos
     \item No se implementará una solución de Calidad de Datos
     \item No se implementará una solución de Linaje de Datos
     \item No se implementará una solución de Gestión de Plataforma

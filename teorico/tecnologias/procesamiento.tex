@@ -56,9 +56,9 @@ Su modelo de procesamiento se basa en dos conceptos fundamentales:
 
 \begin{itemize}
     \item Marcas de agua (Watermarks): Son metadatos que fluyen en el stream de datos indicando el progreso del tiempo del evento,
-    permitiendo manejar datos desordenados.
+    permitiendo manejar datos desordenados
     \item Ventanas de tiempo (Windows): Permiten agrupar y procesar datos en intervalos temporales definidos, soportando diversos
-    tipos como tumbling, sliding y session windows. 
+    tipos como tumbling, sliding y session windows
 \end{itemize}
 
 Flink proporciona APIs de diferentes niveles:
@@ -90,7 +90,7 @@ permitiendo cambiar de motor de procesamiento según evolucionen las necesidades
 \subsubsection{Apache Samza}
 
 Apache Samza se distingue por su estrecha integración con Apache Kafka y su arquitectura diseñada para mantener el estado 
-de procesamiento de forma distribuida con un modelo de particionamiento que permite escalar horizontalmente.\newline
+de procesamiento de forma distribuida con un modelo de particionado que permite escalar horizontalmente.\newline
 
 Samza proporciona un modelo de procesamiento simple pero potente, con fuerte énfasis en la gestión de estado local y la tolerancia a fallos.
 Se utiliza en Linkedin y la arquitectura Kappa fue propuesta inicialmente pensando en la utilización de este motor de procesamiento.
@@ -121,7 +121,7 @@ y transformaciones complejas mediante APIs de alto y bajo nivel. Tiene un manejo
 En cuanto a rendimiento, Kafka Streams alcanza una latencia típica de decenas de milisegundos a segundos, dependiendo de la complejidad del procesamiento y la configuración, 
 mientras que su throughput puede escalar linealmente añadiendo más instancias.\newline 
 
-También ofrece grantías de procesamiento at-least-once con posibilidad de exactly-once mediante configuración.
+También ofrece garantías de procesamiento at-least-once con posibilidad de exactly-once mediante configuración.
 
 
 \subsubsection{Apache Pulsar Functions}
@@ -143,8 +143,8 @@ en tiempo real.
 
 \paragraph{Modelo de Procesamiento}
 \begin{itemize}
-    \item \textbf{Apache Spark:} Micro-batches.
-    \item \textbf{Apache Flink:} Streaming nativo con procesamiento registro a registro.
+    \item \textbf{Apache Spark:} Micro-batches
+    \item \textbf{Apache Flink:} Streaming nativo con procesamiento registro a registro
     \item \textbf{Apache Beam:} Mismo que el modelo de su motor asociado 
     \item \textbf{Apache Samza:} Streaming nativo con procesamiento basado en tiempo
     \item \textbf{Apache NiFi:} Procesamiento basado en flujos de datos dirigidos
@@ -154,8 +154,8 @@ en tiempo real.
 
 \paragraph{Manejo de Estado}
 \begin{itemize}
-    \item \textbf{Apache Spark:} Estado en memoria distribuido entre los nodos procesadores.
-    \item \textbf{Apache Flink:} Estado distribuido utilizando snapshots.
+    \item \textbf{Apache Spark:} Estado en memoria distribuido entre los nodos procesadores
+    \item \textbf{Apache Flink:} Estado distribuido utilizando snapshots
     \item \textbf{Apache Beam:} Mismo que el manejo de su motor asociado 
     \item \textbf{Apache Samza:} Estado local con respaldo en Kafka
     \item \textbf{Apache NiFi:} Se maneja localmente en memoria en el nodo que procesa el flujo
@@ -165,8 +165,8 @@ en tiempo real.
 
 \paragraph{Latencia}
 \begin{itemize}
-    \item \textbf{Apache Spark:} Dependiendo de la configuración del micro-batch puede ir desde milisegundos a segundos.
-    \item \textbf{Apache Flink:} Microsegundos a milisegundos.
+    \item \textbf{Apache Spark:} Dependiendo de la configuración del micro-batch puede ir desde milisegundos a segundos
+    \item \textbf{Apache Flink:} Microsegundos a milisegundos
     \item \textbf{Apache Beam:} Mismo que el de su motor asociado 
     \item \textbf{Apache Samza:} Milisegundos a segundos
     \item \textbf{Apache NiFi:} Segundos a Minutos

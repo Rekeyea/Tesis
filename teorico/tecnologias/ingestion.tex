@@ -72,46 +72,46 @@ control de acceso basado en roles, y encriptación en reposo y en tránsito.
 
 \paragraph{Escalabilidad}
 \begin{itemize}
-    \item \textbf{Apache Kafka:} Muy Alta escalabilidad horizontal, millones de mensajes/segundo.
-    \item \textbf{Apache Pulsar:} Muy alta escalabilidad horizontal, millones de mensajes/segundo con separación de almacenamiento y cómputo.
-    \item \textbf{Amazon Kinesis:} Buena escalabilidad, con 1.000 mensajes por segundo con la configuración por defecto aunque con configuración adicional puede llegar al millon por segundo hipotético.
-    \item \textbf{Azure Event Hubs:} Buena escalabilidad, con 1.000 mensajes por segundo. También puede escalar con configuración adicional a los 20.000 mensajes. Existe la posibilidad de tener una instancia dedicada que permite escalar a millones de eventos por segundo de forma hipotética.
+    \item \textbf{Apache Kafka:} Muy Alta escalabilidad horizontal, millones de mensajes/segundo
+    \item \textbf{Apache Pulsar:} Muy alta escalabilidad horizontal, millones de mensajes/segundo con separación de almacenamiento y cómputo
+    \item \textbf{Amazon Kinesis:} Buena escalabilidad, con 1.000 mensajes por segundo con la configuración por defecto aunque con configuración adicional puede llegar al millon por segundo hipotético
+    \item \textbf{Azure Event Hubs:} Buena escalabilidad, con 1.000 mensajes por segundo. También puede escalar con configuración adicional a los 20.000 mensajes. Existe la posibilidad de tener una instancia dedicada que permite escalar a millones de eventos por segundo de forma hipotética
 \end{itemize}
 
 \newpage
 \paragraph{Retención de datos}
 \begin{itemize}
-    \item \textbf{Apache Kafka:} Configurable, potencialmente ilimitada.
-    \item \textbf{Apache Pulsar:} Ilimitada por diseño.
-    \item \textbf{Amazon Kinesis:} Hasta 365 días, configurable.
-    \item \textbf{Azure Event Hubs:} Hasta 7 días, opción de Capture para largo plazo.
+    \item \textbf{Apache Kafka:} Configurable, potencialmente ilimitada
+    \item \textbf{Apache Pulsar:} Ilimitada por diseño
+    \item \textbf{Amazon Kinesis:} Hasta 365 días, configurable
+    \item \textbf{Azure Event Hubs:} Hasta 7 días, opción de Capture para largo plazo
 \end{itemize}
 
 \paragraph{Garantías de entrega}
 \begin{itemize}
-    \item \textbf{Apache Kafka:} At-least-once por defecto, exactly-once configurable.
-    \item \textbf{Apache Pulsar:} Exactly-once nativo.
-    \item \textbf{Amazon Kinesis:} At-least-once.
-    \item \textbf{Azure Event Hubs:} At-least-once.
+    \item \textbf{Apache Kafka:} At-least-once por defecto, exactly-once configurable
+    \item \textbf{Apache Pulsar:} Exactly-once nativo
+    \item \textbf{Amazon Kinesis:} At-least-once
+    \item \textbf{Azure Event Hubs:} At-least-once
 \end{itemize}
 
 \paragraph{Encriptación}
 \begin{itemize}
     \item \textbf{En reposo:}
     \begin{itemize}
-        \item \textbf{Apache Kafka:} Configurable.
-        \item \textbf{Apache Pulsar:} Nativo.
-        \item \textbf{Amazon Kinesis:} Por defecto (AWS KMS).
-        \item \textbf{Azure Event Hubs:} Por defecto.
+        \item \textbf{Apache Kafka:} Configurable
+        \item \textbf{Apache Pulsar:} Nativo
+        \item \textbf{Amazon Kinesis:} Por defecto (AWS KMS)
+        \item \textbf{Azure Event Hubs:} Por defecto
     \end{itemize}
-    \item \textbf{En tránsito:} Todos soportan TLS/SSL.
+    \item \textbf{En tránsito:} Todos soportan TLS/SSL
 \end{itemize}
 
 \paragraph{Observaciones clave}
 \begin{itemize}
-    \item Pulsar destaca en escalabilidad, retención, seguridad y consistencia nativos.
-    \item Kafka ofrece el ecosistema más maduro y desarrollado que le otorga características muy completas.
-    \item Servicios gestionados (Kinesis, Event Hubs) tienen encriptación en reposo por defecto, pero retención limitada.
+    \item Pulsar destaca en escalabilidad, retención, seguridad y consistencia nativos
+    \item Kafka ofrece el ecosistema más maduro y desarrollado que le otorga características muy completas
+    \item Servicios gestionados (Kinesis, Event Hubs) tienen encriptación en reposo por defecto, pero retención limitada
 \end{itemize}
 \clearpage
 

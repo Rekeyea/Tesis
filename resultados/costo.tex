@@ -39,10 +39,10 @@ De esta forma, se consideran instancias que cumplan estos requisitos.
 El caso más complejo es el de Kafka, que requiere un muy buen acceso a disco y una buena red. Y por otro lado, necesita que si se cae un nodo no se pierdan datos, ya que es nuestra fuente de verdad. \newline
 
 Para cumplir los patrones de almacenamiento vistos en la prueba se propone para Kafka el uso de una instancia r6i.xlarge con 4vCPU y 32GB de RAM,
- que permite asegurar que los nodos no estén sobrecargados. Además se le deberá agregar un volúmen persistente EBS de 1TB para asegurar que el nodo pueda almacenar los datos necesarios.\newline
+ que permite asegurar que los nodos no estén sobrecargados. Además se le deberá agregar un volumen persistente EBS de 1TB para asegurar que el nodo pueda almacenar los datos necesarios.\newline
 
 Para el caso de Doris, se utilizará una instancia c5d.xlarge para el frontend (que viene con un disco) y una c5.x2large para el backend ya que requieren un buen uso de CPU y de red. 
-Además, el backend debe tener un volúmen persistente de al menos 50 GB para asegurar que pueda almacenar los datos necesarios y estos no se pierdan. \newline
+Además, el backend debe tener un volumen persistente de al menos 50 GB para asegurar que pueda almacenar los datos necesarios y estos no se pierdan. \newline
 
 Para el caso de Flink, se utilizará una instancia r5.xlarge para los nodos Task Manager  ya que proveen un muy buen rendimiento de memoria y una c5.large para el Job Manager. \newline
 
@@ -219,7 +219,7 @@ se pueden reducir los requisitos.
 \subsection{Resultados}
 
 El costo de delta es un \textbf{64\%} del costo de Kappa. 
-Esto se debe sobre todo a la nececsidad que tiene Kappa de que Kafka sea su fuente de verdad.
+Esto se debe sobre todo a la necesidad que tiene Kappa de que Kafka sea su fuente de verdad.
 Y si bien el almacenamiento en capas que ofrece Kafka permite reducir costos al almacenar sus segmentos en Object Storage,
 aún así necesita de mucha cantidad de disco para funcionar correctamente en un entorno de alta disponibilidad.\newline
 

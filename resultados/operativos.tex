@@ -84,7 +84,7 @@ Es interesante ver los resultados. Ya que la latencia mínima de Kappa es negati
 Esto se debe a que el conector de kafka que se usa, no actualiza el campo \textbf{aggregation\_timestamp} cuando se actualiza el registro porque llegan nuevos datos.
 Esto muestra que también muestra un problema de diseño del trabajo de inserción al calcular los datos pero no se encontró una solución al mismo. \newline
 
-Por otro lado, se registroó el tiempo de latencia de los registros que se insertaron en el sistema; sin embargo, debido al conector de Flink con Doris, 
+Por otro lado, se registró el tiempo de latencia de los registros que se insertaron en el sistema; sin embargo, debido al conector de Flink con Doris, 
 este proceso se realiza en batch, por lo que nuevamente es posible que el registro de tiempo de inserción sea anterior al de procesamiento. 
 
 \newpage
@@ -267,7 +267,7 @@ La sorpresa más grande es el uso de almacenamiento y de transferencia de red.
 Kappa requiere un uso de almacenamiento mucho mayor que Delta, y también un uso de transferencia de red mucho mayor.
 Esto se debe a que Delta guarda sus datos en Parquet, lo que lo hace muchísimo más eficiente que el formato de Kafka.
 Incluso, en el caso de Delta, todas las transformaciones de los datos están guardadas en Object Storage 
-y aún así el uso de almacenamiento es notablementemenor que en Kappa. 
+y aún así el uso de almacenamiento es notablemente menor que en Kappa. 
 
 \newpage
 
