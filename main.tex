@@ -195,14 +195,28 @@
 
 \input{caratula}
 
+\pagestyle{empty}
+
 \input{disclaimer}
 
 \input{abstract}
 
-% Índice
-\tableofcontents
+\input{agradecimientos}
 
-\setcounter{page}{5}
+\input{chapters}
+
+\cleardoublepage
+\begingroup
+\makeatletter
+\let\ps@plain\ps@empty
+\makeatother
+\tableofcontents
+\endgroup
+\cleardoublepage
+\setcounter{page}{9}  % <-- Ajustá según lo que quieras
+\pagestyle{plain}
+
+
 % Capítulos
 \input{introduccion}
 \input{teorico}
