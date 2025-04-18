@@ -43,7 +43,7 @@ y cinco nodos Task Manager; de forma de distribuir la carga de trabajo lo mejor 
 En este caso, se define como punto de entrada un tópico de Kafka, para luego continuar procesando los datos, 
 no utilizando Kafka sino aprovechando las capacidades de \textbf{Apache Paimon}. 
 Este adopta un enfoque log-structured para las escrituras, 
-lo que lo hace especialmente eficiente para cargas de trabajo de streaming con alta frecuencia de actualizaciones.\newline
+lo que lo hace eficiente para cargas de trabajo de streaming con alta frecuencia de actualizaciones.\newline
 
 Este permite tratar una tabla de datos como un flujo continuo de eventos, funcionando de forma efectiva como 
 una cola de mensajes, pero con la ventaja de tener los datos materializados en un almacenamiento persistente y barato.\newline

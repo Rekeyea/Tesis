@@ -11,7 +11,7 @@ una complejidad operativa superior y una necesidad considerable de almacenamient
 debido a su dependencia de Kafka como fuente de verdad. \newline
 
 Por otro lado, la arquitectura Delta evidenció una mayor escalabilidad y una mejor eficiencia en el uso de recursos, 
-especialmente en almacenamiento y transferencia de datos, gracias al uso de formatos columnar como Parquet y almacenamiento en Object Storage. 
+en particular en almacenamiento y transferencia de datos, gracias al uso de formatos columnar como Parquet y almacenamiento en Object Storage. 
 Sin embargo, sus tiempos de latencia (aunque estables) alcanzaron valores promedio de alrededor de 180 segundos, 
 lo que la hace inadecuada para casos que requieren inmediatez. Aun así, esta latencia puede considerarse aceptable en contextos como el monitoreo ambulatorio, 
 donde las decisiones clínicas no dependen de una reacción instantánea. \newline
