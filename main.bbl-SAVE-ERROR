@@ -448,6 +448,47 @@
       \verb 10.1109/CTS.2014.6867550
       \endverb
     \endentry
+    \entry{scv}{book}{}
+      \name{author}{3}{}{%
+        {{hash=5606702d875163ff65690170e545c0b8}{%
+           family={Erl},
+           familyi={E\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=9147d4e1125ce77a21fc0820c8019d24}{%
+           family={Khattak},
+           familyi={K\bibinitperiod},
+           given={Wajid},
+           giveni={W\bibinitperiod}}}%
+        {{hash=a67f3c81569c9f892d8c42938f6ff222}{%
+           family={Buhler},
+           familyi={B\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \list{publisher}{1}{%
+        {Pearson Education, Inc}%
+      }
+      \strng{namehash}{178ae21bac9e410c170343a1ff8e1551}
+      \strng{fullhash}{178ae21bac9e410c170343a1ff8e1551}
+      \strng{bibnamehash}{178ae21bac9e410c170343a1ff8e1551}
+      \strng{authorbibnamehash}{178ae21bac9e410c170343a1ff8e1551}
+      \strng{authornamehash}{178ae21bac9e410c170343a1ff8e1551}
+      \strng{authorfullhash}{178ae21bac9e410c170343a1ff8e1551}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{978-0-13-429107-9}
+      \field{title}{Big Data Fundamentals: Concepts, Drivers \& Techniques}
+      \field{year}{2015}
+      \field{pages}{137\bibrangedash 142}
+      \range{pages}{6}
+    \endentry
     \entry{flink}{book}{}
       \name{author}{2}{}{%
         {{hash=f62284c3f049e9c575a88c0b6b1a27af}{%
