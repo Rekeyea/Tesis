@@ -7,12 +7,12 @@ Deben funcionar como un conducto de alta capacidad de almacenamiento y baja late
 desde sus múltiples orígenes y hacia sus diversos destinos en tiempo real. \parencite{bigdata} \newline
 
 Su papel es fundamentalmente el de un sistema nervioso central, coordinando y distribuyendo datos a través de complejas arquitecturas distribuidas. 
-Actúan como amortiguadores, absorbiendo picos en el flujo de datos y garantizando un procesamiento constante y eficiente. 
+Actúan como amortiguadores, absorbiendo picos en el flujo de datos y garantizando, un procesamiento constante y eficiente. 
 Además, estas tecnologías sirven como una capa de abstracción, desacoplando los productores de datos de los consumidores, 
 lo que permite una mayor flexibilidad y escalabilidad en el diseño del sistema.
 
 \subsubsection{Apache Kafka}
-Apache Kafka es el estandar de facto de este tipo de sistemas. Utiliza un modelo de publicación-subscripcion (pub/sub) basado en logs, 
+Apache Kafka es el estándar de facto de este tipo de sistemas. Utiliza un modelo de publicación-subscripcion (pub/sub) basado en logs, 
 donde los datos se envían a "topics" y se almacenan en particiones distribuidas. Las particiones tienen una garantía de orden de los mensajes
 y permiten la retención de datos a largo plazo.\newline
 
@@ -49,7 +49,7 @@ Kinesis, en realidad, se compone de varios servicios:
     \item Kinesis Video Streams para streaming de video  
 \end{enumerate}
 Adicionalmente ofrece capacidades de auto-escalado, replicación entre zonas de disponibilidad para alta durabilidad, encriptación en reposo 
-(y puede habilitarsele la encriptación en tránsito) y permite la retención de datos hasta 365 días.
+(y puede habilitársele la encriptación en tránsito) y permite la retención de datos hasta 365 días.
 \newline
 
 Como se puede ver, al ser tan completo permitiría implementar, al menos en principio, una gran parte de un sistema de Big Data en tiempo real.
@@ -61,7 +61,7 @@ ofrece una muy buena con otros servicios de Microsoft Azure, lo que permite por 
 en los servicios de almacenamiento disponibles en este proveedor de nube.\newline
 
 Event Hubs es compatible con el protocolo Kafka, lo que permite a las aplicaciones existentes de Kafka conectarse sin cambios de código.
-Ofrece una retención de mensajes por defecto de 1 dia que puede aumentado hasta 7. En caso de necesitar una retención más a largo plazo
+Ofrece una retención de mensajes por defecto de 1 día que puede aumentado hasta 7. En caso de necesitar una retención más a largo plazo
 se recomienda guardar los eventos en Azure Blob Storage o Azure Data Lake para su posterior procesamiento. 
 Cuenta también con encriptación en transito con TLS y en reposo.\newline
 
@@ -74,7 +74,7 @@ control de acceso basado en roles, y encriptación en reposo y en tránsito.
 \begin{itemize}
     \item \textbf{Apache Kafka:} Muy Alta escalabilidad horizontal, millones de mensajes/segundo
     \item \textbf{Apache Pulsar:} Muy alta escalabilidad horizontal, millones de mensajes/segundo con separación de almacenamiento y cómputo
-    \item \textbf{Amazon Kinesis:} Buena escalabilidad, con 1.000 mensajes por segundo con la configuración por defecto aunque con configuración adicional puede llegar al millon por segundo hipotético
+    \item \textbf{Amazon Kinesis:} Buena escalabilidad, con 1.000 mensajes por segundo con la configuración por defecto aunque con configuración adicional puede llegar al millón por segundo hipotético
     \item \textbf{Azure Event Hubs:} Buena escalabilidad, con 1.000 mensajes por segundo. También puede escalar con configuración adicional a los 20.000 mensajes. Existe la posibilidad de tener una instancia dedicada que permite escalar a millones de eventos por segundo de forma hipotética
 \end{itemize}
 

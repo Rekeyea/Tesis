@@ -51,7 +51,7 @@ el sistema siga funcionando lo mejor posible.\newline
 Tres de las zonas de disponibilidad (a, b y c) son idempotentes en cuanto a su funcionamiento, 
 cada una cuenta con un nodo de Kafka, un nodo Zookeeper, un nodo de procesamiento de Flink y un nodo de backend de Doris.
 La cuarta zona de disponibilidad (d) tiene el nodo de frontend de Doris y el nodo de gestión de Flink; así como también un nodo extra de procesamiento de Flink.
-No se incluye MinIO en este despliegue porque se utiliza S3 nativo, que se define en una región y esta igualmente comunicado con todas las zonas de disponibilidad.\newline
+No se incluye MinIO en este despliegue porque se utiliza S3 nativo, que se define en una región y está igualmente comunicado con todas las zonas de disponibilidad.\newline
 
 A su vez, estarían idealmente desplegados mediante un orquestador de contenedores como Kubernetes, utilizando algún servicio como Elastic Kubernetes Serice (EKS).
 
