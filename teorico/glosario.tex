@@ -1,0 +1,59 @@
+\section{Glosario de Términos}
+
+\textbf{Backpressure}: Mecanismo de control de flujo que se activa cuando un sistema no puede procesar datos tan rápido como los recibe. Permite al sistema ajustar dinámicamente el ritmo de procesamiento para evitar sobrecarga y pérdida de datos.
+
+\textbf{Checkpoint}: Proceso de guardar periódicamente el estado completo de un sistema de procesamiento de streaming en almacenamiento persistente. Permite la recuperación exacta del estado ante fallos del sistema, garantizando continuidad y consistencia.
+
+\textbf{Compactación}: Proceso de reorganización y optimización de datos que combina múltiples archivos pequeños en archivos más grandes. Mejora el rendimiento de lectura y reduce la sobrecarga de metadatos en sistemas de almacenamiento distribuido.
+
+\textbf{Control de Concurrencia Optimista}: Estrategia de gestión de concurrencia que permite que múltiples operaciones procesen datos simultáneamente, validando conflictos solo al momento de confirmar los cambios. Maximiza el paralelismo asumiendo que los conflictos son raros.
+
+\textbf{Event Sourcing}: Patrón de diseño donde los cambios de estado se almacenan como una secuencia inmutable de eventos en lugar de sobrescribir el estado actual. Permite reconstruir cualquier estado histórico y facilita la auditoría y el reprocesamiento.
+
+\textbf{Event Time}: Tiempo en que ocurrió realmente un evento en el mundo real, según fue registrado en el momento de su generación. Se diferencia del processing time y es fundamental para análisis temporal preciso en sistemas de streaming.
+
+\textbf{Federación de Consultas}: Capacidad de ejecutar consultas SQL que acceden y combinan datos almacenados en múltiples sistemas, ubicaciones o formatos diferentes sin necesidad de mover, copiar o duplicar previamente los datos.
+
+\textbf{Graceful Degradation}: Capacidad de un sistema para mantener funcionalidad parcial útil cuando algunos componentes fallan, datos no están disponibles o hay condiciones subóptimas, en lugar de fallar completamente.
+
+\textbf{Incremental Processing}: Metodología de procesamiento que opera únicamente sobre datos nuevos o modificados desde la última ejecución, en lugar de reprocesar todo el conjunto de datos. Optimiza recursos y reduce tiempos de procesamiento.
+
+\textbf{Latencia}: Tiempo transcurrido entre el momento en que un dato ingresa al sistema y el momento en que se completa su procesamiento o se obtiene una respuesta. Métrica crítica en sistemas de tiempo real.
+
+\textbf{Log-structured}: Arquitectura de almacenamiento que organiza todos los datos como una secuencia inmutable y ordenada cronológicamente de eventos o registros. Optimiza las escrituras secuenciales y facilita la replicación.
+
+\textbf{Materialized View}: Vista pre-computada y almacenada físicamente que contiene el resultado de una consulta compleja. Se actualiza periódicamente para acelerar consultas frecuentes sobre datos agregados o transformados.
+
+\textbf{Micro-batch}: Técnica de procesamiento de streaming que divide el flujo continuo de datos en pequeños lotes que se procesan secuencialmente con intervalos regulares. Combina las ventajas del procesamiento batch y streaming.
+
+\textbf{Object Storage}: Paradigma de almacenamiento donde los datos se organizan como objetos independientes en una estructura plana, cada uno con datos, metadatos extensos y un identificador único global. Ofrece escalabilidad masiva y durabilidad.
+
+\textbf{OLAP (Online Analytical Processing)}: Tipo de sistema de base de datos optimizado para consultas complejas, análisis multidimensional y procesamiento de grandes volúmenes de datos históricos. Prioriza la velocidad de lectura y agregaciones.
+
+\textbf{OLTP (Online Transaction Processing)}: Tipo de sistema de base de datos optimizado para transacciones rápidas, concurrentes y frecuentes. Prioriza la consistencia, integridad transaccional y procesamiento de operaciones individuales.
+
+\textbf{Outliers}: Valores atípicos en un conjunto de datos que se desvían significativamente del patrón normal o esperado. Pueden indicar errores en los datos, casos excepcionales o eventos importantes que requieren atención especial.
+
+\textbf{Processing Time}: Tiempo en que un sistema procesa realmente un evento, independientemente de cuándo ocurrió originalmente. Se diferencia del event time y puede variar según la latencia del sistema y las colas de procesamiento.
+
+\newpage
+
+\textbf{Replication Factor}: Número de copias idénticas de datos que se mantienen en diferentes nodos de un sistema distribuido. Garantiza disponibilidad y tolerancia a fallos al permitir que el sistema continúe operando aunque algunos nodos fallen.
+
+\textbf{Session Windows}: Tipo de ventana temporal que agrupa eventos basándose en períodos de actividad, iniciando una nueva ventana después de un período de inactividad definido. Útil para analizar sesiones de usuario o períodos de actividad intermitente.
+
+\textbf{Sliding Windows}: Ventanas temporales que se superponen en el tiempo, moviéndose continuamente con un intervalo menor a su tamaño. Permiten análisis de tendencias suaves y detección de patrones que podrían perderse con ventanas fijas.
+
+\textbf{Snapshot}: Imagen inmutable y consistente del estado completo de datos en un momento específico del tiempo. Permite acceso a versiones históricas y facilita operaciones de backup y recuperación.
+
+\textbf{SQL (Structured Query Language)}: Lenguaje declarativo estándar para gestión y manipulación de datos que es agnóstico al motor subyacente. En contextos modernos, se utiliza no solo para consultas sino también para definir trabajos de procesamiento de datos en tiempo real y batch.
+
+\textbf{Throughput}: Cantidad de datos que un sistema puede procesar exitosamente en una unidad de tiempo determinada, típicamente medido en registros por segundo, eventos por segundo o bytes por segundo.
+
+\textbf{Tumbling Windows}: Ventanas temporales de tamaño fijo que no se superponen, dividiendo el tiempo en segmentos consecutivos. Cada evento pertenece exactamente a una ventana, facilitando agregaciones y análisis por períodos discretos.
+
+\textbf{Upsert}: Operación de base de datos que combina inserción (insert) y actualización (update), insertando un nuevo registro si no existe o actualizando el registro existente si ya está presente. Fundamental en procesamiento de streaming para mantener estado.
+
+\textbf{Watermarks}: Marcas temporales especiales que fluyen en un stream de datos indicando el progreso del tiempo de evento. Permiten al sistema determinar cuándo es seguro emitir resultados para ventanas temporales y manejar eventos que llegan desordenados.
+
+\newpage
